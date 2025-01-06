@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import '../models/subject.dart';
 import '../models/chapter.dart';
+import '../models/exam.dart';
+import '../models/question.dart';
+import '../screens/practice_mode_screen.dart';
+import '../screens/mock_exam_screen.dart';
 
 class SubjectChaptersScreen extends StatefulWidget {
   final Subject subject;
@@ -193,7 +197,21 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                     Expanded(
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          // TODO: Navigate to practice mode
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PracticeModeScreen(
+                                exam: Exam(
+                                  id: 'practice_${chapter.title}',
+                                  title: '${chapter.title} Practice',
+                                  subject: widget.subject.name,
+                                  year: DateTime.now().year,
+                                  questions: _getDummyQuestions(),
+                                  duration: const Duration(minutes: 30),
+                                ),
+                              ),
+                            ),
+                          );
                         },
                         icon: const Icon(Icons.school),
                         label: const Text('Practice Mode'),
@@ -207,7 +225,21 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                     Expanded(
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          // TODO: Navigate to mock exam mode 
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MockExamScreen(
+                                exam: Exam(
+                                  id: 'mock_${chapter.title}',
+                                  title: '${chapter.title} Mock Exam',
+                                  subject: widget.subject.name,
+                                  year: DateTime.now().year,
+                                  questions: _getDummyQuestions(),
+                                  duration: const Duration(minutes: 60),
+                                ),
+                              ),
+                            ),
+                          );
                         },
                         icon: const Icon(Icons.timer),
                         label: const Text('Mock Exam'),
@@ -225,5 +257,38 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
         );
       },
     );
+  }
+
+  List<Question> _getDummyQuestions() {
+    return [
+      Question(
+        id: 'q1',
+        text: 'What is the capital city of Ethiopia?',
+        options: ['Addis Ababa', 'Hawassa', 'Bahir Dar', 'Dire Dawa'],
+        correctOptionIndex: 0,
+        explanation: 'Addis Ababa is the capital city of Ethiopia.',
+      ),
+      Question(
+        id: 'q2',
+        text: 'Which Ethiopian emperor led the victory at Adwa?',
+        options: ['Menelik II', 'Haile Selassie', 'Tewodros II', 'Yohannes IV'],
+        correctOptionIndex: 0,
+        explanation: 'Emperor Menelik II led Ethiopian forces to victory at the Battle of Adwa in 1896.',
+      ),
+      Question(
+        id: 'q3',
+        text: 'What is the main language spoken in Ethiopia?',
+        options: ['Amharic', 'Tigrinya', 'Oromiffa', 'Somali'],
+        correctOptionIndex: 0,
+        explanation: 'Amharic is the official working language of Ethiopia.',
+      ),
+      Question(
+        id: 'q4',
+        text: 'Which Ethiopian coffee region is most famous?',
+        options: ['Yirgacheffe', 'Sidamo', 'Harrar', 'Limu'],
+        correctOptionIndex: 0,
+        explanation: 'Yirgacheffe is internationally renowned for its high-quality coffee beans.',
+      ),
+    ];
   }
 }

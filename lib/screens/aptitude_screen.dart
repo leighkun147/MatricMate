@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/aptitude_section.dart';
+import '../models/exam.dart';
+import '../models/question.dart';
+import '../screens/practice_mode_screen.dart';
+import '../screens/mock_exam_screen.dart';
 
 class AptitudeScreen extends StatefulWidget {
   const AptitudeScreen({Key? key}) : super(key: key);
@@ -202,7 +206,21 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
                                     Expanded(
                                       child: ElevatedButton.icon(
                                         onPressed: () {
-                                          // TODO: Navigate to practice mode
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => PracticeModeScreen(
+                                                exam: Exam(
+                                                  id: 'practice_aptitude_${section.title}',
+                                                  title: '${section.title} Practice',
+                                                  subject: 'Aptitude',
+                                                  year: DateTime.now().year,
+                                                  questions: _getDummyQuestions(section.title),
+                                                  duration: const Duration(minutes: 30),
+                                                ),
+                                              ),
+                                            ),
+                                          );
                                         },
                                         icon: const Icon(Icons.school, size: 18),
                                         label: const Text('Practice'),
@@ -217,7 +235,21 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
                                     Expanded(
                                       child: ElevatedButton.icon(
                                         onPressed: () {
-                                          // TODO: Navigate to mock exam mode
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => MockExamScreen(
+                                                exam: Exam(
+                                                  id: 'mock_aptitude_${section.title}',
+                                                  title: '${section.title} Mock Exam',
+                                                  subject: 'Aptitude',
+                                                  year: DateTime.now().year,
+                                                  questions: _getDummyQuestions(section.title),
+                                                  duration: const Duration(minutes: 60),
+                                                ),
+                                              ),
+                                            ),
+                                          );
                                         },
                                         icon: const Icon(Icons.timer, size: 18),
                                         label: const Text('Mock'),
@@ -244,5 +276,48 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
         ),
       ),
     );
+  }
+
+  List<Question> _getDummyQuestions(String sectionTitle) {
+    if (sectionTitle == 'Mathematics') {
+      return [
+        Question(
+          id: 'apt_math_1',
+          text: 'If x + 2 = 5, what is the value of x?',
+          options: ['2', '3', '4', '7'],
+          correctOptionIndex: 1,
+          explanation: 'To find x, subtract 2 from both sides: x = 5 - 2 = 3',
+        ),
+        Question(
+          id: 'apt_math_2',
+          text: 'What is 15% of 200?',
+          options: ['20', '25', '30', '35'],
+          correctOptionIndex: 2,
+          explanation: '15% of 200 = (15/100) × 200 = 30',
+        ),
+      ];
+    } else {
+      return [
+        Question(
+          id: 'apt_verb_1',
+          text: 'Which of these shows the best logical reasoning?',
+          options: [
+            'All birds can fly. Penguins are birds. Therefore, penguins can fly.',
+            'All squares are rectangles. All rectangles have four sides. Therefore, all squares have four sides.',
+            'Some cats are black. Some dogs are black. Therefore, some cats are dogs.',
+            'It rained yesterday. The ground is wet today. Therefore, it must have rained today.'
+          ],
+          correctOptionIndex: 1,
+          explanation: 'The second option shows valid logical reasoning using transitive property.',
+        ),
+        Question(
+          id: 'apt_verb_2',
+          text: 'Complete the sequence: 2, 4, 8, 16, __',
+          options: ['20', '24', '32', '64'],
+          correctOptionIndex: 2,
+          explanation: 'Each number is doubled to get the next number. So, 16 × 2 = 32',
+        ),
+      ];
+    }
   }
 }

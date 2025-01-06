@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/english_section.dart';
+import '../models/exam.dart';
+import '../models/question.dart';
+import '../screens/practice_mode_screen.dart';
+import '../screens/mock_exam_screen.dart';
 
 class EnglishScreen extends StatefulWidget {
   const EnglishScreen({Key? key}) : super(key: key);
@@ -204,7 +208,21 @@ class _EnglishScreenState extends State<EnglishScreen> {
                                     Expanded(
                                       child: ElevatedButton.icon(
                                         onPressed: () {
-                                          // TODO: Navigate to practice mode
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => PracticeModeScreen(
+                                                exam: Exam(
+                                                  id: 'practice_english_${section.title}',
+                                                  title: '${section.title} Practice',
+                                                  subject: 'English',
+                                                  year: DateTime.now().year,
+                                                  questions: _getDummyQuestions(section.title),
+                                                  duration: const Duration(minutes: 30),
+                                                ),
+                                              ),
+                                            ),
+                                          );
                                         },
                                         icon: const Icon(Icons.school, size: 18),
                                         label: const Text('Practice'),
@@ -219,7 +237,21 @@ class _EnglishScreenState extends State<EnglishScreen> {
                                     Expanded(
                                       child: ElevatedButton.icon(
                                         onPressed: () {
-                                          // TODO: Navigate to mock exam mode
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => MockExamScreen(
+                                                exam: Exam(
+                                                  id: 'mock_english_${section.title}',
+                                                  title: '${section.title} Mock Exam',
+                                                  subject: 'English',
+                                                  year: DateTime.now().year,
+                                                  questions: _getDummyQuestions(section.title),
+                                                  duration: const Duration(minutes: 60),
+                                                ),
+                                              ),
+                                            ),
+                                          );
                                         },
                                         icon: const Icon(Icons.timer, size: 18),
                                         label: const Text('Mock'),
@@ -246,5 +278,75 @@ class _EnglishScreenState extends State<EnglishScreen> {
         ),
       ),
     );
+  }
+
+  List<Question> _getDummyQuestions(String sectionTitle) {
+    if (sectionTitle == 'Grammar') {
+      return [
+        Question(
+          id: 'eng_gram_1',
+          text: 'Which sentence is grammatically correct?',
+          options: [
+            'She don\'t like coffee.',
+            'She doesn\'t like coffee.',
+            'She not like coffee.',
+            'She do not likes coffee.'
+          ],
+          correctOptionIndex: 1,
+          explanation: '"Doesn\'t" is the correct form for third-person singular negative.',
+        ),
+        Question(
+          id: 'eng_gram_2',
+          text: 'Choose the correct past participle:',
+          options: ['wrote', 'written', 'writed', 'writing'],
+          correctOptionIndex: 1,
+          explanation: '"Written" is the correct past participle of "write".',
+        ),
+      ];
+    } else if (sectionTitle == 'Reading Comprehension') {
+      return [
+        Question(
+          id: 'eng_read_1',
+          text: 'What is the main purpose of a topic sentence?',
+          options: [
+            'To conclude a paragraph',
+            'To provide evidence',
+            'To introduce the main idea',
+            'To transition between ideas'
+          ],
+          correctOptionIndex: 2,
+          explanation: 'A topic sentence introduces the main idea of a paragraph.',
+        ),
+        Question(
+          id: 'eng_read_2',
+          text: 'What is inference in reading?',
+          options: [
+            'Direct statement of facts',
+            'Drawing conclusions from evidence',
+            'Summarizing the text',
+            'Finding vocabulary words'
+          ],
+          correctOptionIndex: 1,
+          explanation: 'Inference involves drawing conclusions based on evidence and context clues.',
+        ),
+      ];
+    } else {
+      return [
+        Question(
+          id: 'eng_voc_1',
+          text: 'What is a synonym for "happy"?',
+          options: ['sad', 'joyful', 'angry', 'tired'],
+          correctOptionIndex: 1,
+          explanation: '"Joyful" means the same as "happy".',
+        ),
+        Question(
+          id: 'eng_voc_2',
+          text: 'Choose the correct antonym for "bright":',
+          options: ['dim', 'light', 'shiny', 'clear'],
+          correctOptionIndex: 0,
+          explanation: '"Dim" is the opposite of "bright".',
+        ),
+      ];
+    }
   }
 }
