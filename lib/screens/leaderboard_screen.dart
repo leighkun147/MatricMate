@@ -55,8 +55,8 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Colors.grey[900]!,
-              Colors.grey[850]!,
+              Theme.of(context).colorScheme.background,
+              Theme.of(context).colorScheme.background.withOpacity(0.8),
             ],
           ),
         ),
@@ -71,12 +71,15 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Colors.blue[700]!, Colors.blue[900]!],
+                        colors: [
+                          Theme.of(context).colorScheme.primary,
+                          Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                        ],
                       ),
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.blue.withOpacity(0.3),
+                          color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
                           blurRadius: 8,
                           offset: const Offset(0, 4),
                         ),
@@ -84,8 +87,8 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                     ),
                     child: Text(
                       _getMotivationalMessage(),
-                      style: const TextStyle(
-                        color: Colors.white,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -102,8 +105,8 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                 SliverList(
                   delegate: SliverChildListDelegate([
                     _buildTopThree(),
-                    const Divider(
-                      color: Colors.white24,
+                    Divider(
+                      color: Theme.of(context).colorScheme.onBackground.withOpacity(0.2),
                       height: 32,
                       thickness: 2,
                     ),
@@ -136,6 +139,17 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
     final isFirst = position == 1;
     final height = isFirst ? 160.0 : 130.0;
 
+    Color getBaseColor() {
+      switch (position) {
+        case 1:
+          return Colors.amber;
+        case 2:
+          return Colors.blueAccent;
+        default:
+          return Colors.green;
+      }
+    }
+
     return Container(
       height: height,
       width: isFirst ? 120.0 : 100.0,
@@ -144,17 +158,14 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            if (position == 1) ...[Colors.amber[400]!, Colors.orange[600]!]
-            else if (position == 2) ...[Colors.blueAccent[100]!, Colors.blue[400]!]
-            else ...[Colors.green[400]!, Colors.green[600]!],
+            getBaseColor().withOpacity(0.8),
+            getBaseColor().withOpacity(0.6),
           ],
         ),
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: (position == 1)
-                ? Colors.amber.withOpacity(0.3)
-                : Colors.black.withOpacity(0.2),
+            color: getBaseColor().withOpacity(0.3),
             blurRadius: 12,
             spreadRadius: 2,
             offset: const Offset(0, 4),
@@ -182,11 +193,11 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: isFirst ? 18 : 16,
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.onPrimary,
               shadows: [
-                const Shadow(
+                Shadow(
                   color: Colors.black26,
-                  offset: Offset(0, 2),
+                  offset: const Offset(0, 2),
                   blurRadius: 4,
                 ),
               ],
@@ -197,7 +208,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
             '${entry['points']} pts',
             style: TextStyle(
               fontSize: isFirst ? 16 : 14,
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.onPrimary,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -207,79 +218,72 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   }
 
   Widget _buildRankListItem(Map<String, dynamic> entry) {
-    final rank = entry['rank'];
+    final isCurrentUser = entry['rank'] == _userRank;
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.grey[800]!,
-            Colors.grey[850]!,
-          ],
-        ),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        color: isCurrentUser
+            ? Theme.of(context).colorScheme.primary.withOpacity(0.1)
+            : Theme.of(context).colorScheme.surface,
+        borderRadius: BorderRadius.circular(12),
+        border: isCurrentUser
+            ? Border.all(color: Theme.of(context).colorScheme.primary)
+            : null,
       ),
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        title: Row(
-          children: [
-            Text(
-              entry['name'],
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 16,
-              ),
+        leading: CircleAvatar(
+          backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+          child: Text(
+            '#${entry['rank']}',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.bold,
             ),
-            if (rank <= 10) ...[
-              const SizedBox(width: 8),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                decoration: BoxDecoration(
-                  color: Colors.blue[700],
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Text(
-                  'TOP 10',
+          ),
+        ),
+        title: Text(
+          entry['name'],
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+        ),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  '${entry['points']} pts',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
                     fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
+                Text(
+                  'Level ${entry['level']}',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                  ),
+                ),
+              ],
+            ),
+            if (isCurrentUser) ...[
+              const SizedBox(width: 8),
+              Icon(
+                Icons.star,
+                color: Theme.of(context).colorScheme.primary,
+                size: 20,
               ),
             ],
           ],
         ),
-        trailing: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              '#${entry['rank']}',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: rank <= 10 ? Colors.blue[300] : Colors.white70,
-                fontSize: 18,
-              ),
-            ),
-            Text(
-              '${entry['points']} pts',
-              style: const TextStyle(
-                color: Colors.white70,
-                fontSize: 14,
-              ),
-            ),
-          ],
-        ),
       ),
-    ).animate().fadeIn().slideX(begin: 0.2, duration: 200.ms);
+    ).animate().fadeIn().slideX();
   }
 }

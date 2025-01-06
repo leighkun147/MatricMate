@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 import '../models/exam.dart';
 import '../models/question.dart';
+import '../utils/stream_utils.dart';
 import 'practice_mode_screen.dart';
 import 'mock_exam_screen.dart';
 
-class StudyHubScreen extends StatelessWidget {
+class StudyHubScreen extends StatefulWidget {
   const StudyHubScreen({super.key});
 
   @override
+  State<StudyHubScreen> createState() => _StudyHubScreenState();
+}
+
+class _StudyHubScreenState extends State<StudyHubScreen> {
+  @override
   Widget build(BuildContext context) {
-    final subjects = [
-      'Math (Natural Science)',
-      'Physics',
-      'Chemistry',
-      'Biology',
-      'English',
-      'Aptitude',
-      'Civics',
-      'Economics',
-      'Geography',
-      'History',
-      'Math (Social Science)',
-    ];
+    final subjects = StreamUtils.getSubjects();
 
     return DefaultTabController(
       length: subjects.length,
@@ -33,9 +27,18 @@ class StudyHubScreen extends StatelessWidget {
             tabs: subjects.map((subject) => Tab(text: subject)).toList(),
           ),
         ),
-        body: TabBarView(
-          children: subjects.map((subject) => _SubjectExamList(subject: subject)).toList(),
-        ),
+        body: subjects.isEmpty
+            ? const Center(
+                child: Text(
+                  'Please select your stream in the Profile section',
+                  style: TextStyle(fontSize: 16),
+                ),
+              )
+            : TabBarView(
+                children: subjects
+                    .map((subject) => _SubjectExamList(subject: subject))
+                    .toList(),
+              ),
       ),
     );
   }

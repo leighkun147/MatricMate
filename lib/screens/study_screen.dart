@@ -2,12 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../models/subject.dart';
+import '../utils/stream_utils.dart';
+import 'subject_chapters_screen.dart';
+import 'english_screen.dart';
+import 'aptitude_screen.dart';
 
-class StudyScreen extends StatelessWidget {
+class StudyScreen extends StatefulWidget {
   const StudyScreen({super.key});
 
   @override
+  State<StudyScreen> createState() => _StudyScreenState();
+}
+
+class _StudyScreenState extends State<StudyScreen> {
+  @override
   Widget build(BuildContext context) {
+    final subjects = StreamUtils.selectedStream == StreamType.naturalScience
+        ? naturalScienceSubjects
+        : socialScienceSubjects;
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -28,7 +41,7 @@ class StudyScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 24.0),
                   child: Text(
-                    'Study 😃',
+                    'Study',
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.onBackground,
@@ -36,22 +49,32 @@ class StudyScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SliverGrid(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) => _buildSubjectCard(
-                    context,
-                    subjects[index],
-                    index,
+              if (subjects.isEmpty)
+                const SliverFillRemaining(
+                  child: Center(
+                    child: Text(
+                      'Please select your stream in the Profile section',
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
-                  childCount: subjects.length,
+                )
+              else
+                SliverGrid(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) => _buildSubjectCard(
+                      context,
+                      subjects[index],
+                      index,
+                    ),
+                    childCount: subjects.length,
+                  ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                  ),
                 ),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 1,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                ),
-              ),
               const SliverPadding(padding: EdgeInsets.only(bottom: 24)),
             ],
           ),
@@ -67,7 +90,28 @@ class StudyScreen extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
         onTap: () {
-          Navigator.pushNamed(context, subject.route);
+          if (subject.name == 'English') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const EnglishScreen(),
+              ),
+            );
+          } else if (subject.name == 'Aptitude') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AptitudeScreen(),
+              ),
+            );
+          } else {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SubjectChaptersScreen(subject: subject),
+              ),
+            );
+          }
         },
         child: Container(
           decoration: BoxDecoration(
