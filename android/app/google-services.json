@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1024134753464",
+    "project_id": "matric-mate-proje-54e07",
+    "storage_bucket": "matric-mate-proje-54e07.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024134753464:android:f4cc3c32933c67f504184d",
+        "android_client_info": {
+          "package_name": "com.example.ethio_exam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQnMU6GPkouWNdPliNlG9vyfs_mJ4zXWg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../providers/theme_provider.dart';
 import '../utils/stream_utils.dart';
+import '../models/user_model.dart';
 import 'stream_selection_screen.dart';
 import 'payment_methods_screen.dart';
+import 'login_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -13,6 +17,48 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final user = FirebaseAuth.instance.currentUser;
+  UserModel? _userModel;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    try {
+      final doc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user?.uid)
+          .get();
+      if (doc.exists) {
+        setState(() {
+          _userModel = UserModel.fromMap(doc.data()!);
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      setState(() => _isLoading = false);
+    }
+  }
+
+  Future<void> _signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      if (mounted) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Error signing out')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -26,6 +72,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           _buildStats(),
           const SizedBox(height: 24),
           _buildSettings(context),
+          const SizedBox(height: 24),
+          _buildLogoutButton(),
         ],
       ),
     );
@@ -41,21 +89,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
-          'John Doe',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+        if (_isLoading)
+          const CircularProgressIndicator()
+        else
+          Text(
+            _userModel?.username ?? 'User',
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          '@johndoe',
-          style: TextStyle(
-            color: Colors.grey.shade600,
-            fontSize: 16,
-          ),
-        ),
       ],
     );
   }
@@ -230,6 +273,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ).then((_) => setState(() {}));
         },
+      ),
+    );
+  }
+
+  Widget _buildLogoutButton() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: ElevatedButton(
+        onPressed: _signOut,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.red,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        child: const Text(
+          'Logout',
+          style: TextStyle(fontSize: 16),
+        ),
       ),
     );
   }
