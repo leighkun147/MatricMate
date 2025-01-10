@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../models/user_model.dart';
 import 'profile_screen.dart';
 import 'login_screen.dart';
+import '../main.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -82,6 +83,11 @@ class _SignupScreenState extends State<SignupScreen> {
           username: _usernameController.text.trim(),
           phoneNumber: '+251${_phoneController.text.trim()}',
           email: _emailController.text.trim(),
+          coins: 0,
+          ranking: 0,
+          activation: false,
+          referralEarnings: 0,
+          referralCount: 0,
         );
 
         // Save user data to Firestore
@@ -92,7 +98,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
         if (mounted) {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const ProfileScreen()),
+            MaterialPageRoute(builder: (context) => const MainScreen()),
           );
         }
       } on FirebaseAuthException catch (e) {

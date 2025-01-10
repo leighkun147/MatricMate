@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../providers/theme_provider.dart';
-import '../utils/stream_utils.dart';
 import '../models/user_model.dart';
 import 'stream_selection_screen.dart';
 import 'payment_methods_screen.dart';
@@ -20,10 +19,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final user = FirebaseAuth.instance.currentUser;
   UserModel? _userModel;
   bool _isLoading = true;
+  late Stream<DocumentSnapshot> _userStream;
 
   @override
   void initState() {
     super.initState();
+    _userStream = FirebaseFirestore.instance
+        .collection('users')
+        .doc(user?.uid)
+        .snapshots();
     _loadUserData();
   }
 
@@ -33,14 +37,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
           .collection('users')
           .doc(user?.uid)
           .get();
-      if (doc.exists) {
+      if (doc.exists && mounted) {
         setState(() {
           _userModel = UserModel.fromMap(doc.data()!);
           _isLoading = false;
         });
       }
     } catch (e) {
-      setState(() => _isLoading = false);
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
     }
   }
 
@@ -61,21 +67,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          _buildProfileHeader(),
-          const SizedBox(height: 16),
-          _buildActivateButton(context),
-          const SizedBox(height: 24),
-          _buildStats(),
-          const SizedBox(height: 24),
-          _buildSettings(context),
-          const SizedBox(height: 24),
-          _buildLogoutButton(),
-        ],
-      ),
+    return StreamBuilder<DocumentSnapshot>(
+      stream: _userStream,
+      builder: (context, snapshot) {
+        if (snapshot.hasData && snapshot.data!.exists) {
+          _userModel = UserModel.fromMap(
+              snapshot.data!.data() as Map<String, dynamic>);
+        }
+
+        return SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                _buildProfileHeader(),
+                const SizedBox(height: 24),
+                _buildStats(),
+                const SizedBox(height: 24),
+                _buildSettings(context),
+                const SizedBox(height: 16),
+                _buildLogoutButton(),
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -103,37 +120,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildActivateButton(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const PaymentMethodsScreen(),
+  Widget _buildStatItem(String label, dynamic value, {Color? valueColor}) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 1,
+              blurRadius: 4,
+              offset: const Offset(0, 2),
             ),
-          );
-        },
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          backgroundColor: Theme.of(context).colorScheme.primary,
-          foregroundColor: Colors.white,
-          elevation: 4,
-          shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+          ],
         ),
-        child: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.star, color: Colors.amber),
-            SizedBox(width: 8),
             Text(
-              'Activate Premium',
+              label,
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              value.toString(),
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
+                color: valueColor ?? Theme.of(context).textTheme.bodyLarge?.color,
               ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
@@ -142,158 +165,167 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildStats() {
+    if (_isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 5,
+            spreadRadius: 2,
+            blurRadius: 8,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Text(
+            'Your Stats',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 16),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildStatItem('Referral Count', '0'),
-              _buildStatItem('Coins', '0'),
-              _buildStatItem('Ranking', '#0'),
+              _buildStatItem(
+                'Coins',
+                _userModel?.coins ?? 0,
+                valueColor: Colors.amber[700],
+              ),
+              const SizedBox(width: 12),
+              _buildStatItem(
+                'Ranking',
+                '#${_userModel?.ranking ?? 0}',
+                valueColor: Colors.blue[700],
+              ),
             ],
           ),
-          const Divider(height: 32),
+          const SizedBox(height: 12),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildStatItem('Highest Score', '0%'),
-              _buildStatItem('Referral Earnings', '0 ETB'),
-              _buildStatItem('Premium Level', 'Learner'),
+              _buildStatItem(
+                'Activation',
+                _userModel?.activation ?? false ? 'ON' : 'OFF',
+                valueColor: (_userModel?.activation ?? false) ? Colors.green : Colors.red,
+              ),
+              const SizedBox(width: 12),
+              _buildStatItem(
+                'Referral Count',
+                _userModel?.referralCount ?? 0,
+                valueColor: Colors.purple[700],
+              ),
             ],
+          ),
+          const SizedBox(height: 12),
+          _buildStatItem(
+            'Referral Earnings',
+            '${_userModel?.referralEarnings ?? 0} ETB',
+            valueColor: Colors.green[700],
           ),
         ],
       ),
     );
   }
 
-  Widget _buildStatItem(String label, String value) {
+  Widget _buildSettings(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          value,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Text(
+            'Settings',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          style: TextStyle(
-            color: Colors.grey.shade600,
-            fontSize: 12,
+        Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.school),
+                title: const Text('Select Your Stream'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const StreamSelectionScreen(),
+                    ),
+                  );
+                },
+              ),
+              const Divider(height: 1),
+              ListTile(
+                leading: const Icon(Icons.payment),
+                title: const Text('Payment Methods'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PaymentMethodsScreen(),
+                    ),
+                  );
+                },
+              ),
+              const Divider(height: 1),
+              ListTile(
+                leading: const Icon(Icons.dark_mode),
+                title: const Text('Dark Mode'),
+                trailing: Switch(
+                  value: themeProvider.isDarkMode,
+                  onChanged: (value) => themeProvider.toggleTheme(),
+                ),
+              ),
+              const Divider(height: 1),
+              ListTile(
+                leading: const Icon(Icons.help),
+                title: const Text('Help & Support'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  // Add help & support functionality
+                },
+              ),
+            ],
           ),
         ),
       ],
     );
   }
 
-  Widget _buildSettings(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 5,
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          _buildStreamCard(context),
-          ListTile(
-            leading: const Icon(Icons.notifications_outlined),
-            title: const Text('Notifications'),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {
-              // Handle notifications
-            },
-          ),
-          Consumer<ThemeProvider>(
-            builder: (context, themeProvider, child) {
-              return SwitchListTile(
-                secondary: const Icon(Icons.dark_mode_outlined),
-                title: const Text('Dark Mode'),
-                value: themeProvider.isDarkMode,
-                onChanged: (bool value) {
-                  themeProvider.toggleTheme();
-                },
-              );
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.help_outline),
-            title: const Text('Help & Support'),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () {
-              // Handle help & support
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildStreamCard(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(0),
-      elevation: 0,
-      child: ListTile(
-        leading: const Icon(Icons.school),
-        title: const Text('Select Your Stream'),
-        subtitle: Text(
-          StreamUtils.selectedStream == null
-              ? 'Choose your academic stream'
-              : StreamUtils.selectedStream == StreamType.naturalScience
-                  ? 'Natural Science'
-                  : 'Social Science',
-        ),
-        trailing: const Icon(Icons.chevron_right),
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const StreamSelectionScreen(),
-            ),
-          ).then((_) => setState(() {}));
-        },
-      ),
-    );
-  }
-
   Widget _buildLogoutButton() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+    return SizedBox(
+      width: 120,
       child: ElevatedButton(
         onPressed: _signOut,
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.red,
           foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(vertical: 12),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
         child: const Text(
           'Logout',
-          style: TextStyle(fontSize: 16),
+          style: TextStyle(fontSize: 14),
         ),
       ),
     );

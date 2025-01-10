@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
 import 'providers/theme_provider.dart';
+import 'screens/signup_screen.dart';
+import 'screens/profile_screen.dart';
 import 'screens/dashboard_screen.dart';
 import 'screens/leaderboard_screen.dart';
 import 'screens/study_screen.dart';
 import 'screens/study_hub_screen.dart';
-import 'screens/profile_screen.dart';
 import 'screens/login_screen.dart';
-import 'screens/signup_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
-  
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  
   runApp(
     ChangeNotifierProvider(
       create: (_) => ThemeProvider(prefs),
@@ -35,24 +33,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(
-      builder: (context, themeProvider, _) => MaterialApp(
-        title: 'Grade 12 Exam Prep',
-        theme: themeProvider.lightTheme,
-        darkTheme: themeProvider.darkTheme,
-        themeMode: themeProvider.themeMode,
-        home: StreamBuilder<User?>(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (snapshot.hasData) {
-              return const MainScreen();
-            }
-            return const SignupScreen();
-          },
-        ),
-      ),
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          title: 'Grade 12 Exam Prep',
+          debugShowCheckedModeBanner: false,
+          theme: themeProvider.lightTheme,
+          darkTheme: themeProvider.darkTheme,
+          themeMode: themeProvider.themeMode,
+          home: StreamBuilder<User?>(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (snapshot.hasData) {
+                return const MainScreen();
+              }
+              return const SignupScreen();
+            },
+          ),
+        );
+      },
     );
   }
 }
@@ -65,7 +66,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 4; // Default to profile tab
+  
   final List<Widget> _screens = [
     const DashboardScreen(),
     const LeaderboardScreen(),
@@ -74,41 +76,41 @@ class _MainScreenState extends State<MainScreen> {
     const ProfileScreen(),
   ];
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_selectedIndex],
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _selectedIndex,
-        onDestinationSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.dashboard_outlined),
-            selectedIcon: Icon(Icons.dashboard),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        selectedItemColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard),
             label: 'Dashboard',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.leaderboard_outlined),
-            selectedIcon: Icon(Icons.leaderboard),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.leaderboard),
             label: 'Leaderboard',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.school_outlined),
-            selectedIcon: Icon(Icons.school),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
             label: 'Study',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.assignment_outlined),
-            selectedIcon: Icon(Icons.assignment),
-            label: 'Exams',
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'Study Hub',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
             label: 'Profile',
           ),
         ],
