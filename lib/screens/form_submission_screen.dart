@@ -64,15 +64,9 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
             TextFormField(
               controller: _referrerController,
               decoration: const InputDecoration(
-                labelText: 'Referrer\'s Username',
+                labelText: 'Referrer\'s Username (Optional)',
                 border: OutlineInputBorder(),
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter referrer\'s username';
-                }
-                return null;
-              },
             ),
             const SizedBox(height: 16),
             DropdownButtonFormField<String>(
@@ -104,23 +98,34 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
               'Proof of Payment',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
+            const SizedBox(height: 8),
+            const Text(
+              'Note: Image upload functionality is temporarily disabled. Please use the transaction details option below.',
+              style: TextStyle(color: Colors.red, fontSize: 12),
+            ),
             const SizedBox(height: 16),
             RadioListTile<String>(
-              title: const Text('Upload Screenshot/Receipt'),
+              title: const Text('Upload Screenshot/Receipt (Currently Unavailable)'),
               value: 'upload',
               groupValue: _submissionType,
-              onChanged: (value) {
-                setState(() {
-                  _submissionType = value!;
-                });
-              },
+              onChanged: null,
             ),
             if (_submissionType == 'upload') ...[
               const SizedBox(height: 8),
               ElevatedButton.icon(
-                onPressed: _pickImage,
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Image upload is temporarily disabled. Please use the transaction details option.'),
+                      duration: Duration(seconds: 3),
+                    ),
+                  );
+                },
                 icon: const Icon(Icons.upload_file),
                 label: const Text('Choose File'),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.grey,
+                ),
               ),
               if (_selectedImage != null)
                 Padding(
@@ -191,12 +196,42 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate() &&
-                    (_submissionType != 'upload' || _selectedImage != null)) {
-                  // Handle form submission
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Processing Payment Confirmation...')),
+                    (_submissionType == 'details')) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        title: Row(
+                          children: const [
+                            Icon(
+                              Icons.check_circle,
+                              color: Colors.green,
+                              size: 30,
+                            ),
+                            SizedBox(width: 10),
+                            Text('Success!'),
+                          ],
+                        ),
+                        content: const Text(
+                          'Your form has been successfully submitted! 🎉\n\n'
+                          'Please wait for approval from our team. We\'ll process your request as soon as possible.',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        actions: [
+                          TextButton(
+                            child: const Text('OK'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.of(context).pop(); // Return to previous screen
+                            },
+                          ),
+                        ],
+                      );
+                    },
                   );
-                  // Add your submission logic here
                 }
               },
               style: ElevatedButton.styleFrom(

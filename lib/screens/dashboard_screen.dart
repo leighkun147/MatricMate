@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:intl/intl.dart';
 import 'dart:async';
 
 class DashboardScreen extends StatefulWidget {
@@ -164,7 +163,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       sideTitles: SideTitles(
                         showTitles: true,
                         getTitlesWidget: (value, meta) {
-                          const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                          const days = [
+                            'Mon',
+                            'Tue',
+                            'Wed',
+                            'Thu',
+                            'Fri',
+                            'Sat',
+                            'Sun'
+                          ];
                           if (value >= 0 && value < days.length) {
                             return Text(days[value.toInt()]);
                           }
@@ -233,30 +240,31 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             const SizedBox(height: 16),
             ...subjects.map((subject) => Column(
-              children: [
-                Row(
                   children: [
-                    Expanded(
-                      flex: 2,
-                      child: Text(subject['name'] as String),
-                    ),
-                    Expanded(
-                      flex: 8,
-                      child: LinearProgressIndicator(
-                        value: subject['progress'] as double,
-                        backgroundColor: Colors.grey.shade200,
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          Colors.blue.shade400,
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: Text(subject['name'] as String),
                         ),
-                      ),
+                        Expanded(
+                          flex: 8,
+                          child: LinearProgressIndicator(
+                            value: subject['progress'] as double,
+                            backgroundColor: Colors.grey.shade200,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.blue.shade400,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                            '${((subject['progress'] as double) * 100).toInt()}%'),
+                      ],
                     ),
-                    const SizedBox(width: 8),
-                    Text('${((subject['progress'] as double) * 100).toInt()}%'),
+                    const SizedBox(height: 12),
                   ],
-                ),
-                const SizedBox(height: 12),
-              ],
-            )),
+                )),
           ],
         ),
       ),

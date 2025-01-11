@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../models/user_model.dart';
-import 'profile_screen.dart';
 import 'login_screen.dart';
 import '../main.dart';
 
@@ -44,82 +43,94 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Future<void> _signUp() async {
-    if (_formKey.currentState!.validate()) {
-      if (_passwordController.text != _confirmPasswordController.text) {
-        Fluttertoast.showToast(
-          msg: 'Passwords do not match',
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-        );
-        return;
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+
+    if (_passwordController.text != _confirmPasswordController.text) {
+      Fluttertoast.showToast(
+        msg: 'Passwords do not match',
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
+      return;
+    }
+
+    final username = _usernameController.text.trim();
+    if (!(await _isUsernameAvailable(username))) {
+      if (!mounted) return;
+      Fluttertoast.showToast(
+        msg: 'Username is already taken',
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
+      return;
+    }
+
+    setState(() => _isLoading = true);
+
+    try {
+      // Create user authentication
+      final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text,
+      );
+
+      // Create user model with default values
+      final userModel = UserModel(
+        uid: userCredential.user!.uid,
+        username: username,
+        phoneNumber: _phoneController.text.trim(),
+        email: _emailController.text.trim(),
+        // Default values are automatically set by the UserModel constructor
+      );
+
+      // Save user data to Firestore
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set(userModel.toMap());
+
+      if (!mounted) return;
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const MainScreen()),
+        (route) => false,
+      );
+
+      Fluttertoast.showToast(
+        msg: 'Account created successfully!',
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+      );
+    } on FirebaseAuthException catch (e) {
+      setState(() => _isLoading = false);
+      String errorMessage = 'An error occurred during signup';
+      
+      switch (e.code) {
+        case 'email-already-in-use':
+          errorMessage = 'This email is already registered';
+          break;
+        case 'invalid-email':
+          errorMessage = 'Please enter a valid email address';
+          break;
+        case 'weak-password':
+          errorMessage = 'Password should be at least 6 characters';
+          break;
       }
 
-      setState(() => _isLoading = true);
-
-      try {
-        // Check username availability
-        final isAvailable = await _isUsernameAvailable(_usernameController.text);
-        if (!isAvailable) {
-          if (mounted) {
-            setState(() => _isLoading = false);
-          }
-          Fluttertoast.showToast(
-            msg: 'Username already exists',
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-          );
-          return;
-        }
-
-        // Create user account
-        final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
-        );
-
-        // Create user model
-        final userModel = UserModel(
-          uid: userCredential.user!.uid,
-          username: _usernameController.text.trim(),
-          phoneNumber: '+251${_phoneController.text.trim()}',
-          email: _emailController.text.trim(),
-          coins: 0,
-          ranking: 0,
-          activation: false,
-          referralEarnings: 0,
-          referralCount: 0,
-        );
-
-        // Save user data to Firestore
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(userCredential.user!.uid)
-            .set(userModel.toMap());
-
-        if (mounted) {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const MainScreen()),
-          );
-        }
-      } on FirebaseAuthException catch (e) {
-        String message = 'An error occurred. Please try again.';
-        if (e.code == 'weak-password') {
-          message = 'The password provided is too weak.';
-        } else if (e.code == 'email-already-in-use') {
-          message = 'An account already exists for that email.';
-        } else if (e.code == 'invalid-email') {
-          message = 'Please enter a valid email address.';
-        }
-        Fluttertoast.showToast(
-          msg: message,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-        );
-      } finally {
-        if (mounted) {
-          setState(() => _isLoading = false);
-        }
-      }
+      Fluttertoast.showToast(
+        msg: errorMessage,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
+    } catch (e) {
+      setState(() => _isLoading = false);
+      Fluttertoast.showToast(
+        msg: 'An unexpected error occurred',
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
     }
   }
 
@@ -268,7 +279,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                         onPressed: () {
                           setState(() {
-                            _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                            _isConfirmPasswordVisible =
+                                !_isConfirmPasswordVisible;
                           });
                         },
                       ),

@@ -37,15 +37,15 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      uid: map['uid'] ?? '',
-      username: map['username'] ?? '',
-      phoneNumber: map['phone_number'] ?? '',
-      email: map['email'] ?? '',
-      coins: map['coins'] ?? 0,
-      ranking: map['ranking'] ?? 0,
-      activation: map['activation'] ?? false,
-      referralEarnings: map['referral_earnings'] ?? 0,
-      referralCount: map['referral_count'] ?? 0,
+      uid: map['uid'] as String,
+      username: map['username'] as String,
+      phoneNumber: map['phone_number'] as String,
+      email: map['email'] as String,
+      coins: (map['coins'] as num?)?.toInt() ?? 0,
+      ranking: (map['ranking'] as num?)?.toInt() ?? 0,
+      activation: map['activation'] as bool? ?? false,
+      referralEarnings: (map['referral_earnings'] as num?)?.toInt() ?? 0,
+      referralCount: (map['referral_count'] as num?)?.toInt() ?? 0,
     );
   }
 }

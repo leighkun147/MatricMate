@@ -11,7 +11,6 @@ import 'screens/dashboard_screen.dart';
 import 'screens/leaderboard_screen.dart';
 import 'screens/study_screen.dart';
 import 'screens/study_hub_screen.dart';
-import 'screens/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,7 +66,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 4; // Default to profile tab
-  
+
   final List<Widget> _screens = [
     const DashboardScreen(),
     const LeaderboardScreen(),

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'profile_screen.dart';
 import 'signup_screen.dart';
 import 'forgot_password_screen.dart';
-import '../main.dart';  // Import MainScreen from main.dart
+import '../main.dart'; // Import MainScreen from main.dart
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
