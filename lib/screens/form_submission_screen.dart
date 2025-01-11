@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import '../utils/device_id_manager.dart';
 
 class FormSubmissionScreen extends StatefulWidget {
   const FormSubmissionScreen({super.key});
@@ -194,9 +195,13 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
             ],
             const SizedBox(height: 24),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate() &&
                     (_submissionType == 'details')) {
+                  // Generate and store device ID
+                  final deviceId = await DeviceIdManager.getDeviceId();
+                  print('Device ID: $deviceId'); // For debugging purposes
+                  
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {

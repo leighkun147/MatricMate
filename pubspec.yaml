@@ -46,6 +46,8 @@ dependencies:
   firebase_auth: ^5.4.0
   cloud_firestore: ^5.6.1
   fluttertoast: ^8.2.4
+  device_info_plus: ^9.1.1
+  uuid: ^4.2.2
 
 dev_dependencies:
   flutter_test:
