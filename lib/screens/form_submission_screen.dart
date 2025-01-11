@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../utils/device_id_manager.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FormSubmissionScreen extends StatefulWidget {
   const FormSubmissionScreen({super.key});
@@ -27,6 +29,42 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
     'Wegagen Bank',
     'E-Birr',
   ];
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> _submitFormToFirestore(String deviceId) async {
+    try {
+      final User? currentUser = _auth.currentUser;
+      if (currentUser == null) {
+        throw Exception('No user logged in');
+      }
+
+      // Prepare the data
+      Map<String, dynamic> requestData = {
+        'usersUID': currentUser.uid,
+        'Referrer\'s_username': _referrerController.text.isEmpty ? null : _referrerController.text,
+        'payment_method': _selectedPaymentMethod,
+        'sender\'s_name': _senderNameController.text,
+        'transaction_id': _isPhoneBasedPayment() ? null : _transactionIdController.text,
+        'sender\'s_phone_number': _isPhoneBasedPayment() ? _phoneNumberController.text : null,
+        'device_id': deviceId,
+        'status': 'pending',
+        'timestamp': FieldValue.serverTimestamp(),
+      };
+
+      // Submit to Firestore using the user's UID as the document ID
+      await _firestore
+          .collection('requests')
+          .doc(currentUser.uid)
+          .set(requestData);
+
+      return;
+    } catch (e) {
+      print('Error submitting form: $e');
+      rethrow;
+    }
+  }
 
   @override
   void dispose() {
@@ -198,45 +236,86 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
               onPressed: () async {
                 if (_formKey.currentState!.validate() &&
                     (_submissionType == 'details')) {
-                  // Generate and store device ID
-                  final deviceId = await DeviceIdManager.getDeviceId();
-                  print('Device ID: $deviceId'); // For debugging purposes
-                  
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        title: Row(
-                          children: const [
-                            Icon(
-                              Icons.check_circle,
-                              color: Colors.green,
-                              size: 30,
+                  try {
+                    // Generate and store device ID
+                    final deviceId = await DeviceIdManager.getDeviceId();
+                    
+                    // Submit form data to Firestore
+                    await _submitFormToFirestore(deviceId);
+
+                    // Show success dialog
+                    if (mounted) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            SizedBox(width: 10),
-                            Text('Success!'),
-                          ],
-                        ),
-                        content: const Text(
-                          'Your form has been successfully submitted! 🎉\n\n'
-                          'Please wait for approval from our team. We\'ll process your request as soon as possible.',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        actions: [
-                          TextButton(
-                            child: const Text('OK'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                              Navigator.of(context).pop(); // Return to previous screen
-                            },
-                          ),
-                        ],
+                            title: Row(
+                              children: const [
+                                Icon(
+                                  Icons.check_circle,
+                                  color: Colors.green,
+                                  size: 30,
+                                ),
+                                SizedBox(width: 10),
+                                Text('Success!'),
+                              ],
+                            ),
+                            content: const Text(
+                              'Your form has been successfully submitted! 🎉\n\n'
+                              'Please wait for approval from our team. We\'ll process your request as soon as possible.',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            actions: [
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  Navigator.of(context).pop(); // Return to previous screen
+                                },
+                              ),
+                            ],
+                          );
+                        },
                       );
-                    },
-                  );
+                    }
+                  } catch (e) {
+                    // Show error dialog
+                    if (mounted) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Row(
+                              children: const [
+                                Icon(
+                                  Icons.error,
+                                  color: Colors.red,
+                                  size: 30,
+                                ),
+                                SizedBox(width: 10),
+                                Text('Error'),
+                              ],
+                            ),
+                            content: Text(
+                              'An error occurred while submitting your form: ${e.toString()}',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            actions: [
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  }
                 }
               },
               style: ElevatedButton.styleFrom(
