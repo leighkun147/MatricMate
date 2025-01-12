@@ -91,6 +91,25 @@ class _SignupScreenState extends State<SignupScreen> {
           .doc(userCredential.user!.uid)
           .set(userModel.toMap());
 
+      // Increment the number of users count
+      await FirebaseFirestore.instance.runTransaction((transaction) async {
+        final userCountDoc = await transaction.get(
+          FirebaseFirestore.instance.collection('app_stats').doc('number_of_users')
+        );
+
+        if (!userCountDoc.exists) {
+          transaction.set(
+            FirebaseFirestore.instance.collection('app_stats').doc('number_of_users'),
+            {'count': 1}
+          );
+        } else {
+          transaction.update(
+            FirebaseFirestore.instance.collection('app_stats').doc('number_of_users'),
+            {'count': (userCountDoc.data()!['count'] as int) + 1}
+          );
+        }
+      });
+
       if (!mounted) return;
       Navigator.pushAndRemoveUntil(
         context,

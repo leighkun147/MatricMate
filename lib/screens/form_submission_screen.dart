@@ -74,7 +74,7 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
         'transaction_id': _isPhoneBasedPayment() ? null : _transactionIdController.text,
         'sender\'s_phone_number': _isPhoneBasedPayment() ? _phoneNumberController.text : null,
         'device_id': deviceId,
-        'status': null,
+        'status': 'pending',
         'timestamp': FieldValue.serverTimestamp(),
       };
 
