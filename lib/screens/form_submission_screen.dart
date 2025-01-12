@@ -15,6 +15,7 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
   final _formKey = GlobalKey<FormState>();
   String? _selectedPaymentMethod;
   String _submissionType = 'upload';
+  String? _selectedPremiumLevel;
   XFile? _selectedImage;
   final TextEditingController _referrerController = TextEditingController();
   final TextEditingController _transactionIdController = TextEditingController();
@@ -33,6 +34,21 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  Future<bool> _validateReferrer(String referrerUsername) async {
+    try {
+      final QuerySnapshot result = await _firestore
+          .collection('users')
+          .where('username', isEqualTo: referrerUsername)
+          .limit(1)
+          .get();
+      
+      return result.docs.isNotEmpty;
+    } catch (e) {
+      print('Error validating referrer: $e');
+      return false;
+    }
+  }
+
   Future<void> _submitFormToFirestore(String deviceId) async {
     try {
       final User? currentUser = _auth.currentUser;
@@ -40,23 +56,32 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
         throw Exception('No user logged in');
       }
 
+      // Validate referrer if provided
+      if (_referrerController.text.isNotEmpty) {
+        final bool referrerExists = await _validateReferrer(_referrerController.text);
+        if (!referrerExists) {
+          throw Exception('The referrer username does not exist');
+        }
+      }
+
       // Prepare the data
       Map<String, dynamic> requestData = {
         'usersUID': currentUser.uid,
         'Referrer\'s_username': _referrerController.text.isEmpty ? null : _referrerController.text,
         'payment_method': _selectedPaymentMethod,
+        'premium_level': _selectedPremiumLevel,
         'sender\'s_name': _senderNameController.text,
         'transaction_id': _isPhoneBasedPayment() ? null : _transactionIdController.text,
         'sender\'s_phone_number': _isPhoneBasedPayment() ? _phoneNumberController.text : null,
         'device_id': deviceId,
-        'status': 'pending',
+        'status': null,
         'timestamp': FieldValue.serverTimestamp(),
       };
 
       // Submit to Firestore using the user's UID as the document ID
       await _firestore
           .collection('requests')
-          .doc(currentUser.uid)
+          .doc(deviceId)
           .set(requestData);
 
       return;
@@ -105,7 +130,48 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
               decoration: const InputDecoration(
                 labelText: 'Referrer\'s Username (Optional)',
                 border: OutlineInputBorder(),
+                helperText: 'Enter the username of the person who referred you (if any)',
               ),
+              validator: (value) {
+                if (value != null && value.isNotEmpty) {
+                  return null;
+                } else {
+                  return null;
+                }
+              },
+            ),
+            const SizedBox(height: 16),
+            DropdownButtonFormField<String>(
+              value: _selectedPremiumLevel,
+              decoration: const InputDecoration(
+                labelText: 'Premium Level',
+                border: OutlineInputBorder(),
+              ),
+              items: [
+                DropdownMenuItem(
+                  value: 'basic',
+                  child: Text('Basic (200 ETB)'),
+                ),
+                DropdownMenuItem(
+                  value: 'pro',
+                  child: Text('Pro (400 ETB)'),
+                ),
+                DropdownMenuItem(
+                  value: 'elite',
+                  child: Text('Elite (600 ETB)'),
+                ),
+              ],
+              onChanged: (String? value) {
+                setState(() {
+                  _selectedPremiumLevel = value;
+                });
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please select a premium level';
+                }
+                return null;
+              },
             ),
             const SizedBox(height: 16),
             DropdownButtonFormField<String>(
@@ -234,85 +300,29 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () async {
-                if (_formKey.currentState!.validate() &&
-                    (_submissionType == 'details')) {
+                if (_formKey.currentState!.validate()) {
                   try {
-                    // Generate and store device ID
-                    final deviceId = await DeviceIdManager.getDeviceId();
-                    
-                    // Submit form data to Firestore
+                    String? deviceId = await DeviceIdManager.getDeviceId();
+                    if (deviceId == null) {
+                      throw Exception('Could not get device ID');
+                    }
                     await _submitFormToFirestore(deviceId);
-
-                    // Show success dialog
                     if (mounted) {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            title: Row(
-                              children: const [
-                                Icon(
-                                  Icons.check_circle,
-                                  color: Colors.green,
-                                  size: 30,
-                                ),
-                                SizedBox(width: 10),
-                                Text('Success!'),
-                              ],
-                            ),
-                            content: const Text(
-                              'Your form has been successfully submitted! 🎉\n\n'
-                              'Please wait for approval from our team. We\'ll process your request as soon as possible.',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            actions: [
-                              TextButton(
-                                child: const Text('OK'),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                  Navigator.of(context).pop(); // Return to previous screen
-                                },
-                              ),
-                            ],
-                          );
-                        },
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Form submitted successfully!'),
+                          backgroundColor: Colors.green,
+                        ),
                       );
+                      Navigator.pop(context);
                     }
                   } catch (e) {
-                    // Show error dialog
                     if (mounted) {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Row(
-                              children: const [
-                                Icon(
-                                  Icons.error,
-                                  color: Colors.red,
-                                  size: 30,
-                                ),
-                                SizedBox(width: 10),
-                                Text('Error'),
-                              ],
-                            ),
-                            content: Text(
-                              'An error occurred while submitting your form: ${e.toString()}',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            actions: [
-                              TextButton(
-                                child: const Text('OK'),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(e.toString()),
+                          backgroundColor: Colors.red,
+                        ),
                       );
                     }
                   }

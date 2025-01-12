@@ -71,8 +71,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       stream: _userStream,
       builder: (context, snapshot) {
         if (snapshot.hasData && snapshot.data!.exists) {
-          _userModel = UserModel.fromMap(
-              snapshot.data!.data() as Map<String, dynamic>);
+          _userModel =
+              UserModel.fromMap(snapshot.data!.data() as Map<String, dynamic>);
         }
 
         return SafeArea(
@@ -154,7 +154,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: valueColor ?? Theme.of(context).textTheme.bodyLarge?.color,
+                color:
+                    valueColor ?? Theme.of(context).textTheme.bodyLarge?.color,
               ),
               textAlign: TextAlign.center,
             ),
@@ -178,11 +179,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         // Get the values from Firestore, use 0 or false as defaults if not found
         final data = snapshot.data?.data() as Map<String, dynamic>? ?? {};
-        final coins = (data['coins'] as num?)?.toInt() ?? 0;
-        final ranking = (data['ranking'] as num?)?.toInt() ?? 0;
+        final coins = (data['coins'] as num?)?.toInt() ?? 10;
+        final ranking = (data['ranking'] as num?)?.toInt() ?? 10;
         final activation = data['activation'] as bool? ?? false;
-        final referralCount = (data['referral_count'] as num?)?.toInt() ?? 0;
-        final referralEarnings = (data['referral_earnings'] as num?)?.toInt() ?? 0;
+        final referralCount = (data['referral_count'] as num?)?.toInt() ?? 2;
+        final referralEarnings =
+            (data['referral_earnings'] as num?)?.toInt() ?? 30;
 
         return Container(
           padding: const EdgeInsets.all(16),
@@ -196,14 +198,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Row(
                 children: [
                   _buildStatItem(
-                    'Coins',  
-                    coins,    
+                    'Coins',
+                    coins,
                     valueColor: Colors.amber[700],
                   ),
                   const SizedBox(width: 12),
                   _buildStatItem(
-                    'Ranking', 
-                    '#$ranking', 
+                    'Ranking',
+                    '#$ranking',
                     valueColor: Colors.blue[700],
                   ),
                 ],
@@ -212,22 +214,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Row(
                 children: [
                   _buildStatItem(
-                    'Activation', 
-                    activation ? 'ON' : 'OFF', 
+                    'Activation',
+                    activation ? 'ON' : 'OFF',
                     valueColor: activation ? Colors.green : Colors.red,
                   ),
                   const SizedBox(width: 12),
                   _buildStatItem(
-                    'Referral Count', 
-                    referralCount,    
+                    'Referral Count',
+                    referralCount,
                     valueColor: Colors.purple[700],
                   ),
                 ],
               ),
               const SizedBox(height: 12),
               _buildStatItem(
-                'Referral Earnings', 
-                '$referralEarnings ETB', 
+                'Referral Earnings',
+                '$referralEarnings ETB',
                 valueColor: Colors.green[700],
               ),
             ],
@@ -239,7 +241,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildSettings(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-    
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
