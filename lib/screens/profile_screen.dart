@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../providers/theme_provider.dart';
 import '../models/user_model.dart';
+import '../utils/device_id_manager.dart';
 import 'stream_selection_screen.dart';
 import 'payment_methods_screen.dart';
 import 'login_screen.dart';
@@ -20,6 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   UserModel? _userModel;
   bool _isLoading = true;
   late Stream<DocumentSnapshot> _userStream;
+  Stream<DocumentSnapshot>? _requestStream;
 
   @override
   void initState() {
@@ -28,7 +30,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
         .collection('users')
         .doc(user?.uid)
         .snapshots();
+    _initializeRequestStream();
     _loadUserData();
+  }
+
+  Future<void> _initializeRequestStream() async {
+    try {
+      final deviceId = await DeviceIdManager.getDeviceId();
+      if (deviceId != null) {
+        _requestStream = FirebaseFirestore.instance
+            .collection('requests')
+            .doc(deviceId)
+            .snapshots();
+        setState(() {});
+      }
+    } catch (e) {
+      print('Error initializing request stream: $e');
+    }
   }
 
   Future<void> _loadUserData() async {
@@ -83,6 +101,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildProfileHeader(),
                 const SizedBox(height: 24),
                 _buildStats(),
+                const SizedBox(height: 24),
+                _buildPaymentMethodsCard(),
                 const SizedBox(height: 24),
                 _buildSettings(context),
                 const SizedBox(height: 16),
@@ -239,6 +259,103 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  Widget _buildPaymentMethodsCard() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Text(
+            'Payment',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: ListTile(
+            leading: const Icon(Icons.payment),
+            title: const Text('Payment Methods'),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: () async {
+              try {
+                // Get device ID
+                String? deviceId = await DeviceIdManager.getDeviceId();
+                if (deviceId == null) {
+                  throw Exception('Could not get device ID');
+                }
+
+                // Try to get the request status from Firestore
+                try {
+                  final doc = await FirebaseFirestore.instance
+                      .collection('requests')
+                      .doc(deviceId)
+                      .get();
+
+                  if (doc.exists && doc.get('status') == 'pending') {
+                    if (mounted) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Payment Request Pending'),
+                            content: const Text(
+                              'You have a pending payment request. Please wait for confirmation before making another request.',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('OK'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                    return;
+                  }
+                } catch (e) {
+                  // If there's any error (like no internet), proceed to payment methods
+                  print('Error checking request status: $e');
+                }
+
+                // If we reach here, either:
+                // 1. There was no internet connection
+                // 2. There was no pending request
+                // 3. The request was approved/rejected
+                if (mounted) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PaymentMethodsScreen(),
+                    ),
+                  );
+                }
+              } catch (e) {
+                // Handle device ID error
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Error: ${e.toString()}'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              }
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildSettings(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
@@ -270,20 +387,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => const StreamSelectionScreen(),
-                    ),
-                  );
-                },
-              ),
-              const Divider(height: 1),
-              ListTile(
-                leading: const Icon(Icons.payment),
-                title: const Text('Payment Methods'),
-                trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const PaymentMethodsScreen(),
                     ),
                   );
                 },
