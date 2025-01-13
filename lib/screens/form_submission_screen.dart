@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import '../utils/device_id_manager.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,9 +13,7 @@ class FormSubmissionScreen extends StatefulWidget {
 class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
   final _formKey = GlobalKey<FormState>();
   String? _selectedPaymentMethod;
-  String _submissionType = 'upload';
   String? _selectedPremiumLevel;
-  XFile? _selectedImage;
   final TextEditingController _referrerController = TextEditingController();
   final TextEditingController _transactionIdController = TextEditingController();
   final TextEditingController _senderNameController = TextEditingController();
@@ -64,6 +61,22 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
         }
       }
 
+      // Check if device is approved and get its premium level
+      String currentLevel = 'zero';
+      try {
+        final approvedDeviceDoc = await _firestore
+            .collection('approved_devices')
+            .doc(deviceId)
+            .get();
+        
+        if (approvedDeviceDoc.exists) {
+          currentLevel = approvedDeviceDoc.data()?['premium_level'] ?? 'zero';
+        }
+      } catch (e) {
+        print('Error checking approved devices: $e');
+        // Continue with zero level if there's an error
+      }
+
       // Prepare the data
       Map<String, dynamic> requestData = {
         'usersUID': currentUser.uid,
@@ -73,12 +86,13 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
         'sender\'s_name': _senderNameController.text,
         'transaction_id': _isPhoneBasedPayment() ? null : _transactionIdController.text,
         'sender\'s_phone_number': _isPhoneBasedPayment() ? _phoneNumberController.text : null,
-        'device_id': deviceId,
+       'device_id': deviceId,
         'status': 'pending',
+        'current_level': currentLevel,
         'timestamp': FieldValue.serverTimestamp(),
       };
 
-      // Submit to Firestore using the user's UID as the document ID
+      // Submit to Firestore using the deviceId as the document ID
       await _firestore
           .collection('requests')
           .doc(deviceId)
@@ -98,16 +112,6 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
     _senderNameController.dispose();
     _phoneNumberController.dispose();
     super.dispose();
-  }
-
-  Future<void> _pickImage() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      setState(() {
-        _selectedImage = image;
-      });
-    }
   }
 
   bool _isPhoneBasedPayment() {
@@ -200,103 +204,53 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
             ),
             const SizedBox(height: 24),
             const Text(
-              'Proof of Payment',
+              'Transaction Details',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 8),
-            const Text(
-              'Note: Image upload functionality is temporarily disabled. Please use the transaction details option below.',
-              style: TextStyle(color: Colors.red, fontSize: 12),
-            ),
             const SizedBox(height: 16),
-            RadioListTile<String>(
-              title: const Text('Upload Screenshot/Receipt (Currently Unavailable)'),
-              value: 'upload',
-              groupValue: _submissionType,
-              onChanged: null,
-            ),
-            if (_submissionType == 'upload') ...[
-              const SizedBox(height: 8),
-              ElevatedButton.icon(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Image upload is temporarily disabled. Please use the transaction details option.'),
-                      duration: Duration(seconds: 3),
-                    ),
-                  );
-                },
-                icon: const Icon(Icons.upload_file),
-                label: const Text('Choose File'),
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.grey,
-                ),
+            TextFormField(
+              controller: _senderNameController,
+              decoration: const InputDecoration(
+                labelText: 'Sender\'s Name',
+                border: OutlineInputBorder(),
               ),
-              if (_selectedImage != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Text(
-                    'Selected file: ${_selectedImage!.name}',
-                    style: const TextStyle(color: Colors.green),
-                  ),
-                ),
-            ],
-            RadioListTile<String>(
-              title: const Text('Submit Transaction Details'),
-              value: 'details',
-              groupValue: _submissionType,
-              onChanged: (value) {
-                setState(() {
-                  _submissionType = value!;
-                });
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter sender\'s name';
+                }
+                return null;
               },
             ),
-            if (_submissionType == 'details') ...[
-              const SizedBox(height: 16),
+            const SizedBox(height: 16),
+            if (_isPhoneBasedPayment())
               TextFormField(
-                controller: _senderNameController,
+                controller: _phoneNumberController,
                 decoration: const InputDecoration(
-                  labelText: 'Sender\'s Name',
+                  labelText: 'Sender\'s Phone Number',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.phone,
+                validator: (value) {
+                  if (_isPhoneBasedPayment() && (value == null || value.isEmpty)) {
+                    return 'Please enter sender\'s phone number';
+                  }
+                  return null;
+                },
+              )
+            else
+              TextFormField(
+                controller: _transactionIdController,
+                decoration: const InputDecoration(
+                  labelText: 'Transaction ID',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
-                  if (_submissionType == 'details' && (value == null || value.isEmpty)) {
-                    return 'Please enter sender\'s name';
+                  if (!_isPhoneBasedPayment() && (value == null || value.isEmpty)) {
+                    return 'Please enter transaction ID';
                   }
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
-              if (_isPhoneBasedPayment())
-                TextFormField(
-                  controller: _phoneNumberController,
-                  decoration: const InputDecoration(
-                    labelText: 'Sender\'s Phone Number',
-                    border: OutlineInputBorder(),
-                  ),
-                  keyboardType: TextInputType.phone,
-                  validator: (value) {
-                    if (_submissionType == 'details' && _isPhoneBasedPayment() && (value == null || value.isEmpty)) {
-                      return 'Please enter sender\'s phone number';
-                    }
-                    return null;
-                  },
-                )
-              else
-                TextFormField(
-                  controller: _transactionIdController,
-                  decoration: const InputDecoration(
-                    labelText: 'Transaction ID',
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (value) {
-                    if (_submissionType == 'details' && !_isPhoneBasedPayment() && (value == null || value.isEmpty)) {
-                      return 'Please enter transaction ID';
-                    }
-                    return null;
-                  },
-                ),
-            ],
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () async {

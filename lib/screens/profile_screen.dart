@@ -179,12 +179,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         // Get the values from Firestore, use 0 or false as defaults if not found
         final data = snapshot.data?.data() as Map<String, dynamic>? ?? {};
-        final coins = (data['coins'] as num?)?.toInt() ?? 10;
-        final ranking = (data['ranking'] as num?)?.toInt() ?? 10;
+        final coins = (data['coins'] as num?)?.toInt() ?? 0;
+        final ranking = (data['ranking'] as num?)?.toInt() ?? 0;
         final activation = data['activation'] as bool? ?? false;
-        final referralCount = (data['referral_count'] as num?)?.toInt() ?? 2;
+        final referralCount = (data['referral_count'] as num?)?.toInt() ?? 0;
         final referralEarnings =
-            (data['referral_earnings'] as num?)?.toInt() ?? 30;
+            (data['referral_earnings'] as num?)?.toInt() ?? 0;
 
         return Container(
           padding: const EdgeInsets.all(16),
