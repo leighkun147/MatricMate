@@ -34,12 +34,14 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
 
   Future<bool> _validateReferrer(String referrerUsername) async {
     try {
+      print('Attempting to validate referrer: $referrerUsername');
       final QuerySnapshot result = await _firestore
           .collection('users')
-          .where('username', isEqualTo: referrerUsername)
+          .where('username', isEqualTo: referrerUsername.trim())
           .limit(1)
           .get();
       
+      print('Query result docs length: ${result.docs.length}');
       return result.docs.isNotEmpty;
     } catch (e) {
       print('Error validating referrer: $e');
@@ -56,9 +58,17 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
 
       // Validate referrer if provided
       if (_referrerController.text.isNotEmpty) {
+        print('Referrer username provided: ${_referrerController.text}');
         final bool referrerExists = await _validateReferrer(_referrerController.text);
         if (!referrerExists) {
-          throw Exception('The referrer username does not exist');
+          if (!mounted) return;
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('The referrer username was not found. Please check and try again.'),
+              backgroundColor: Colors.red,
+            ),
+          );
+          return;
         }
       }
 
