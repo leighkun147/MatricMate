@@ -321,6 +321,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     }
                     return;
                   }
+                  if (doc.exists && doc.get('status') == 'rejected') {
+                    if (mounted) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          String rejectionReason = doc.get('rejection_reason') ?? 'No reason provided';
+                          return AlertDialog(
+                            title: const Text('Payment Request Rejected'),
+                            content: Text(
+                              'Your payment request has been rejected.\n\nReason: $rejectionReason\n\nYou can try again later or visit the payment options to update your payment method',
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  // After the alert, go to the Payment Methods screen
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PaymentMethodsScreen(),
+                                    ),
+                                  );
+                                },
+                                child: const Text('Go to Payment Methods'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                    return;
+                  }
                 } catch (e) {
                   // If there's any error (like no internet), proceed to payment methods
                   print('Error checking request status: $e');
