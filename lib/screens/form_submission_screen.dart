@@ -129,6 +129,39 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
     return _selectedPaymentMethod == 'Telebirr' || _selectedPaymentMethod == 'E-Birr';
   }
 
+  int _getPremiumLevelRank(String level) {
+    switch (level.toLowerCase()) {
+      case 'basic':
+        return 1;
+      case 'pro':
+        return 2;
+      case 'elite':
+        return 3;
+      default:
+        return 0; // for 'zero' or unknown levels
+    }
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Invalid Selection'),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,10 +209,41 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                   child: Text('Elite (600 ETB)'),
                 ),
               ],
-              onChanged: (String? value) {
-                setState(() {
-                  _selectedPremiumLevel = value;
-                });
+              onChanged: (String? value) async {
+                if (value == null) return;
+                
+                // Get the device ID and check current level
+                final deviceId = await DeviceIdManager.getDeviceId();
+                if (deviceId == null) return;
+                
+                try {
+                  final approvedDeviceDoc = await _firestore
+                      .collection('approved_devices')
+                      .doc(deviceId)
+                      .get();
+                  
+                  String currentLevel = 'zero';
+                  if (approvedDeviceDoc.exists) {
+                    currentLevel = approvedDeviceDoc.data()?['premium_level'] ?? 'zero';
+                  }
+
+                  // Check if requesting same level or trying to downgrade
+                  if (_getPremiumLevelRank(value) <= _getPremiumLevelRank(currentLevel)) {
+                    _showErrorDialog(
+                      'You cannot request ${value.toUpperCase()} level as you already have '
+                      '${currentLevel.toUpperCase()} level access, which includes all '
+                      'features of lower levels.'
+                    );
+                    return;
+                  }
+
+                  // If validation passes, update the selected level
+                  setState(() {
+                    _selectedPremiumLevel = value;
+                  });
+                } catch (e) {
+                  print('Error checking premium level: $e');
+                }
               },
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -271,6 +335,36 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                     if (deviceId == null) {
                       throw Exception('Could not get device ID');
                     }
+
+                    // Check current premium level before submitting
+                    final approvedDeviceDoc = await _firestore
+                        .collection('approved_devices')
+                        .doc(deviceId)
+                        .get();
+                    
+                    String currentLevel = 'zero';
+                    if (approvedDeviceDoc.exists) {
+                      currentLevel = approvedDeviceDoc.data()?['premium_level'] ?? 'zero';
+                    }
+
+                    // Check if premium level is selected
+                    if (_selectedPremiumLevel == null) {
+                      _showErrorDialog(
+                        'Please select a premium level before submitting.'
+                      );
+                      return;
+                    }
+
+                    // Prevent submission if requesting same or lower level
+                    if (_getPremiumLevelRank(_selectedPremiumLevel!) <= _getPremiumLevelRank(currentLevel)) {
+                      _showErrorDialog(
+                        'You cannot request ${_selectedPremiumLevel!.toUpperCase()} level as you already have '
+                        '${currentLevel.toUpperCase()} level access, which includes all '
+                        'features of lower levels.'
+                      );
+                      return;
+                    }
+
                     await _submitFormToFirestore(deviceId);
                     if (mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
