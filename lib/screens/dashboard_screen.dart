@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'dart:async';
+import 'discord_screen.dart';
+import 'download_contents_screen.dart';
+import 'study_plan_screen.dart';
+import 'payment_methods_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../utils/device_id_manager.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -51,6 +57,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
           _buildPerformanceCard(),
           const SizedBox(height: 20),
           _buildSubjectProgress(),
+          const SizedBox(height: 20),
+          _buildFeatureCards(),
         ],
       ),
     );
@@ -265,6 +273,211 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const SizedBox(height: 12),
                   ],
                 )),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFeatureCards() {
+    return GridView.count(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      crossAxisCount: 2,
+      crossAxisSpacing: 16.0,
+      mainAxisSpacing: 16.0,
+      children: [
+        _buildFeatureCard(
+          'Download Contents',
+          Icons.download,
+          () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const DownloadContentsScreen(),
+              ),
+            );
+          },
+        ),
+        _buildPaymentMethodsCard(),
+        _buildFeatureCard(
+          'Study Plan',
+          Icons.calendar_today,
+          () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const StudyPlanScreen(),
+              ),
+            );
+          },
+        ),
+        _buildFeatureCard(
+          'Discord',
+          Icons.chat,
+          () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const DiscordScreen(),
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFeatureCard(String title, IconData icon, VoidCallback onTap) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 40,
+              color: Theme.of(context).primaryColor,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPaymentMethodsCard() {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: InkWell(
+        onTap: () async {
+          try {
+            String? deviceId = await DeviceIdManager.getDeviceId();
+            if (deviceId == null) {
+              throw Exception('Could not get device ID');
+            }
+
+            try {
+              final doc = await FirebaseFirestore.instance
+                  .collection('requests')
+                  .doc(deviceId)
+                  .get();
+
+              if (doc.exists && doc.get('status') == 'pending') {
+                if (mounted) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Payment Request Pending'),
+                        content: const Text(
+                          'You have a pending payment request. Please wait for confirmation before making another request.',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+                return;
+              }
+              if (doc.exists && doc.get('status') == 'rejected') {
+                if (mounted) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      String rejectionReason =
+                          doc.get('rejection_reason') ?? 'No reason provided';
+                      return AlertDialog(
+                        title: const Text('Payment Request Rejected'),
+                        content: Text(
+                          'Your payment request has been rejected.\n\nReason: $rejectionReason\n\nYou can try again later or visit the payment options to update your payment method',
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const PaymentMethodsScreen(),
+                                ),
+                              );
+                            },
+                            child: const Text('Go to Payment Methods'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+                return;
+              }
+            } catch (e) {
+              print('Error checking request status: $e');
+            }
+
+            if (mounted) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PaymentMethodsScreen(),
+                ),
+              );
+            }
+          } catch (e) {
+            if (mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Error: ${e.toString()}'),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            }
+          }
+        },
+        borderRadius: BorderRadius.circular(12),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.payment,
+              size: 40,
+              color: Theme.of(context).primaryColor,
+            ),
+            const SizedBox(height: 8),
+            const Text(
+              'Payment Methods',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),
