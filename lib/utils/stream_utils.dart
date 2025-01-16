@@ -19,12 +19,12 @@ class StreamUtils {
         ];
       case StreamType.socialScience:
         return [
+          'Math (Social Science)',
           'English',
           'Aptitude(SAT)',
           'Economics',
           'Geography',
           'History',
-          'Math (Social Science)',
         ];
       default:
         return [];

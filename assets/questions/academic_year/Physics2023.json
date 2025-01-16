@@ -1,0 +1,91 @@
+{
+    "title": "Physics Quiz 2023",
+    "duration": 180,
+    "numberOfQuestions": 65,
+    "questions": [
+        {
+            "id": "phys_2023_1",
+            "text": "In quantum mechanics, what is the name of the principle that states that it is impossible to simultaneously know both the exact position and momentum of a particle?",
+            "options": ["Heisenberg's Uncertainty Principle", "Pauli Exclusion Principle", "Schrödinger's Principle", "Bohr's Principle"],
+            "correctOptionIndex": 0,
+            "explanation": "Heisenberg's Uncertainty Principle is a fundamental principle of quantum mechanics that sets limits on our ability to simultaneously measure certain pairs of physical properties."
+        },
+        {
+            "id": "phys_2023_2",
+            "text": "What is the speed of light in a vacuum?",
+            "options": ["3 × 10⁸ m/s", "2 × 10⁸ m/s", "3 × 10⁷ m/s", "3 × 10⁹ m/s"],
+            "correctOptionIndex": 0,
+            "explanation": "The speed of light in a vacuum (c) is exactly 299,792,458 meters per second, commonly approximated as 3 × 10⁸ m/s."
+        },
+        {
+            "id": "q1",
+            "text": "What is the unit of force in the International System of Units (SI)?",
+            "options": ["Newton", "Joule", "Watt", "Pascal"],
+            "correctOptionIndex": 0,
+            "explanation": "Force is measured in Newtons (N) in the SI system, where 1 N = 1 kg·m/s²."
+        },
+        {
+            "id": "q2",
+            "text": "Which law states that the total energy of an isolated system remains constant?",
+            "options": ["Law of Conservation of Energy", "Newton's First Law", "Ohm's Law", "Law of Conservation of Momentum"],
+            "correctOptionIndex": 0,
+            "explanation": "The Law of Conservation of Energy states that energy cannot be created or destroyed, only transformed or transferred."
+        },
+        {
+            "id": "q3",
+            "text": "What is the acceleration due to gravity on Earth's surface?",
+            "options": ["9.8 m/s²", "10 m/s²", "8.9 m/s²", "9.1 m/s²"],
+            "correctOptionIndex": 0,
+            "explanation": "The standard value of acceleration due to gravity on Earth's surface is approximately 9.8 m/s²."
+        },
+        {
+            "id": "q4",
+            "text": "If an object has a mass of 10 kg and is subjected to a net force of 50 N, what is its acceleration?",
+            "options": ["5 m/s²", "10 m/s²", "50 m/s²", "0.2 m/s²"],
+            "correctOptionIndex": 0,
+            "explanation": "Using Newton's second law (F = ma), acceleration is given by a = F/m = 50/10 = 5 m/s²."
+        },
+        {
+            "id": "q5",
+            "text": "Which of the following is a vector quantity?",
+            "options": ["Velocity", "Speed", "Distance", "Work"],
+            "correctOptionIndex": 0,
+            "explanation": "Velocity is a vector quantity because it has both magnitude and direction."
+        },
+        {
+            "id": "q6",
+            "text": "What is the frequency of a wave with a period of 0.2 seconds?",
+            "options": ["5 Hz", "0.5 Hz", "20 Hz", "2 Hz"],
+            "correctOptionIndex": 0,
+            "explanation": "Frequency (f) is the reciprocal of the period (T), so f = 1/T = 1/0.2 = 5 Hz."
+        },
+        {
+            "id": "q7",
+            "text": "Which of the following is a non-contact force?",
+            "options": ["Gravitational force", "Friction", "Tension", "Normal force"],
+            "correctOptionIndex": 0,
+            "explanation": "Gravitational force acts at a distance without physical contact between objects."
+        },
+        {
+            "id": "q8",
+            "text": "What is the work done when a force of 20 N moves an object 3 m in the direction of the force?",
+            "options": ["60 J", "20 J", "3 J", "0 J"],
+            "correctOptionIndex": 0,
+            "explanation": "Work is calculated as W = F × d, so W = 20 × 3 = 60 J."
+        },
+        {
+            "id": "q9",
+            "text": "What is the kinetic energy of an object with a mass of 2 kg moving at a velocity of 3 m/s?",
+            "options": ["9 J", "18 J", "6 J", "12 J"],
+            "correctOptionIndex": 1,
+            "explanation": "Kinetic energy (KE) is given by KE = 0.5 × m × v² = 0.5 × 2 × 3² = 18 J."
+        },
+        {
+            "id": "q10",
+            "text": "Which type of wave does not require a medium to propagate?",
+            "options": ["Electromagnetic wave", "Sound wave", "Seismic wave", "Water wave"],
+            "correctOptionIndex": 0,
+            "explanation": "Electromagnetic waves, such as light, can propagate through a vacuum, unlike mechanical waves which require a medium."
+        }
+    ]
+}

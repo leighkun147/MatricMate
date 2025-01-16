@@ -1,0 +1,21 @@
+{
+    "title": "Mathematics (Natural Science) Quiz 2025",
+    "duration": 180,
+    "numberOfQuestions": 65,
+    "questions": [
+        {
+            "id": "math_ns_2025_1",
+            "text": "If f(x) = 2x² + 3x - 5, what is f'(x)?",
+            "options": ["4x + 3", "2x + 3", "4x - 3", "2x - 3"],
+            "correctOptionIndex": 0,
+            "explanation": "The derivative of f(x) = 2x² + 3x - 5 is f'(x) = 4x + 3, using the power rule and constant rule."
+        },
+        {
+            "id": "math_ns_2025_2",
+            "text": "What is the solution to the equation ln(x) = 2?",
+            "options": ["e²", "2e", "2ln(e)", "e/2"],
+            "correctOptionIndex": 0,
+            "explanation": "If ln(x) = 2, then x = e², because e and ln are inverse functions."
+        }
+    ]
+}

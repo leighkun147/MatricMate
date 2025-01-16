@@ -102,7 +102,10 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                     const SizedBox(width: 8),
                     Text(
                       widget.subject.name,
-                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall
+                          ?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).colorScheme.onBackground,
                           ),
@@ -113,9 +116,7 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
               TabBar(
                 controller: _tabController,
                 isScrollable: true,
-                tabs: grades
-                    .map((grade) => Tab(text: 'Grade $grade'))
-                    .toList(),
+                tabs: grades.map((grade) => Tab(text: 'Grade $grade')).toList(),
                 labelColor: Theme.of(context).colorScheme.primary,
                 unselectedLabelColor:
                     Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
@@ -175,7 +176,8 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                   subtitle: FutureBuilder<ChapterQuestions>(
                     future: _loadQuestionsFromJson(chapter.title),
                     builder: (context, snapshot) {
-                      final questionsCount = snapshot.data?.numberOfQuestions ?? 0;
+                      final questionsCount =
+                          snapshot.data?.numberOfQuestions ?? 0;
                       return Text('$questionsCount Questions');
                     },
                   ),
@@ -206,19 +208,24 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FutureBuilder<ChapterQuestions>(
+                              builder: (context) =>
+                                  FutureBuilder<ChapterQuestions>(
                                 future: _loadQuestionsFromJson(chapter.title),
                                 builder: (context, snapshot) {
-                                  if (snapshot.connectionState == ConnectionState.waiting) {
-                                    return const Center(child: CircularProgressIndicator());
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const Center(
+                                        child: CircularProgressIndicator());
                                   }
 
                                   if (snapshot.hasError) {
-                                    return Center(child: Text('Error loading questions: ${snapshot.error}'));
+                                    return Center(
+                                        child: Text(
+                                            'Error loading questions: ${snapshot.error}'));
                                   }
 
                                   final chapterData = snapshot.data!;
-                                  
+
                                   return PracticeModeScreen(
                                     exam: Exam(
                                       id: 'practice_${chapter.title}',
@@ -226,7 +233,8 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                                       subject: widget.subject.name,
                                       year: DateTime.now().year,
                                       questions: chapterData.questions,
-                                      duration: Duration(minutes: chapterData.duration),
+                                      duration: Duration(
+                                          minutes: chapterData.duration),
                                     ),
                                   );
                                 },
@@ -237,8 +245,10 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                         icon: const Icon(Icons.school),
                         label: const Text('Practice Mode'),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context).colorScheme.primary,
-                          foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          foregroundColor:
+                              Theme.of(context).colorScheme.onPrimary,
                         ),
                       ),
                     ),
@@ -249,19 +259,24 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FutureBuilder<ChapterQuestions>(
+                              builder: (context) =>
+                                  FutureBuilder<ChapterQuestions>(
                                 future: _loadQuestionsFromJson(chapter.title),
                                 builder: (context, snapshot) {
-                                  if (snapshot.connectionState == ConnectionState.waiting) {
-                                    return const Center(child: CircularProgressIndicator());
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const Center(
+                                        child: CircularProgressIndicator());
                                   }
-                                  
+
                                   if (snapshot.hasError) {
-                                    return Center(child: Text('Error loading questions: ${snapshot.error}'));
+                                    return Center(
+                                        child: Text(
+                                            'Error loading questions: ${snapshot.error}'));
                                   }
 
                                   final chapterData = snapshot.data!;
-                                  
+
                                   return MockExamScreen(
                                     exam: Exam(
                                       id: 'mock_${chapter.title}',
@@ -269,7 +284,8 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                                       subject: widget.subject.name,
                                       year: DateTime.now().year,
                                       questions: chapterData.questions,
-                                      duration: Duration(minutes: chapterData.duration),
+                                      duration: Duration(
+                                          minutes: chapterData.duration),
                                     ),
                                   );
                                 },
@@ -280,8 +296,10 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                         icon: const Icon(Icons.timer),
                         label: const Text('Mock Exam'),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context).colorScheme.secondary,
-                          foregroundColor: Theme.of(context).colorScheme.onSecondary,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.secondary,
+                          foregroundColor:
+                              Theme.of(context).colorScheme.onSecondary,
                         ),
                       ),
                     ),
@@ -298,8 +316,7 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
   Future<ChapterQuestions> _loadQuestionsFromJson(String chapterTitle) async {
     try {
       final String jsonString = await rootBundle.loadString(
-        'assets/questions/subject_chapters_questions/$chapterTitle.json'
-      );
+          'assets/questions/subject_chapters_questions/$chapterTitle.json');
       final Map<String, dynamic> jsonData = json.decode(jsonString);
       return ChapterQuestions.fromJson(jsonData);
     } catch (e) {
@@ -312,38 +329,5 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
         questions: [],
       );
     }
-  }
-
-  List<Question> _getDummyQuestions() {
-    return [
-      Question(
-        id: 'q1',
-        text: 'What is the capital city of Ethiopia?',
-        options: ['Addis Ababa', 'Hawassa', 'Bahir Dar', 'Dire Dawa'],
-        correctOptionIndex: 0,
-        explanation: 'Addis Ababa is the capital city of Ethiopia.',
-      ),
-      Question(
-        id: 'q2',
-        text: 'Which Ethiopian emperor led the victory at Adwa?',
-        options: ['Menelik II', 'Haile Selassie', 'Tewodros II', 'Yohannes IV'],
-        correctOptionIndex: 0,
-        explanation: 'Emperor Menelik II led Ethiopian forces to victory at the Battle of Adwa in 1896.',
-      ),
-      Question(
-        id: 'q3',
-        text: 'What is the main language spoken in Ethiopia?',
-        options: ['Amharic', 'Tigrinya', 'Oromiffa', 'Somali'],
-        correctOptionIndex: 0,
-        explanation: 'Amharic is the official working language of Ethiopia.',
-      ),
-      Question(
-        id: 'q4',
-        text: 'Which Ethiopian coffee region is most famous?',
-        options: ['Yirgacheffe', 'Sidamo', 'Harrar', 'Limu'],
-        correctOptionIndex: 0,
-        explanation: 'Yirgacheffe is internationally renowned for its high-quality coffee beans.',
-      ),
-    ];
   }
 }
