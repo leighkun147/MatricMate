@@ -148,8 +148,8 @@ class _SubjectExamList extends StatelessWidget {
           itemBuilder: (context, index) {
             final examData = exams[index];
             final exam = Exam(
-              id: '${subject}_${examData.year}',
-              title: '$subject ${examData.year}',
+              id: examData.title ?? '${subject}_${examData.year}',
+              title: examData.title ?? '$subject ${examData.year}',
               subject: subject,
               year: examData.year,
               questions: examData.questions,
