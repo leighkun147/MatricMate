@@ -1,0 +1,21 @@
+{
+  "title": "Further On Sets",
+  "duration": 45,
+  "numberOfQuestions": 10,
+  "questions": [
+    {
+      "id": "sets_q1",
+      "text": "What is the intersection of sets A = {1, 2, 3} and B = {2, 3, 4}?",
+      "options": ["{2, 3}", "{1, 4}", "{1, 2, 3, 4}", "{1, 2}"],
+      "correctOptionIndex": 0,
+      "explanation": "The intersection of two sets contains elements that are common to both sets. In this case, 2 and 3 are the only elements present in both sets A and B."
+    },
+    {
+      "id": "sets_q2",
+      "text": "What is the union of sets P = {a, b} and Q = {b, c}?",
+      "options": ["{a, b, c}", "{b}", "{a, c}", "{a, b, b, c}"],
+      "correctOptionIndex": 0,
+      "explanation": "The union of two sets contains all unique elements from both sets. In this case, combining elements from both sets gives us {a, b, c}."
+    }
+  ]
+}

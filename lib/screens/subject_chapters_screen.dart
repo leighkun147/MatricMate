@@ -3,8 +3,11 @@ import '../models/subject.dart';
 import '../models/chapter.dart';
 import '../models/exam.dart';
 import '../models/question.dart';
+import '../models/chapter_questions.dart';
 import '../screens/practice_mode_screen.dart';
 import '../screens/mock_exam_screen.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 
 class SubjectChaptersScreen extends StatefulWidget {
   final Subject subject;
@@ -161,34 +164,37 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        chapter.title,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.onSurface,
-                            ),
-                      ),
-                    ),
-                    Checkbox(
-                      value: chapter.isCompleted,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          chapters[index] = Chapter(
-                            title: chapter.title,
-                            grade: chapter.grade,
-                            isCompleted: value ?? false,
-                          );
-                        });
-                        if (value ?? false) {
-                          _showCompletionDialog();
-                        }
-                      },
-                      activeColor: Theme.of(context).colorScheme.primary,
-                    ),
-                  ],
+                ListTile(
+                  title: Text(
+                    chapter.title,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                  ),
+                  subtitle: FutureBuilder<ChapterQuestions>(
+                    future: _loadQuestionsFromJson(chapter.title),
+                    builder: (context, snapshot) {
+                      final questionsCount = snapshot.data?.numberOfQuestions ?? 0;
+                      return Text('$questionsCount Questions');
+                    },
+                  ),
+                  trailing: Checkbox(
+                    value: chapter.isCompleted,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        chapters[index] = Chapter(
+                          title: chapter.title,
+                          grade: chapter.grade,
+                          isCompleted: value ?? false,
+                        );
+                      });
+                      if (value ?? false) {
+                        _showCompletionDialog();
+                      }
+                    },
+                    activeColor: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -200,15 +206,30 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PracticeModeScreen(
-                                exam: Exam(
-                                  id: 'practice_${chapter.title}',
-                                  title: '${chapter.title} Practice',
-                                  subject: widget.subject.name,
-                                  year: DateTime.now().year,
-                                  questions: _getDummyQuestions(),
-                                  duration: const Duration(minutes: 30),
-                                ),
+                              builder: (context) => FutureBuilder<ChapterQuestions>(
+                                future: _loadQuestionsFromJson(chapter.title),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState == ConnectionState.waiting) {
+                                    return const Center(child: CircularProgressIndicator());
+                                  }
+
+                                  if (snapshot.hasError) {
+                                    return Center(child: Text('Error loading questions: ${snapshot.error}'));
+                                  }
+
+                                  final chapterData = snapshot.data!;
+                                  
+                                  return PracticeModeScreen(
+                                    exam: Exam(
+                                      id: 'practice_${chapter.title}',
+                                      title: '${chapter.title} Practice',
+                                      subject: widget.subject.name,
+                                      year: DateTime.now().year,
+                                      questions: chapterData.questions,
+                                      duration: Duration(minutes: chapterData.duration),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           );
@@ -228,15 +249,30 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MockExamScreen(
-                                exam: Exam(
-                                  id: 'mock_${chapter.title}',
-                                  title: '${chapter.title} Mock Exam',
-                                  subject: widget.subject.name,
-                                  year: DateTime.now().year,
-                                  questions: _getDummyQuestions(),
-                                  duration: const Duration(minutes: 60),
-                                ),
+                              builder: (context) => FutureBuilder<ChapterQuestions>(
+                                future: _loadQuestionsFromJson(chapter.title),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState == ConnectionState.waiting) {
+                                    return const Center(child: CircularProgressIndicator());
+                                  }
+                                  
+                                  if (snapshot.hasError) {
+                                    return Center(child: Text('Error loading questions: ${snapshot.error}'));
+                                  }
+
+                                  final chapterData = snapshot.data!;
+                                  
+                                  return MockExamScreen(
+                                    exam: Exam(
+                                      id: 'mock_${chapter.title}',
+                                      title: '${chapter.title} Mock Exam',
+                                      subject: widget.subject.name,
+                                      year: DateTime.now().year,
+                                      questions: chapterData.questions,
+                                      duration: Duration(minutes: chapterData.duration),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           );
@@ -257,6 +293,25 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
         );
       },
     );
+  }
+
+  Future<ChapterQuestions> _loadQuestionsFromJson(String chapterTitle) async {
+    try {
+      final String jsonString = await rootBundle.loadString(
+        'assets/questions/subject_chapters_questions/$chapterTitle.json'
+      );
+      final Map<String, dynamic> jsonData = json.decode(jsonString);
+      return ChapterQuestions.fromJson(jsonData);
+    } catch (e) {
+      print('Error loading questions for $chapterTitle: $e');
+      // Return default values if JSON file is not found or has errors
+      return ChapterQuestions(
+        title: chapterTitle,
+        duration: 60,
+        numberOfQuestions: 0,
+        questions: [],
+      );
+    }
   }
 
   List<Question> _getDummyQuestions() {

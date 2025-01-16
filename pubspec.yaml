@@ -104,3 +104,4 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/questions/subject_chapters_questions/
