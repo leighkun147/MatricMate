@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../models/english_section.dart';
 import '../models/exam.dart';
 import '../models/question.dart';
@@ -13,13 +15,37 @@ class EnglishScreen extends StatefulWidget {
 }
 
 class _EnglishScreenState extends State<EnglishScreen> {
+  final List<Map<String, dynamic>> englishSections = [
+    {
+      'title': 'Grammar',
+      'description': 'Practice grammar rules, tenses, and sentence structures',
+      'icon': Icons.spellcheck,
+      'isDisabled': false,
+      'jsonFile': 'Grammar.json',
+    },
+    {
+      'title': 'Communication Skills',
+      'description': 'Improve your verbal and written communication abilities',
+      'icon': Icons.record_voice_over,
+      'isDisabled': false,
+      'jsonFile': 'Communication Skills.json',
+    },
+    {
+      'title': 'Reading Comprehension',
+      'description': 'Enhance your reading and understanding capabilities',
+      'icon': Icons.menu_book,
+      'isDisabled': true, // Disabled as requested
+      'jsonFile': null,
+    },
+  ];
+
   final Map<String, bool> _completionStatus = {};
 
   @override
   void initState() {
     super.initState();
     for (var section in englishSections) {
-      _completionStatus[section.title] = false;
+      _completionStatus[section['title']] = false;
     }
   }
 
@@ -54,6 +80,27 @@ class _EnglishScreenState extends State<EnglishScreen> {
         );
       },
     );
+  }
+
+  Future<List<Question>> _loadQuestions(String jsonFileName) async {
+    try {
+      final String jsonString = await rootBundle.loadString(
+        'assets/questions/subject_chapters_questions/$jsonFileName',
+      );
+      final Map<String, dynamic> jsonData = json.decode(jsonString);
+      final List<dynamic> questionsJson = jsonData['questions'];
+      
+      return questionsJson.map((q) => Question(
+        id: q['id'],
+        text: q['text'],
+        options: List<String>.from(q['options']),
+        correctOptionIndex: q['correctOptionIndex'],
+        explanation: q['explanation'],
+      )).toList();
+    } catch (e) {
+      print('Error loading questions from $jsonFileName: $e');
+      return [];
+    }
   }
 
   @override
@@ -103,168 +150,171 @@ class _EnglishScreenState extends State<EnglishScreen> {
                   itemBuilder: (context, index) {
                     final section = englishSections[index];
                     return SizedBox(
-                      height: 260, // Increased height for better visibility
-                      child: Card(
-                        elevation: 4, // Added elevation for better visual appeal
-                        margin: const EdgeInsets.only(bottom: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: InkWell(
-                          borderRadius: BorderRadius.circular(16),
-                          onTap: () {
-                            // TODO: Navigate to section details
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(20), // Increased padding
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(
-                                      section.title == 'Grammar' 
-                                          ? Icons.spellcheck
-                                          : section.title == 'Reading Comprehension'
-                                              ? Icons.menu_book
-                                              : Icons.record_voice_over,
-                                      color: Theme.of(context).colorScheme.primary,
-                                      size: 28,
-                                    ),
-                                    const SizedBox(width: 12),
-                                    Expanded(
-                                      child: Text(
-                                        section.title,
-                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                              fontWeight: FontWeight.bold,
-                                              color: Theme.of(context).colorScheme.primary,
-                                            ),
+                      height: 330, // Increased height for better visibility
+                      child: Opacity(
+                        opacity: section['isDisabled'] ? 0.5 : 1.0,
+                        child: Card(
+                          elevation: 4, // Added elevation for better visual appeal
+                          margin: const EdgeInsets.only(bottom: 16),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(16),
+                            onTap: () {
+                              // TODO: Navigate to section details
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(20), // Increased padding
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        section['icon'],
+                                        color: Theme.of(context).colorScheme.primary,
+                                        size: 28,
                                       ),
-                                    ),
-                                    Checkbox(
-                                      value: _completionStatus[section.title],
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _completionStatus[section.title] = value ?? false;
-                                        });
-                                        _showCompletionDialog(section.title, value ?? false);
-                                      },
-                                      activeColor: Theme.of(context).colorScheme.primary,
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 12),
-                                Text(
-                                  section.description,
-                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                        color: Theme.of(context).colorScheme.onSurface,
-                                      ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                const SizedBox(height: 16),
-                                Expanded(
-                                  child: GridView.count(
-                                    crossAxisCount: 2,
-                                    childAspectRatio: 4,
-                                    mainAxisSpacing: 8,
-                                    crossAxisSpacing: 8,
-                                    children: section.topics.map((topic) {
-                                      return Container(
-                                        decoration: BoxDecoration(
-                                          color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                                          borderRadius: BorderRadius.circular(8),
-                                        ),
-                                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                                        child: Row(
-                                          children: [
-                                            Icon(
-                                              Icons.check_circle_outline,
-                                              size: 16,
-                                              color: Theme.of(context).colorScheme.primary,
-                                            ),
-                                            const SizedBox(width: 6),
-                                            Expanded(
-                                              child: Text(
-                                                topic,
-                                                style: TextStyle(
-                                                  color: Theme.of(context).colorScheme.primary,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                                overflow: TextOverflow.ellipsis,
+                                      const SizedBox(width: 12),
+                                      Expanded(
+                                        child: Text(
+                                          section['title'],
+                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                color: Theme.of(context).colorScheme.primary,
                                               ),
-                                            ),
-                                          ],
                                         ),
-                                      );
-                                    }).toList(),
+                                      ),
+                                      Checkbox(
+                                        value: _completionStatus[section['title']],
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _completionStatus[section['title']] = value ?? false;
+                                          });
+                                          _showCompletionDialog(section['title'], value ?? false);
+                                        },
+                                        activeColor: Theme.of(context).colorScheme.primary,
+                                      ),
+                                    ],
                                   ),
-                                ),
-                                const SizedBox(height: 16),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Expanded(
-                                      child: ElevatedButton.icon(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => PracticeModeScreen(
-                                                exam: Exam(
-                                                  id: 'practice_english_${section.title}',
-                                                  title: '${section.title} Practice',
-                                                  subject: 'English',
-                                                  year: DateTime.now().year,
-                                                  questions: _getDummyQuestions(section.title),
-                                                  duration: const Duration(minutes: 30),
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        icon: const Icon(Icons.school, size: 18),
-                                        label: const Text('Practice'),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: Theme.of(context).colorScheme.primary,
-                                          foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                                          padding: const EdgeInsets.symmetric(vertical: 12),
+                                  const SizedBox(height: 12),
+                                  Text(
+                                    section['description'],
+                                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                          color: Theme.of(context).colorScheme.onSurface,
+                                        ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Expanded(
+                                    child: GridView.count(
+                                      crossAxisCount: 2,
+                                      childAspectRatio: 4,
+                                      mainAxisSpacing: 8,
+                                      crossAxisSpacing: 8,
+                                      children: section['title'] == 'Grammar' ? [
+                                        _buildTopicContainer(context, 'Reported Speech'),
+                                        _buildTopicContainer(context, 'Tenses'),
+                                        _buildTopicContainer(context, 'Conditional Sentences'),
+                                        _buildTopicContainer(context, 'Active and Passive Voice'),
+                                        _buildTopicContainer(context, 'Modals and Auxiliaries'),
+                                        _buildTopicContainer(context, 'Articles'),
+                                        _buildTopicContainer(context, 'Parts of Speech'),
+                                        _buildTopicContainer(context, 'Punctuation'),
+                                        _buildTopicContainer(context, 'Clauses and Sentence Structure'),
+                                        _buildTopicContainer(context, 'Subject-Verb Agreement'),
+                                        _buildTopicContainer(context, 'Pronouns'),
+                                        _buildTopicContainer(context, 'Word Order'),
+                                        _buildTopicContainer(context, 'Comparatives and Superlatives'),
+                                        _buildTopicContainer(context, 'Gerunds and Infinitives'),
+                                      ] : section['title'] == 'Communication Skills' ? [
+                                        _buildTopicContainer(context, 'Conversational Skills'),
+                                        _buildTopicContainer(context, 'Effective Questioning'),
+                                        _buildTopicContainer(context, 'Speaking Skills'),
+                                        _buildTopicContainer(context, 'Interpersonal Communication'),
+                                      ] : [
+                                        _buildTopicContainer(context, 'Topic 1'),
+                                        _buildTopicContainer(context, 'Topic 2'),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Expanded(
+                                        child: ElevatedButton.icon(
+                                          onPressed: section['isDisabled']
+                                              ? null
+                                              : () async {
+                                                  final questions = await _loadQuestions(section['jsonFile']);
+                                                  if (questions.isNotEmpty && mounted) {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) => PracticeModeScreen(
+                                                          exam: Exam(
+                                                            id: 'practice_english_${section['title']}',
+                                                            title: '${section['title']} Practice',
+                                                            subject: 'English',
+                                                            year: DateTime.now().year,
+                                                            questions: questions,
+                                                            duration: const Duration(minutes: 30),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                },
+                                          icon: const Icon(Icons.school, size: 18),
+                                          label: const Text('Practice'),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Theme.of(context).colorScheme.primary,
+                                            foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                                            padding: const EdgeInsets.symmetric(vertical: 12),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Expanded(
-                                      child: ElevatedButton.icon(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => MockExamScreen(
-                                                exam: Exam(
-                                                  id: 'mock_english_${section.title}',
-                                                  title: '${section.title} Mock Exam',
-                                                  subject: 'English',
-                                                  year: DateTime.now().year,
-                                                  questions: _getDummyQuestions(section.title),
-                                                  duration: const Duration(minutes: 60),
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        icon: const Icon(Icons.timer, size: 18),
-                                        label: const Text('Mock'),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: Theme.of(context).colorScheme.secondary,
-                                          foregroundColor: Theme.of(context).colorScheme.onSecondary,
-                                          padding: const EdgeInsets.symmetric(vertical: 12),
+                                      const SizedBox(width: 8),
+                                      Expanded(
+                                        child: ElevatedButton.icon(
+                                          onPressed: section['isDisabled']
+                                              ? null
+                                              : () async {
+                                                  final questions = await _loadQuestions(section['jsonFile']);
+                                                  if (questions.isNotEmpty && mounted) {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) => MockExamScreen(
+                                                          exam: Exam(
+                                                            id: 'mock_english_${section['title']}',
+                                                            title: '${section['title']} Mock Exam',
+                                                            subject: 'English',
+                                                            year: DateTime.now().year,
+                                                            questions: questions,
+                                                            duration: const Duration(minutes: 60),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                },
+                                          icon: const Icon(Icons.timer, size: 18),
+                                          label: const Text('Mock'),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Theme.of(context).colorScheme.secondary,
+                                            foregroundColor: Theme.of(context).colorScheme.onSecondary,
+                                            padding: const EdgeInsets.symmetric(vertical: 12),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -280,73 +330,34 @@ class _EnglishScreenState extends State<EnglishScreen> {
     );
   }
 
-  List<Question> _getDummyQuestions(String sectionTitle) {
-    if (sectionTitle == 'Grammar') {
-      return [
-        Question(
-          id: 'eng_gram_1',
-          text: 'Which sentence is grammatically correct?',
-          options: [
-            'She don\'t like coffee.',
-            'She doesn\'t like coffee.',
-            'She not like coffee.',
-            'She do not likes coffee.'
-          ],
-          correctOptionIndex: 1,
-          explanation: '"Doesn\'t" is the correct form for third-person singular negative.',
-        ),
-        Question(
-          id: 'eng_gram_2',
-          text: 'Choose the correct past participle:',
-          options: ['wrote', 'written', 'writed', 'writing'],
-          correctOptionIndex: 1,
-          explanation: '"Written" is the correct past participle of "write".',
-        ),
-      ];
-    } else if (sectionTitle == 'Reading Comprehension') {
-      return [
-        Question(
-          id: 'eng_read_1',
-          text: 'What is the main purpose of a topic sentence?',
-          options: [
-            'To conclude a paragraph',
-            'To provide evidence',
-            'To introduce the main idea',
-            'To transition between ideas'
-          ],
-          correctOptionIndex: 2,
-          explanation: 'A topic sentence introduces the main idea of a paragraph.',
-        ),
-        Question(
-          id: 'eng_read_2',
-          text: 'What is inference in reading?',
-          options: [
-            'Direct statement of facts',
-            'Drawing conclusions from evidence',
-            'Summarizing the text',
-            'Finding vocabulary words'
-          ],
-          correctOptionIndex: 1,
-          explanation: 'Inference involves drawing conclusions based on evidence and context clues.',
-        ),
-      ];
-    } else {
-      return [
-        Question(
-          id: 'eng_voc_1',
-          text: 'What is a synonym for "happy"?',
-          options: ['sad', 'joyful', 'angry', 'tired'],
-          correctOptionIndex: 1,
-          explanation: '"Joyful" means the same as "happy".',
-        ),
-        Question(
-          id: 'eng_voc_2',
-          text: 'Choose the correct antonym for "bright":',
-          options: ['dim', 'light', 'shiny', 'clear'],
-          correctOptionIndex: 0,
-          explanation: '"Dim" is the opposite of "bright".',
-        ),
-      ];
-    }
+  Widget _buildTopicContainer(BuildContext context, String topic) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      child: Row(
+        children: [
+          Icon(
+            Icons.check_circle_outline,
+            size: 16,
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Text(
+              topic,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

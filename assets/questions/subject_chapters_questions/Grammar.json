@@ -1,0 +1,96 @@
+{
+    "title": "English Grammar Quiz 2023",
+    "duration": 60,
+    "numberOfQuestions": 12,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Which sentence uses the correct form of the verb?",
+        "options": ["She go to the market every day.", "She goes to the market every day.", "She going to the market every day.", "She gone to the market every day."],
+        "correctOptionIndex": 1,
+        "explanation": "The subject 'she' requires the verb 'go' to be conjugated as 'goes' in the present tense for third-person singular."
+      },
+      {
+        "id": "q2",
+        "text": "Identify the correct use of the possessive pronoun.",
+        "options": ["This is your's book.", "This is yours book.", "This is your book.", "This is you're book."],
+        "correctOptionIndex": 2,
+        "explanation": "The possessive pronoun 'your' is correctly used here without any apostrophe."
+      },
+      {
+        "id": "q3",
+        "text": "Which of the following is a complete sentence?",
+        "options": ["Running through the park.", "Although it was raining.", "He finished his homework.", "Before they arrived."],
+        "correctOptionIndex": 2,
+        "explanation": "A complete sentence must have a subject and a predicate; 'He finished his homework' fulfills this criterion."
+      },
+      {
+        "id": "q4",
+        "text": "Choose the sentence with correct subject-verb agreement.",
+        "options": ["The team are playing well today.", "The team is playing well today.", "The team were playing well today.", "The team has playing well today."],
+        "correctOptionIndex": 1,
+        "explanation": "When referring to a team as a single entity, the singular verb 'is' should be used."
+      },
+      {
+        "id": "q5",
+        "text": "Which of the following sentences uses an adjective correctly?",
+        "options": ["She speaks very fluent.", "She speaks fluent English.", "She speaks fluently English.", "She speaks English fluently."],
+        "correctOptionIndex": 1,
+        "explanation": "The adjective 'fluent' describes the noun 'English' correctly in this sentence."
+      },
+      {
+        "id": "q6",
+        "text": "Which of the following is an example of a compound sentence?",
+        "options": ["She likes tea.", "She likes tea, and he prefers coffee.", "Although she likes tea.", "While drinking tea, she read a book."],
+        "correctOptionIndex": 1,
+        "explanation": "A compound sentence has two independent clauses joined by a conjunction, such as 'and.'"
+      },
+      {
+        "id": "q7",
+        "text": "What is the past tense of the verb 'to eat'?",
+        "options": ["Eats", "Eaten", "Ate", "Eating"],
+        "correctOptionIndex": 2,
+        "explanation": "The past tense of 'eat' is 'ate.'"
+      },
+      {
+        "id": "q8",
+        "text": "Which sentence uses the correct article?",
+        "options": ["I saw an elephant in the zoo.", "I saw a elephant in the zoo.", "I saw the elephant in a zoo.", "I saw elephant in a zoo."],
+        "correctOptionIndex": 0,
+        "explanation": "The article 'an' is used before words beginning with a vowel sound like 'elephant.'"
+      },
+      {
+        "id": "q9",
+        "text": "Choose the sentence with the correct punctuation.",
+        "options": ["What a beautiful day.", "What a beautiful day!", "What a beautiful day?", "What a beautiful day,"],
+        "correctOptionIndex": 1,
+        "explanation": "An exclamation mark is appropriate for expressing strong feelings or excitement."
+      },
+      {
+        "id": "q10",
+        "text": "Identify the sentence written in passive voice.",
+        "options": ["The dog chased the cat.", "The cat was chased by the dog.", "The dog is chasing the cat.", "The cat is chasing the dog."],
+        "correctOptionIndex": 1,
+        "explanation": "A sentence is in the passive voice when the subject is acted upon, as in 'The cat was chased by the dog.'"
+      },
+      {
+        "id": "gram_1",
+        "text": "Choose the correct form of the verb: She _____ to the store yesterday.",
+        "options": ["went", "goes", "going", "gone"],
+        "correctOptionIndex": 0,
+        "explanation": "In past simple tense, the correct form is 'went'."
+      },
+      {
+        "id": "gram_2",
+        "text": "Which sentence uses the correct article?",
+        "options": [
+          "I saw an unicorn in the garden.",
+          "I saw a unicorn in the garden.",
+          "I saw the unicorn in garden.",
+          "I saw unicorn in the garden."
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "We use 'a' before words beginning with consonant sounds. Although 'unicorn' starts with 'u', it makes a consonant 'y' sound."
+      }
+    ]
+  }

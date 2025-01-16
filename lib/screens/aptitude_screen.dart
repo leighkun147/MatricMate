@@ -4,6 +4,8 @@ import '../models/exam.dart';
 import '../models/question.dart';
 import '../screens/practice_mode_screen.dart';
 import '../screens/mock_exam_screen.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 
 class AptitudeScreen extends StatefulWidget {
   const AptitudeScreen({Key? key}) : super(key: key);
@@ -14,6 +16,7 @@ class AptitudeScreen extends StatefulWidget {
 
 class _AptitudeScreenState extends State<AptitudeScreen> {
   final Map<String, bool> _completionStatus = {};
+  final Map<String, List<Question>> _sectionQuestions = {};
 
   @override
   void initState() {
@@ -21,6 +24,49 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
     for (var section in aptitudeSections) {
       _completionStatus[section.title] = false;
     }
+    _loadQuestions();
+  }
+
+  Future<void> _loadQuestions() async {
+    try {
+      // Load Mathematics questions
+      final mathString = await rootBundle.loadString(
+          'assets/questions/subject_chapters_questions/MATHEMATICS(aptitude).json');
+      final mathJson = json.decode(mathString);
+      final mathQuestions = (mathJson['questions'] as List)
+          .map((q) => Question(
+                id: q['id'],
+                text: q['text'],
+                options: List<String>.from(q['options']),
+                correctOptionIndex: q['correctOptionIndex'],
+                explanation: q['explanation'],
+              ))
+          .toList();
+      _sectionQuestions['Mathematics'] = mathQuestions;
+
+      // Load Reading and Verbal questions
+      final verbalString = await rootBundle.loadString(
+          'assets/questions/subject_chapters_questions/READINGANDVERBAL(aptitude).json');
+      final verbalJson = json.decode(verbalString);
+      final verbalQuestions = (verbalJson['questions'] as List)
+          .map((q) => Question(
+                id: q['id'],
+                text: q['text'],
+                options: List<String>.from(q['options']),
+                correctOptionIndex: q['correctOptionIndex'],
+                explanation: q['explanation'],
+              ))
+          .toList();
+      _sectionQuestions['Reading and Verbal'] = verbalQuestions;
+
+      setState(() {});
+    } catch (e) {
+      print('Error loading questions: $e');
+    }
+  }
+
+  List<Question> _getQuestionsForSection(String sectionTitle) {
+    return _sectionQuestions[sectionTitle] ?? [];
   }
 
   void _showCompletionDialog(String sectionTitle, bool isCompleted) {
@@ -103,7 +149,7 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
                   itemBuilder: (context, index) {
                     final section = aptitudeSections[index];
                     return SizedBox(
-                      height: 260, // Increased height for better visibility
+                      height: 330, // Increased height for better visibility
                       child: Card(
                         elevation: 4, // Added elevation for better visual appeal
                         margin: const EdgeInsets.only(bottom: 16),
@@ -215,7 +261,7 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
                                                   title: '${section.title} Practice',
                                                   subject: 'Aptitude',
                                                   year: DateTime.now().year,
-                                                  questions: _getDummyQuestions(section.title),
+                                                  questions: _getQuestionsForSection(section.title),
                                                   duration: const Duration(minutes: 30),
                                                 ),
                                               ),
@@ -244,7 +290,7 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
                                                   title: '${section.title} Mock Exam',
                                                   subject: 'Aptitude',
                                                   year: DateTime.now().year,
-                                                  questions: _getDummyQuestions(section.title),
+                                                  questions: _getQuestionsForSection(section.title),
                                                   duration: const Duration(minutes: 60),
                                                 ),
                                               ),
@@ -276,48 +322,5 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
         ),
       ),
     );
-  }
-
-  List<Question> _getDummyQuestions(String sectionTitle) {
-    if (sectionTitle == 'Mathematics') {
-      return [
-        Question(
-          id: 'apt_math_1',
-          text: 'If x + 2 = 5, what is the value of x?',
-          options: ['2', '3', '4', '7'],
-          correctOptionIndex: 1,
-          explanation: 'To find x, subtract 2 from both sides: x = 5 - 2 = 3',
-        ),
-        Question(
-          id: 'apt_math_2',
-          text: 'What is 15% of 200?',
-          options: ['20', '25', '30', '35'],
-          correctOptionIndex: 2,
-          explanation: '15% of 200 = (15/100) × 200 = 30',
-        ),
-      ];
-    } else {
-      return [
-        Question(
-          id: 'apt_verb_1',
-          text: 'Which of these shows the best logical reasoning?',
-          options: [
-            'All birds can fly. Penguins are birds. Therefore, penguins can fly.',
-            'All squares are rectangles. All rectangles have four sides. Therefore, all squares have four sides.',
-            'Some cats are black. Some dogs are black. Therefore, some cats are dogs.',
-            'It rained yesterday. The ground is wet today. Therefore, it must have rained today.'
-          ],
-          correctOptionIndex: 1,
-          explanation: 'The second option shows valid logical reasoning using transitive property.',
-        ),
-        Question(
-          id: 'apt_verb_2',
-          text: 'Complete the sequence: 2, 4, 8, 16, __',
-          options: ['20', '24', '32', '64'],
-          correctOptionIndex: 2,
-          explanation: 'Each number is doubled to get the next number. So, 16 × 2 = 32',
-        ),
-      ];
-    }
   }
 }

@@ -1,0 +1,145 @@
+{
+    "title": "SAT Reading and Verbal Quiz 2023",
+    "duration": 60,
+    "numberOfQuestions": 14,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "What is the primary purpose of the passage?",
+        "options": [
+          "To inform the audience about a historical event",
+          "To argue for a specific point of view",
+          "To entertain readers with a fictional story",
+          "To explain a scientific concept"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "The passage provides details and context about a historical event, indicating that its purpose is to inform."
+      },
+      {
+        "id": "q2",
+        "text": "In the sentence, 'The storm loomed ominously on the horizon, a harbinger of destruction,' what does the word 'harbinger' most nearly mean?",
+        "options": ["Warning", "Solution", "Companion", "Shadow"],
+        "correctOptionIndex": 0,
+        "explanation": "'Harbinger' means something that signals or warns of an impending event, often negative."
+      },
+      {
+        "id": "q3",
+        "text": "Which choice best supports the conclusion that the author believes in the importance of community?",
+        "options": [
+          "The author describes a neighborhood coming together after a flood.",
+          "The author critiques individuals who prioritize themselves.",
+          "The author narrates a story about a solitary explorer.",
+          "The author lists reasons for economic inequality."
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "The choice emphasizes community by describing collective action and mutual support."
+      },
+      {
+        "id": "q4",
+        "text": "In context, the word 'novel' in the sentence 'The scientist proposed a novel approach to the experiment' most nearly means:",
+        "options": ["New", "Fictional", "Complex", "Unimportant"],
+        "correctOptionIndex": 0,
+        "explanation": "In this context, 'novel' means new or innovative."
+      },
+      {
+        "id": "q5",
+        "text": "Which sentence most effectively summarizes the central idea of the passage?",
+        "options": [
+          "The author recounts their childhood adventures.",
+          "The passage emphasizes the transformative power of education.",
+          "The narrative focuses on the rise and fall of an empire.",
+          "The passage explores the conflict between tradition and modernity."
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The passage repeatedly highlights how education changes lives, making it the central idea."
+      },
+      {
+        "id": "q6",
+        "text": "What rhetorical device is used in the sentence, 'The world was a stage, and we were merely players'?",
+        "options": ["Simile", "Metaphor", "Personification", "Alliteration"],
+        "correctOptionIndex": 1,
+        "explanation": "The sentence uses a metaphor, comparing the world to a stage without using 'like' or 'as.'"
+      },
+      {
+        "id": "q7",
+        "text": "The tone of the passage can best be described as:",
+        "options": ["Optimistic", "Critical", "Sarcastic", "Reflective"],
+        "correctOptionIndex": 3,
+        "explanation": "The author reflects on past events thoughtfully, making the tone reflective."
+      },
+      {
+        "id": "q8",
+        "text": "In the passage, the author's attitude towards technological advancements is:",
+        "options": [
+          "Supportive but cautious",
+          "Entirely dismissive",
+          "Overwhelmingly enthusiastic",
+          "Neutral and indifferent"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "The author acknowledges benefits but warns of potential drawbacks, showing a supportive yet cautious stance."
+      },
+      {
+        "id": "q9",
+        "text": "Which of the following best describes the relationship between Paragraph 2 and Paragraph 3?",
+        "options": [
+          "Paragraph 2 introduces a problem, and Paragraph 3 proposes a solution.",
+          "Paragraph 2 provides background information, and Paragraph 3 offers a counterargument.",
+          "Paragraph 2 describes an event, and Paragraph 3 reflects on its implications.",
+          "Paragraph 2 questions an idea, and Paragraph 3 supports it with evidence."
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Paragraph 2 outlines an event, while Paragraph 3 discusses its broader significance."
+      },
+      {
+        "id": "q10",
+        "text": "What does the author imply about the protagonist's decision at the end of the story?",
+        "options": [
+          "It was driven by selfish motives.",
+          "It reflects personal growth and maturity.",
+          "It was a result of external pressures.",
+          "It contradicts earlier decisions in the story."
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The protagonist's decision shows learning from earlier mistakes and demonstrates maturity."
+      },
+      {
+        "id": "apt_verb_1",
+        "text": "Which of these shows the best logical reasoning?",
+        "options": [
+          "All birds can fly. Penguins are birds. Therefore, penguins can fly.",
+          "All squares are rectangles. All rectangles have four sides. Therefore, all squares have four sides.",
+          "Some cats are black. Some dogs are black. Therefore, some cats are dogs.",
+          "It rained yesterday. The ground is wet today. Therefore, it must have rained today."
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "The second option shows valid logical reasoning using transitive property."
+      },
+      {
+        "id": "apt_verb_2",
+        "text": "Complete the sequence: 2, 4, 8, 16, __",
+        "options": ["20", "24", "32", "64"],
+        "correctOptionIndex": 2,
+        "explanation": "Each number is doubled to get the next number. So, 16 × 2 = 32"
+      },
+      {
+        "id": "apt_verb_3",
+        "text": "Choose the word that best completes the sentence: The concert was _____ by bad weather.",
+        "options": ["affected", "effected", "impacted", "influenced"],
+        "correctOptionIndex": 0,
+        "explanation": "'Affected' is the correct word as it means 'influenced' or 'impacted by something'"
+      },
+      {
+        "id": "apt_verb_4",
+        "text": "Which sentence contains a redundancy?",
+        "options": [
+          "The meeting starts at 9 AM in the morning",
+          "The meeting starts at 9 AM",
+          "The morning meeting starts at 9",
+          "The meeting begins at 9 AM"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "'AM' already means 'in the morning', so 'AM in the morning' is redundant"
+      }
+    ]
+  }

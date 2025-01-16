@@ -1,0 +1,136 @@
+{
+    "title": "English Communication Skills Quiz 2023",
+    "duration": 60,
+    "numberOfQuestions": 12,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "What is the best way to maintain eye contact during a conversation?",
+        "options": ["Stare without blinking", "Look away frequently", "Maintain natural and comfortable eye contact", "Avoid eye contact completely"],
+        "correctOptionIndex": 2,
+        "explanation": "Maintaining natural and comfortable eye contact shows confidence and attentiveness in communication."
+      },
+      {
+        "id": "q2",
+        "text": "Which of the following is an example of active listening?",
+        "options": [
+          "Interrupting to share your opinion",
+          "Nodding and providing verbal cues like 'I see'",
+          "Looking at your phone while someone is talking",
+          "Thinking about your response instead of listening"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Active listening involves showing that you are engaged by providing verbal and non-verbal feedback."
+      },
+      {
+        "id": "q3",
+        "text": "What should you do if you don't understand a question during a conversation?",
+        "options": [
+          "Stay silent and wait",
+          "Guess the answer",
+          "Ask for clarification politely",
+          "Change the subject"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Asking for clarification politely ensures you respond appropriately and keeps the conversation on track."
+      },
+      {
+        "id": "q4",
+        "text": "What is the purpose of using open-ended questions in a conversation?",
+        "options": [
+          "To get a specific answer",
+          "To encourage detailed responses",
+          "To test someone's knowledge",
+          "To end the conversation quickly"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Open-ended questions encourage the other person to provide more detailed and thoughtful answers."
+      },
+      {
+        "id": "q5",
+        "text": "Which phrase is most polite for making a request?",
+        "options": [
+          "I want this done now.",
+          "Do this for me.",
+          "Could you please help me with this?",
+          "You must do this immediately."
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Using 'Could you please' makes the request more polite and professional."
+      },
+      {
+        "id": "q6",
+        "text": "How should you respond if someone gives you constructive feedback?",
+        "options": [
+          "Get defensive and argue",
+          "Ignore the feedback",
+          "Thank them and reflect on their suggestions",
+          "Tell them they are wrong"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Acknowledging feedback and thanking the person shows professionalism and openness to improvement."
+      },
+      {
+        "id": "q7",
+        "text": "Which of these is an example of non-verbal communication?",
+        "options": ["Speaking clearly", "Writing an email", "Smiling while listening", "Reading aloud"],
+        "correctOptionIndex": 2,
+        "explanation": "Non-verbal communication includes gestures, facial expressions, and body language, such as smiling."
+      },
+      {
+        "id": "q8",
+        "text": "What is the most effective way to handle a disagreement during a group discussion?",
+        "options": [
+          "Raise your voice to assert dominance",
+          "Listen to their perspective and express your views calmly",
+          "Ignore their points and stick to yours",
+          "End the discussion abruptly"
+        ],
+        "correctOptionIndex": 1,
+        "explanation": "Listening and expressing your views calmly fosters productive discussions and mutual respect."
+      },
+      {
+        "id": "q9",
+        "text": "Which of the following improves clarity in communication?",
+        "options": [
+          "Using overly complex vocabulary",
+          "Speaking too quickly",
+          "Organizing your thoughts before speaking",
+          "Avoiding eye contact"
+        ],
+        "correctOptionIndex": 2,
+        "explanation": "Organizing your thoughts ensures your message is clear and easy to understand."
+      },
+      {
+        "id": "q10",
+        "text": "What is an appropriate response to someone thanking you?",
+        "options": ["Ignore them", "You're welcome", "No need to thank me", "It's okay"],
+        "correctOptionIndex": 1,
+        "explanation": "Responding with 'You're welcome' is polite and acknowledges their gratitude."
+      },
+      {
+        "id": "comm_1",
+        "text": "Which of the following is NOT an example of non-verbal communication?",
+        "options": [
+          "Speaking on the phone",
+          "Facial expressions",
+          "Body posture",
+          "Hand gestures"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "Speaking on the phone is verbal communication. The other options are all forms of non-verbal communication."
+      },
+      {
+        "id": "comm_2",
+        "text": "What is active listening?",
+        "options": [
+          "Fully concentrating on and engaging with the speaker",
+          "Waiting for your turn to speak",
+          "Thinking about what to say next",
+          "Multitasking while someone speaks"
+        ],
+        "correctOptionIndex": 0,
+        "explanation": "Active listening involves fully focusing on, understanding, and responding to the speaker."
+      }
+    ]
+  }

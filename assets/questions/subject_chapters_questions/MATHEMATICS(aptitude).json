@@ -1,0 +1,105 @@
+{
+    "title": "SAT Mathematics Quiz 2023",
+    "duration": 60,
+    "numberOfQuestions": 14,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "If 3x - 7 = 11, what is the value of x?",
+        "options": ["2", "6", "5", "9"],
+        "correctOptionIndex": 1,
+        "explanation": "To solve for x, add 7 to both sides: 3x = 18. Then divide by 3: x = 6."
+      },
+      {
+        "id": "q2",
+        "text": "What is the slope of the line represented by the equation y = 2x + 5?",
+        "options": ["2", "5", "1/2", "-5"],
+        "correctOptionIndex": 0,
+        "explanation": "The slope of a line in the form y = mx + b is m, so the slope is 2."
+      },
+      {
+        "id": "q3",
+        "text": "A circle has a radius of 4 units. What is its area?",
+        "options": ["16π", "8π", "12π", "32π"],
+        "correctOptionIndex": 0,
+        "explanation": "The area of a circle is given by A = πr^2. With r = 4, A = π(4)^2 = 16π."
+      },
+      {
+        "id": "q4",
+        "text": "If x^2 - 4 = 0, what are the possible values of x?",
+        "options": ["2 and -2", "4 and -4", "2 and 4", "-4 and -2"],
+        "correctOptionIndex": 0,
+        "explanation": "Factor x^2 - 4 = (x - 2)(x + 2). Setting each factor to 0 gives x = 2 and x = -2."
+      },
+      {
+        "id": "q5",
+        "text": "What is the value of x in 3(2x + 4) = 24?",
+        "options": ["x = 2", "x = 3", "x = 4", "x = 6"],
+        "correctOptionIndex": 1,
+        "explanation": "Distribute to get 6x + 12 = 24. Subtract 12: 6x = 12. Divide by 6: x = 3."
+      },
+      {
+        "id": "q6",
+        "text": "A triangle has sides of length 3, 4, and 5. What type of triangle is it?",
+        "options": ["Equilateral", "Right", "Acute", "Obtuse"],
+        "correctOptionIndex": 1,
+        "explanation": "This triangle satisfies the Pythagorean theorem: 3^2 + 4^2 = 5^2, so it is a right triangle."
+      },
+      {
+        "id": "q7",
+        "text": "What is the value of 5^3?",
+        "options": ["15", "25", "125", "225"],
+        "correctOptionIndex": 2,
+        "explanation": "5^3 means 5 × 5 × 5 = 125."
+      },
+      {
+        "id": "q8",
+        "text": "A rectangular garden is 10 meters long and 6 meters wide. What is its perimeter?",
+        "options": ["32 meters", "26 meters", "60 meters", "16 meters"],
+        "correctOptionIndex": 0,
+        "explanation": "The perimeter of a rectangle is 2(l + w). With l = 10 and w = 6, P = 2(10 + 6) = 32."
+      },
+      {
+        "id": "q9",
+        "text": "If the average of five numbers is 12, what is their total sum?",
+        "options": ["60", "50", "48", "72"],
+        "correctOptionIndex": 0,
+        "explanation": "The average is the sum divided by the number of values. Total sum = 12 × 5 = 60."
+      },
+      {
+        "id": "q10",
+        "text": "What is the solution to the inequality 2x + 3 > 9?",
+        "options": ["x > 3", "x > 2", "x > 6", "x > 4"],
+        "correctOptionIndex": 0,
+        "explanation": "Subtract 3: 2x > 6. Divide by 2: x > 3."
+      },
+      {
+        "id": "apt_math_1",
+        "text": "If x + 2 = 5, what is the value of x?",
+        "options": ["2", "3", "4", "7"],
+        "correctOptionIndex": 1,
+        "explanation": "To find x, subtract 2 from both sides: x = 5 - 2 = 3"
+      },
+      {
+        "id": "apt_math_2",
+        "text": "What is 15% of 200?",
+        "options": ["20", "25", "30", "35"],
+        "correctOptionIndex": 2,
+        "explanation": "15% of 200 = (15/100) × 200 = 30"
+      },
+      {
+        "id": "apt_math_3",
+        "text": "Solve for y: 2y - 4 = 10",
+        "options": ["5", "7", "8", "9"],
+        "correctOptionIndex": 2,
+        "explanation": "Add 4 to both sides: 2y = 14. Then divide by 2: y = 7"
+      },
+      {
+        "id": "apt_math_4",
+        "text": "What is the square root of 144?",
+        "options": ["10", "11", "12", "13"],
+        "correctOptionIndex": 2,
+        "explanation": "12 × 12 = 144, so the square root of 144 is 12"
+      }
+    ]
+  }
