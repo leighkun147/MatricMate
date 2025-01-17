@@ -119,10 +119,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildProfileHeader() {
     return Column(
       children: [
-        const CircleAvatar(
+        CircleAvatar(
           radius: 50,
-          backgroundImage: NetworkImage(
-            'https://via.placeholder.com/100',
+          backgroundColor: Colors.grey[300],
+          child: Icon(
+            Icons.person,
+            size: 50,
+            color: Colors.grey[600],
           ),
         ),
         const SizedBox(height: 16),
@@ -141,30 +144,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildStatItem(String label, dynamic value, {Color? valueColor}) {
-    return Expanded(
+    return Card(
+      elevation: 1,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              spreadRadius: 1,
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              label,
+              label.toUpperCase(),
               style: TextStyle(
                 color: Colors.grey[600],
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.5,
               ),
               textAlign: TextAlign.center,
             ),
@@ -172,10 +169,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Text(
               value.toString(),
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color:
-                    valueColor ?? Theme.of(context).textTheme.bodyLarge?.color,
+                color: valueColor ?? Theme.of(context).textTheme.bodyLarge?.color,
               ),
               textAlign: TextAlign.center,
             ),
@@ -197,58 +193,73 @@ class _ProfileScreenState extends State<ProfileScreen> {
           return const Center(child: CircularProgressIndicator());
         }
 
-        // Get the values from Firestore, use 0 or false as defaults if not found
+        // Get only the username from Firestore for now
         final data = snapshot.data?.data() as Map<String, dynamic>? ?? {};
-        final coins = (data['coins'] as num?)?.toInt() ?? 0;
-        final ranking = (data['ranking'] as num?)?.toInt() ?? 0;
-        final activation = data['activation'] as bool? ?? false;
-        final referralCount = (data['referral_count'] as num?)?.toInt() ?? 0;
-        final referralEarnings =
-            (data['referral_earnings'] as num?)?.toInt() ?? 0;
+
+        // These are placeholder values that we'll implement later
+        const coins = 0;
+        const ranking = 0;
+        const activation = false;
+        const referralCount = 0;
+        const referralEarnings = 0;
 
         return Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-            borderRadius: BorderRadius.circular(12),
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 16),
+              const Padding(
+                padding: EdgeInsets.only(left: 4.0, bottom: 8.0),
+                child: Text(
+                  'Statistics',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               Row(
                 children: [
-                  _buildStatItem(
-                    'Coins',
-                    coins,
-                    valueColor: Colors.amber[700],
+                  Expanded(
+                    child: _buildStatItem(
+                      'Coins',
+                      coins,
+                      valueColor: Colors.amber[700],
+                    ),
                   ),
                   const SizedBox(width: 12),
-                  _buildStatItem(
-                    'Ranking',
-                    '#$ranking',
-                    valueColor: Colors.blue[700],
+                  Expanded(
+                    child: _buildStatItem(
+                      'Ranking',
+                      '#$ranking',
+                      valueColor: Colors.blue[700],
+                    ),
                   ),
                 ],
               ),
               const SizedBox(height: 12),
               Row(
                 children: [
-                  _buildStatItem(
-                    'Activation',
-                    activation ? 'ON' : 'OFF',
-                    valueColor: activation ? Colors.green : Colors.red,
+                  Expanded(
+                    child: _buildStatItem(
+                      'Activation',
+                      activation ? 'ON' : 'OFF',
+                      valueColor: activation ? Colors.green[700] : Colors.red[700],
+                    ),
                   ),
                   const SizedBox(width: 12),
-                  _buildStatItem(
-                    'Referral Count',
-                    referralCount,
-                    valueColor: Colors.purple[700],
+                  Expanded(
+                    child: _buildStatItem(
+                      'Referrals',
+                      referralCount,
+                      valueColor: Colors.purple[700],
+                    ),
                   ),
                 ],
               ),
               const SizedBox(height: 12),
               _buildStatItem(
-                'Referral Earnings',
+                'Total Earnings',
                 '$referralEarnings ETB',
                 valueColor: Colors.green[700],
               ),

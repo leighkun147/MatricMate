@@ -10,6 +10,7 @@ import '../utils/device_id_manager.dart';
 import '../utils/stream_utils.dart';
 import '../models/subject.dart';
 import '../utils/chapter_completion_manager.dart';
+import 'cash_out_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -451,6 +452,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
               context,
               MaterialPageRoute(
                 builder: (context) => const DiscordScreen(),
+              ),
+            );
+          },
+        ),
+        _buildFeatureCard(
+          'Cashout',
+          Icons.attach_money,
+          () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CashOutScreen(),
               ),
             );
           },
