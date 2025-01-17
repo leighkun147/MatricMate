@@ -12,6 +12,14 @@ class Subject {
     required this.route,
     required this.chapters,
   });
+
+  int get totalChapters {
+    int total = 0;
+    for (var chaptersList in chapters.values) {
+      total += chaptersList.length;
+    }
+    return total;
+  }
 }
 
 // Common subjects for both streams

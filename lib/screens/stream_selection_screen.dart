@@ -10,6 +10,17 @@ class StreamSelectionScreen extends StatefulWidget {
 
 class _StreamSelectionScreenState extends State<StreamSelectionScreen> {
   @override
+  void initState() {
+    super.initState();
+    _loadSavedStream();
+  }
+
+  Future<void> _loadSavedStream() async {
+    await StreamUtils.loadSavedStream();
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

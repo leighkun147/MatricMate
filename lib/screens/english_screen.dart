@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/english_section.dart';
 import '../models/exam.dart';
 import '../models/question.dart';
@@ -44,9 +45,25 @@ class _EnglishScreenState extends State<EnglishScreen> {
   @override
   void initState() {
     super.initState();
-    for (var section in englishSections) {
-      _completionStatus[section['title']] = false;
-    }
+    _loadCompletionStatus();
+  }
+
+  Future<void> _loadCompletionStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      for (var section in englishSections) {
+        final status = prefs.getBool('english_${section['title']}_completion') ?? false;
+        _completionStatus[section['title']] = status;
+      }
+    });
+  }
+
+  Future<void> _saveCompletionStatus(String sectionTitle, bool status) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('english_${sectionTitle}_completion', status);
+    setState(() {
+      _completionStatus[sectionTitle] = status;
+    });
   }
 
   void _showCompletionDialog(String sectionTitle, bool isCompleted) {
@@ -189,9 +206,7 @@ class _EnglishScreenState extends State<EnglishScreen> {
                                       Checkbox(
                                         value: _completionStatus[section['title']],
                                         onChanged: (bool? value) {
-                                          setState(() {
-                                            _completionStatus[section['title']] = value ?? false;
-                                          });
+                                          _saveCompletionStatus(section['title'], value ?? false);
                                           _showCompletionDialog(section['title'], value ?? false);
                                         },
                                         activeColor: Theme.of(context).colorScheme.primary,

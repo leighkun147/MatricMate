@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/aptitude_section.dart';
 import '../models/exam.dart';
 import '../models/question.dart';
@@ -21,10 +22,26 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
   @override
   void initState() {
     super.initState();
-    for (var section in aptitudeSections) {
-      _completionStatus[section.title] = false;
-    }
+    _loadCompletionStatus();
     _loadQuestions();
+  }
+
+  Future<void> _loadCompletionStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      for (var section in aptitudeSections) {
+        final status = prefs.getBool('aptitude_${section.title}_completion') ?? false;
+        _completionStatus[section.title] = status;
+      }
+    });
+  }
+
+  Future<void> _saveCompletionStatus(String sectionTitle, bool status) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('aptitude_${sectionTitle}_completion', status);
+    setState(() {
+      _completionStatus[sectionTitle] = status;
+    });
   }
 
   Future<void> _loadQuestions() async {
@@ -188,9 +205,7 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
                                     Checkbox(
                                       value: _completionStatus[section.title],
                                       onChanged: (bool? value) {
-                                        setState(() {
-                                          _completionStatus[section.title] = value ?? false;
-                                        });
+                                        _saveCompletionStatus(section.title, value ?? false);
                                         _showCompletionDialog(section.title, value ?? false);
                                       },
                                       activeColor: Theme.of(context).colorScheme.primary,

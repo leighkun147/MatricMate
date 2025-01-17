@@ -7,6 +7,9 @@ import 'study_plan_screen.dart';
 import 'payment_methods_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../utils/device_id_manager.dart';
+import '../utils/stream_utils.dart';
+import '../models/subject.dart';
+import '../utils/chapter_completion_manager.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -135,6 +138,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildPerformanceCard() {
+    final subjects = StreamUtils.selectedStream == StreamType.naturalScience
+        ? naturalScienceSubjects
+        : socialScienceSubjects;
+
     return Card(
       elevation: 4,
       child: Padding(
@@ -143,80 +150,103 @@ class _DashboardScreenState extends State<DashboardScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Weekly Performance',
+              'Overall Readiness',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 16),
-            SizedBox(
-              height: 200,
-              child: LineChart(
-                LineChartData(
-                  gridData: FlGridData(
-                    show: true,
-                    drawVerticalLine: false,
-                    horizontalInterval: 20,
-                  ),
-                  titlesData: FlTitlesData(
-                    show: true,
-                    rightTitles: AxisTitles(
-                      sideTitles: SideTitles(showTitles: false),
-                    ),
-                    topTitles: AxisTitles(
-                      sideTitles: SideTitles(showTitles: false),
-                    ),
-                    bottomTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        getTitlesWidget: (value, meta) {
-                          const days = [
-                            'Mon',
-                            'Tue',
-                            'Wed',
-                            'Thu',
-                            'Fri',
-                            'Sat',
-                            'Sun'
-                          ];
-                          if (value >= 0 && value < days.length) {
-                            return Text(days[value.toInt()]);
-                          }
-                          return const Text('');
-                        },
+            FutureBuilder<List<double>>(
+              future: Future.wait(
+                subjects.map((subject) => ChapterCompletionManager.getSubjectCompletionPercentage(
+                  subject.name,
+                  [9, 10, 11, 12],
+                  subject.totalChapters,
+                )),
+              ),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+
+                final percentages = snapshot.data!;
+                final averagePercentage = percentages.isEmpty 
+                    ? 0.0 
+                    : percentages.reduce((a, b) => a + b) / percentages.length;
+
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: 200,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          PieChart(
+                            PieChartData(
+                              sectionsSpace: 0,
+                              centerSpaceRadius: 60,
+                              sections: [
+                                PieChartSectionData(
+                                  value: averagePercentage,
+                                  color: _getColorForPercentage(averagePercentage),
+                                  radius: 50,
+                                  showTitle: false,
+                                ),
+                                if (averagePercentage < 100)
+                                  PieChartSectionData(
+                                    value: 100 - averagePercentage,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .primary
+                                        .withOpacity(0.1),
+                                    radius: 50,
+                                    showTitle: false,
+                                  ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                '${averagePercentage.toStringAsFixed(1)}%',
+                                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: _getColorForPercentage(averagePercentage),
+                                ),
+                              ),
+                              Text(
+                                'Complete',
+                                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                  borderData: FlBorderData(show: false),
-                  lineBarsData: [
-                    LineChartBarData(
-                      spots: [
-                        const FlSpot(0, 40),
-                        const FlSpot(1, 55),
-                        const FlSpot(2, 45),
-                        const FlSpot(3, 70),
-                        const FlSpot(4, 65),
-                        const FlSpot(5, 85),
-                        const FlSpot(6, 75),
-                      ],
-                      isCurved: true,
-                      color: Colors.blue,
-                      barWidth: 3,
-                      isStrokeCapRound: true,
-                      dotData: FlDotData(show: true),
-                      belowBarData: BarAreaData(
-                        show: true,
-                        color: Colors.blue.withOpacity(0.1),
+                    const SizedBox(height: 16),
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: _getColorForPercentage(averagePercentage).withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        _getMessageForPercentage(averagePercentage),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: _getColorForPercentage(averagePercentage),
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],
-                  minX: 0,
-                  maxX: 6,
-                  minY: 0,
-                  maxY: 100,
-                ),
-              ),
+                );
+              },
             ),
           ],
         ),
@@ -224,13 +254,44 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
+  Color _getColorForPercentage(double percentage) {
+    if (percentage >= 80) return Colors.green;
+    if (percentage >= 60) return Colors.blue;
+    if (percentage >= 40) return Colors.orange;
+    return Colors.red;
+  }
+
+  String _getMessageForPercentage(double percentage) {
+    if (percentage >= 80) {
+      return 'Excellent progress! You\'re well-prepared for the exam. Focus on practice tests and reviewing challenging topics to maintain your strong performance.';
+    } else if (percentage >= 60) {
+      return 'Good progress! You\'re on the right track. Consider dedicating more time to subjects with lower completion rates to boost your overall readiness.';
+    } else if (percentage >= 40) {
+      return 'You\'re making progress, but there\'s room for improvement. Try to increase your study hours and focus on completing more chapters across all subjects.';
+    } else {
+      return 'Your preparation needs attention. Create a structured study plan and aim to complete more chapters each week. Don\'t hesitate to seek help with challenging topics.';
+    }
+  }
+
   Widget _buildSubjectProgress() {
-    final subjects = [
-      {'name': 'Math', 'progress': 0.75},
-      {'name': 'Physics', 'progress': 0.60},
-      {'name': 'Chemistry', 'progress': 0.85},
-      {'name': 'Biology', 'progress': 0.45},
-    ];
+    final subjects = StreamUtils.selectedStream == StreamType.naturalScience
+        ? naturalScienceSubjects
+        : socialScienceSubjects;
+
+    if (subjects.isEmpty) {
+      return const Card(
+        elevation: 4,
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Center(
+            child: Text(
+              'Please select your stream in the Profile section',
+              style: TextStyle(fontSize: 16),
+            ),
+          ),
+        ),
+      );
+    }
 
     return Card(
       elevation: 4,
@@ -247,32 +308,102 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            ...subjects.map((subject) => Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: Text(subject['name'] as String),
-                        ),
-                        Expanded(
-                          flex: 8,
-                          child: LinearProgressIndicator(
-                            value: subject['progress'] as double,
-                            backgroundColor: Colors.grey.shade200,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              Colors.blue.shade400,
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1.5,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+              ),
+              itemCount: subjects.length,
+              itemBuilder: (context, index) {
+                final subject = subjects[index];
+                return Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        subject.name,
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
-                          ),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 8),
+                      FutureBuilder<double>(
+                        future: ChapterCompletionManager.getSubjectCompletionPercentage(
+                          subject.name,
+                          [9, 10, 11, 12],
+                          subject.totalChapters,
                         ),
-                        const SizedBox(width: 8),
-                        Text(
-                            '${((subject['progress'] as double) * 100).toInt()}%'),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                  ],
-                )),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return const SizedBox(
+                              width: 40,
+                              height: 40,
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+
+                          final percentage = snapshot.data!;
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 40,
+                                height: 40,
+                                child: PieChart(
+                                  PieChartData(
+                                    sectionsSpace: 0,
+                                    centerSpaceRadius: 0,
+                                    sections: [
+                                      PieChartSectionData(
+                                        value: percentage,
+                                        color: Theme.of(context).colorScheme.primary,
+                                        radius: 20,
+                                        showTitle: false,
+                                      ),
+                                      if (percentage < 100)
+                                        PieChartSectionData(
+                                          value: 100 - percentage,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary
+                                              .withOpacity(0.2),
+                                          radius: 20,
+                                          showTitle: false,
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                '${percentage.toStringAsFixed(1)}%',
+                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                      color: Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

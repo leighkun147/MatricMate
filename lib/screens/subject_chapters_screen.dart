@@ -6,6 +6,7 @@ import '../models/question.dart';
 import '../models/chapter_questions.dart';
 import '../screens/practice_mode_screen.dart';
 import '../screens/mock_exam_screen.dart';
+import '../utils/chapter_completion_manager.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -25,17 +26,66 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final List<int> grades = [9, 10, 11, 12];
+  Map<int, List<Chapter>> _chaptersWithCompletionStatus = {};
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: grades.length, vsync: this);
+    _loadCompletionStatus();
   }
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
+  Future<void> _loadCompletionStatus() async {
+    final updatedChapters = Map<int, List<Chapter>>.from(widget.subject.chapters);
+    
+    for (var grade in grades) {
+      if (widget.subject.chapters.containsKey(grade)) {
+        final statusMap = await ChapterCompletionManager.getCompletionStatusForSubject(
+          widget.subject.name,
+          grade,
+        );
+        
+        updatedChapters[grade] = widget.subject.chapters[grade]!.map((chapter) {
+          return Chapter(
+            title: chapter.title,
+            grade: chapter.grade,
+            isCompleted: statusMap[chapter.title] ?? false,
+          );
+        }).toList();
+      }
+    }
+    
+    if (mounted) {
+      setState(() {
+        _chaptersWithCompletionStatus = updatedChapters;
+      });
+    }
+  }
+
+  Future<void> _updateChapterCompletion(Chapter chapter, bool isCompleted) async {
+    await ChapterCompletionManager.setChapterCompletion(
+      widget.subject.name,
+      chapter.title,
+      chapter.grade,
+      isCompleted,
+    );
+    
+    if (mounted) {
+      setState(() {
+        final gradeChapters = _chaptersWithCompletionStatus[chapter.grade]!;
+        final chapterIndex = gradeChapters.indexWhere((c) => c.title == chapter.title);
+        
+        gradeChapters[chapterIndex] = Chapter(
+          title: chapter.title,
+          grade: chapter.grade,
+          isCompleted: isCompleted,
+        );
+      });
+    }
+    
+    if (isCompleted) {
+      _showCompletionDialog();
+    }
   }
 
   void _showCompletionDialog() {
@@ -126,7 +176,7 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                 child: TabBarView(
                   controller: _tabController,
                   children: grades.map((grade) {
-                    final chapters = widget.subject.chapters[grade] ?? [];
+                    final chapters = _chaptersWithCompletionStatus[grade] ?? [];
                     return _buildChapterList(chapters);
                   }).toList(),
                 ),
@@ -184,16 +234,7 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                   trailing: Checkbox(
                     value: chapter.isCompleted,
                     onChanged: (bool? value) {
-                      setState(() {
-                        chapters[index] = Chapter(
-                          title: chapter.title,
-                          grade: chapter.grade,
-                          isCompleted: value ?? false,
-                        );
-                      });
-                      if (value ?? false) {
-                        _showCompletionDialog();
-                      }
+                      _updateChapterCompletion(chapter, value ?? false);
                     },
                     activeColor: Theme.of(context).colorScheme.primary,
                   ),
