@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/exam.dart';
 import '../models/question.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../services/coin_service.dart';
 
 class PracticeModeScreen extends StatefulWidget {
   final Exam exam;
@@ -134,11 +137,54 @@ class _PracticeModeScreenState extends State<PracticeModeScreen> {
                 : null),
         onTap: question.isAnswered
             ? null
-            : () {
+            : () async {
                 setState(() {
                   question.selectedOptionIndex = optionIndex;
                   question.isAnswered = true;
                 });
+
+                // If answer is correct, increment coins
+                if (optionIndex == question.correctOptionIndex) {
+                  try {
+                    // Add coins
+                    await CoinService.addCoins(2);
+                    
+                    // Record the transaction
+                    await CoinService.recordTransaction(
+                      amount: 2,
+                      type: 'earned',
+                      description: 'Correct answer in practice mode',
+                    );
+                    
+                    // Show success message at the top
+                    if (mounted) {
+                      ScaffoldMessenger.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(
+                          SnackBar(
+                            content: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.stars, color: Colors.amber[700]),
+                                const SizedBox(width: 8),
+                                const Text('+ 2 coins earned!'),
+                              ],
+                            ),
+                            duration: const Duration(milliseconds: 500),
+                            behavior: SnackBarBehavior.floating,
+                            backgroundColor: Colors.green[700],
+                            margin: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).size.height - 100,
+                              left: 16,
+                              right: 16,
+                            ),
+                          ),
+                        );
+                    }
+                  } catch (e) {
+                    print('Error managing coins: $e');
+                  }
+                }
               },
       ),
     );

@@ -8,6 +8,7 @@ import '../utils/device_id_manager.dart';
 import 'stream_selection_screen.dart';
 import 'payment_methods_screen.dart';
 import 'login_screen.dart';
+import '../services/coin_service.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -184,87 +185,94 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildStats() {
     return StreamBuilder<DocumentSnapshot>(
       stream: _userStream,
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
+      builder: (context, userSnapshot) {
+        if (userSnapshot.hasError) {
           return const Center(child: Text('Something went wrong'));
         }
 
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        }
+        return StreamBuilder<int>(
+          stream: CoinService.getCoinBalance(),
+          builder: (context, coinSnapshot) {
+            if (userSnapshot.connectionState == ConnectionState.waiting ||
+                coinSnapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
 
-        // Get only the username from Firestore for now
-        final data = snapshot.data?.data() as Map<String, dynamic>? ?? {};
+            final data = userSnapshot.data?.data() as Map<String, dynamic>? ?? {};
+            final coins = coinSnapshot.data ?? 0;
+            
+            // Get referral data from Firestore
+            final referralCount = (data['referral_count'] as num?)?.toInt() ?? 0;
+            final referralEarnings = (data['referral_earnings'] as num?)?.toInt() ?? 0;
+            
+            // These are placeholder values that we'll implement later
+            const ranking = 0;
+            const activation = false;
 
-        // These are placeholder values that we'll implement later
-        const coins = 0;
-        const ranking = 0;
-        const activation = false;
-        const referralCount = 0;
-        const referralEarnings = 0;
-
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 4.0, bottom: 8.0),
-                child: Text(
-                  'Statistics',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Row(
+            return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: _buildStatItem(
-                      'Coins',
-                      coins,
-                      valueColor: Colors.amber[700],
+                  const Padding(
+                    padding: EdgeInsets.only(left: 4.0, bottom: 8.0),
+                    child: Text(
+                      'Statistics',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: _buildStatItem(
-                      'Ranking',
-                      '#$ranking',
-                      valueColor: Colors.blue[700],
-                    ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _buildStatItem(
+                          'Coins',
+                          coins,
+                          valueColor: Colors.amber[700],
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: _buildStatItem(
+                          'Ranking',
+                          '#$ranking',
+                          valueColor: Colors.blue[700],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _buildStatItem(
+                          'Activation',
+                          activation ? 'ON' : 'OFF',
+                          valueColor: activation ? Colors.green[700] : Colors.red[700],
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: _buildStatItem(
+                          'Referrals',
+                          referralCount,
+                          valueColor: Colors.purple[700],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  _buildStatItem(
+                    'Total Earnings',
+                    '$referralEarnings ETB',
+                    valueColor: Colors.green[700],
                   ),
                 ],
               ),
-              const SizedBox(height: 12),
-              Row(
-                children: [
-                  Expanded(
-                    child: _buildStatItem(
-                      'Activation',
-                      activation ? 'ON' : 'OFF',
-                      valueColor: activation ? Colors.green[700] : Colors.red[700],
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: _buildStatItem(
-                      'Referrals',
-                      referralCount,
-                      valueColor: Colors.purple[700],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 12),
-              _buildStatItem(
-                'Total Earnings',
-                '$referralEarnings ETB',
-                valueColor: Colors.green[700],
-              ),
-            ],
-          ),
+            );
+          },
         );
       },
     );
