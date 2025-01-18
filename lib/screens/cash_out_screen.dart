@@ -45,7 +45,8 @@ class _CashOutScreenState extends State<CashOutScreen> {
           .doc(currentUser.uid)
           .get();
 
-      final referralEarnings = (userDoc.data()?['referral_earnings'] as num?)?.toInt() ?? 0;
+      final referralEarnings =
+          (userDoc.data()?['referral_earnings'] as num?)?.toInt() ?? 0;
 
       if (referralEarnings < 800) {
         if (!mounted) return;
@@ -73,7 +74,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
           .collection('cash_out_request')
           .doc(currentUser.uid)
           .set({
-        'user': currentUser.uid,
+        'user_name': currentUser.uid,
         'amount': referralEarnings,
         'phone_number': _phoneController.text,
         'timestamp': FieldValue.serverTimestamp(),
@@ -81,7 +82,7 @@ class _CashOutScreenState extends State<CashOutScreen> {
       });
 
       if (!mounted) return;
-      
+
       // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -92,7 +93,6 @@ class _CashOutScreenState extends State<CashOutScreen> {
 
       // Navigate back
       Navigator.pop(context);
-
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
