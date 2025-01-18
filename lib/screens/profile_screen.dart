@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../providers/theme_provider.dart';
 import '../models/user_model.dart';
+import '../models/premium_level.dart';
 import '../utils/device_id_manager.dart';
+import '../services/device_verification_service.dart';
 import 'stream_selection_screen.dart';
 import 'payment_methods_screen.dart';
 import 'login_screen.dart';
@@ -264,10 +266,65 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                   const SizedBox(height: 12),
-                  _buildStatItem(
-                    'Total Earnings',
-                    '$referralEarnings ETB',
-                    valueColor: Colors.green[700],
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _buildStatItem(
+                          'Total Earnings',
+                          '$referralEarnings ETB',
+                          valueColor: Colors.green[700],
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: FutureBuilder<String>(
+                          future: DeviceIdManager.getDeviceId(),
+                          builder: (context, deviceIdSnapshot) {
+                            if (!deviceIdSnapshot.hasData) {
+                              return _buildStatItem(
+                                'Premium',
+                                'LOADING',
+                                valueColor: Colors.grey[700],
+                              );
+                            }
+
+                            return StreamBuilder<DocumentSnapshot>(
+                              stream: FirebaseFirestore.instance
+                                  .collection('approved_devices')
+                                  .doc(deviceIdSnapshot.data)
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                String premiumText = 'NONE';
+                                Color? premiumColor = Colors.grey[700];
+
+                                if (snapshot.hasData && snapshot.data!.exists) {
+                                  final premiumLevel = snapshot.data!.get('premium_level') as String? ?? 'none';
+                                  premiumText = premiumLevel.toUpperCase();
+                                  
+                                  switch (premiumLevel.toLowerCase()) {
+                                    case 'basic':
+                                      premiumColor = Colors.green[700];
+                                      break;
+                                    case 'pro':
+                                      premiumColor = Colors.blue[700];
+                                      break;
+                                    case 'elite':
+                                      premiumColor = Colors.purple[700];
+                                      break;
+                                  }
+                                }
+
+                                return _buildStatItem(
+                                  'Premium',
+                                  premiumText,
+                                  valueColor: premiumColor,
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
