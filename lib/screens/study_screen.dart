@@ -17,12 +17,27 @@ class StudyScreen extends StatefulWidget {
 }
 
 class _StudyScreenState extends State<StudyScreen> {
+  List<Subject> _subjects = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSubjects();
+  }
+
+  Future<void> _loadSubjects() async {
+    final selectedStream = await StreamUtils.selectedStream;
+    if (mounted) {
+      setState(() {
+        _subjects = selectedStream == StreamType.naturalScience
+            ? naturalScienceSubjects
+            : socialScienceSubjects;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final subjects = StreamUtils.selectedStream == StreamType.naturalScience
-        ? naturalScienceSubjects
-        : socialScienceSubjects;
-
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -37,49 +52,51 @@ class _StudyScreenState extends State<StudyScreen> {
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24.0),
-                  child: Text(
-                    'Study',
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.onBackground,
+          child: _subjects.isEmpty
+              ? const Center(child: CircularProgressIndicator())
+              : CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 24.0),
+                        child: Text(
+                          'Study',
+                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.onBackground,
+                              ),
                         ),
-                  ),
-                ),
-              ),
-              if (subjects.isEmpty)
-                const SliverFillRemaining(
-                  child: Center(
-                    child: Text(
-                      'Please select your stream in the Profile section',
-                      style: TextStyle(fontSize: 16),
+                      ),
                     ),
-                  ),
-                )
-              else
-                SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) => _buildSubjectCard(
-                      context,
-                      subjects[index],
-                      index,
-                    ),
-                    childCount: subjects.length,
-                  ),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.85,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                  ),
+                    if (_subjects.isEmpty)
+                      const SliverFillRemaining(
+                        child: Center(
+                          child: Text(
+                            'Please select your stream in the Profile section',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      )
+                    else
+                      SliverGrid(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) => _buildSubjectCard(
+                            context,
+                            _subjects[index],
+                            index,
+                          ),
+                          childCount: _subjects.length,
+                        ),
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.85,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+                        ),
+                      ),
+                    const SliverPadding(padding: EdgeInsets.only(bottom: 24)),
+                  ],
                 ),
-              const SliverPadding(padding: EdgeInsets.only(bottom: 24)),
-            ],
-          ),
         ),
       ),
     );

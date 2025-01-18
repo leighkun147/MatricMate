@@ -150,7 +150,7 @@ class _AptitudeScreenState extends State<AptitudeScreen> {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'Aptitude (SAT)',
+                      'Aptitude',
                       style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).colorScheme.onBackground,

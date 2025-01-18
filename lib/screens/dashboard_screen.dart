@@ -23,6 +23,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final DateTime examDate = DateTime(2024, 6, 1); // Example exam date
   late DateTime currentTime;
   late Timer timer;
+  List<String> _subjects = [];
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -33,6 +35,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
         currentTime = DateTime.now();
       });
     });
+    _loadSubjects();
+  }
+
+  Future<void> _loadSubjects() async {
+    final selectedStream = await StreamUtils.selectedStream;
+    if (mounted) {
+      setState(() {
+        _subjects = selectedStream == StreamType.naturalScience
+            ? [
+                'Mathematics',
+                'Physics',
+                'Chemistry',
+                'Biology',
+                'English',
+                'Aptitude',
+              ]
+            : [
+                'Mathematics',
+                'English',
+                'Geography',
+                'History',
+                'Economics',
+                'Aptitude',
+              ];
+        _isLoading = false;
+      });
+    }
   }
 
   @override
@@ -43,6 +72,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -139,32 +172,38 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildPerformanceCard() {
-    final subjects = StreamUtils.selectedStream == StreamType.naturalScience
-        ? naturalScienceSubjects
-        : socialScienceSubjects;
-
     return Card(
       elevation: 4,
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Overall Readiness',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            Text(
+              'Performance Overview',
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 16),
             FutureBuilder<List<double>>(
               future: Future.wait(
-                subjects.map((subject) => ChapterCompletionManager.getSubjectCompletionPercentage(
-                  subject.name,
-                  [9, 10, 11, 12],
-                  subject.totalChapters,
-                )),
+                _subjects.map((subject) {
+                  // Get the subject definition to get total chapters
+                  Subject? subjectDef;
+                  if (subject == 'English') {
+                    subjectDef = getEnglishSubject();
+                  } else if (subject == 'Aptitude') {
+                    subjectDef = getAptitudeSubject();
+                  } else {
+                    subjectDef = [...naturalScienceSubjects, ...socialScienceSubjects]
+                        .firstWhere((s) => s.name == subject);
+                  }
+                  
+                  return ChapterCompletionManager.getSubjectCompletionPercentage(
+                    subject,
+                    [9, 10, 11, 12],
+                    subjectDef.totalChapters,
+                  );
+                }),
               ),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
@@ -275,11 +314,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildSubjectProgress() {
-    final subjects = StreamUtils.selectedStream == StreamType.naturalScience
-        ? naturalScienceSubjects
-        : socialScienceSubjects;
-
-    if (subjects.isEmpty) {
+    if (_subjects.isEmpty) {
       return const Card(
         elevation: 4,
         child: Padding(
@@ -314,38 +349,49 @@ class _DashboardScreenState extends State<DashboardScreen> {
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 1.5,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
               ),
-              itemCount: subjects.length,
+              itemCount: _subjects.length,
               itemBuilder: (context, index) {
-                final subject = subjects[index];
+                final subject = _subjects[index];
+                // Get the subject definition to get total chapters
+                Subject subjectDef;
+                if (subject == 'English') {
+                  subjectDef = getEnglishSubject();
+                } else if (subject == 'Aptitude') {
+                  subjectDef = getAptitudeSubject();
+                } else {
+                  subjectDef = [...naturalScienceSubjects, ...socialScienceSubjects]
+                      .firstWhere((s) => s.name == subject);
+                }
+
                 return Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.outline.withOpacity(0.5),
+                    ),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        subject.name,
+                        subject,
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.primary,
                             ),
                         textAlign: TextAlign.center,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 8),
                       FutureBuilder<double>(
                         future: ChapterCompletionManager.getSubjectCompletionPercentage(
-                          subject.name,
+                          subject,
                           [9, 10, 11, 12],
-                          subject.totalChapters,
+                          subjectDef.totalChapters,
                         ),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {

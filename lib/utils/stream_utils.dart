@@ -6,53 +6,49 @@ enum StreamType {
 }
 
 class StreamUtils {
-  static StreamType? _selectedStream;
   static const String _streamKey = 'selected_stream';
 
-  static StreamType? get selectedStream => _selectedStream;
-
-  static set selectedStream(StreamType? value) {
-    _selectedStream = value;
-    _saveStream();
-  }
-
-  static Future<void> loadSavedStream() async {
+  static Future<StreamType?> get selectedStream async {
     final prefs = await SharedPreferences.getInstance();
     final savedStream = prefs.getString(_streamKey);
     if (savedStream != null) {
-      _selectedStream = StreamType.values.firstWhere(
+      return StreamType.values.firstWhere(
         (type) => type.toString() == savedStream,
         orElse: () => StreamType.naturalScience,
       );
     }
+    return null;
   }
 
-  static Future<void> _saveStream() async {
+  static Future<void> setSelectedStream(StreamType? value) async {
     final prefs = await SharedPreferences.getInstance();
-    if (_selectedStream != null) {
-      await prefs.setString(_streamKey, _selectedStream.toString());
+    if (value != null) {
+      await prefs.setString(_streamKey, value.toString());
+    } else {
+      await prefs.remove(_streamKey);
     }
   }
 
-  static List<String> getSubjects() {
-    switch (_selectedStream) {
+  static Future<List<String>> getSubjects() async {
+    final stream = await selectedStream;
+    switch (stream) {
       case StreamType.naturalScience:
         return [
-          'Math (Natural Science)',
+          'Mathematics',
           'Physics',
           'Chemistry',
           'Biology',
           'English',
-          'Aptitude(SAT)',
+          'Aptitude',
         ];
       case StreamType.socialScience:
         return [
-          'Math (Social Science)',
+          'Mathematics',
           'English',
-          'Aptitude(SAT)',
-          'Economics',
           'Geography',
           'History',
+          'Economics',
+          'Aptitude',
         ];
       default:
         return [];

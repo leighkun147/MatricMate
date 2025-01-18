@@ -9,6 +9,8 @@ class StreamSelectionScreen extends StatefulWidget {
 }
 
 class _StreamSelectionScreenState extends State<StreamSelectionScreen> {
+  StreamType? _currentStream;
+
   @override
   void initState() {
     super.initState();
@@ -16,8 +18,12 @@ class _StreamSelectionScreenState extends State<StreamSelectionScreen> {
   }
 
   Future<void> _loadSavedStream() async {
-    await StreamUtils.loadSavedStream();
-    setState(() {});
+    final savedStream = await StreamUtils.selectedStream;
+    if (mounted) {
+      setState(() {
+        _currentStream = savedStream;
+      });
+    }
   }
 
   @override
@@ -48,7 +54,7 @@ class _StreamSelectionScreenState extends State<StreamSelectionScreen> {
               StreamType.socialScience,
             ),
             const Spacer(),
-            if (StreamUtils.selectedStream != null)
+            if (_currentStream != null)
               ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
@@ -66,7 +72,7 @@ class _StreamSelectionScreenState extends State<StreamSelectionScreen> {
     String description,
     StreamType stream,
   ) {
-    final isSelected = StreamUtils.selectedStream == stream;
+    final isSelected = _currentStream == stream;
 
     return Card(
       elevation: isSelected ? 4 : 1,
@@ -80,10 +86,13 @@ class _StreamSelectionScreenState extends State<StreamSelectionScreen> {
         ),
       ),
       child: InkWell(
-        onTap: () {
-          setState(() {
-            StreamUtils.selectedStream = stream;
-          });
+        onTap: () async {
+          await StreamUtils.setSelectedStream(stream);
+          if (mounted) {
+            setState(() {
+              _currentStream = stream;
+            });
+          }
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
@@ -100,20 +109,17 @@ class _StreamSelectionScreenState extends State<StreamSelectionScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Spacer(),
                   if (isSelected)
-                    Icon(
-                      Icons.check_circle,
-                      color: Theme.of(context).colorScheme.primary,
+                    const Padding(
+                      padding: EdgeInsets.only(left: 8.0),
+                      child: Icon(Icons.check_circle, color: Colors.green),
                     ),
                 ],
               ),
               const SizedBox(height: 8),
               Text(
                 description,
-                style: TextStyle(
-                  color: Colors.grey.shade600,
-                ),
+                style: const TextStyle(fontSize: 14),
               ),
             ],
           ),

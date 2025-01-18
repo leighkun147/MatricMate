@@ -16,33 +16,52 @@ class StudyHubScreen extends StatefulWidget {
 }
 
 class _StudyHubScreenState extends State<StudyHubScreen> {
+  List<String> _subjects = [];
+
   @override
-  Widget build(BuildContext context) {
-    // Get subjects, default to social science subjects if empty
-    List<String> subjects = StreamUtils.getSubjects();
-    if (subjects.isEmpty) {
-      subjects = [
+  void initState() {
+    super.initState();
+    _loadSubjects();
+  }
+
+  Future<void> _loadSubjects() async {
+    final subjects = await StreamUtils.getSubjects();
+    if (mounted) {
+      setState(() {
+        _subjects = subjects.isEmpty ? [
           'Math (Social Science)',
           'English',
           'Aptitude(SAT)',
           'Economics',
           'Geography',
           'History',
-        ];
+        ] : subjects;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_subjects.isEmpty) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
     }
 
     return DefaultTabController(
-      length: subjects.length,
+      length: _subjects.length,
       child: Scaffold(
         appBar: AppBar(
           toolbarHeight: 0,
           bottom: TabBar(
             isScrollable: true,
-            tabs: subjects.map((subject) => Tab(text: subject)).toList(),
+            tabs: _subjects.map((subject) => Tab(text: subject)).toList(),
           ),
         ),
         body: TabBarView(
-          children: subjects
+          children: _subjects
               .map((subject) => _SubjectExamList(subject: subject))
               .toList(),
         ),

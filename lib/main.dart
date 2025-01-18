@@ -11,6 +11,7 @@ import 'screens/dashboard_screen.dart';
 import 'screens/leaderboard_screen.dart';
 import 'screens/study_screen.dart';
 import 'screens/study_hub_screen.dart';
+import 'utils/stream_utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
