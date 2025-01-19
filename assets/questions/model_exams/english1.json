@@ -1,0 +1,78 @@
+{
+    "title": "english model exam 1",
+    "duration": 45,
+    "numberOfQuestions": 2,
+    "questions":[
+    {
+      "id": "q1",
+      "text": "What is the union of sets A = {1, 2, 3} and B = {3, 4, 5}?",
+      "options": ["{1, 2, 3, 4, 5}", "{3}", "{1, 2, 3}", "{4, 5}"],
+      "correctOptionIndex": 0,
+      "explanation": "The union of two sets includes all the elements from both sets without duplicates."
+    },
+    {
+      "id": "q2",
+      "text": "What is the intersection of sets A = {2, 4, 6} and B = {4, 5, 6}?",
+      "options": ["{4, 6}", "{2, 4, 6}", "{4, 5, 6}", "{}"],
+      "correctOptionIndex": 0,
+      "explanation": "The intersection of two sets contains only the elements that are common to both sets."
+    },
+    {
+      "id": "q3",
+      "text": "If U = {1, 2, 3, 4, 5, 6} is the universal set and A = {2, 4}, what is the complement of A?",
+      "options": ["{1, 3, 5, 6}", "{2, 4}", "{1, 2, 3, 5, 6}", "{1, 3, 4, 5}"],
+      "correctOptionIndex": 0,
+      "explanation": "The complement of set A includes all elements in the universal set that are not in A."
+    },
+    {
+      "id": "q4",
+      "text": "If A = {1, 2, 3} and B = {3, 4, 5}, what is A ∩ B?",
+      "options": ["{3}", "{1, 2, 3}", "{3, 4, 5}", "{1, 2}"],
+      "correctOptionIndex": 0,
+      "explanation": "The intersection of A and B includes only the common element, which is 3."
+    },
+    {
+      "id": "q5",
+      "text": "What is the number of subsets of a set with 3 elements?",
+      "options": ["8", "6", "4", "3"],
+      "correctOptionIndex": 0,
+      "explanation": "The number of subsets of a set is given by 2^n, where n is the number of elements in the set."
+    },
+    {
+      "id": "q6",
+      "text": "If A = {1, 2} and B = {2, 3}, what is A - B?",
+      "options": ["{1}", "{2}", "{3}", "{1, 2, 3}"],
+      "correctOptionIndex": 0,
+      "explanation": "A - B represents elements in A that are not in B, which is {1}."
+    },
+    {
+      "id": "q7",
+      "text": "Which set operation results in elements belonging to either A or B but not both?",
+      "options": ["Symmetric Difference", "Union", "Intersection", "Complement"],
+      "correctOptionIndex": 0,
+      "explanation": "The symmetric difference of two sets contains elements that are in either of the sets but not in their intersection."
+    },
+    {
+      "id": "q8",
+      "text": "If A = {1, 3, 5} and B = {2, 4, 6}, what is A ∪ B?",
+      "options": ["{1, 2, 3, 4, 5, 6}", "{}", "{1, 3, 5}", "{2, 4, 6}"],
+      "correctOptionIndex": 0,
+      "explanation": "The union of A and B combines all the elements from both sets without duplicates."
+    },
+    {
+      "id": "q9",
+      "text": "If A ⊆ B and B ⊆ A, what can be concluded about A and B?",
+      "options": ["A = B", "A ∩ B = {}", "A ⊂ B", "A and B are disjoint"],
+      "correctOptionIndex": 0,
+      "explanation": "If A is a subset of B and B is a subset of A, then A and B must be equal."
+    },
+    {
+      "id": "q10",
+      "text": "If A = {x | x is a prime number less than 10}, what is A?",
+      "options": ["{2, 3, 5, 7}", "{2, 3, 5, 7, 9}", "{1, 2, 3, 5, 7}", "{2, 3}"],
+      "correctOptionIndex": 0,
+      "explanation": "The prime numbers less than 10 are 2, 3, 5, and 7."
+    }
+  ]
+  }
+  

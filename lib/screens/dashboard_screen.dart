@@ -11,6 +11,7 @@ import '../utils/stream_utils.dart';
 import '../models/subject.dart';
 import '../utils/chapter_completion_manager.dart';
 import 'cash_out_screen.dart';
+import 'model_exams_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -486,6 +487,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
               context,
               MaterialPageRoute(
                 builder: (context) => const StudyPlanScreen(),
+              ),
+            );
+          },
+        ),
+        _buildFeatureCard(
+          'Model Exams',
+          Icons.download,
+          () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ModelExamsScreen(),
               ),
             );
           },
