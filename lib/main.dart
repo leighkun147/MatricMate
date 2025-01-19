@@ -21,41 +21,30 @@ void main() async {
   );
   runApp(
     ChangeNotifierProvider(
-      create: (_) => ThemeProvider(prefs),
-      child: const MyApp(),
+      create: (context) => ThemeProvider(prefs),
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            title: 'MatricMate',
+            debugShowCheckedModeBanner: false,
+            theme: themeProvider.theme,
+            home: StreamBuilder<User?>(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasData) {
+                  return const MainScreen();
+                }
+                return const SignupScreen();
+              },
+            ),
+          );
+        },
+      ),
     ),
   );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<ThemeProvider>(
-      builder: (context, themeProvider, child) {
-        return MaterialApp(
-          title: 'Grade 12 Exam Prep',
-          debugShowCheckedModeBanner: false,
-          theme: themeProvider.lightTheme,
-          darkTheme: themeProvider.darkTheme,
-          themeMode: themeProvider.themeMode,
-          home: StreamBuilder<User?>(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              if (snapshot.hasData) {
-                return const MainScreen();
-              }
-              return const SignupScreen();
-            },
-          ),
-        );
-      },
-    );
-  }
 }
 
 class MainScreen extends StatefulWidget {
