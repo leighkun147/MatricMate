@@ -4,6 +4,8 @@ import '../models/question.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../services/coin_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class PracticeModeScreen extends StatefulWidget {
   final Exam exam;
@@ -22,23 +24,150 @@ class _PracticeModeScreenState extends State<PracticeModeScreen> {
   late List<Question> questions;
   bool isExplanationVisible = false;
   final TextEditingController _reportController = TextEditingController();
+  bool _isLoading = true;
+  late SharedPreferences _prefs;
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController();
     questions = widget.exam.questions;
+    _initializePrefs();
+  }
+
+  Future<void> _initializePrefs() async {
+    _prefs = await SharedPreferences.getInstance();
+    await _loadProgress();
   }
 
   @override
   void dispose() {
     _pageController.dispose();
     _reportController.dispose();
+    _saveProgress();
     super.dispose();
+  }
+
+  String get _progressKey => 'exam_progress_${widget.exam.id}';
+
+  Future<void> _loadProgress() async {
+    try {
+      final String? savedData = _prefs.getString(_progressKey);
+      
+      if (savedData != null) {
+        final data = json.decode(savedData) as Map<String, dynamic>;
+        final savedAnswers = List<Map<String, dynamic>>.from(data['answers']);
+        final lastQuestionIndex = data['lastQuestionIndex'] as int;
+
+        if (savedAnswers.isNotEmpty) {
+          if (mounted) {
+            final shouldResume = await showDialog<bool>(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) => AlertDialog(
+                title: const Text('Resume Progress?'),
+                content: Text(
+                  'You have a saved progress in this practice session. Would you like to resume from where you left off?',
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () async {
+                      // Clear saved progress if starting over
+                      await _prefs.remove(_progressKey);
+                      
+                      // Reset all questions to initial state
+                      setState(() {
+                        for (var question in questions) {
+                          question.selectedOptionIndex = -1;
+                          question.isAnswered = false;
+                        }
+                        // Reset page controller to start
+                        _pageController = PageController(initialPage: 0);
+                      });
+                      
+                      if (mounted) {
+                        Navigator.pop(context, false);
+                      }
+                    },
+                    child: const Text('Start Over'),
+                  ),
+                  FilledButton(
+                    onPressed: () => Navigator.pop(context, true),
+                    child: const Text('Resume'),
+                  ),
+                ],
+              ),
+            );
+
+            if (shouldResume == true) {
+              // Restore progress
+              for (int i = 0; i < savedAnswers.length; i++) {
+                final answer = savedAnswers[i];
+                if (i < questions.length) {
+                  questions[i].selectedOptionIndex = answer['selectedOption'];
+                  questions[i].isAnswered = answer['isAnswered'];
+                }
+              }
+              setState(() {
+                _pageController = PageController(initialPage: lastQuestionIndex);
+              });
+            }
+          }
+        }
+      }
+    } catch (e) {
+      print('Error loading progress: $e');
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
+
+  Future<void> _saveProgress() async {
+    try {
+      final currentIndex = _pageController.hasClients 
+          ? _pageController.page?.toInt() ?? 0 
+          : 0;
+
+      // Only save if there's actual progress
+      if (questions.every((q) => !q.isAnswered) && currentIndex == 0) {
+        return;
+      }
+
+      // Prepare answers data
+      final answers = questions.map((q) => {
+        'selectedOption': q.selectedOptionIndex,
+        'isAnswered': q.isAnswered,
+      }).toList();
+
+      final progressData = {
+        'lastQuestionIndex': currentIndex,
+        'answers': answers,
+        'totalQuestions': questions.length,
+        'answeredQuestions': questions.where((q) => q.isAnswered).length,
+        'lastUpdated': DateTime.now().toIso8601String(),
+      };
+
+      await _prefs.setString(_progressKey, json.encode(progressData));
+    } catch (e) {
+      print('Error saving progress: $e');
+    }
+  }
+
+  // Save progress periodically
+  Future<void> _onPageChanged(int index) async {
+    await _saveProgress();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_isLoading) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.exam.title),
@@ -57,6 +186,7 @@ class _PracticeModeScreenState extends State<PracticeModeScreen> {
               controller: _pageController,
               itemCount: questions.length,
               physics: const NeverScrollableScrollPhysics(),
+              onPageChanged: _onPageChanged,
               itemBuilder: (context, index) {
                 return _buildQuestionCard(questions[index], index);
               },
