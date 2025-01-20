@@ -21,6 +21,7 @@ class _PracticeModeScreenState extends State<PracticeModeScreen> {
   late PageController _pageController;
   late List<Question> questions;
   bool isExplanationVisible = false;
+  final TextEditingController _reportController = TextEditingController();
 
   @override
   void initState() {
@@ -32,6 +33,7 @@ class _PracticeModeScreenState extends State<PracticeModeScreen> {
   @override
   void dispose() {
     _pageController.dispose();
+    _reportController.dispose();
     super.dispose();
   }
 
@@ -100,6 +102,8 @@ class _PracticeModeScreenState extends State<PracticeModeScreen> {
             const SizedBox(height: 16),
             _buildExplanationSection(question),
           ],
+          const SizedBox(height: 24),
+          _buildReportButton(question, index),
         ],
       ),
     );
@@ -232,6 +236,101 @@ class _PracticeModeScreenState extends State<PracticeModeScreen> {
               ),
               child: Text(question.explanation),
             ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReportButton(Question question, int index) {
+    return Center(
+      child: TextButton.icon(
+        onPressed: () => _showReportDialog(question, index),
+        icon: const Icon(Icons.flag_outlined),
+        label: const Text('Report a Problem'),
+        style: TextButton.styleFrom(
+          foregroundColor: Colors.grey[700],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _showReportDialog(Question question, int index) async {
+    _reportController.clear();
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser == null) return;
+
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Report a Problem'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Question ${index + 1}',
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontSize: 14,
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              controller: _reportController,
+              maxLines: 4,
+              decoration: const InputDecoration(
+                hintText: 'Describe the problem with this question...',
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.all(12),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () async {
+              if (_reportController.text.trim().isEmpty) return;
+
+              try {
+                await FirebaseFirestore.instance
+                    .collection('question_reports')
+                    .add({
+                  'userId': currentUser.uid,
+                  'examId': widget.exam.id,
+                  'questionIndex': index,
+                  'questionText': question.text,
+                  'report': _reportController.text.trim(),
+                  'timestamp': FieldValue.serverTimestamp(),
+                });
+
+                if (mounted) {
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Thank you for your feedback!'),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                }
+              } catch (e) {
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Failed to submit report. Please try again.'),
+                      behavior: SnackBarBehavior.floating,
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+                print('Error submitting report: $e');
+              }
+            },
+            child: const Text('Submit'),
+          ),
         ],
       ),
     );
