@@ -37,8 +37,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Grade 12 Exam Prep',
           debugShowCheckedModeBanner: false,
-          theme: themeProvider.lightTheme,
-          darkTheme: themeProvider.darkTheme,
+          theme: themeProvider.theme,
           themeMode: themeProvider.themeMode,
           home: StreamBuilder<User?>(
             stream: FirebaseAuth.instance.authStateChanges(),

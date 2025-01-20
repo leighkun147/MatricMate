@@ -11,6 +11,7 @@ import 'stream_selection_screen.dart';
 import 'payment_methods_screen.dart';
 import 'login_screen.dart';
 import '../services/coin_service.dart';
+import 'theme_selection_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -497,6 +498,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => const StreamSelectionScreen(),
+                    ),
+                  );
+                },
+              ),
+              const Divider(height: 1),
+              ListTile(
+                leading: const Icon(Icons.color_lens),
+                title: const Text('Customize Theme'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ThemeSelectionScreen(),
                     ),
                   );
                 },
