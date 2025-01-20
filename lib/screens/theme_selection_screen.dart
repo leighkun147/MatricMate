@@ -48,80 +48,138 @@ class _ColorSchemeSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(
       builder: (context, themeProvider, child) {
-        final themes = ThemeProvider.colorSchemes.keys.toList()
-          ..sort((a, b) => a.compareTo(b));
+        // Group themes by base name (without Light/Dark suffix)
+        final themeGroups = <String, List<String>>{};
+        ThemeProvider.colorSchemes.keys.forEach((theme) {
+          final baseName = theme
+              .replaceAll('Light', '')
+              .replaceAll('Dark', '')
+              .trim();
+          themeGroups.putIfAbsent(baseName, () => []);
+          themeGroups[baseName]!.add(theme);
+        });
+
+        // Sort base names alphabetically
+        final baseThemes = themeGroups.keys.toList()..sort();
         
-        return GridView.builder(
+        return ListView.builder(
           padding: const EdgeInsets.all(16),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1.2,
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-          ),
-          itemCount: themes.length,
-          itemBuilder: (context, index) {
-            final themeName = themes[index];
-            final colorScheme = ThemeProvider.colorSchemes[themeName]!;
-            final isSelected = themeName == themeProvider.currentTheme;
-            final isDark = themeName.contains('Dark');
-            
-            return GestureDetector(
-              onTap: () => themeProvider.setTheme(themeName),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                decoration: BoxDecoration(
-                  color: colorScheme.surface,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(
-                    color: isSelected ? colorScheme.primary : Colors.transparent,
-                    width: 2,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: colorScheme.primary.withOpacity(0.2),
-                      blurRadius: isSelected ? 8 : 0,
-                      spreadRadius: isSelected ? 2 : 0,
-                    ),
-                  ],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 60,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: colorScheme.primary,
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: isDark ? Colors.white30 : Colors.black12,
+          itemCount: baseThemes.length,
+          itemBuilder: (context, baseIndex) {
+            final baseName = baseThemes[baseIndex];
+            final variants = themeGroups[baseName]!;
+
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, bottom: 12),
+                  child: Text(
+                    baseName,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
                         ),
-                      ),
-                      child: isSelected
-                          ? Icon(Icons.check,
-                              color: colorScheme.onPrimary, size: 30)
-                          : null,
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      themeName.replaceAll('Light', '').replaceAll('Dark', '').trim(),
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: isDark ? Colors.white : Colors.black87,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      isDark ? 'Dark Mode' : 'Light Mode',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: isDark ? Colors.white70 : Colors.black54,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                SizedBox(
+                  height: 160,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: variants.length,
+                    itemBuilder: (context, variantIndex) {
+                      final themeName = variants[variantIndex];
+                      final colorScheme = ThemeProvider.colorSchemes[themeName]!;
+                      final isSelected = themeName == themeProvider.currentTheme;
+                      final isDark = themeName.contains('Dark');
+
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 16),
+                        child: GestureDetector(
+                          onTap: () => themeProvider.setTheme(themeName),
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            width: 140,
+                            decoration: BoxDecoration(
+                              color: colorScheme.surface,
+                              borderRadius: BorderRadius.circular(16),
+                              border: Border.all(
+                                color: isSelected ? colorScheme.primary : Colors.transparent,
+                                width: 2,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: colorScheme.primary.withOpacity(0.2),
+                                  blurRadius: isSelected ? 8 : 0,
+                                  spreadRadius: isSelected ? 2 : 0,
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 60,
+                                  height: 60,
+                                  decoration: BoxDecoration(
+                                    color: colorScheme.primary,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: isDark ? Colors.white30 : Colors.black12,
+                                    ),
+                                  ),
+                                  child: isSelected
+                                      ? Icon(Icons.check,
+                                          color: colorScheme.onPrimary, size: 30)
+                                      : null,
+                                ),
+                                const SizedBox(height: 12),
+                                Text(
+                                  isDark ? 'Dark Mode' : 'Light Mode',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: isDark ? Colors.white : Colors.black87,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 4,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: colorScheme.primary.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        isDark ? Icons.dark_mode : Icons.light_mode,
+                                        size: 14,
+                                        color: colorScheme.primary,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        isDark ? 'Dark' : 'Light',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: colorScheme.primary,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(height: 24),
+              ],
             );
           },
         );
