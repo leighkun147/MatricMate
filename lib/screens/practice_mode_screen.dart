@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../services/coin_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import '../widgets/constants_section.dart';
 
 class PracticeModeScreen extends StatefulWidget {
   final Exam exam;
@@ -232,7 +233,9 @@ class _PracticeModeScreenState extends State<PracticeModeScreen> {
             const SizedBox(height: 16),
             _buildExplanationSection(question),
           ],
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
+          ConstantsSection(constants: widget.exam.constants),
+          const SizedBox(height: 16),
           _buildReportButton(question, index),
         ],
       ),

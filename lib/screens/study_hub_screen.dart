@@ -173,6 +173,7 @@ class _SubjectExamList extends StatelessWidget {
               year: examData.year,
               questions: examData.questions,
               duration: Duration(minutes: examData.duration),
+              constants: examData.constants,
             );
             
             return Card(

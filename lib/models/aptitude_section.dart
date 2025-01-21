@@ -2,11 +2,13 @@ class AptitudeSection {
   final String title;
   final String description;
   final List<String> topics;
+  final List<String>? constants;
 
   AptitudeSection({
     required this.title,
     required this.description,
     required this.topics,
+    this.constants,
   });
 }
 

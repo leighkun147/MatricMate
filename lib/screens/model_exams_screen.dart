@@ -170,6 +170,7 @@ class _SubjectModelExamList extends StatelessWidget {
               year: index + 1,  // Using index for model exams
               questions: examData.questions,
               duration: Duration(minutes: examData.duration),
+              constants: examData.constants,
             );
             
             return Card(

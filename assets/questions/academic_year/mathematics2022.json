@@ -1,6 +1,7 @@
 {
     "title": "mathematics2022",
     "duration": 45,
+    "constants": {"gravity": 9.81, "pi": 3.14159},
     "numberOfQuestions": 2,
     "questions":[
     {

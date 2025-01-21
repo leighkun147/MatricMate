@@ -1,6 +1,7 @@
 {
     "title": "SAT Mathematics Quiz 2023",
     "duration": 60,
+    "constants": {"gravity": 9.81, "pi": 3.14159},
     "numberOfQuestions": 14,
     "questions": [
       {

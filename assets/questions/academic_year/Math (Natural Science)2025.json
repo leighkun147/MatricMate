@@ -1,6 +1,7 @@
 {
     "title": "Mathematics (Natural Science) Quiz 2025",
     "duration": 180,
+    "constants": {"gravity": 9.81, "pi": 3.14159},
     "numberOfQuestions": 65,
     "questions": [
         {

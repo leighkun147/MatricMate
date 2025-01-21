@@ -276,6 +276,7 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                                       questions: chapterData.questions,
                                       duration: Duration(
                                           minutes: chapterData.duration),
+                                      constants: chapterData.constants,
                                     ),
                                   );
                                 },
@@ -327,6 +328,7 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                                       questions: chapterData.questions,
                                       duration: Duration(
                                           minutes: chapterData.duration),
+                                      constants: chapterData.constants,
                                     ),
                                   );
                                 },

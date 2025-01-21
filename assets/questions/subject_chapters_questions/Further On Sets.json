@@ -1,6 +1,7 @@
 {
   "title": "Further On Sets",
   "duration": 45,
+  "constants": {"gravity": 9.81, "pi": 3.14159},
   "numberOfQuestions": 10,
   "questions": [
     {

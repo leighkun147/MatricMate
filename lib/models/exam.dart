@@ -9,7 +9,7 @@ class Exam {
   final List<Question> questions;
   final double? lastScore;
   final int? questionsAttempted;
-
+  final Map<String, dynamic>? constants;
   Exam({
     required this.id,
     required this.title,
@@ -17,6 +17,7 @@ class Exam {
     required this.year,
     required this.duration,
     required this.questions,
+    this.constants,
     this.lastScore,
     this.questionsAttempted,
   });

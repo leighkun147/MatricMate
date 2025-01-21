@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import '../models/exam.dart';
 import '../models/question.dart';
+import '../widgets/constants_section.dart';
 
 class MockExamScreen extends StatefulWidget {
   final Exam exam;
@@ -195,6 +196,8 @@ class _MockExamScreenState extends State<MockExamScreen> {
               question.options[optionIndex],
             ),
           ),
+          const SizedBox(height: 16),
+          ConstantsSection(constants: widget.exam.constants),
         ],
       ),
     );
