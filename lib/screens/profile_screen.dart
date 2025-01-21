@@ -87,6 +87,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  Future<void> _showLogoutConfirmationDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Confirm Logout'),
+          content: const Text('Are you sure you want to log out?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text(
+                'Logout',
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _signOut();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<DocumentSnapshot>(
@@ -109,7 +140,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 _buildPaymentMethodsCard(),
                 const SizedBox(height: 24),
                 _buildSettings(context),
-                const SizedBox(height: 16),
+                const Divider(height: 32),
                 _buildLogoutButton(),
                 const SizedBox(height: 16),
               ],
@@ -542,22 +573,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildLogoutButton() {
-    return SizedBox(
-      width: 120,
-      child: ElevatedButton(
-        onPressed: _signOut,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.red,
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        child: const Text(
-          'Logout',
-          style: TextStyle(fontSize: 14),
-        ),
+    return Container(
+      alignment: Alignment.center,
+      padding: const EdgeInsets.only(bottom: 16),
+      child: IconButton(
+        onPressed: _showLogoutConfirmationDialog,
+        icon: const Icon(Icons.exit_to_app),
+        color: Colors.red[700],
+        tooltip: 'Logout',
+        iconSize: 24,
       ),
     );
   }
