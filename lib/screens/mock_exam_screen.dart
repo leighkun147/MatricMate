@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:convert';
 import '../models/exam.dart';
 import '../models/question.dart';
 import '../widgets/constants_section.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MockExamScreen extends StatefulWidget {
   final Exam exam;
@@ -49,7 +51,45 @@ class _MockExamScreenState extends State<MockExamScreen> {
     setState(() {
       _isExamComplete = true;
     });
-    _showResults();
+    _saveExamHistory();
+  }
+
+  Future<void> _saveExamHistory() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      
+      // Calculate score
+      int correctAnswers = 0;
+      for (var i = 0; i < questions.length; i++) {
+        if (questions[i].selectedOptionIndex == questions[i].correctOptionIndex) {
+          correctAnswers++;
+        }
+      }
+
+      final scorePercentage = (correctAnswers / questions.length) * 100;
+
+      // Create exam history entry
+      final examHistory = {
+        'exam_id': widget.exam.id,
+        'subject': widget.exam.subject,
+        'title': widget.exam.title,
+        'total_questions': questions.length,
+        'correct_answers': correctAnswers,
+        'score_percentage': scorePercentage,
+        'taken_at': DateTime.now().toIso8601String(),
+      };
+
+      // Get existing histories
+      List<String> histories = prefs.getStringList('exam_histories') ?? [];
+      
+      // Add new history
+      histories.add(jsonEncode(examHistory));
+      
+      // Save back to storage
+      await prefs.setStringList('exam_histories', histories);
+    } catch (e) {
+      print('Error saving exam history: $e');
+    }
   }
 
   @override
@@ -439,10 +479,5 @@ class _MockExamScreenState extends State<MockExamScreen> {
         ],
       ),
     );
-  }
-
-  void _showResults() {
-    // Here you would typically save the results to local storage
-    // and sync with Firebase when online
   }
 }

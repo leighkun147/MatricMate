@@ -12,6 +12,7 @@ import 'payment_methods_screen.dart';
 import 'login_screen.dart';
 import '../services/coin_service.dart';
 import 'theme_selection_screen.dart';
+import 'exam_history_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -555,6 +556,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   value: themeProvider.isDarkMode,
                   onChanged: (value) => themeProvider.toggleTheme(),
                 ),
+              ),
+              const Divider(height: 1),
+              ListTile(
+                leading: const Icon(Icons.history_edu),
+                title: const Text('Mock Exam History'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ExamHistoryScreen(),
+                    ),
+                  );
+                },
               ),
               const Divider(height: 1),
               ListTile(
