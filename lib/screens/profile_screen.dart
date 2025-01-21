@@ -138,6 +138,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const SizedBox(height: 24),
                 _buildStats(),
                 const SizedBox(height: 24),
+                _buildExamHistoryCard(),
+                const SizedBox(height: 24),
                 _buildPaymentMethodsCard(),
                 const SizedBox(height: 24),
                 _buildSettings(context),
@@ -368,6 +370,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  Widget _buildExamHistoryCard() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Text(
+            'Mock Exam History',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: ListTile(
+            leading: const Icon(Icons.history_edu),
+            title: const Text('View History'),
+            subtitle: const Text('See your past mock exam results'),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExamHistoryScreen(),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildPaymentMethodsCard() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -556,20 +595,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   value: themeProvider.isDarkMode,
                   onChanged: (value) => themeProvider.toggleTheme(),
                 ),
-              ),
-              const Divider(height: 1),
-              ListTile(
-                leading: const Icon(Icons.history_edu),
-                title: const Text('Mock Exam History'),
-                trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ExamHistoryScreen(),
-                    ),
-                  );
-                },
               ),
               const Divider(height: 1),
               ListTile(
