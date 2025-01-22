@@ -1,8 +1,25 @@
 {
     "title": "mathematics model exam 1",
     "duration": 45,
-    "constants": {"gravity": 9.81, "pi": 3.14159},
-    "numberOfQuestions": 2,
+    "constants": {
+        "Acceleration due to gravity(g)": "10 m/s²",
+        "Permittivity of vacuum(ε0)": "8.85 x 10⁻¹² F/m",
+        "Faraday's constant(F)": "96500 C/mol",
+        "Charge of an electron(e)": "1.6 x 10⁻¹⁹ Coulomb",
+        "Universal gravitational constant(G)": "6.67 x 10⁻¹¹ N⋅m²/kg²",
+        "Pi(ℼ)": "3.14159",
+        "Density of water(ρ)": "1000 kg/m³",
+        "Atmospheric pressure(P)": "101.3 kPa",
+        "Planck's constant(h)": "6.63 x 10⁻³⁴ Js",
+        "Electron mass(me)": "9.11 x 10⁻³¹ kg",
+        "Sin 30° = Cos 60°": 0.5,
+        "Sin 37° = Cos 53°": 0.6,
+        "Sin 45° = Cos 45°": 0.707,
+        "Sin 53° = Cos 37°": 0.8,
+        "Sin 60° = Cos 30°": 0.866,
+        "1/√2": 0.707
+      },     
+    "numberOfQuestions": 10,
     "questions":[
     {
       "id": "q1",

@@ -41,7 +41,7 @@ final List<PremiumFeature> premiumFeatures = [
       'Progress tracking',
       'Limited mock exams',
     ],
-    price: 499.99,
+    price: 199.99,
     level: PremiumLevel.basic,
   ),
   PremiumFeature(
@@ -54,7 +54,7 @@ final List<PremiumFeature> premiumFeatures = [
       'Unlimited mock exams',
       'Priority support',
     ],
-    price: 999.99,
+    price: 399.99,
     level: PremiumLevel.pro,
   ),
   PremiumFeature(
@@ -68,7 +68,7 @@ final List<PremiumFeature> premiumFeatures = [
       'Guaranteed score improvement',
       'VIP support',
     ],
-    price: 1499.99,
+    price: 599.99,
     level: PremiumLevel.elite,
   ),
 ];

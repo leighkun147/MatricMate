@@ -1,0 +1,1173 @@
+{
+  "title": "Biology and Environmental Science Questions",
+  "duration": 120,
+  "constants": null,
+  "numberOfQuestions": 10,
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Based on the five steps listed below, choose the alternative that shows the correct sequence of their application in actual research in biology: \n1) Performing an experiment \n2) Conducting preliminary observation about a particular problem in biology \n3) Statement of biological theory \n4) Collecting of experimental data \n5) Hypothesis formulation",
+      "options": [
+        "A. 1, 2, 3, 4, 5",
+        "B. 5, 4, 3, 2, 1",
+        "C. 2, 5, 1, 4, 3",
+        "D. 2, 5, 1, 3, 4"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "The correct sequence is conducting preliminary observation, formulating a hypothesis, performing an experiment, collecting experimental data, and stating the biological theory."
+    },
+    {
+      "id": "q2",
+      "text": "From which of the following do scientists usually formulate a hypothesis?",
+      "options": [
+        "A. Experiment",
+        "B. Theory",
+        "C. Prediction",
+        "D. Observation"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "Scientists typically formulate hypotheses based on observations of natural phenomena."
+    },
+    {
+      "id": "q3",
+      "text": "In an experiment designed to test the effect of different concentrations of a fertilizer on the growth rate of a plant, which one of the following is the dependent variable?",
+      "options": [
+        "A. The growth rate of the plant",
+        "B. Concentrations of the fertilizers applied",
+        "C. Plants assigned to the control group",
+        "D. Plants assigned to the experimental group"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "The dependent variable is the growth rate of the plant, as it depends on the fertilizer concentration."
+    },
+    {
+      "id": "q4",
+      "text": "Suppose 25% of the molecules of an enzyme are inhibited by a non-competitive inhibitor. Which one of the following would happen if the amount of the substrate is increased by 50%?",
+      "options": [
+        "A. The rate of the reaction would remain unchanged",
+        "B. More enzyme molecules would get inhibited",
+        "C. The rate of the reaction would decrease by 50%",
+        "D. The reaction rate would double"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Non-competitive inhibitors reduce enzyme activity regardless of substrate concentration, so the reaction rate remains unchanged."
+    },
+    {
+      "id": "q5",
+      "text": "What are the environmental advantages of using enzymes in industry?",
+      "options": [
+        "A. It makes high production possible with less input of heat.",
+        "B. It makes high production possible with high input of heat.",
+        "C. It makes high production possible with emission of more CO2.",
+        "D. It helps high production with supply of more heat and emission of more CO2 product."
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Using enzymes in industry reduces energy requirements, resulting in less heat input and fewer emissions."
+    },
+    {
+      "id": "q6",
+      "text": "Where does the Calvin cycle take place?",
+      "options": [
+        "A. Stroma of the chloroplast",
+        "B. Thylakoid membrane",
+        "C. Chlorophyll molecule",
+        "D. Outer membrane of the chloroplast"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "The Calvin cycle occurs in the stroma of the chloroplast, where it synthesizes glucose from carbon dioxide."
+    },
+    {
+      "id": "q7",
+      "text": "Which of the following is an example of biotechnology?",
+      "options": [
+        "A. Genetic engineering to produce insulin for diabetes treatment.",
+        "B. The study of ancient fossils to understand extinct species.",
+        "C. Exploration of outer space using telescopes and satellites.",
+        "D. Manufacturing of automobiles using advanced robotics."
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Biotechnology involves using genetic engineering and biological systems, such as producing insulin for diabetes treatment."
+    },
+    {
+      "id": "q8",
+      "text": "What is the primary goal of conservation of natural resources?",
+      "options": [
+        "A. To exploit resources for immediate economic gains.",
+        "B. To preserve natural resources for future generations.",
+        "C. To eliminate the use of natural resources entirely.",
+        "D. To maximize the extraction of natural resources for industrial development."
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "The main goal of conservation is to ensure that natural resources are available for future generations."
+    },
+    {
+      "id": "q9",
+      "text": "Which of the following is an example of non-renewable natural resources?",
+      "options": [
+        "A. Solar energy",
+        "B. Wind energy",
+        "C. Fossil fuels",
+        "D. Timber"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Fossil fuels are non-renewable resources because they take millions of years to form and cannot be replenished in a human lifetime."
+    },
+    {
+      "id": "q10",
+      "text": "Which of the following factors can contribute to food insecurity?",
+      "options": [
+        "A. Climate change and extreme weather events.",
+        "B. High agricultural productivity and technology advancements.",
+        "C. Increased access to nutritious foods in local communities.",
+        "D. Stable political and economic condition."
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Climate change and extreme weather events disrupt agriculture and food systems, leading to food insecurity."
+    },
+  {
+    "id": "q11",
+    "text": "Which of the following is an example of a biopesticide?",
+    "options": [
+      "A. Synthetic pyrethroids for mosquito control.",
+      "B. Chlorinated hydrocarbons for termite control.",
+      "C. Bacillus thuringiensis (Bt) for caterpillar control.",
+      "D. Organophosphates for weed control."
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Bacillus thuringiensis (Bt) is a biopesticide used to control caterpillars by producing toxins harmful to them."
+  },
+  {
+    "id": "q12",
+    "text": "What is the importance of gene therapy in the field of medicine?",
+    "options": [
+      "A. It provides a potential cure for previously untreatable genetic diseases.",
+      "B. It improves the effectiveness of traditional drug therapies.",
+      "C. It eliminates the need for surgical interventions.",
+      "D. It enhances the body's natural immune response to diseases."
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "Gene therapy offers the potential to cure genetic disorders by directly modifying the defective genes responsible for the disease."
+  },
+  {
+    "id": "q13",
+    "text": "Among the following human diseases, identify the one that is transmitted through a vector?",
+    "options": [
+      "A. Leprosy",
+      "B. Mumps",
+      "C. Gonorrhea",
+      "D. Trypanosomiasis"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Trypanosomiasis, also known as sleeping sickness, is transmitted through the bite of the tsetse fly, a vector."
+  },
+  {
+    "id": "q14",
+    "text": "What is the criterion in the modern classification of enzymes?",
+    "options": [
+      "A. The type of reaction the enzyme catalyzes.",
+      "B. The place of their synthesis.",
+      "C. The type of the product the enzyme yields.",
+      "D. The type of substrate that the enzyme acts on."
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "Enzymes are classified based on the type of reaction they catalyze, such as hydrolases, oxidoreductases, etc."
+  },
+  {
+    "id": "q15",
+    "text": "If an enzyme depends on a cofactor for its activity, then the enzyme becomes active and functional when it is found in the form of",
+    "options": [
+      "A. Apoenzyme",
+      "B. Coenzyme",
+      "C. Holoenzyme",
+      "D. Cofactor"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "The combination of an enzyme (apoenzyme) and its cofactor (either organic or inorganic) forms the active holoenzyme."
+  },
+  {
+    "id": "q16",
+    "text": "How do enzymes accelerate biochemical reactions?",
+    "options": [
+      "A. By increasing the amount of activation energy of the reaction.",
+      "B. Being specific to various substrates.",
+      "C. By reducing the amount of activation energy of the reaction.",
+      "D. Since they are proteinase molecules"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Enzymes lower the activation energy required for biochemical reactions to proceed, making the reactions occur faster."
+  },
+  {
+    "id": "q17",
+    "text": "Suppose three potato cylinders are kept for some time in 80%, 15% and 10% sucrose solutions respectively, and the fourth cylinder is kept in distilled water, which of the cylinders will be more flaccid?",
+    "options": [
+      "A. The cylinder in 10% solution",
+      "B. The cylinder in 15% solution",
+      "C. The cylinder in 80% solution",
+      "D. The cylinder in distilled water"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "The cylinder in 80% sucrose solution will lose water due to osmosis, becoming more flaccid compared to the other cylinders."
+  },
+  {
+    "id": "q18",
+    "text": "Which of the following cell types can be rich in lysosomes?",
+    "options": [
+      "A. Nerve cell",
+      "B. Muscle cell",
+      "C. Phagocytic cells",
+      "D. Red blood cells"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Phagocytic cells, such as macrophages, contain a high concentration of lysosomes for breaking down ingested particles."
+  },
+  {
+    "id": "q19",
+    "text": "What happens when red blood cells are kept in a hypertonic solution?",
+    "options": [
+      "A. The same net gain and loss of water",
+      "B. More water goes out of the cell than getting in",
+      "C. More water gets into the cell than leaving it",
+      "D. The cells prevent water from getting in or leaving out"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "In a hypertonic solution, water moves out of the red blood cells, causing them to shrink or crenate."
+  },
+  {
+    "id": "q20",
+    "text": "Which of the following is an important function of the Golgi apparatus?",
+    "options": [
+      "A. Protein synthesis",
+      "B. Removing debris from the cell",
+      "C. Packaging of protein for export out of the cell",
+      "D. Storage of waste materials not needed by the cell"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "The Golgi apparatus is responsible for modifying, packaging, and exporting proteins and lipids."
+  },
+  {
+    "id": "q21",
+    "text": "Which of the following stages of aerobic respiration does not take place in the mitochondria?",
+    "options": [
+      "A. Link reaction",
+      "B. Glycolysis",
+      "C. Krebs cycle",
+      "D. Electron transport chain"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Glycolysis occurs in the cytoplasm, while the other stages (Link reaction, Krebs cycle, and Electron transport chain) occur in the mitochondria."
+  },
+  {
+    "id": "q22",
+    "text": "Based on the report writing format listed above, choose the alternative that shows the correct sequence in reporting the results of research in scientific journals.",
+    "options": [
+      "A. 1, 5, 3, 6, 8, 7, 2, 4",
+      "B. 7, 8, 6, 3, 5, 4, 1, 2",
+      "C. 7, 3, 4, 2, 5, 8, 6, 1",
+      "D. 1, 6, 8, 5, 2, 4, 3, 7"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "The correct sequence for reporting the results in scientific journals typically follows: Title, Procedure, Evaluation, Hypothesis, Prediction, Acknowledgments, Results, and Conclusion."
+  },
+  {
+    "id": "q23",
+    "text": "The petiole of a leaf is:",
+    "options": [
+      "A. The outer protective covering of the leaf",
+      "B. The part of the leaf that attaches it to the stem",
+      "C. The tip of the leaf",
+      "D. The central vein of the leaf"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "The petiole is the stalk that attaches the leaf to the plant stem."
+  },
+  {
+    "id": "q24",
+    "text": "Which of the following is the function of bacterial endospore?",
+    "options": [
+      "A. Reproduction",
+      "B. Survival",
+      "C. Storage",
+      "D. Protein synthesis"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Bacterial endospores are primarily used for survival under harsh environmental conditions."
+  },
+  {
+    "id": "q25",
+    "text": "What organisms are capable of photosynthesis?",
+    "options": [
+      "A. Plants only",
+      "B. Plants and algae only",
+      "C. Plants and some bacteria only",
+      "D. Plants, algae and some bacteria"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Photosynthesis is carried out by plants, algae, and certain bacteria (e.g., cyanobacteria)."
+  },
+  {
+    "id": "q26",
+    "text": "Which of the following is an example of a C4 plant?",
+    "options": [
+      "A. Cactus",
+      "B. Maize",
+      "C. Rice",
+      "D. Wheat"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Maize (corn) is an example of a C4 plant, which has a specialized photosynthetic pathway."
+  },
+  {
+    "id": "q27",
+    "text": "G3P (glyceraldehyde 3-phosphate) is used by plants for all of the following EXCEPT the formation of",
+    "options": [
+      "A. Fatty acid",
+      "B. Oxygen",
+      "C. Sucrose",
+      "D. Starch"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "G3P is used in the formation of fatty acids, sucrose, and starch, but not oxygen."
+  },
+  {
+    "id": "q28",
+    "text": "Which leaf tissue layer is responsible for the majority of photosynthesis in plants?",
+    "options": [
+      "A. Palisade mesophyll",
+      "B. Sponge mesophyll",
+      "C. Guard cell",
+      "D. Epidermis"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "The palisade mesophyll contains the most chloroplasts and is responsible for the majority of photosynthesis in plants."
+  },
+  {
+    "id": "q29",
+    "text": "At which stage of aerobic respiration is most ATP generated?",
+    "options": [
+      "A. Krebs cycle",
+      "B. Glycolysis",
+      "C. Electron transport chain",
+      "D. Link reaction"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "The electron transport chain generates the most ATP during aerobic respiration through oxidative phosphorylation."
+  },
+  {
+    "id": "q30",
+    "text": "How many molecules of glycerol and fatty acids are needed respectively to form 200 molecules of triglyceride?",
+    "options": [
+      "A. 200 and 400",
+      "B. 200 and 600",
+      "C. 100 and 200",
+      "D. 400 and 600"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "To form 200 molecules of triglyceride, you need 100 molecules of glycerol and 200 molecules of fatty acids."
+  }, 
+  {
+    "id": "q31",
+    "text": "Which chemical element is the most abundant in living cells?",
+    "options": [
+      "A. Carbon, Hydrogen, Oxygen, Nitrogen",
+      "B. Oxygen, Nitrogen, Phosphorous, Sulphur",
+      "C. Nitrogen, Hydrogen, Phosphorous, Calcium",
+      "D. Hydrogen, Nitrogen, Phosphorous, Sulphur"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "The most abundant elements in living cells are carbon, hydrogen, oxygen, and nitrogen, which make up the majority of the cell's structure and function."
+  },
+  {
+    "id": "q32",
+    "text": "The presence of cholesterol in the cell membrane contributes to:",
+    "options": [
+      "A. Increased fluidity of the membrane",
+      "B. Decreased fluidity of the membrane",
+      "C. Enhanced transport of large molecules",
+      "D. Formation of lipid rafts"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Cholesterol in the cell membrane reduces fluidity, stabilizing the membrane and making it less permeable to small water-soluble molecules."
+  },
+  {
+    "id": "q33",
+    "text": "The cell membrane plays a crucial role in maintaining:",
+    "options": [
+      "A. Intracellular pH balance",
+      "B. Genetic material replication",
+      "C. Protein synthesis",
+      "D. Mitochondrial function"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "The cell membrane helps maintain the internal environment of the cell, including pH balance, by controlling the flow of ions and molecules into and out of the cell."
+  },
+  {
+    "id": "q34",
+    "text": "Which model is widely accepted and supported by scientific evidence as the current understanding of the cell membrane structure?",
+    "options": [
+      "A. Davson-Danielli model",
+      "B. Fluid mosaic model",
+      "C. Lipid bilayer model",
+      "D. Protein monolayer model"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "The fluid mosaic model is the current widely accepted model, which describes the membrane as a flexible structure with proteins embedded in or attached to a lipid bilayer."
+  },
+  {
+    "id": "q35",
+    "text": "How can the community contribute to HIV control efforts?",
+    "options": [
+      "A. Promoting HIV awareness and education.",
+      "B. Encouraging regular HIV testing.",
+      "C. Supporting access to healthcare and treatment.",
+      "D. All of the above."
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "All of these efforts—awareness, testing, and healthcare access—are crucial for controlling the spread of HIV."
+  },
+  {
+    "id": "q36",
+    "text": "What is the reason that Louis Pasteur used a swan-necked flask instead of a straight-necked one in his experiment designed to disprove the theory of spontaneous generation?",
+    "options": [
+      "A. To allow free passage of air to the broth inside the flask",
+      "B. To prevent the escape of any microorganisms from the flask",
+      "C. To keep the broth in the flask hot to kill microorganisms",
+      "D. To trap particles from the air that might enter the flask before reaching the broth"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "The swan-necked flask allowed air to enter but trapped dust and microorganisms, preventing contamination of the broth, thereby disproving spontaneous generation."
+  },
+  {
+    "id": "q37",
+    "text": "In which of the following are all the tools mainly used in the laboratory rather than in a field situation?",
+    "options": [
+      "A. Data logger, flow meter, theodolite, GPS receivers",
+      "B. Flow meters, centrifuges, theodolites, microscopes",
+      "C. Centrifuges, plant presses, flow meters, microscopes",
+      "D. Centrifuges, petri dishes, electron microscope, measuring cylinders"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Centrifuges, petri dishes, electron microscopes, and measuring cylinders are tools typically used in laboratory settings for scientific experiments."
+  },
+  {
+    "id": "q38",
+    "text": "The biological instrument used to culture bacteria in the laboratory is",
+    "options": [
+      "A. Test tube",
+      "B. Petri dish",
+      "C. Beaker",
+      "D. Microscope"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "A petri dish is used for culturing bacteria in the laboratory as it provides a controlled environment for growth."
+  },
+  {
+    "id": "q39",
+    "text": "Which of the following is an inorganic compound?",
+    "options": [
+      "A. Deoxyribose",
+      "B. Calcium carbonate",
+      "C. ATP",
+      "D. Glycine"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Calcium carbonate is an inorganic compound, while deoxyribose, ATP, and glycine are organic compounds."
+  },
+  {
+    "id": "q40",
+    "text": "Which of the following properties of water makes sweat an effective body cooler?",
+    "options": [
+      "A. Its high specific heat",
+      "B. Its high surface tensions",
+      "C. Its low density when frozen",
+      "D. Its high heat of vaporization"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "The high heat of vaporization of water allows sweat to absorb a large amount of heat from the body, effectively cooling it when it evaporates."
+  },
+  {
+    "id": "q41",
+    "text": "Why is photosynthesis impossible at a depth of 2000m?",
+    "options": [
+      "A. It is too cold",
+      "B. It is too hot",
+      "C. Only blue light penetrates this far",
+      "D. No light penetrates this far"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "At depths of 2000m, no light penetrates, which is essential for photosynthesis to occur."
+  },
+  {
+    "id": "q42",
+    "text": "In which one of their structural parts do different molecules of amino acids differ from one another?",
+    "options": [
+      "A. In their amino group",
+      "B. In their alpha-carbon group",
+      "C. In their R group",
+      "D. In their carboxyl group"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Amino acids differ from each other in their R group (side chain), which gives each amino acid its unique properties."
+  },
+  {
+    "id": "q43",
+    "text": "If one mixes a sample of a fruit juice and some drops of Benedict’s solution and obtains a brick-red precipitate upon warming the mixture, what does the juice contain?",
+    "options": [
+      "A. Starch",
+      "B. Reducing sugar",
+      "C. Sucrose",
+      "D. Protein"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "A brick-red precipitate from Benedict's solution indicates the presence of reducing sugars, such as glucose or fructose."
+  },
+  {
+    "id": "q44",
+    "text": "How many water molecules are released when 400 glucoses in a condensation reaction forms starch?",
+    "options": [
+      "A. 100",
+      "B. 600",
+      "C. 399",
+      "D. 397"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "In a condensation reaction, one water molecule is released for each bond formed between glucose units. For 400 glucose molecules, 399 water molecules are released."
+  },
+  {
+    "id": "q45",
+    "text": "Which of the following polysaccharides is stored in the liver and muscles of animals?",
+    "options": [
+      "A. Starch",
+      "B. Glycogen",
+      "C. Cellulose",
+      "D. Chitin"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Glycogen is the polysaccharide stored in the liver and muscles of animals for energy storage."
+  },
+  {
+    "id": "q46",
+    "text": "Which of the following is NOT a function of triglycerides in the body?",
+    "options": [
+      "A. Energy storage",
+      "B. Thermal insulation",
+      "C. Enzyme production",
+      "D. Buoyancy"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Triglycerides are used for energy storage, insulation, and buoyancy, but not for enzyme production."
+  },
+  {
+    "id": "q47",
+    "text": "Which one of the following is true?",
+    "options": [
+      "A. Cellular respiration occurs in mitochondria and in chloroplasts.",
+      "B. Photosynthesis occurs in chloroplasts and cellular respiration occurs in mitochondria.",
+      "C. Photosynthesis occurs in mitochondria and in chloroplasts.",
+      "D. Photosynthesis occurs in mitochondria and cellular respiration occurs in chloroplasts."
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Photosynthesis occurs in chloroplasts, while cellular respiration occurs in mitochondria."
+  },
+  {
+    "id": "q48",
+    "text": "Which of the following processes of photosynthesis does not require the presence of light to take place?",
+    "options": [
+      "A. Photolysis of water",
+      "B. ATP formation",
+      "C. Reduction of NADP",
+      "D. Carbon fixation"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Carbon fixation, part of the Calvin cycle, does not require light directly, although it is indirectly dependent on the products of the light reactions."
+  },
+  {
+    "id": "q49",
+    "text": "Which of the following is false about non-cyclic photophosphorylation?",
+    "options": [
+      "A. It requires photolysis of water",
+      "B. It generates ATP",
+      "C. It produces NADPH",
+      "D. PSI (chlorophyll) is the final electron acceptor"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "In non-cyclic photophosphorylation, NADP+ (not PSI) is the final electron acceptor."
+  }, 
+  {
+    "id": "q50",
+    "text": "The reaction that occurs in the bundle sheath cell of C4 plants from the following is",
+    "options": [
+      "A. Calvin cycle",
+      "B. Conversion of PEP to oxaloacetate",
+      "C. Carbon fixation",
+      "D. Conversion of oxaloacetate to malate"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "In C4 plants, the conversion of oxaloacetate to malate occurs in the bundle sheath cells, which then releases CO2 for the Calvin cycle."
+  },
+  {
+    "id": "q51",
+    "text": "Icosahedral symmetry of viruses is known for their:",
+    "options": [
+      "A. Helical capsids",
+      "B. Complex replication mechanisms",
+      "C. Spherical shape with 20 triangular faces and 12 vertices",
+      "D. Ability to infect only bacteria"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Icosahedral symmetry is a common viral shape that has 20 triangular faces and 12 vertices, making it spherical."
+  },
+  {
+    "id": "q52",
+    "text": "When glucose is used to make ATP all of the carbons in glucose are converted to CO2. Which metabolic pathway produces most of this CO2?",
+    "options": [
+      "A. Electron transport chain",
+      "B. Krebs cycle",
+      "C. Glycolysis",
+      "D. Link reaction"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "The majority of CO2 produced during glucose metabolism comes from the Krebs cycle, where carbon atoms from glucose are fully oxidized."
+  },
+  {
+    "id": "q53",
+    "text": "What will happen to the rate of enzyme catalyzed reaction, if the substrate concentration increases without altering enzyme concentration?",
+    "options": [
+      "A. Increase initially and become constant",
+      "B. Increase quickly all the time",
+      "C. Decrease quickly all the time",
+      "D. Increase initially and become zero finally"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "As substrate concentration increases, the reaction rate increases until it reaches a point where all enzyme active sites are occupied, after which the rate becomes constant."
+  },
+  {
+    "id": "q54",
+    "text": "Which of the following statements best describes genetic engineering?",
+    "options": [
+      "A. The study of genetic inheritance patterns in human populations.",
+      "B. The manipulation of an organism's genetic material to introduce desirable traits.",
+      "C. The analysis of genetic variation within a species.",
+      "D. The study of DNA replication and protein synthesis."
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Genetic engineering involves manipulating an organism's genetic material to add, remove, or alter specific traits."
+  },
+  {
+    "id": "q55",
+    "text": "How can biotechnology contribute to securing the food supply of society?",
+    "options": [
+      "A. By eliminating the need for agricultural practices.",
+      "B. By reducing the global population to match the available food resources.",
+      "C. By enhancing crop productivity and improving resistance to pests and diseases.",
+      "D. By promoting traditional farming methods over modern techniques."
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Biotechnology can improve crop productivity and pest resistance, helping to ensure a more stable food supply."
+  },
+  {
+    "id": "q56",
+    "text": "Which of the following is an example of a traditional use of biotechnology?",
+    "options": [
+      "A. Developing genetically modified organisms (GMOs).",
+      "B. Using fermentation to produce bread and alcoholic beverages.",
+      "C. Engineering plants for herbicide resistance.",
+      "D. Modifying the genetic material of organisms using modern laboratory techniques."
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Fermentation for bread and alcoholic beverages is a traditional biotechnological process."
+  },
+  {
+    "id": "q57",
+    "text": "Which microorganism plays a key role in the fermentation process of tella, tej, wine and beer production?",
+    "options": [
+      "A. Lactic acid bacteria",
+      "B. Saccharomyces",
+      "C. Acetic acid bacteria",
+      "D. Penicillium mold"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Saccharomyces is a type of yeast involved in fermentation processes, including alcohol production in beer, wine, and traditional drinks."
+  },
+  {
+    "id": "q58",
+    "text": "What is bioremediation?",
+    "options": [
+      "A. The process of using chemical compounds to clean up pollutants.",
+      "B. The application of microorganisms to degrade or remove pollutants from the environment.",
+      "C. The process of using physical barriers to isolate contaminated areas.",
+      "D. The extraction of pollutants from the environment using specialized machinery."
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Bioremediation uses microorganisms to break down or neutralize pollutants in the environment."
+  },
+  {
+    "id": "q59",
+    "text": "What is the primary mode of transmission for respiratory infections caused by microorganisms?",
+    "options": [
+      "A. Direct contact with contaminated surfaces.",
+      "B. Ingestion of contaminated food and water.",
+      "C. Inhalation of respiratory droplets from infected individuals.",
+      "D. Transmission through insect vectors."
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Respiratory infections are primarily transmitted through inhaling droplets from infected individuals."
+  },
+  {
+    "id": "q60",
+    "text": "Which of the following statements is true regarding fungi?",
+    "options": [
+      "A. Fungi are photosynthetic organisms.",
+      "B. Fungi are multicellular and have true roots, stems, and leaves.",
+      "C. Fungi reproduce through spores.",
+      "D. Fungi are not chemoheterotrophic"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Fungi reproduce through spores and are chemoheterotrophic, meaning they obtain nutrients by absorbing organic material."
+  },
+  {
+    "id": "q61",
+    "text": "Which of the following diseases is not caused by protozoan parasite?",
+    "options": [
+      "A. Malaria",
+      "B. Measles",
+      "C. Leishmaniasis",
+      "D. Toxoplasmosis"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Measles is caused by a virus, not a protozoan parasite."
+  },
+  {
+    "id": "q62",
+    "text": "Which of the following is a characteristic feature of protozoa?",
+    "options": [
+      "A. Multicellularity",
+      "B. Presence of a cell wall",
+      "C. Presence of chloroplasts for photosynthesis in all protozoa.",
+      "D. Presence of a nucleus."
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Protozoa are unicellular organisms with a nucleus."
+  },
+  {
+    "id": "q63",
+    "text": "Which of the following viruses is primarily transmitted through animal bites?",
+    "options": [
+      "A. Rabies virus",
+      "B. Human papilloma virus",
+      "C. Mumps virus",
+      "D. Hepatitis C virus"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "Rabies is primarily transmitted through the bites of infected animals."
+  },
+  {
+    "id": "q64",
+    "text": "Among the following one is not the correct idea of Robert Koch postulate.",
+    "options": [
+      "A. The microorganisms must always be present when the disease is present.",
+      "B. The microorganism can be isolated from an infected individual & then grow in culture.",
+      "C. Introducing such cultured microorganisms into a healthy host should result in disease developing.",
+      "D. It is not possible to re-isolate the microorganism to obtain a pure culture."
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Robert Koch's postulates require that the microorganism can be re-isolated from the infected host to confirm its role in the disease."
+  },
+  {
+    "id": "q65",
+    "text": "An enzyme that hydrolyses protein will not act upon starch. This fact indicates that enzymes are",
+    "options": [
+      "A. Catalytic",
+      "B. Synthetic",
+      "C. Hydrolytic",
+      "D. Specific"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Enzymes are highly specific in their action, catalyzing specific reactions with particular substrates."
+  },
+  {
+    "id": "q66",
+    "text": "Which factor has a more negative effect on the functions of enzymes than the others?",
+    "options": [
+      "A. Neutral pH",
+      "B. Very high temperature",
+      "C. Optimal amount of salt concentration",
+      "D. Optimal amount of substrate concentration"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Very high temperatures can denature enzymes, causing them to lose their functional shape."
+  },
+  {
+    "id": "q67",
+    "text": "When an enzyme is denatured by heat or extreme pH, which one of the following does it lose?",
+    "options": [
+      "A. The peptide bonds",
+      "B. Primary structure",
+      "C. Secondary structure",
+      "D. Tertiary structure"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Denaturation typically affects the tertiary structure of an enzyme, disrupting its active site."
+  },
+  {
+    "id": "q68",
+    "text": "If the ratio of competitive inhibitor molecules to substrate molecules is 2:8, the enzyme controlling the reaction will be:",
+    "options": [
+      "A. 10% activated",
+      "B. 20% activated",
+      "C. 80% activated",
+      "D. Two-eight inhibited"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "The competitive inhibitor reduces the enzyme's activity, and the ratio of inhibitors to substrates determines the extent of inhibition."
+  },
+  {
+    "id": "q69",
+    "text": "Which of the following mechanisms do cells use to regulate enzyme-catalyzed reactions in metabolic pathways?",
+    "options": [
+      "A. Enzyme denaturation",
+      "B. Irreversible inhibition",
+      "C. End product inhibition",
+      "D. Competitive inhibition"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "End product inhibition is a feedback mechanism where the final product of a metabolic pathway inhibits an early step in the pathway."
+  }, 
+  {
+    "id": "q70",
+    "text": "Among the following scientists who contributed to the cell theory, identify the one who stated that a cell can arise only from another cell like it",
+    "options": [
+      "A. Robert Hooke",
+      "B. Theodor Schwann",
+      "C. Matthias Schleiden",
+      "D. Rudolf Virchow"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Rudolf Virchow is credited with stating that 'Omnis cellula e cellula,' meaning that a cell can only arise from another cell."
+  },
+  {
+    "id": "q71",
+    "text": "Which of the following is true about prokaryotic and eukaryotic cells?",
+    "options": [
+      "A. Both prokaryotes and eukaryotes have membrane bonded nucleus.",
+      "B. Eukaryotes have linear DNA, but prokaryotes have a continuous loop DNA",
+      "C. Prokaryotes have mitochondria, but eukaryotes have no mitochondria",
+      "D. Prokaryotic cells are larger and contain more organelles than eukaryotes."
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Eukaryotes have linear DNA, while prokaryotes have circular DNA in a continuous loop."
+  },
+  {
+    "id": "q72",
+    "text": "Of the following four cells whose surface area to volume ratio is given, which cell can more efficiently transport its needs of materials across the cell surface?",
+    "options": [
+      "A. 24:8 ratio",
+      "B. 54:27 ratio",
+      "C. 96:64 ratio",
+      "D. 150:125 ratio"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "A higher surface area to volume ratio allows a cell to transport materials more efficiently. The 150:125 ratio has the highest efficiency."
+  },
+  {
+    "id": "q73",
+    "text": "Why are cells that secrete hormones and enzymes rich in rough endoplasmic reticulum? Because they produce more",
+    "options": [
+      "A. Proteins",
+      "B. ATP",
+      "C. Carbohydrates",
+      "D. Lipids"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "The rough endoplasmic reticulum is involved in the synthesis of proteins, which is why hormone- and enzyme-secreting cells are rich in it."
+  },
+  {
+    "id": "q74",
+    "text": "Which of the following is not found in the energy currency of the cell (ATP)?",
+    "options": [
+      "A. Nitrogenous base",
+      "B. Hexose sugar",
+      "C. Phosphate",
+      "D. Pentose sugar"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "ATP contains a nitrogenous base (adenine), a pentose sugar (ribose), and phosphate groups, but not a hexose sugar."
+  },
+  {
+    "id": "q75",
+    "text": "Which of the following is an example of a beneficial application of microorganisms?",
+    "options": [
+      "A. Infectious diseases",
+      "B. Antibiotic production",
+      "C. Food spoilage",
+      "D. Air pollution"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Microorganisms are beneficial in antibiotic production, which helps combat bacterial infections."
+  },
+  {
+    "id": "q76",
+    "text": "How are vector-borne diseases primarily transmitted to humans?",
+    "options": [
+      "A. Through contaminated water",
+      "B. Through direct contact with an infected person",
+      "C. Through the respiratory system",
+      "D. Through the bite of an infected arthropod"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Vector-borne diseases are typically transmitted to humans through the bite of infected arthropods, like mosquitoes."
+  },
+  {
+    "id": "q77",
+    "text": "Which molecule is the final electron acceptor in the electron transport chain?",
+    "options": [
+      "A. Oxygen",
+      "B. Carbon dioxide",
+      "C. NADH",
+      "D. FADH2"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "Oxygen is the final electron acceptor in the electron transport chain, forming water in the process."
+  },
+  {
+    "id": "q78",
+    "text": "Which of the following is a prokaryotic microorganism?",
+    "options": [
+      "A. Trichomonads",
+      "B. Protozoan",
+      "C. Slime mold",
+      "D. Cyanobacteria"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Cyanobacteria are prokaryotic microorganisms, while trichomonads, protozoans, and slime molds are eukaryotic."
+  },
+  {
+    "id": "q79",
+    "text": "Which of the following terms refers to a prokaryotic cell that is comma shaped?",
+    "options": [
+      "A. Sarcina",
+      "B. Bacilli",
+      "C. Cocci",
+      "D. Vibrio"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Vibrio refers to a prokaryotic cell that is comma-shaped, while other terms describe different shapes."
+  },
+  {
+    "id": "q80",
+    "text": "Compared with Gram-positive bacteria, Gram-negative bacteria",
+    "options": [
+      "A. Are less resistant to antibiotics",
+      "B. Have no outer membrane",
+      "C. Lose the crystal violet stain in Gram’s method of staining",
+      "D. Have thicker peptidoglycan layer in their cell wall"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Gram-negative bacteria lose the crystal violet stain in Gram’s method due to the thinner peptidoglycan layer and the presence of an outer membrane."
+  }, 
+  {
+    "id": "q81",
+    "text": "Among the following infectious human diseases, identify the one that is not caused by bacteria",
+    "options": [
+      "A. Pertussis",
+      "B. Typhoid fever",
+      "C. Syphilis",
+      "D. Aspergillosis"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Aspergillosis is caused by a fungus, not a bacterium."
+  },
+  {
+    "id": "q82",
+    "text": "All of the following are characteristic of viruses except",
+    "options": [
+      "A. Viruses have an inner core of nucleic acid",
+      "B. Viruses do not have a cellular organization",
+      "C. Viruses are affected by antibacterial antibiotics",
+      "D. Viruses are obligate intracellular parasites"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Viruses are not affected by antibacterial antibiotics because they are not bacteria."
+  },
+  {
+    "id": "q83",
+    "text": "Given these characteristics of a transport process\n1. Moves with the concentration gradient\n2. Does not require energy\n3. Requires carrier molecules. The transport process involved is",
+    "options": [
+      "A. Facilitated diffusion",
+      "B. Active transport",
+      "C. Phagocytosis",
+      "D. Pinocytosis"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "Facilitated diffusion moves substances down their concentration gradient without energy and requires carrier proteins."
+  },
+  {
+    "id": "q84",
+    "text": "What is the primary function of the Calvin cycle?",
+    "options": [
+      "A. Use ATP to release carbon dioxide",
+      "B. Use NADPH to release carbon dioxide",
+      "C. Split water and release oxygen",
+      "D. Synthesize simple sugars from carbon dioxide"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "The Calvin cycle synthesizes simple sugars from carbon dioxide, utilizing ATP and NADPH."
+  },
+  {
+    "id": "q85",
+    "text": "How is photosynthesis similar in C4 and CAM plants?",
+    "options": [
+      "A. Both types of plants make sugar without the Calvin cycle.",
+      "B. In both cases, thylakoids are not involved in photosynthesis",
+      "C. Both types of plants make most of their sugar in the dark.",
+      "D. In both cases, PEP carboxylase is used to fix carbon initially."
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Both C4 and CAM plants use PEP carboxylase to fix carbon before entering the Calvin cycle."
+  },
+  {
+    "id": "q86",
+    "text": "Which of the following is a key difference between DNA and RNA?",
+    "options": [
+      "A. DNA contains deoxyribose sugar, while RNA contains ribose sugar",
+      "B. DNA is single-stranded, while RNA is double-stranded",
+      "C. DNA contains uracil in as one of its bases, while RNA contains thymine",
+      "D. DNA is found in the nucleus, while RNA is found in the cytoplasm"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "DNA contains deoxyribose, while RNA contains ribose, which is the key structural difference."
+  },
+  {
+    "id": "q87",
+    "text": "End-product inhibition or negative feedback control of a metabolic pathway occurs when:",
+    "options": [
+      "A. The last product of the pathway inhibits the enzyme controlling the first reaction.",
+      "B. The last product of the pathway inhibits the enzyme controlling the last reaction.",
+      "C. The first product of the pathway inhibits the enzyme controlling the last reaction.",
+      "D. The last product of the pathway inhibits the enzyme controlling the second reaction."
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "In negative feedback, the final product of a pathway inhibits the enzyme that catalyzes the first reaction, thereby regulating the pathway."
+  },
+  {
+    "id": "q88",
+    "text": "Given these characteristics of a transport process into a cell\n1. ATP is required\n2. Does not exhibit saturation\n3. Solid particles are transported. The transport process involved is",
+    "options": [
+      "A. Active transport",
+      "B. Facilitated diffusion",
+      "C. Phagocytosis",
+      "D. Pinocytosis"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Phagocytosis is the process of engulfing solid particles, requiring ATP, and not exhibiting saturation."
+  },
+  {
+    "id": "q89",
+    "text": "What is the role of microorganisms in sewage treatment plants?",
+    "options": [
+      "A. To produce ethanol",
+      "B. To filter out heavy metals",
+      "C. To break down organic matter",
+      "D. To produce antibiotics"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Microorganisms break down organic matter in sewage treatment, helping to purify water."
+  },
+  {
+    "id": "q90",
+    "text": "What is the primary role of vaccines in disease prevention?",
+    "options": [
+      "A. Treating symptoms of the disease",
+      "B. Destroying bacteria and viruses",
+      "C. Boosting the immune system",
+      "D. Stimulating allergic reactions"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Vaccines stimulate the immune system to recognize and fight off specific pathogens."
+  },
+  {
+    "id": "q91",
+    "text": "What is the primary purpose of fermentation?",
+    "options": [
+      "A. To generate ATP",
+      "B. To produce oxygen",
+      "C. To regenerate NAD+",
+      "D. To convert pyruvate to acetyl-CoA"
+    ],
+    "correctOptionIndex": 2,
+    "explanation": "Fermentation regenerates NAD+ from NADH, enabling continued ATP production in the absence of oxygen."
+  },
+  {
+    "id": "q92",
+    "text": "In the cell membrane, phospholipids are arranged in a bilayer with their heads facing the external and internal environments and their tails facing each other.",
+    "options": [
+      "A. Hydrophilic; hydrophobic",
+      "B. Charged; uncharged",
+      "C. Hydrophobic; hydrophilic",
+      "D. Uncharged; charged"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "Phospholipids have hydrophilic heads that face the water-based external and internal environments, and hydrophobic tails that face each other."
+  },
+  {
+    "id": "q93",
+    "text": "Suppose you labeled two permeable membranes to water as A and B and you add hypertonic solution in A and hypotonic solution in B. What will be the expected result?",
+    "options": [
+      "A. No change in both membranes",
+      "B. Rise of the water level in B",
+      "C. Rise of the water level in A",
+      "D. Rise of the water level in both membranes"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "Water will move from the hypotonic solution in membrane B to the hypertonic solution in membrane A, causing a rise in water level in B."
+  },
+  {
+    "id": "q94",
+    "text": "Which biomolecule is the primary source of energy for living organisms?",
+    "options": [
+      "A. Lipids",
+      "B. Proteins",
+      "C. Nucleic acids",
+      "D. Carbohydrates"
+    ],
+    "correctOptionIndex": 3,
+    "explanation": "Carbohydrates are the primary source of energy for living organisms."
+  },
+  {
+    "id": "q95",
+    "text": "Which level of protein structure refers to the linear sequence of amino acids?",
+    "options": [
+      "A. Secondary structure",
+      "B. Primary structure",
+      "C. Quaternary structure",
+      "D. Tertiary structure"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "The primary structure of a protein refers to the linear sequence of amino acids in the polypeptide chain."
+  },
+  {
+    "id": "q96",
+    "text": "Which mode of nutrition describes bacteria that obtain energy from sunlight and carbon from inorganic sources?",
+    "options": [
+      "A. Photoautotroph",
+      "B. Photoheterotroph",
+      "C. Chemoautotroph",
+      "D. Chemoheterotroph"
+    ],
+    "correctOptionIndex": 0,
+    "explanation": "Photoautotrophs obtain energy from sunlight and carbon from inorganic sources, like carbon dioxide."
+  },
+  {
+    "id": "q97",
+    "text": "Which cycle is associated with the formation of viral particles called prophage?",
+    "options": [
+      "A. Lytic cycle",
+      "B. Lysogenic cycle",
+      "C. Replicative cycle",
+      "D. Retroviral cycle"
+    ],
+    "correctOptionIndex": 1,
+    "explanation": "The lysogenic cycle involves the integration of viral DNA into the host's genome, forming a prophage."
+  }
+
+  ]
+}

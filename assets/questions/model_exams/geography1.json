@@ -1,0 +1,721 @@
+{
+  "title": "Geography 2016 model",
+  "duration": 120,
+  "constants": null,
+  "numberOfQuestions": 100,
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Which of the following is a major factor influencing the Earth's climate?",
+      "options": [
+        "A. Latitude",
+        "B. Population density",
+        "C. Political boundaries",
+        "D. Economic development"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Latitude is a major factor influencing Earth's climate as it determines the amount of solar radiation an area receives."
+    },
+    {
+      "id": "q2",
+      "text": "What is the main characteristic of a continental climate?",
+      "options": [
+        "A. Small temperature variations",
+        "B. High humidity year-round",
+        "C. Extreme temperature variations",
+        "D. Constant precipitation"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Continental climates are characterized by extreme temperature variations between seasons."
+    },
+    {
+      "id": "q3",
+      "text": "Which type of map projection is best for navigation near the poles?",
+      "options": [
+        "A. Mercator projection",
+        "B. Robinson projection",
+        "C. Azimuthal projection",
+        "D. Cylindrical projection"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Azimuthal projections are best for polar regions as they maintain accurate directions from the center point."
+    },  {
+      "id": "q4",
+      "text": "Among the following factors which one played a vital role for the beginning of the Industrial Revolution?",
+      "options": [
+        "A. Changes and developments in the Medieval and early modern periods.",
+        "B. The ever increasing number of the working class in the newly planted industries.",
+        "C. The organizational and technological changes in the expanding industries.",
+        "D. The further investments done by the capitalists to transform the life of the proletariat."
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Organizational and technological innovations were crucial in sparking the Industrial Revolution."
+    },
+    {
+      "id": "q5",
+      "text": "Which one of the following is NOT a factor for the prevalence of nationalism in the Western world since the middle of the 19th century?",
+      "options": [
+        "A. The promulgation of primary education and military service to strengthen patriotism.",
+        "B. The role played by literatures in raising the national sentiments of citizens.",
+        "C. Successful wars of unifications in Italy and Germany and national liberations in the Balkans.",
+        "D. The outbreak WWI and the defeat of Germany and its allies and the aftermaths of the war."
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "World War I and its aftermath did contribute to nationalism, but it was not a primary factor in its 19th-century prevalence."
+    },
+    {
+      "id": "q6",
+      "text": "Which statement accurately describes the nationalism of the Western Europe from the mid-19th century to the early part of the 20th century?",
+      "options": [
+        "A. It was limited only to less advanced states of Western Europe",
+        "B. It had resulted in both constructive and destructive consequences",
+        "C. It was not used by governments to deter the expansion of socialism",
+        "D. It has nothing to do with movements of national minorities"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "Nationalism in Western Europe had both constructive (unification) and destructive (imperialism) outcomes."
+    },
+    {
+      "id": "q7",
+      "text": "Which one of the following served as the nucleus of Italian unification?",
+      "options": [
+        "A. Lombardy and Venetia",
+        "B. Parma and Modena",
+        "C. Piedmont Sardinia",
+        "D. The Papal States"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Piedmont Sardinia played a central role in leading the Italian unification process."
+    }, {
+      "id": "q8",
+      "text": "Among the following which one shows the delaying and speeding factors in the long process of the unification of Italy, respectively?",
+      "options": [
+        "A. The presence of France and Austria in Italy, and the diplomatic role played by Camillo Cavour.",
+        "B. The military role played by Garibaldi, and the Papal States stand against the unification.",
+        "C. The Franco-Prussian War of 1870/71, and the presence of Austria in Italy as a dominant power.",
+        "D. The anti-government uprising in two Sicilies, and the role played by Piedmont Sardinia."
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "The presence of France and Austria delayed the process, while Cavour’s diplomacy helped speed up the unification."
+    },
+    {
+      "id": "q9",
+      "text": "Which of these intertwined events significantly contributed to the unification of Germany?",
+      "options": [
+        "A. The Danish-Prussian War of 1864",
+        "B. The Austro-Prussian War of 1866",
+        "C. Insistence of German Provinces to maintain their cultural differences",
+        "D. The appointment of Otto Von Bismarck as chief minister of Prussia"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "The Austro-Prussian War of 1866 played a crucial role in the unification process of Germany."
+    },
+    {
+      "id": "q10",
+      "text": "How did the unification of Germany become achievable despite the longstanding influence of both Austria and France in the internal political affairs of the divided German states for many years?",
+      "options": [
+        "A. By the military assistance provided by Russia",
+        "B. Through the diplomatic and military skills of Otto Von Bismarck",
+        "C. Through economic transformation of the entire states of Germany",
+        "D. Through democratic principles originating from Prussia"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "Otto Von Bismarck's diplomatic and military strategies were key to unifying Germany."
+    },
+    {
+      "id": "q11",
+      "text": "Which one of the following mechanism was applied by Abraham Lincoln to emerge victorious and sustain the political and territorial unity of the USA?",
+      "options": [
+        "A. The declaration of the freedom of slaves in rebel controlled states.",
+        "B. Compromising the issue of slavery both in the southern and northern states.",
+        "C. Promising the northern states to remain economically dominant over the southern states.",
+        "D. Promising constitutional amendment to grant secession rights for the dissatisfied states."
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Abraham Lincoln issued the Emancipation Proclamation, which declared the freedom of slaves in the rebel-controlled states."
+    },
+    {
+      "id": "q12",
+      "text": "What was the basic cause for the American Civil War between 1861 and 1865? It was",
+      "options": [
+        "A. initiated by the issue of slavery and ended up with its constitutional recognition.",
+        "B. started by the Southern states and was concluded by their military victory.",
+        "C. initiated by the issue of slavery and ended up with the abolition of slavery.",
+        "D. completed with little or no damage on the northern states."
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "The Civil War was caused by slavery, and it resulted in the abolition of slavery in the U.S."
+    },
+    {
+      "id": "q13",
+      "text": "What happened with the decline of the military power of the Ottoman Turks over the Balkan states?",
+      "options": [
+        "A. The achievement of independence by states which had been under the Ottoman Empire.",
+        "B. Russia emerged as the sole great power by controlling the entire region.",
+        "C. Major Powers tried to materialize their interest through different mechanisms.",
+        "D. The region failed under the economic dominance of Britain until the outbreak of World War I."
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "The decline of Ottoman power in the Balkans led to the independence of several Balkan states."
+    },
+    {
+      "id": "q14",
+      "text": "How did the Eastern question and the resultant the Balkan wars contribute to the outbreak of World War I?",
+      "options": [
+        "A. The major actors of World War I had participated in the Balkan war directly or indirectly and it was an extension of the Balkan crises.",
+        "B. Because of the already ignited war in the region, the major battle fields of World War I was in the Balkan area.",
+        "C. The warring states of the Balkan crises continued to be the major actors of World War I.",
+        "D. World War I was prolonged because of the resource supplied by the Balkan states and their factional support for the major powers."
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "The Balkan Wars were part of the tensions that escalated into World War I."
+    },
+    {
+      "id": "q15",
+      "text": "Why did the Europeans call the trade between Africa and Europe during the first half of the 19th century as a 'Legitimate Trade'? It was because",
+      "options": [
+        "A. both Africans and Europeans had legally limited their benefits from the trade.",
+        "B. trading in commodities is legitimate as compared with the slave trade prior to it.",
+        "C. the majority of Africans had benefited from the trade.",
+        "D. the price of Africans received for their exports was almost the same with the price they paid for their imports."
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "The term 'Legitimate Trade' was used to describe the shift from the illegal slave trade to legitimate commodity trade."
+    }, {
+      "id": "q16",
+      "text": "By the middle of the 19th century, what was the primary export item from West Africa to Europe?",
+      "options": [
+        "A. Minerals",
+        "B. Leather products",
+        "C. Palm oil",
+        "D. Groundnut"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Palm oil was a major export from West Africa to Europe during this period."
+    },
+    {
+      "id": "q17",
+      "text": "What made the New Imperialism of the post 1870s different from the old imperialism?",
+      "options": [
+        "A. The imperialists were different from the earlier ones",
+        "B. The objective of the new imperialism was to restart the slave trade",
+        "C. The coming of the imperialists with advanced technologies",
+        "D. The involvement of USA and Russia in the race for colonies in Africa"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "The new imperialism was characterized by technological advancements that facilitated the colonization of Africa."
+    },
+    {
+      "id": "q18",
+      "text": "Which of the following was NOT the motive of European powers to colonize Africa?",
+      "options": [
+        "A. To exploit the raw materials of the continent and feed the increasing appetite of their industries.",
+        "B. To use Africa as a sustainable market and dumping ground for their manufactured goods.",
+        "C. To withstand the economic crisis faced by the Europeans since the early 1870s.",
+        "D. Introducing advanced European technologies for the sustainable betterment of the continent."
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "The Europeans primarily aimed to exploit Africa for resources and markets, rather than for introducing technological advancements."
+    },
+    {
+      "id": "q19",
+      "text": "Which one of the following is correct about the Berlin Conference of 1884/85?",
+      "options": [
+        "A. African representatives were invited to reflect the continent’s interest.",
+        "B. Boundaries were demarcated considering the interests of Africans.",
+        "C. Rules were indorsed to avoid future conflicts during partitioning on the ground.",
+        "D. Non-colonial powers like USA and Russia were invited to have colonies."
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "The Berlin Conference established rules for the partition of Africa, but African representatives were not invited."
+    },
+    {
+      "id": "q20",
+      "text": "Which of the following is unrelated to the Africans' failure to resist European colonial powers?",
+      "options": [
+        "A. Lack of interest to defend their sovereignty",
+        "B. Lack of unity and organization among Africans",
+        "C. Europeans military superiority both in ammunition and training",
+        "D. The Berlin Conference and its resolutions"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "The primary reasons for African failure to resist were military superiority, lack of unity, and the consequences of the Berlin Conference."
+    },
+    {
+      "id": "q21",
+      "text": "What do you understand from the prolonged resistance of Samori Toure of Mandinka, Urabi Pasha of Egypt, the Maji Maji rebellion in Tanganyika, and Ethiopians’ remarkable victory at the battle of Adwa?",
+      "options": [
+        "A. Lack of commitment on the side of the Europeans to break the unity Africans.",
+        "B. The flexibility of the colonial powers in treating the Africans’ resistance.",
+        "C. The commitment of Africans to defend their sovereign existence.",
+        "D. The lack of military capacity on the side of Europeans to crash African resistance."
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "These events reflect the strong resistance of Africans to defend their sovereignty against colonial powers."
+    },
+    {
+      "id": "q22",
+      "text": "What was the source of Ethiopians’ triumph against the Italians at the battle of Adwa?",
+      "options": [
+        "A. Ethiopians’ military superiority both in training and modern weapons.",
+        "B. Italians’ less consideration about the importance of colonizing Ethiopia.",
+        "C. Wholeheartedness of the Ethiopians to defend their independence.",
+        "D. The support provided by other major colonial powers to Ethiopia."
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Ethiopia's success at Adwa was largely due to their commitment to defend their independence."
+    },
+    {
+      "id": "q23",
+      "text": "Which of the following was the dominant colonial power in the West and Equatorial Africa?",
+      "options": [
+        "A. France",
+        "B. Great Britain",
+        "C. German",
+        "D. Portugal"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "France was the dominant colonial power in West and Equatorial Africa."
+    },
+    {
+      "id": "q24",
+      "text": "What was the reason behind Great Britain's preference for an 'indirect rule' rather than 'direct rule' in its African colonies? Because it believed that",
+      "options": [
+        "A. Africans are mature enough to administer their internal affairs.",
+        "B. direct rule would affect the political interest of the colonies.",
+        "C. the system is less costly and convenient for administration.",
+        "D. the system would prepare Africans for self-governance."
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Indirect rule was preferred because it was less costly and more convenient for administration."
+    },
+    {
+      "id": "q25",
+      "text": "What was the basic similarity of the French and the British colonial administration in their treatment of the African local chiefs? The chiefs under both the British and French received",
+      "options": [
+        "A. better respect and more powers.",
+        "B. were expected to be traditional chiefs.",
+        "C. had the same level of financial subsidy for education.",
+        "D. were expected to be loyal and reliant on their colonial masters."
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "Both the British and French expected local chiefs to be loyal and serve the interests of the colonial masters."
+    },
+    {
+      "id": "q26",
+      "text": "In which one of the following African resistances a unique, unprecedented, and short-lived unity of the people was observed to stagger the colonial power using their belief in the power of the spirit world?",
+      "options": [
+        "A. Ashanti in the present day Ghana",
+        "B. The Mahadist in the present day Sudan",
+        "C. The Maji-Maji in the present day Tanzania",
+        "D. The Urabi Pasha’s in the present day Egypt"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "The Maji-Maji rebellion in Tanzania was characterized by a unique unity based on the belief in the power of the spirit world."
+    },
+    {
+      "id": "q27",
+      "text": "Which one of the following reflects the economic impact of colonialism in Africa?",
+      "options": [
+        "A. It resulted in the replacement of food crops by cash crops meant that African farmers became prosperous than before.",
+        "B. African farmers were made to replace food crops by export crops but receive little for what they export and pay a lot for what they import.",
+        "C. The expansion of cash crops had resulted in the expansion of social service institutions.",
+        "D. Capital accumulation was possible from the money gained from the mining industries."
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "Colonialism forced African farmers to grow export crops, leading to low profits for exports and high costs for imports."
+    },
+    {
+      "id": "q28",
+      "text": "Which one of the following did NOT speed up the scramble of Africa among the colonial powers?",
+      "options": [
+        "A. The coming of Germany as a new global and continental power and its interest to join the race for colonies in Africa.",
+        "B. The advancement of medical technology against malaria and other related diseases.",
+        "C. The advancement of maritime technology which enabled Europeans to sail over African rivers to go deep into the interior of the continent.",
+        "D. Europeans were able to access the raw materials in the amount they desired through the 'Legitimate Trade'."
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "The 'Legitimate Trade' did not speed up the scramble for Africa, which was driven more by technological advancements and geopolitical competition."
+    }, 
+    {
+      "id": "q29",
+      "text": "All of the following factors forced the Europeans to be limited only to the coastal parts of much of Africa prior to 1870s, EXCEPT:",
+      "options": [
+        "A. Fear of tsetse fly and mosquito.",
+        "B. Fear of possible Africans’ resistance.",
+        "C. Lack of appropriate means of communication.",
+        "D. Absence of the resources needed by their industries."
+      ]
+    },
+    {
+      "id": "q30",
+      "text": "What factor enabled Samori Toure of the Mandinka Empire in resisting French colonial power from early 1880s to the late 1890s?",
+      "options": [
+        "A. The support gained from the competing colonial powers in West Africa.",
+        "B. The strong military power he established before his fighting against the French.",
+        "C. The military support provided from North Africa and the Muslim Arab world.",
+        "D. Lack of commitment on the side of the French to control the Mandinka Empire."
+      ]
+    },
+    {
+      "id": "q31",
+      "text": "Which of the following is correct about the Mahdist movement in the Sudan? It was a",
+      "options": [
+        "A. religious and political movement against the British colonial administration.",
+        "B. religious reformist movement in Sudan started with the primary objective of making Islamic puritanism.",
+        "C. religious reformist movement in the Sudan started with the objective of invading the territory of Southern Egypt.",
+        "D. political movement started under the leadership of Al Mahadi with the objective of controlling Western part of Ethiopia."
+      ]
+    },
+    {
+      "id": "q32",
+      "text": "Which one of the following was able to get recognition by the participants of the Berlin Conference to have private colony in Africa?",
+      "options": [
+        "A. Fredric Lugar of Great Britain",
+        "B. Albert Sarraut of France",
+        "C. King Leopold of Belgium",
+        "D. Otto Von Bismarck of Germany"
+      ]
+    },
+    {
+      "id": "q33",
+      "text": "In which region in Africa did the colonial powers had established a widespread mining industry?",
+      "options": [
+        "A. Northern Africa",
+        "B. Eastern Africa",
+        "C. Western Africa",
+        "D. Southern Africa"
+      ]
+    },
+    {
+      "id": "q34",
+      "text": "Which of the trade items listed below emerged as the most prominent export commodities from Ethiopia in the last quarter of the 19th century?",
+      "options": [
+        "A. Ivory",
+        "B. Gold",
+        "C. Coffee",
+        "D. Slaves"
+      ]
+    },
+    {
+      "id": "q35",
+      "text": "What was the major cause for the allegation against Lej Iyasu made by his internal opponents as an irresponsible leader?",
+      "options": [
+        "A. His lack of regard for the old and corrupt Shewan nobility",
+        "B. The elimination of the Qurangna and Lebashay systems",
+        "C. Establishment of the municipal police forces called Terenbulle",
+        "D. His foreign policy of aligning with the Ottoman Turks"
+      ]
+    },
+    {
+      "id": "q36",
+      "text": "Which of the following statements accurately describes the Italian control over the port of Assab?",
+      "options": [
+        "A. In 1876, Emperor Menilek II granted the port of Assab to the Italians as Let Marefya.",
+        "B. In 1885, the British officially transferred control of the port of Assab to the Italians.",
+        "C. The Italian Rubatino Company acquired Assab from the Afar Sultan in the second half of the 19th century.",
+        "D. Through the Hewett Treaty in 1884, Emperor Yohannes IV relinquished Assab to the Italians."
+      ]
+    },
+    {
+      "id": "q37",
+      "text": "Which of the market centres in the 19th century served as a significant gathering spot for merchants of both Christian and Muslim backgrounds came from various regions within Ethiopia?",
+      "options": [
+        "A. Basso",
+        "B. Assendabo",
+        "C. Soddo",
+        "D. Ancharo"
+      ]
+    },
+    {
+      "id": "q38",
+      "text": "What was the major consequence of the people’s interactions in the Gibe region resulting from the long-distance trade of the 19th century?",
+      "options": [
+        "A. The Oromo Gibe monarchies effectively preserved the Gadaa system",
+        "B. The expansion of Islam among the Oromo Gibe states",
+        "C. Decline in the interactions with the people of the north",
+        "D. The expansion of Christianity in the Oromo Gibe states"
+      ]
+    },
+    {
+      "id": "q39",
+      "text": "Who was the major challenge to Lej Iyasu’s assumption of full political power?",
+      "options": [
+        "A. Empress Taytu",
+        "B. Ras Bitwoded Tesema Nadew",
+        "C. Abune Mathewos",
+        "D. Ras Abate Buayalew"
+      ]
+    },
+    {
+      "id": "q40",
+      "text": "Among the following prominent contenders, which one emerged victorious as the initial successor to Tewodros II?",
+      "options": [
+        "A. Dejazmach Kassa Mircha of Tigray",
+        "B. Ras Adal Tesema of Gojjam",
+        "C. Negus Menilek Haile Melekot of Shewa",
+        "D. Wagshum Gobezie Gebre Medhin of Lasta"
+      ]
+    },
+    {
+      "id": "q41",
+      "text": "Why Emperor Yohannes IV faced a triangular tension in the late 1880s? This was because Yohannes IV",
+      "options": [
+        "A. engaged in diplomatic deadlock with Britain, France and Italy.",
+        "B. encountered external aggressions and internal coalition of his vassals.",
+        "C. attempted to resolve the religious doctrinal controversy in the Church.",
+        "D. internally faced power competition from his two regional governors."
+      ]
+    },
+    {
+      "id": "q42",
+      "text": "Which of the following event was the major factor that enabled the Italians to establish their colony over Eritrea in 1890?",
+      "options": [
+        "A. Yohannes IV’s defeat at Dogali incident",
+        "B. The success of Italian policy of subversion",
+        "C. Friendly Treaty agreements with Menilek",
+        "D. Menilek ceded the region to the Italians"
+      ]
+    },
+    {
+      "id": "q43",
+      "text": "What was the major cause for the power struggle between 1906 and 1930 in Ethiopia?",
+      "options": [
+        "A. The illness of Menilek and the death of Ras Mekonnen in 1906",
+        "B. The designation of Lej Iyasu as Menilek’s successor in 1909",
+        "C. The establishment of the first Council of Ministers in 1907",
+        "D. The elimination of Empress Taytu from imperial court in 1910"
+      ]
+    },
+    {
+      "id": "q44",
+      "text": "Which of the following market centres located in Wallo along the routes that connect the south-western Ethiopian region to the northern Ethiopia?",
+      "options": [
+        "A. Soddo and Ankober",
+        "B. Assendabo and Basso",
+        "C. Darita and Warra Illu",
+        "D. Ancharo and Bati"
+      ]
+    },
+    {
+      "id": "q45",
+      "text": "Where was the regional base of the Qibat (Unction) supporters amidst the religious controversies within the Ethiopian Orthodox Church?",
+      "options": [
+        "A. Lasta",
+        "B. Gojjam",
+        "C. Tigray",
+        "D. Shewa"
+      ]
+    },
+    {
+      "id": "q46",
+      "text": "Which one of the following places epitomized Tewodros’s effort to produce modern firearms in Ethiopia?",
+      "options": [
+        "A. Dabra Tabor",
+        "B. Gondar",
+        "C. Gafat",
+        "D. Meqdela"
+      ]
+    },
+    {
+      "id": "q47",
+      "text": "Why did Emperor Yohannes IV decline to offer an official apology to the Italians for the Dogali incident? This was because of",
+      "options": [
+        "A. the Italians' unjust control over Massawa, with the assistance of the British.",
+        "B. Yohannes's desire to seek revenge against the Italians for the Dogali incident.",
+        "C. the peace terms proposed by the Portal Mission was deemed unacceptable by Ethiopia.",
+        "D. Yohannes felt confident on British military aid to expel Italians from the Mereb Mellash."
+      ]
+    },
+    {
+      "id": "q48",
+      "text": "What was the enduring lesson the victory of Adwa communicate to the Africans and peoples of African descent?",
+      "options": [
+        "A. Ethiopia is the only independent African state",
+        "B. The racial equality of Black people with the Whites",
+        "C. Stoke flames of anti-colonial struggles in different parts of Africa",
+        "D. The Black peoples learned that the Whites are superior"
+      ]
+    },
+    {
+      "id": "q49",
+      "text": "What was the primary objective that Menilek endeavoured to attain through his amicable relations with the Italians in the late 19th century?",
+      "options": [
+        "A. He aspired to maintain a neutral stance in the dispute between Italians and Emperor Yohannes IV.",
+        "B. He sought to unequivocally endorse the Italian colonial aspirations in Ethiopia.",
+        "C. He aimed to secure access to modern firearms, which were vital for his pursuit of the imperial throne.",
+        "D. Aimed at building a strong commercial and military friendship with the Italians."
+      ]
+    },
+    {
+      "id": "q50",
+      "text": "Which one of the following is a major challenge to the gradual rise to power of Ras Teferi between 1916 and 1930?",
+      "options": [
+        "A. Empress Zewditu",
+        "B. The progressive intellectuals",
+        "C. Foreign powers",
+        "D. The traditionalists"
+      ]
+    },
+    {
+      "id": "q51",
+      "text": "In the first phase of territorial expansion to south, south-west and south-eastern Ethiopia, Menilek faced a stiff resistance from:",
+      "options": [
+        "A. Gurage",
+        "B. Wollega",
+        "C. Jimma",
+        "D. Arsi"
+      ]
+    },
+    {
+      "id": "q52",
+      "text": "What was the most likely factor for the revival of long-distance in the 19th century Ethiopia?",
+      "options": [
+        "A. The emergence of the five Oromo monarchies in the Gibe region",
+        "B. The process of Menilek’s territorial expansion to southern regions",
+        "C. Increased demand for the Ethiopian commodities in the Arabia",
+        "D. The construction of the Ethio-Djibouti railway in late 19th century"
+      ]
+    },
+    {
+      "id": "q53",
+      "text": "Which one of the following is true about the Italian aggression and occupation of Ethiopia (1936-1941)?",
+      "options": [
+        "A. League of Nations put an embargo both on Italy and Ethiopia to stop the aggression.",
+        "B. Italian aggression was aimed to redress the humiliating Italians defeat at Adwa and to colonize Ethiopia.",
+        "C. The stiff patriotic resistance in Ethiopia forced the Italians to shift their capital of Italian East Africa to Asmara.",
+        "D. Italians left Ethiopia after five years occupation with British led peace negotiation at League of Nations."
+      ]
+    },
+    {
+      "id": "q54",
+      "text": "Which one of the following treaties brought the enmity of Mahdists against Ethiopia?",
+      "options": [
+        "A. Treaty of Wuchalle",
+        "B. Hewett (Adwa) Treaty",
+        "C. Treaty of Neutrality",
+        "D. Liche Agreement"
+      ]
+    },
+    {
+      "id": "q55",
+      "text": "Which one of the following is considered as a limitation of the victory of Adwa?",
+      "options": [
+        "A. The birth of Pan-Africanism movement",
+        "B. The downfall of the Crispi government in Italy",
+        "C. The Italians control over the Eritrea",
+        "D. Recognition of Ethiopian independence"
+      ]
+    },
+    {
+      "id": "q56",
+      "text": "What was the distinctive characteristic of the diarchy period (1916-1930) in the history of Ethiopia?",
+      "options": [
+        "A. The division and conflict among the proponents of Zewditu and Teferi",
+        "B. The simultaneous appointment of Empress and the heir to the throne",
+        "C. The overthrow of Lej Iyasu through coup d’etat",
+        "D. Restoration of the political hegemony of the Shewans"
+      ]
+    },
+    {
+      "id": "q57",
+      "text": "What is the correct assessment of Empress Taytu's role in the Imperial politics following Emperor Menilek's illness?",
+      "options": [
+        "A. She honoured the designated successor, Lej Iyasu to peacefully succeed Menilek.",
+        "B. She accused Lej Iyasu for promoting Islam in Ethiopia at the expense of Orthodox Christianity.",
+        "C. Taytu arranged a political marriage between her nephew Ras Gugsa and Zewditu to remove her from power struggle.",
+        "D. Exercised a considerable political power through the policy of appointment and dismissal of the Shewan nobility."
+      ]
+    },
+    {
+      "id": "q58",
+      "text": "Why the Italians were successful in defeating Ethiopia in the Italo-Ethiopian war of 1935/36?",
+      "options": [
+        "A. The Italians military and numerical superiority over the Ethiopians",
+        "B. Italians received a military support from Britain and France",
+        "C. Emperor Haile Selassie’s underestimation of the Italians power",
+        "D. The success of the Italians subversion policy in Ethiopia"
+      ]
+    },
+    {
+      "id": "q59",
+      "text": "What was the reason behind Emperor Tewodros II's dispute with the Ethiopian Orthodox Church?",
+      "options": [
+        "A. The Emperor detained Abune Selama for his cooperation with the Egyptians.",
+        "B. The Emperor sought to seize additional land owned by the Ethiopian Orthodox Church.",
+        "C. His revenge against the clergy for their opposition to his rise to power.",
+        "D. The Church accused the Emperor of failing to resolve the doctrinal dispute."
+      ]
+    },
+    {
+      "id": "q60",
+      "text": "What was the reason behind the south-western Ethiopian region becoming a bone of contention between Negus Menilek of Shewa and Negus Tekle Haimanot of Gojjam?",
+      "options": [
+        "A. They were attracted by the rich natural resources of the region.",
+        "B. Both were inclined to distance themselves from Emperor Yohannes’s influence.",
+        "C. Their objective was to find fertile land in order to accommodate their growing population.",
+        "D. They sought to attain access to contemporary firearms through the Sudan."
+      ]
+    },
+    {
+      "id": "q61",
+      "text": "What was the underlying motive behind Emperor Yohannes IV's decision to delay his campaign to Shewa after the devastative punishment of Gojjam in 1880s?",
+      "options": [
+        "A. Yohannes IV feared defeat in the hands of Negus Menilek",
+        "B. He decided first to deal with the Mahdist and Italian aggressions",
+        "C. He thought to resolve the problem with Menilek through diplomacy",
+        "D. Menilek was already submitted to the Emperor to avoid bloodshed"
+      ]
+    },
+    {
+      "id": "q62",
+      "text": "Which one of the following agreements signifies the triumph of the Italian policy of subversion?",
+      "options": [
+        "A. Treaty of Neutrality",
+        "B. Hewett Treaty",
+        "C. Wuchalle Treaty",
+        "D. Mereb Convention"
+      ]
+    },
+    {
+      "id": "q63",
+      "text": "Who was the spirit behind the Ethiopian offensive against the Italians in the first phase of patriotic resistance and martyr of the resistance?",
+      "options": [
+        "A. Emperor Haile Selassie",
+        "B. Abune Selama",
+        "C. Dejjach Balcha Safo",
+        "D. Abune Petros"
+      ]
+    },
+    {
+      "id": "q64",
+      "text": "The people’s reaction to the 19th century Menilek’s policy of centralization was appropriately summarized in terms of:",
+      "options": [
+        "A. Peaceful submission and resistance",
+        "B. Uprising and collaboration",
+        "C. Defection and migration",
+        "D. Passive resistance and alliance"
+      ]
+    },
+    {
+      "id": "q65",
+      "text": "Which among the subsequent options most accurately characterizes the religious policy of Lej Iyasu?",
+      "options": [
+        "A. Favouritism towards Islam",
+        "B. Beneficence to Orthodox Church",
+        "C. Controversy over his religious policy",
+        "D. Religious intolerance towards Muslims"
+      ]
+    },
+    {
+      "id": "q66",
+      "text": "What was the name of the military alliance formed by Germany, Austro-Hungary and Italy in the year 1882?",
+      "options": [
+        "A. Triple Entente",
+        "B. Dual Alliance",
+        "C. Allied Powers",
+        "D. Triple Alliance"
+      ]
+  }
+  ]
+}
