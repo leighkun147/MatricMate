@@ -24,6 +24,10 @@ class _MockExamScreenState extends State<MockExamScreen> {
   late Timer _timer;
   late Duration _remainingTime;
   bool _isExamComplete = false;
+  bool _isCountdownVisible = true;
+  bool _isLastFiveMinutes = false;
+  final List<int> _timeWarnings = [30, 15, 5]; // Minutes at which to show warnings
+  final Set<int> _shownWarnings = {}; // Track which warnings have been shown
 
   @override
   void initState() {
@@ -39,11 +43,56 @@ class _MockExamScreenState extends State<MockExamScreen> {
       setState(() {
         if (_remainingTime.inSeconds > 0) {
           _remainingTime = _remainingTime - const Duration(seconds: 1);
+          
+          // Check for time warnings
+          final currentMinutes = _remainingTime.inMinutes;
+          for (final warningMinute in _timeWarnings) {
+            if (currentMinutes == warningMinute && !_shownWarnings.contains(warningMinute)) {
+              _showTimeWarning(warningMinute);
+              _shownWarnings.add(warningMinute);
+              
+              // Special handling for 5-minute warning
+              if (warningMinute == 5) {
+                _isLastFiveMinutes = true;
+                _isCountdownVisible = true;
+              }
+            }
+          }
         } else {
           _submitExam();
         }
       });
     });
+  }
+
+  void _showTimeWarning(int minutes) {
+    final message = minutes == 5 
+        ? '⚠️ 5 minutes remaining!'
+        : '⏰ $minutes minutes remaining!';
+    
+    final backgroundColor = minutes == 5 
+        ? Colors.orange
+        : Colors.blue;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: backgroundColor,
+        duration: const Duration(seconds: 3),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+
+  void _showFiveMinuteWarning() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('⚠️ 5 minutes remaining!'),
+        backgroundColor: Colors.orange,
+        duration: const Duration(seconds: 3),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
   }
 
   void _submitExam() {
@@ -130,14 +179,26 @@ class _MockExamScreenState extends State<MockExamScreen> {
         appBar: AppBar(
           title: Text(widget.exam.title),
           actions: [
-            Center(
+            IconButton(
+              icon: Icon(_isCountdownVisible ? Icons.timer : Icons.timer_off),
+              onPressed: _isLastFiveMinutes ? null : () {
+                setState(() {
+                  _isCountdownVisible = !_isCountdownVisible;
+                });
+              },
+              tooltip: _isLastFiveMinutes 
+                ? 'Timer cannot be hidden in last 5 minutes' 
+                : (_isCountdownVisible ? 'Hide timer' : 'Show timer'),
+            ),
+            if (_isCountdownVisible) Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   '${_remainingTime.inHours.toString().padLeft(2, '0')}:${(_remainingTime.inMinutes % 60).toString().padLeft(2, '0')}:${(_remainingTime.inSeconds % 60).toString().padLeft(2, '0')}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
+                    color: _isLastFiveMinutes ? Colors.red : null,
                   ),
                 ),
               ),
@@ -403,58 +464,146 @@ class _MockExamScreenState extends State<MockExamScreen> {
   }
 
   Widget _buildResultsScreen() {
-    int totalQuestions = questions.length;
-    int answeredQuestions = questions.where((q) => q.isAnswered).length;
-    int correctAnswers = questions.where((q) => q.isCorrect).length;
-    double percentage = (correctAnswers / totalQuestions) * 100;
+    final totalQuestions = questions.length;
+    final answeredQuestions = questions.where((q) => q.selectedOptionIndex != null).length;
+    final correctAnswers = questions.where((q) => 
+      q.selectedOptionIndex != null && q.selectedOptionIndex == q.correctOptionIndex
+    ).length;
+    final score = (correctAnswers / totalQuestions) * 100;
+
+    // Define score-based styling
+    final (color, icon, message) = score >= 90 
+        ? (Colors.green.shade400, Icons.emoji_events, 'Excellent! Outstanding Performance!')
+        : score >= 80 
+          ? (Colors.lightGreen.shade400, Icons.star, 'Great Job! Keep it up!')
+          : score >= 70 
+            ? (Colors.amber.shade400, Icons.thumb_up, 'Good Work! Room for improvement.')
+            : score >= 60 
+              ? (Colors.orange.shade400, Icons.trending_up, 'Fair. Keep practicing!')
+              : (Colors.red.shade400, Icons.refresh, 'Need more practice. Don\'t give up!');
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Exam Results'),
         automaticallyImplyLeading: false,
+        backgroundColor: color.withOpacity(0.2),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            // Score Circle
+            Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: color.withOpacity(0.1),
+                border: Border.all(
+                  color: color,
+                  width: 3,
+                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    icon,
+                    size: 48,
+                    color: color,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    '${score.toStringAsFixed(1)}%',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      color: color,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            // Message
+            Text(
+              message,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: color,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 24),
+            // Stats Card
             Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+                side: BorderSide(
+                  color: color.withOpacity(0.5),
+                  width: 1,
+                ),
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [
-                    Text(
-                      '${percentage.toStringAsFixed(1)}%',
-                      style: const TextStyle(
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                      ),
+                    _buildResultsStat('Total Questions', totalQuestions),
+                    const Divider(),
+                    _buildResultsStat('Questions Attempted', answeredQuestions),
+                    const Divider(),
+                    _buildResultsStat('Correct Answers', correctAnswers, color: Colors.green),
+                    const Divider(),
+                    _buildResultsStat(
+                      'Incorrect Answers', 
+                      answeredQuestions - correctAnswers,
+                      color: Colors.red,
                     ),
-                    const Text(
-                      'Overall Score',
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
+                    const Divider(),
+                    _buildResultsStat(
+                      'Questions Skipped', 
+                      totalQuestions - answeredQuestions,
+                      color: Colors.orange,
                     ),
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 16),
-            _buildResultsStat('Total Questions', totalQuestions),
-            _buildResultsStat('Questions Attempted', answeredQuestions),
-            _buildResultsStat('Correct Answers', correctAnswers),
-            _buildResultsStat('Incorrect Answers', answeredQuestions - correctAnswers),
-            _buildResultsStat('Questions Skipped', totalQuestions - answeredQuestions),
             const SizedBox(height: 24),
+            // Review Button
+            if (score < 100) AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: _showReviewDialog,
+                icon: const Icon(Icons.rate_review),
+                label: const Text('Review My Answers'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: color,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.all(16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
+            // Return Button
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton(
+              child: OutlinedButton.icon(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text('Return to Study Hub'),
+                icon: const Icon(Icons.arrow_back),
+                label: const Text('Return to Study Hub'),
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.all(16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
               ),
             ),
           ],
@@ -463,20 +612,152 @@ class _MockExamScreenState extends State<MockExamScreen> {
     );
   }
 
-  Widget _buildResultsStat(String label, int value) {
+  Widget _buildResultsStat(String label, int value, {Color? color}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 16,
+            ),
+          ),
           Text(
             value.toString(),
-            style: const TextStyle(
+            style: TextStyle(
+              fontSize: 16,
               fontWeight: FontWeight.bold,
+              color: color,
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _showReviewDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Review Options'),
+        content: const Text('Would you like to review all questions or just the ones you got wrong?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _showReviewScreen(reviewWrongOnly: true);
+            },
+            child: const Text('Wrong Questions Only'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _showReviewScreen(reviewWrongOnly: false);
+            },
+            child: const Text('All Questions'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showReviewScreen({required bool reviewWrongOnly}) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => _ExamReviewScreen(
+          questions: reviewWrongOnly 
+              ? questions.where((q) => 
+                  q.selectedOptionIndex != q.correctOptionIndex || 
+                  q.selectedOptionIndex == null).toList()
+              : questions,
+        ),
+      ),
+    );
+  }
+}
+
+class _ExamReviewScreen extends StatelessWidget {
+  final List<Question> questions;
+
+  const _ExamReviewScreen({
+    required this.questions,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Answer Review'),
+      ),
+      body: ListView.builder(
+        itemCount: questions.length,
+        padding: const EdgeInsets.all(16),
+        itemBuilder: (context, index) {
+          final question = questions[index];
+          final isCorrect = question.selectedOptionIndex == question.correctOptionIndex;
+          final wasAnswered = question.selectedOptionIndex != null;
+          
+          return Card(
+            margin: const EdgeInsets.only(bottom: 16),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Question ${index + 1}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(question.text),
+                  const SizedBox(height: 16),
+                  if (wasAnswered) ...[
+                    Text(
+                      'Your Answer: ${question.options[question.selectedOptionIndex!]}',
+                      style: TextStyle(
+                        color: isCorrect ? Colors.green : Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    if (!isCorrect) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        'Correct Answer: ${question.options[question.correctOptionIndex]}',
+                        style: const TextStyle(
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ] else
+                    const Text(
+                      'Question Skipped',
+                      style: TextStyle(
+                        color: Colors.orange,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  if (question.explanation != null && question.explanation!.isNotEmpty) ...[
+                    const SizedBox(height: 16),
+                    const Text(
+                      'Explanation:',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(question.explanation!),
+                  ],
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

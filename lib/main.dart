@@ -65,7 +65,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 4; // Default to profile tab
+  int _selectedIndex = 0; // Default to dashboard tab
 
   final List<Widget> _screens = [
     const DashboardScreen(),
