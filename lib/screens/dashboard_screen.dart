@@ -468,7 +468,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
       children: [
         _buildFeatureCard(
           'Download Contents',
-          Icons.download,
+          Icon(
+            Icons.download,
+            size: 40,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           () {
             Navigator.push(
               context,
@@ -481,7 +485,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
         _buildPaymentMethodsCard(),
         _buildFeatureCard(
           'Study Plan',
-          Icons.calendar_today,
+          Icon(
+            Icons.calendar_today,
+            size: 40,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           () {
             Navigator.push(
               context,
@@ -493,7 +501,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         _buildFeatureCard(
           'Model Exams',
-          Icons.download,
+          Image.asset(
+            'assets/icons/model_exam.png',
+            width: 40,
+            height: 40,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           () {
             Navigator.push(
               context,
@@ -505,7 +518,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         _buildFeatureCard(
           'Discord',
-          Icons.chat,
+          Icon(
+            Icons.chat,
+            size: 40,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           () {
             Navigator.push(
               context,
@@ -517,7 +534,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         _buildFeatureCard(
           'Cashout',
-          Icons.attach_money,
+          Icon(
+            Icons.attach_money,
+            size: 40,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           () {
             Navigator.push(
               context,
@@ -531,7 +552,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  Widget _buildFeatureCard(String title, IconData icon, VoidCallback onTap) {
+  Widget _buildFeatureCard(String title, dynamic icon, VoidCallback onTap) {
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
@@ -542,11 +563,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 40,
-              color: Theme.of(context).primaryColor,
-            ),
+            icon,
             const SizedBox(height: 8),
             Text(
               title,

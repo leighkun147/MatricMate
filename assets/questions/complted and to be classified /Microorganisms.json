@@ -1,0 +1,779 @@
+{
+    "title": "Entrance Examination for Grade 12 from 1995 – 2011",
+    "duration": 120,
+    "constants": {},
+    "numberOfQuestions": 110,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Which of the following is the mode of genome replication in AIDS virus?",
+        "options": ["DNA → DNA", "RNA → DNA", "DNA → RNA", "RNA → DNA → RNA"],
+        "correctOptionIndex": 3,
+        "explanation": "The AIDS virus, HIV, replicates its genome through the process of reverse transcription, where RNA is converted to DNA, which is then used to produce new RNA genomes."
+      },
+      {
+        "id": "q2",
+        "text": "Select the alternative that contains only vector borne infections",
+        "options": ["Malaria , Trachoma, Syphilis, Tapeworm", "Malaria, Leishmaaniasis, Trypanosomiasis, Typhus", "Diphtheria, Tuberculosis, Cholera, Meningitis", "Leprosy, ring worm, Pneumonia, hook worm"],
+        "correctOptionIndex": 1,
+        "explanation": "Malaria, Leishmaniasis, Trypanosomiasis, and Typhus are all vector-borne infections, transmitted by mosquitoes, sandflies, tsetse flies, and lice/fleas respectively."
+      },
+      {
+        "id": "q3",
+        "text": "Which of the following groups probably ate more of herbivorous diet?",
+        "options": ["Homo erectus", "Homo Habilis", "Cro- magnon humans", "Australopithecus afarensis"],
+        "correctOptionIndex": 3,
+        "explanation": "Australopithecus afarensis is known to have a diet that included more herbivorous components compared to the other hominid groups listed."
+      },
+      {
+        "id": "q4",
+        "text": "Which of the following disease of animal would be controlled if one is able to control tse tse fly?",
+        "options": ["Hart water", "Rinder pest", "Trypanosomiasis", "Black leg"],
+        "correctOptionIndex": 2,
+        "explanation": "Trypanosomiasis, also known as sleeping sickness in humans and nagana in animals, is transmitted by the tsetse fly."
+      },
+      {
+        "id": "q5",
+        "text": "In Ethiopia, which of the following genera of microorganisms has the potential to be used for single cell protein production?",
+        "options": ["Spirulina", "Bacillus", "Rhizobium", "Agrobacterium"],
+        "correctOptionIndex": 0,
+        "explanation": "Spirulina is a genus of blue-green algae that can be used for single cell protein production due to its high protein content."
+      },
+      {
+        "id": "q6",
+        "text": "Choose the one in which the disease and its categorical names are mismatched?",
+        "options": ["Senile dementia – deficiency disease", "Pellagra – deficiency disease", "typhus – vector borne disease", "Parkinson’s disease – degenerative disease"],
+        "correctOptionIndex": 0,
+        "explanation": "Senile dementia is not a deficiency disease; it is a degenerative disease."
+      },
+      {
+        "id": "q7",
+        "text": "In which Ethiopian traditional food preparation is the action microorganisms least evident?",
+        "options": ["Injera making", "kocho making", "Kinche making", "Irgo ( yoghurt ) making"],
+        "correctOptionIndex": 2,
+        "explanation": "Kinche making involves the least action of microorganisms compared to the fermentation processes involved in making injera, kocho, and yoghurt."
+      },
+      {
+        "id": "q8",
+        "text": "Which of the following characteristics of life is not possessed by virus?",
+        "options": ["Mutation", "Nucleic acid", "Respiration", "Reproduction"],
+        "correctOptionIndex": 2,
+        "explanation": "Viruses do not possess their own metabolism and do not respire; they rely on the host cell for replication."
+      },
+      {
+        "id": "q9",
+        "text": "If culture of green is exposed to light of different colors one at a time, which colors generate more oxygen?",
+        "options": ["Blue and red light", "Green and yellow light", "Orange and yellow light", "ultraviolet and infrared light"],
+        "correctOptionIndex": 0,
+        "explanation": "Blue and red light are most effective for photosynthesis, as they are absorbed by chlorophyll and used to generate oxygen."
+      },
+      {
+        "id": "q10",
+        "text": "The bird flu is currently threatening the global poultry industry. What is the causative agent of this disease?",
+        "options": ["Bacteria", "Fungi", "Virus", "Worm"],
+        "correctOptionIndex": 2,
+        "explanation": "The causative agent of bird flu is a virus, specifically the influenza A virus subtype H5N1."
+      },
+      {
+        "id": "q11",
+        "text": "Which of the following is the causative agent of AIDS?",
+        "options": ["Fungus", "Bacterium", "Virus", "protozoa"],
+        "correctOptionIndex": 2,
+        "explanation": "The causative agent of AIDS is a virus, specifically the Human Immunodeficiency Virus (HIV)."
+      },
+      {
+        "id": "q12",
+        "text": "Which of the following can be one reason for the difficulty to produce a vaccine again HIV / AIDS?",
+        "options": ["The small size of the virus", "The high variability of the virus", "Its possession of RNA instead of DNA", "The presence of protective envelope derived from the host cell"],
+        "correctOptionIndex": 1,
+        "explanation": "The high variability and mutation rate of HIV make it difficult to produce an effective vaccine."
+      },
+      {
+        "id": "q13",
+        "text": "If all dogs in your community are vaccinated, which of the following diseases will be put under control in your community?",
+        "options": ["Meningitis", "rabies", "Leshamaniasis", "Syphilis"],
+        "correctOptionIndex": 1,
+        "explanation": "Vaccinating dogs helps control rabies, as dogs are a common vector for the disease."
+      },
+      {
+        "id": "q14",
+        "text": "Which of the following is mechanism by which bacteriophages transfer genes from one bacterium to another?",
+        "options": ["Binary fission", "conjugation", "Transduction", "transformation"],
+        "correctOptionIndex": 2,
+        "explanation": "Transduction is the process by which bacteriophages transfer genes from one bacterium to another."
+      },
+      {
+        "id": "q15",
+        "text": "If HIV patients take a drug that inhibits the function of the viral reverse transcriptase enzyme which of the following processes would be primarily affected?",
+        "options": ["Entry of the virus into the patient’s body", "Copying of DNA into RNA", "Copying of RNA into DNA", "Protein synthesis"],
+        "correctOptionIndex": 2,
+        "explanation": "Inhibiting reverse transcriptase affects the copying of viral RNA into DNA, a crucial step in HIV replication."
+      },
+      {
+        "id": "q16",
+        "text": "Anti HIV/AIDS clubs are today common in schools and colleges, what is the main contribution in the fight against the pandemic?",
+        "options": ["Provide medication for AIDS patients", "Encourage the girls to have the boy friends", "Encourage the boys to have girlfriends", "Raise awareness about the problem among students"],
+        "correctOptionIndex": 3,
+        "explanation": "Anti HIV/AIDS clubs primarily raise awareness about the disease and its prevention among students."
+      },
+      {
+        "id": "q17",
+        "text": "Some countries demand foreign travelers to produce HIV/AIDS free certificate before letting them enter the country What do we call this type of disease control mechanism?",
+        "options": ["Legislative", "Physical", "Cultural", "Biological"],
+        "correctOptionIndex": 0,
+        "explanation": "Requiring HIV/AIDS free certificates for entry is a legislative measure to control the spread of the disease."
+      },
+      {
+        "id": "q18",
+        "text": "Which of the following statement is correct about HIV?",
+        "options": ["It is bacteriophage", "It is retrovirus", "It is a DNA virus", "It infects pants and animals alike"],
+        "correctOptionIndex": 1,
+        "explanation": "HIV is a retrovirus, meaning it has RNA as its genetic material and uses reverse transcriptase to replicate."
+      },
+      {
+        "id": "q19",
+        "text": "Select the kingdom of life in which cellular organelles are without membrane around them?",
+        "options": ["Plantae", "Protista", "Monera", "Fungi"],
+        "correctOptionIndex": 2,
+        "explanation": "Monera, which includes bacteria, have cellular organelles without membranes around them."
+      },
+      {
+        "id": "q20",
+        "text": "Identify from the following a biological control method of malaria?",
+        "options": ["Use of fishes to feed on mosquito larvae", "Use of DDT spraying to kill mosquitoes", "Using crop rotation system in farm", "Hand picking and physical removal of weeds and affected plants"],
+        "correctOptionIndex": 0,
+        "explanation": "Using fishes to feed on mosquito larvae is a biological control method for malaria."
+      },
+      {
+        "id": "q21",
+        "text": "Which of the following is true about meanings contained in the in the name HIV and AIDs?",
+        "options": ["HIV refers to symptoms that characterize the condition", "AIDS refers to the causative agent", "AIDS refers to the symptoms", "HIV refers to the probable origin from the chimpanzee"],
+        "correctOptionIndex": 2,
+        "explanation": "AIDS (Acquired Immune Deficiency Syndrome) refers to the symptoms and conditions that characterize the advanced stage of HIV infection."
+      },
+      {
+        "id": "q22",
+        "text": "Identify the disease that is not correctly paired with the substance whose deficiency causes the disease?",
+        "options": ["Berbei – nicotinic acid", "Scurvy – vitamin C", "Night blindness – Vitamin A", "Rickets – vitamin D"],
+        "correctOptionIndex": 0,
+        "explanation": "Beriberi is caused by a deficiency of thiamine (vitamin B1), not nicotinic acid."
+      },
+      {
+        "id": "q23",
+        "text": "Of the following, which cell type is attacked by HIV?",
+        "options": ["Red blood cells", "Sperm cells", "Egg cells", "T helper cells"],
+        "correctOptionIndex": 3,
+        "explanation": "HIV primarily attacks T helper cells (CD4 cells), which are a type of white blood cell crucial for the immune system."
+      },
+      {
+        "id": "q24",
+        "text": "If one regularly includes orange in his daily diet, which deficiency disease would be avoided?",
+        "options": ["Night blindness", "Pellagra", "Beiberi", "scurvy"],
+        "correctOptionIndex": 3,
+        "explanation": "Oranges are rich in vitamin C, which helps prevent scurvy."
+      },
+      {
+        "id": "q25",
+        "text": "Which of the following disease of livestock is associated with tsetse flies?",
+        "options": ["Rinderpest", "Trypanosomiasis", "Blacking", "Anthrax"],
+        "correctOptionIndex": 1,
+        "explanation": "Trypanosomiasis, also known as nagana, is a disease of livestock transmitted by tsetse flies."
+      },
+      {
+        "id": "q26",
+        "text": "What are the causes of infectious disease?",
+        "options": ["The parental genes", "Microorganisms", "Carcinogenic substances", "Bad life style"],
+        "correctOptionIndex": 1,
+        "explanation": "Infectious diseases are caused by microorganisms such as bacteria, viruses, fungi, and parasites."
+      },
+      {
+        "id": "q27",
+        "text": "Among the following human diseases, identify the one that is transmitted through a vector?",
+        "options": ["Leprosy", "Chancroid", "Gonorrhea", "Leishmaniasis"],
+        "correctOptionIndex": 3,
+        "explanation": "Leishmaniasis is transmitted through the bite of infected sandflies, which are vectors."
+      },
+      {
+        "id": "q28",
+        "text": "A number of virus including HIV, have more than one strain. This show the viruses are;",
+        "options": ["Capable of living outside their host cell", "capable of reproduction", "Capable of mutation", "Obligate parasites"],
+        "correctOptionIndex": 2,
+        "explanation": "The existence of multiple strains indicates that viruses are capable of mutation."
+      },
+      {
+        "id": "q29",
+        "text": "Which is not true of prokaryotes? They",
+        "options": ["Are living cells", "Lack true nucleus", "All are parasites", "Are either Archaebacteria or eubacteria"],
+        "correctOptionIndex": 2,
+        "explanation": "Not all prokaryotes are parasites; many are free-living and play essential roles in ecosystems."
+      },
+      {
+        "id": "q30",
+        "text": "Which of the following are rod shaped bacteria?",
+        "options": ["Cocci", "Spirochetes", "Spirilla", "Bacilli"],
+        "correctOptionIndex": 3,
+        "explanation": "Bacilli are rod-shaped bacteria."
+      },
+      {
+        "id": "q31",
+        "text": "The cells of which group of microorganisms can be described as prokaryotic?",
+        "options": ["Virus", "Protozoa", "Algae", "Bacteria"],
+        "correctOptionIndex": 3,
+        "explanation": "Bacteria are prokaryotic, meaning they lack a true nucleus and other membrane-bound organelles."
+      },
+      {
+        "id": "q32",
+        "text": "What are bacteriophages?",
+        "options": ["Bacteria", "Virus", "protozoa", "fungi"],
+        "correctOptionIndex": 1,
+        "explanation": "Bacteriophages are viruses that infect bacteria."
+      },
+      {
+        "id": "q33",
+        "text": "Which of the following is major killer of AIDS patients?",
+        "options": ["Pneumonia", "anemia", "opportunistic infection", "Mal nutrition"],
+        "correctOptionIndex": 2,
+        "explanation": "Opportunistic infections are a major cause of death in AIDS patients due to their weakened immune systems."
+      },
+      {
+        "id": "q34",
+        "text": "Among the following infectious human diseases, identify the one that is caused by a virus?",
+        "options": ["Yellow fever", "Pneumonia", "cholera", "Typhoid fever"],
+        "correctOptionIndex": 0,
+        "explanation": "Yellow fever is caused by a virus."
+      },
+      {
+        "id": "q35",
+        "text": "Why T lymphocytes more vulnerable to HIV infection?",
+        "options": ["Because they posses thin cell membrane", "gp 120 on their surface", "HIV receptor protein", "Large pores in their cell membrane"],
+        "correctOptionIndex": 1,
+        "explanation": "T lymphocytes are more vulnerable to HIV infection because they have gp120 receptors on their surface, which HIV uses to enter the cells."
+      },
+      {
+        "id": "q36",
+        "text": "Which of the following statement is true about bacteria?",
+        "options": ["Bacteria found in human body are all parasitic", "all bacteria are harmful because they spoil food", "all bacteria cause disease to humans, plants, and animals in some ways", "some bacteria living in human body make vitamins needed by the body"],
+        "correctOptionIndex": 3,
+        "explanation": "Some bacteria in the human body produce vitamins, such as vitamin K and certain B vitamins, which are essential for health."
+      },
+      {
+        "id": "q37",
+        "text": "Which one of the following is mode of reproduction in bacteria?",
+        "options": ["Mitosis", "Binary fission", "Conjugation", "Lysogenization"],
+        "correctOptionIndex": 1,
+        "explanation": "Binary fission is the primary mode of reproduction in bacteria."
+      },
+      {
+        "id": "q38",
+        "text": "If AIDS patient given antiretroviral drugs are targeted against the protease enzyme, which one of the following stages of the HIV life cycle would be inhibited",
+        "options": ["Entry into the host cell", "Reverse transcription", "Integration of viral DNA into host DNA", "Assembly of viral parts into a whole virus"],
+        "correctOptionIndex": 3,
+        "explanation": "Protease inhibitors prevent the assembly of viral parts into a whole virus by inhibiting the protease enzyme."
+      },
+      {
+        "id": "q39",
+        "text": "Which of the following I true about those bacteria which dwell in hot spring?",
+        "options": ["they are not metabolically active", "they use non protein enzymes", "they get energy of activation from the spring heat", "their enzymes do not denature at the temperature"],
+        "correctOptionIndex": 3,
+        "explanation": "Bacteria that dwell in hot springs have enzymes that do not denature at high temperatures, allowing them to remain metabolically active."
+      },
+      {
+        "id": "q40",
+        "text": "Choose the disease that is caused by what is known as the droplet infection?",
+        "options": ["Flu", "AIDS", "Cholera", "Malaria"],
+        "correctOptionIndex": 0,
+        "explanation": "Flu is caused by droplet infection, where the virus is transmitted through respiratory droplets."
+      },
+      {
+        "id": "q41",
+        "text": "Which of the following is the best collective name for all bacteria with spherical shape?",
+        "options": ["Cocci", "Bacilli", "Spirochaetes", "Streptococci"],
+        "correctOptionIndex": 0,
+        "explanation": "Cocci is the collective name for all bacteria with a spherical shape."
+      },
+      {
+        "id": "q42",
+        "text": "In which part of the cell do gram positive and gram negative bacteria differ regarding their staining property with gram stains?",
+        "options": ["Cytoplasm", "Cell membrane", "Cell wall", "Nucleus"],
+        "correctOptionIndex": 2,
+        "explanation": "Gram-positive and gram-negative bacteria differ in their cell wall structure, which affects their staining properties with Gram stains."
+      },
+      {
+        "id": "q43",
+        "text": "To which of the following does HIV belong?",
+        "options": ["Plasmid", "Retroviruses", "DNA virus", "Bacteriophage"],
+        "correctOptionIndex": 1,
+        "explanation": "HIV belongs to the group of retroviruses."
+      },
+      {
+        "id": "q44",
+        "text": "What are the individual strands of fungal mycelium called?",
+        "options": ["Fungus", "Spores", "Hyphae", "Hydra"],
+        "correctOptionIndex": 2,
+        "explanation": "The individual strands of fungal mycelium are called hyphae."
+      },
+      {
+        "id": "q45",
+        "text": "What is the mode of transmission of diseases such as cholera and typhoid fever?",
+        "options": ["Sexual intercourse", "Bites of animal vectors", "Blood to blood contact", "Drinking contaminated water"],
+        "correctOptionIndex": 3,
+        "explanation": "Cholera and typhoid fever are transmitted through drinking contaminated water."
+      },
+      {
+        "id": "q46",
+        "text": "Viruses are better characterized as:",
+        "options": ["Decomposer", "Producers", "Carnivores", "parasites"],
+        "correctOptionIndex": 3,
+        "explanation": "Viruses are better characterized as parasites because they rely on host cells for replication."
+      },
+      {
+        "id": "q47",
+        "text": "Which of the following is true about the antiretroviral drugs currently used to treat AIDS patient?",
+        "options": ["they cure AIDS", "They stop HIV transmission", "They serve as anti HIV vaccine", "They slow down HIV multiplication"],
+        "correctOptionIndex": 3,
+        "explanation": "Antiretroviral drugs slow down HIV multiplication, helping to manage the infection."
+      },
+      {
+        "id": "q48",
+        "text": "What are the most frequent causative agents of food poisoning?",
+        "options": ["Bacteria", "Protozoa", "viruses", "Worms"],
+        "correctOptionIndex": 0,
+        "explanation": "Bacteria are the most frequent causative agents of food poisoning."
+      },
+      {
+        "id": "q49",
+        "text": "Which of the following practice does not normally transmit HIV?",
+        "options": ["Sexual intercourse through anus", "Sharing injection needles", "blood transfusion", "shaking hands"],
+        "correctOptionIndex": 3,
+        "explanation": "Shaking hands does not normally transmit HIV."
+      },
+      {
+        "id": "q50",
+        "text": "Which of the following human diseases can be prevented by taking proper diet?",
+        "options": ["Degenerative disease", "genetic disease", "Social disease", "deficiency disease"],
+        "correctOptionIndex": 3,
+        "explanation": "Deficiency diseases can be prevented by taking a proper diet that includes all necessary nutrients."
+      },
+      {
+        "id": "q51",
+        "text": "To which of the following groups do those bacteriophages that integrate their DNA into the chromosomes of their bacterial host belong?",
+        "options": ["Virulent viruses", "Lytic viruses", "Lysogenic viruses", "non-parasitic viruses"],
+        "correctOptionIndex": 2,
+        "explanation": "Bacteriophages that integrate their DNA into the chromosomes of their bacterial host are known as lysogenic viruses."
+      },
+      {
+        "id": "q52",
+        "text": "Which groups of microorganisms causes disease known as athlete’s foot?",
+        "options": ["Bacteria", "fungi", "protozoa", "Viruses"],
+        "correctOptionIndex": 1,
+        "explanation": "Athlete's foot is caused by fungi, specifically dermatophytes."
+      },
+      {
+        "id": "q53",
+        "text": "Choose the one which is different from the others?",
+        "options": ["Genetically modified organisms", "Genetically engineered organisms", "Pathogenic organisms", "transgenic organisms"],
+        "correctOptionIndex": 2,
+        "explanation": "Pathogenic organisms are different from the others as they are organisms that cause disease, while the others refer to organisms that have been genetically altered."
+      },
+      {
+        "id": "q54",
+        "text": "What is the advantage of using HAART for treatment of HIV?",
+        "options": ["It gives lasting immunity to HIV", "It prevents mutation of HIV", "It prevents re infection by HIV", "It helps to break the life cycle of HIV"],
+        "correctOptionIndex": 3,
+        "explanation": "HAART (Highly Active Antiretroviral Therapy) helps to break the life cycle of HIV by using a combination of drugs that target different stages of the virus's replication."
+      },
+      {
+        "id": "q55",
+        "text": "On which one of the following principles is most of anti HIV drugs currently in use working?",
+        "options": ["Inhibition of enzyme action", "Degradation of viral RNA", "digesting of viral particles", "phagocytosis of the virus"],
+        "correctOptionIndex": 0,
+        "explanation": "Most anti-HIV drugs work by inhibiting the action of enzymes crucial for viral replication, such as reverse transcriptase and protease."
+      },
+      {
+        "id": "q56",
+        "text": "If a new anti HIV drug is to be developed to prevent the virus from entering the host cell, which one of the following processes should the drug target?",
+        "options": ["Reverse transcription", "Bonding Gp 120 and CD4", "Integration of viral DNA in to host DNA", "Assembly of viral parts in to whole virus"],
+        "correctOptionIndex": 1,
+        "explanation": "A drug aimed at preventing the virus from entering the host cell should target the bonding of Gp120 and CD4, which is the process by which HIV attaches to and enters host cells."
+      },
+      {
+        "id": "q57",
+        "text": "Which of the following groups of bacteria consists of rod shaped?",
+        "options": ["Gram positive", "Bacilli", "Cocci", "Spirilla"],
+        "correctOptionIndex": 1,
+        "explanation": "Bacilli are rod-shaped bacteria."
+      },
+      {
+        "id": "q58",
+        "text": "Which of the following is true about protozoa?",
+        "options": ["they are group of bacteria", "they are one celled plants", "they represent both plants and animals", "They are unicellular animals"],
+        "correctOptionIndex": 3,
+        "explanation": "Protozoa are unicellular animals."
+      },
+      {
+        "id": "q59",
+        "text": "Which of the following do viruses share with the cell?",
+        "options": ["Cell wall", "Cytoplasm", "Nucleic acid", "Protoplasm"],
+        "correctOptionIndex": 2,
+        "explanation": "Viruses share nucleic acid with cells, as they contain either DNA or RNA."
+      },
+      {
+        "id": "q60",
+        "text": "Choose the characteristics that viruses share with living things?",
+        "options": ["they are made up of many specialized cells", "They contain genetic materials", "they reproduce by mitosis", "They contain chlorophyll"],
+        "correctOptionIndex": 1,
+        "explanation": "Viruses contain genetic materials, which is a characteristic they share with living things."
+      },
+      {
+        "id": "q61",
+        "text": "Which stage in the life cycle of HIV inhibited by the anti-retro viral drug known as integrase inhibitor?",
+        "options": ["Conversion of viral RNA to DNA", "Replication of the viral genome", "Insertion of the viral genome into host genome", "Release of viral progeny from the cell"],
+        "correctOptionIndex": 2,
+        "explanation": "Integrase inhibitors inhibit the insertion of the viral genome into the host genome."
+      },
+      {
+        "id": "q62",
+        "text": "What is the difference between HIV and AIDS?",
+        "options": ["AIDS is the virus and HIV is the disease", "Both AIDS and HIV refers to the disease", "AIDS is the disease and HIV is the virus", "Both AIDS and HIV refers to the virus"],
+        "correctOptionIndex": 2,
+        "explanation": "AIDS is the disease caused by the virus HIV."
+      },
+      {
+        "id": "q63",
+        "text": "What does the absence of chloroplast in unicellular organisms indicate?",
+        "options": ["Reproduction by sexual; means", "Autotrophic nutrition", "Heterotrophic nutrition", "Complete lack of metabolic processes"],
+        "correctOptionIndex": 2,
+        "explanation": "The absence of chloroplasts in unicellular organisms indicates heterotrophic nutrition, as they cannot perform photosynthesis."
+      },
+      {
+        "id": "q64",
+        "text": "What the color do gram positive bacteria stain with gram stains?",
+        "options": ["Red", "pink", "purple", "white"],
+        "correctOptionIndex": 2,
+        "explanation": "Gram-positive bacteria stain purple with Gram stains."
+      },
+      {
+        "id": "q65",
+        "text": "Among the following organisms which one belongs to the prokaryotes?",
+        "options": ["Paramecium", "Streptococcus", "Spirogyra", "tapeworm"],
+        "correctOptionIndex": 1,
+        "explanation": "Streptococcus is a prokaryote, as it is a bacterium."
+      },
+      {
+        "id": "q66",
+        "text": "What is the process called when two bacteria directly contact cell to cell and exchange their genetic information?",
+        "options": ["Conjugation", "transformation", "Co transformation", "transduction"],
+        "correctOptionIndex": 0,
+        "explanation": "Conjugation is the process where two bacteria directly contact cell to cell and exchange their genetic information."
+      },
+      {
+        "id": "q67",
+        "text": "Which of the following features makes humans T- lymphocyte cells more vulnerable to HIV attack? Presence of",
+        "options": ["Cell membrane", "DNA on chromosomes", "CD4 on the membrane surface", "DNA on the chromosome"],
+        "correctOptionIndex": 2,
+        "explanation": "The presence of CD4 on the membrane surface makes T-lymphocyte cells more vulnerable to HIV attack."
+      },
+      {
+        "id": "q68",
+        "text": "In which of the following ways retro virus differ from the other RNA viruses?",
+        "options": ["Their genetic material is DNA", "Their genetic material is RNA", "They copy RNA to DNA molecule", "They copy RNA from DNA molecule"],
+        "correctOptionIndex": 2,
+        "explanation": "Retroviruses differ from other RNA viruses by copying RNA to DNA molecules."
+      },
+      {
+        "id": "q69",
+        "text": "Which of the following groups of microorganisms does not contain parasitic members?",
+        "options": ["Bacteria", "Algae", "Fungi", "Protozoa"],
+        "correctOptionIndex": 1,
+        "explanation": "Algae do not contain parasitic members; they are primarily photosynthetic organisms."
+      },
+      {
+        "id": "q70",
+        "text": "Which one of the following is the smallest of all?",
+        "options": ["red blood cells", "Viruses", "Bacteria", "Protozoa"],
+        "correctOptionIndex": 1,
+        "explanation": "Viruses are the smallest of all, typically ranging from 20 to 300 nanometers in size."
+      },
+      {
+        "id": "q71",
+        "text": "Which of the following is the routine method used by clinics to test people for HIV infection?",
+        "options": ["Microscopic examination for the virus", "counting the number of white blood cells", "testing for human anti HIV antibody", "measuring the amount of antibody"],
+        "correctOptionIndex": 2,
+        "explanation": "The routine method used by clinics to test people for HIV infection is testing for human anti-HIV antibodies."
+      },
+      {
+        "id": "q72",
+        "text": "The T- lymphocyte cells of AIDS patients are destroyed by",
+        "options": ["Multiplication of HIV inside the cell", "Infection of opportunistic organisms", "The immune system of the host organisms itself", "The CD4 receptors on the cell surface"],
+        "correctOptionIndex": 0,
+        "explanation": "The T-lymphocyte cells of AIDS patients are destroyed by the multiplication of HIV inside the cell."
+      },
+      {
+        "id": "q73",
+        "text": "Which stage of the lifecycle of HIV is disrupted if AIDS patients are with drug that has a protease inhibiting activity?",
+        "options": ["Entry of the virus into the host", "Conversion of viral RNA to DNA", "Integration of viral DNA into host DNA", "Assembly of viral parts into whole virus"],
+        "correctOptionIndex": 3,
+        "explanation": "Protease inhibitors disrupt the assembly of viral parts into a whole virus."
+      },
+      {
+        "id": "q74",
+        "text": "One of the following is true about bacteriophages that have lysogenic life cycle?",
+        "options": ["They are RNA viruses", "They integrate their nucleic acid in to that of the host", "They multiply in the host immediately after infection", "Pathogen viruses are release by chronic release method"],
+        "correctOptionIndex": 1,
+        "explanation": "Bacteriophages with a lysogenic life cycle integrate their nucleic acid into that of the host."
+      },
+      {
+        "id": "q75",
+        "text": "Which of the following type if cancer is known to mostly develop in AIDS patient?",
+        "options": ["Cervical cancer", "Stomach cancer", "Kaposi’s sarcoma", "Breast cancer"],
+        "correctOptionIndex": 2,
+        "explanation": "Kaposi's sarcoma is a type of cancer that mostly develops in AIDS patients."
+      },
+      {
+        "id": "q76",
+        "text": "In which of the following living organisms do the cells lack organized nuclei?",
+        "options": ["Fungi", "protozoa", "Bacteria", "Algae"],
+        "correctOptionIndex": 2,
+        "explanation": "Bacteria lack organized nuclei; they are prokaryotes."
+      },
+      {
+        "id": "q77",
+        "text": "Which of the following is major mechanism by which AIDS is transmitted?",
+        "options": ["Mother to fetal transmission", "Heterosexual intercourse", "Homosexual intercourse", "Contaminated Blood transfusion"],
+        "correctOptionIndex": 1,
+        "explanation": "Heterosexual intercourse is a major mechanism by which AIDS is transmitted."
+      },
+      {
+        "id": "q78",
+        "text": "Which of the following disease is correctly matched with its causative agent?",
+        "options": ["Malaria- fungus", "AIDS- virus", "ring worm- Protozoa", "Syphilis- Worms"],
+        "correctOptionIndex": 1,
+        "explanation": "AIDS is correctly matched with its causative agent, which is a virus."
+      },
+      {
+        "id": "q79",
+        "text": "Which step in HIV life cycle is disrupted by antiretroviral drug that competitively inhibits transcriptase enzyme?",
+        "options": ["Entry into te3 host cell", "assembly of viral parts into a virus", "Formation of DNA from RNA", "Integration of viral DNA into host DNA"],
+        "correctOptionIndex": 2,
+        "explanation": "Antiretroviral drugs that competitively inhibit transcriptase enzyme disrupt the formation of DNA from RNA."
+      },
+      {
+        "id": "q80",
+        "text": "In what way would AIDS patient benefits from treatment with antiretroviral drugs?",
+        "options": ["reduction of HIV replication", "Provision of cure for AIDS", "Immunizing against HIV", "killing of opportunistic infectious agent"],
+        "correctOptionIndex": 0,
+        "explanation": "AIDS patients benefit from treatment with antiretroviral drugs through the reduction of HIV replication."
+      },
+      {
+        "id": "q81",
+        "text": "Which of the following is the best collective name for all bacteria with spherical shape?",
+        "options": ["Spirochaetes", "Baacilli", "Cocci", "Streptococci"],
+        "correctOptionIndex": 2,
+        "explanation": "Cocci is the best collective name for all bacteria with a spherical shape."
+      },
+      {
+        "id": "q82",
+        "text": "Which of the following disease is transmitted by mosquito?",
+        "options": ["Diabetes mellitus", "Kaposis cancer", "Rabies", "Malaria"],
+        "correctOptionIndex": 3,
+        "explanation": "Malaria is transmitted by mosquitoes."
+      },
+      {
+        "id": "q83",
+        "text": "Which of the following microorganisms are prokaryotic?",
+        "options": ["Bacteria", "protozoa", "yeast", "Algae"],
+        "correctOptionIndex": 0,
+        "explanation": "Bacteria are prokaryotic microorganisms."
+      },
+      {
+        "id": "q84",
+        "text": "Form which of the following diseases can one be protected by sleeping under the cover of mosquito net?",
+        "options": ["Sleeping sickness", "AIDS", "Malaria", "Athlete’s foot"],
+        "correctOptionIndex": 2,
+        "explanation": "One can be protected from malaria by sleeping under the cover of a mosquito net."
+      },
+      {
+        "id": "q85",
+        "text": "Which of the following has the highest risk of HIV transmission?",
+        "options": ["Hand shaking", "Needle sharing", "Towel sharing", "Toilet sharing"],
+        "correctOptionIndex": 1,
+        "explanation": "Needle sharing has the highest risk of HIV transmission."
+      },
+      {
+        "id": "q86",
+        "text": "Which of the following occurs during dark reaction of photosynthesis?",
+        "options": ["Water is split", "Energy capturing reaction", "NADPH is synthesized", "ATP is used up"],
+        "correctOptionIndex": 2,
+        "explanation": "During the dark reaction of photosynthesis, NADPH is synthesized."
+      },
+      {
+        "id": "q87",
+        "text": "Which of the following human cell type is attacked by HIV?",
+        "options": ["Red blood cells", "White blood cells", "T- lymphocytes", "Leukocytes"],
+        "correctOptionIndex": 2,
+        "explanation": "HIV primarily attacks T-lymphocytes (CD4 cells)."
+      },
+      {
+        "id": "q88",
+        "text": "Among the following which one best describes the cells of bacteria?",
+        "options": ["Eukaryotic", "prokaryotic", "both eukaryotic and prokaryotic", "Neither prokaryote nor eukaryote"],
+        "correctOptionIndex": 1,
+        "explanation": "Bacteria cells are best described as prokaryotic."
+      },
+      {
+        "id": "q89",
+        "text": "Which of the following groups of viruses copy their RNA to DNA?",
+        "options": ["Bacteriophages", "DNA viruses", "RNA viruses", "retroviruses"],
+        "correctOptionIndex": 3,
+        "explanation": "Retroviruses copy their RNA to DNA."
+      },
+      {
+        "id": "q90",
+        "text": "What is the name of a major group of eukaryotic organisms that obtain their nutrition using extracellular digestion?",
+        "options": ["Viruses", "Bacteria", "fungi", "Algae"],
+        "correctOptionIndex": 2,
+        "explanation": "Fungi are a major group of eukaryotic organisms that obtain their nutrition using extracellular digestion."
+      },
+      {
+        "id": "q91",
+        "text": "In what main ways do retroviruses such as HIV differ from other type of RNA viruses?",
+        "options": ["They require a host cell to reproduce", "They reversely copy RNA to DNA", "Their genes are resistance to mutation", "They are free living viruses"],
+        "correctOptionIndex": 1,
+        "explanation": "Retroviruses such as HIV differ from other RNA viruses by reversely copying RNA to DNA."
+      },
+      {
+        "id": "q92",
+        "text": "Which of the following is taken as a signal for the final stage of HIV infection?",
+        "options": ["Signs of a disease kaposi’s sarcoma", "outbreak of some genetic disease", "Uninfected T- helper cells present", "No infection by other parasitic diseases"],
+        "correctOptionIndex": 0,
+        "explanation": "The final stage of HIV infection is signaled by the onset of diseases such as Kaposi's sarcoma."
+      },
+      {
+        "id": "q93",
+        "text": "In which organ of human body are more bacteria found?",
+        "options": ["Lungs", "Stomach", "Small intestine", "large intestine"],
+        "correctOptionIndex": 3,
+        "explanation": "More bacteria are found in the large intestine."
+      },
+      {
+        "id": "q94",
+        "text": "From which groups of microorganisms the first antibiotics produced?",
+        "options": ["Gram negative", "gram positive", "Fungal organisms", "Viral organisms"],
+        "correctOptionIndex": 2,
+        "explanation": "The first antibiotics were produced from fungal organisms, specifically Penicillium."
+      },
+      {
+        "id": "q95",
+        "text": "The best way to control HIV/AIDS is",
+        "options": ["Adequate distribution of condoms", "Adequate distribution of antiviral", "breaking the transmission pathway", "Awareness creation"],
+        "correctOptionIndex": 3,
+        "explanation": "The best way to control HIV/AIDS is through awareness creation and education."
+      },
+      {
+        "id": "q96",
+        "text": "Which of the following is essential in order for a virus replication?",
+        "options": ["The capsid must enter the host cell cytoplasm", "The host cell must be undergoing mitosis", "The host cell must lack cell membrane", "the genome must be released into the cytoplasm"],
+        "correctOptionIndex": 3,
+        "explanation": "For virus replication, the genome must be released into the cytoplasm of the host cell."
+      },
+      {
+        "id": "q97",
+        "text": "Retroviruses are able to reverse transcribe RNA to DNA in order to",
+        "options": ["command the host cell in the production of genomes similar to that of the host", "Control the formation of viral protein and RNA that can be assembled in to new viruses practices", "Replicate without any interruption", "Control the formation of viral protein and DNA that can be assembled into new viral practice"],
+        "correctOptionIndex": 1,
+        "explanation": "Retroviruses reverse transcribe RNA to DNA to control the formation of viral protein and RNA that can be assembled into new viruses."
+      },
+      {
+        "id": "q98",
+        "text": "In which of the following groups of organisms are all the members of unicellular?",
+        "options": ["Algae", "bacteria", "Fungi", "Virus"],
+        "correctOptionIndex": 1,
+        "explanation": "All members of bacteria are unicellular."
+      },
+      {
+        "id": "q99",
+        "text": "Which clinical test is routinely performed to diagnose patient for AIDS?",
+        "options": ["Culturing opportunistic infectious agent", "Serological test for anti HIV antibody", "culturing the virus on a special media", "Determining hemoglobin amount"],
+        "correctOptionIndex": 1,
+        "explanation": "The serological test for anti-HIV antibody is routinely performed to diagnose patients for AIDS."
+      },
+      {
+        "id": "q100",
+        "text": "Which one of the following human disease is not correctly matched with its mode of transmission?",
+        "options": ["Malaria – vector", "Cholera – contaminated water", "Sleeping sickness – physical contact", "Influenza – droplet infection"],
+        "correctOptionIndex": 2,
+        "explanation": "Sleeping sickness is transmitted by the tsetse fly (vector), not by physical contact."
+      },
+      {
+        "id": "q101",
+        "text": "In what way does an antiretroviral drug help AIDS patient? It",
+        "options": ["provides immunity", "Stops the multiplication of HIV", "Stimulates the multiplication of T- helper cells", "Kills opportunistic infectious agent"],
+        "correctOptionIndex": 1,
+        "explanation": "Antiretroviral drugs help AIDS patients by stopping the multiplication of HIV."
+      },
+      {
+        "id": "q102",
+        "text": "What is capsid?",
+        "options": ["The RNA of a virus", "The DNA of a virus", "The protein shell of a virus", "The genetic material of a virus"],
+        "correctOptionIndex": 2,
+        "explanation": "The capsid is the protein shell of a virus."
+      },
+      {
+        "id": "q103",
+        "text": "From which group of microorganisms was the first antibiotic produced?",
+        "options": ["Members of the fungi", "Members of the virus", "Gram negative bacteria", "Gram positive bacteria"],
+        "correctOptionIndex": 0,
+        "explanation": "The first antibiotic, penicillin, was produced from members of the fungi, specifically Penicillium."
+      },
+      {
+        "id": "q104",
+        "text": "What is the main method of transmission of botulism?",
+        "options": ["Direct contact", "Eating contaminated food", "Droplet infection", "Drinking contaminated water"],
+        "correctOptionIndex": 1,
+        "explanation": "The main method of transmission of botulism is eating contaminated food."
+      },
+      {
+        "id": "q105",
+        "text": "Transfer of gene or genes through virus is called",
+        "options": ["transformation", "conjugation", "Genetic engineering", "transduction"],
+        "correctOptionIndex": 3,
+        "explanation": "Transfer of genes or genes through a virus is called transduction."
+      },
+      {
+        "id": "q106",
+        "text": "When reverse transcriptase a useful enzyme? When",
+        "options": ["Nutrients are scarce", "There are no host cells present", "RNA virus converts its RNA to DNA", "The virus is in the lytic cycle"],
+        "correctOptionIndex": 2,
+        "explanation": "Reverse transcriptase is a useful enzyme when an RNA virus converts its RNA to DNA."
+      },
+      {
+        "id": "q107",
+        "text": "Spikes are forming in the new virus. In what ways does retro virus differ from other RNA viruses?",
+        "options": ["Their genetic material is RNA", "They copy RNA to DNA", "They are parasitic", "They are smaller in size"],
+        "correctOptionIndex": 1,
+        "explanation": "Retroviruses differ from other RNA viruses by copying RNA to DNA."
+      },
+      {
+        "id": "q108",
+        "text": "Which of the following is the correct statement about the difference between bacterium and virus?",
+        "options": ["DNA is present in the former, but absent in the later", "Protein is absent in the former, but present in the later", "The former is cellular, but the latter is acellular", "The former causes malaria, but the later causes cholera"],
+        "correctOptionIndex": 2,
+        "explanation": "Bacteria are cellular organisms, while viruses are acellular."
+      },
+      {
+        "id": "q109",
+        "text": "Which of the following statement is not correct?",
+        "options": ["HIV – positive people are forced by law to disclose their HIV status", "Employers may not dismiss an employee because of his /her HIV status", "There is no medication that can reduce your chance of contracting HIV", "Mothers can give their babies by means of breast feeding"],
+        "correctOptionIndex": 2,
+        "explanation": "There is medication that can reduce the chance of contracting HIV, such as pre-exposure prophylaxis (PrEP)."
+      },
+      {
+        "id": "q110",
+        "text": "Which one of the following happens during integration of viruses into host cells?",
+        "options": ["The viral DNA is inserted into the host DNA", "The viral DNA inters the host cell", "The virus attaches to the hoist cell receptor", "The virus takes over the host cells machinery"],
+        "correctOptionIndex": 0,
+        "explanation": "During integration, the viral DNA is inserted into the host DNA."
+      }
+    ]
+  }
+  

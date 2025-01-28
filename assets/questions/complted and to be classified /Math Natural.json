@@ -1,0 +1,438 @@
+{
+    "title": "LIDETA SUB CITY ADMINISTRATION EDUCATION OFFICE GRADE 12 MATHEMATICS (FOR NATURAL SCIENCE) MODEL EXAMINATIONS 2016E.C/ 2024G.C",
+    "duration": 180,
+    "constants": {},
+    "numberOfQuestions": 65,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "For what values of 𝐵 the function 𝑓: 𝑅 → 𝐵 𝑠𝑢𝑐ℎ 𝑡ℎ𝑎𝑡 𝑓(𝑥) = 𝑥2 + 6𝑥 + 3 𝑖𝑠 𝑎𝑛 𝑜𝑛𝑡𝑜 𝑓𝑢𝑛𝑐𝑡𝑖𝑜𝑛?",
+        "options": ["[3,∞)", "(- ∞, 3]", "[-6,∞)", "(- ∞, −6]"],
+        "correctOptionIndex": 1,
+        "explanation": "The function 𝑓(𝑥) = 𝑥2 + 6𝑥 + 3 is an onto function if its range covers all possible output values, which is the case for the interval (- ∞, 3]."
+      },
+      {
+        "id": "q2",
+        "text": "What is the inverse of the function 𝑓(𝑥) = 𝑥+1 ?",
+        "options": ["𝑓−1(𝑥) = 𝑥+1 2𝑥+1", "𝑓−1(𝑥) = 𝑥−1 2𝑥+1", "𝑓−1(𝑥) = 𝑥−1 2𝑥−1", "𝑓−1(𝑥) = 𝑥+1 2𝑥−1"],
+        "correctOptionIndex": 2,
+        "explanation": "The inverse of 𝑓(𝑥) = 𝑥+1 is 𝑓−1(𝑥) = 𝑥−1 2𝑥−1."
+      },
+      {
+        "id": "q3",
+        "text": "Which of the following is TRUE about the function 𝑓(𝑥) = 2𝑥3?",
+        "options": ["𝑇𝑒 𝑑𝑜𝑚𝑎𝑖𝑛  𝑅 ∖ {0}", "𝑇𝑒 𝑟𝑎𝑛𝑔𝑒 𝑜𝑓 𝑓 𝑖𝑠 [0, ∞)", "𝑓𝑖𝑠 𝑖𝑛𝑐𝑟𝑒𝑎𝑠𝑖𝑛𝑔 𝑜𝑛 (- ∞, 0]", "𝑓 𝑖𝑠 𝑑𝑒𝑐𝑟𝑒𝑎𝑠𝑖𝑛𝑔[0,∞)"],
+        "correctOptionIndex": 2,
+        "explanation": "The function 𝑓(𝑥) = 2𝑥3 is increasing on the interval (−∞, 0]."
+      },
+      {
+        "id": "q4",
+        "text": "Which of the following is a valid logical argument?",
+        "options": ["p ⟹ q,¬𝑟 ∧ 𝑞 ⊢ 𝑝 ∨ 𝑟", "p ⟹ ¬ q, 𝑝, 𝑟 ⟹ 𝑞 ⊢ ¬𝑟", "p, p ⟹ q,𝑟 ∨ ¬𝑞 ⊢ 𝑝 ∧ ¬𝑟", "𝑝 ∨ 𝑞, p ⊢ 𝑞"],
+        "correctOptionIndex": 2,
+        "explanation": "The argument p, p ⟹ q,𝑟 ∨ ¬𝑞 ⊢ 𝑝 ∧ ¬𝑟 is valid."
+      },
+      {
+        "id": "q5",
+        "text": "If the truth value of 𝑝 is T ,then which of the following compound propositions has a truth value T for any proposition q?",
+        "options": ["(𝑝 ⟹ 𝑞) ∧ ¬𝑞", "(𝑝 ∧ ¬𝑝) ∧ 𝑞", "(¬𝑝 ∧ 𝑞) ⟹ 𝑞", "¬𝑝 ⟺ (𝑝 ∨ ¬𝑞)"],
+        "correctOptionIndex": 2,
+        "explanation": "The proposition (¬𝑝 ∧ 𝑞) ⟹ 𝑞 is true for any q when p is true."
+      },
+      {
+        "id": "q6",
+        "text": "Which of the following sentences is a statement?",
+        "options": ["You are a good student", "No woman should die while giving birth", "Sudan is a country in Africa", "Hurry up the rain is coming"],
+        "correctOptionIndex": 2,
+        "explanation": "Sudan is a country in Africa is a declarative sentence that can be true or false."
+      },
+      {
+        "id": "q7",
+        "text": "How many three-digit numbers can be formed from 3,4,5,6 and 7 if each digit is used at most once?",
+        "options": ["125", "120", "60", "250"],
+        "correctOptionIndex": 1,
+        "explanation": "The number of three-digit numbers that can be formed is 5P3 = 5! / (5-3)! = 120."
+      },
+      {
+        "id": "q8",
+        "text": "A fair die is tossed once. the probability that either an even number or 3 will be appear is",
+        "options": ["3/4", "4/5", "2/3", "1/6"],
+        "correctOptionIndex": 0,
+        "explanation": "The probability of getting an even number (2, 4, 6) or 3 is 4/6 = 2/3."
+      },
+      {
+        "id": "q9",
+        "text": "A committee of 3 members is to be selected from 4 men and 5 women. what is the probability of selecting exactly two women in the committee?",
+        "options": ["10/21", "5/42", "1/21", "5/21"],
+        "correctOptionIndex": 3,
+        "explanation": "The number of ways to select 2 women from 5 and 1 man from 4 is C(5,2) * C(4,1) = 10 * 4 = 40. The total number of ways to select 3 members from 9 is C(9,3) = 84. The probability is 40/84 = 5/21."
+      },
+      {
+        "id": "q10",
+        "text": "A group of 8 students mean average score is 67 in a test, a second group of 17 student has a mean average score of 81 in the same test. What is the mean average score of all 25 students?",
+        "options": ["82.22", "81.23", "76.52", "77.32"],
+        "correctOptionIndex": 3,
+        "explanation": "The total score for the first group is 8 * 67 = 536. The total score for the second group is 17 * 81 = 1377. The total score for all 25 students is 536 + 1377 = 1913. The mean average score is 1913 / 25 = 76.52."
+      },
+      {
+        "id": "q11",
+        "text": "Let Z be complex number. Then the solution set of 𝑧2 − 𝑧 + 1 = 0",
+        "options": ["{−1±𝑖√3/2, 1±𝑖√3/2}", "{1 ± 𝑖√3/3}", "{1 ± 𝑖√3}", "{1 ± 𝑖√3/2}"],
+        "correctOptionIndex": 2,
+        "explanation": "The solutions to the equation 𝑧2 − 𝑧 + 1 = 0 are 𝑧 = 1 ± 𝑖√3."
+      },
+      {
+        "id": "q12",
+        "text": "If z= 4+4√3 𝑖 then what is principal argument of 𝑧10?",
+        "options": ["0𝜋/3", "𝜋/3", "2𝜋/3", "−2𝜋/3"],
+        "correctOptionIndex": 1,
+        "explanation": "The principal argument of 𝑧 = 4 + 4√3𝑖 is 𝜋/3. Therefore, the principal argument of 𝑧10 is 10 * (𝜋/3) = 10𝜋/3, which simplifies to 𝜋/3."
+      },
+      {
+        "id": "q13",
+        "text": "What is the modulus of = 1 − 𝑖√3 ?",
+        "options": ["4", "2", "1", "√5"],
+        "correctOptionIndex": 1,
+        "explanation": "The modulus of 1 − 𝑖√3 is √(1² + (−√3)²) = √(1 + 3) = √4 = 2."
+      },
+      {
+        "id": "q14",
+        "text": "A translation takes 𝑥2 + (𝑦 + 1)2 = 5 𝑡𝑜(𝑥 − 2)2 + 𝑦2 = 5 then what is the image of (1,3)under this transformation?",
+        "options": ["(3,4)", "(3,2)", "(-1,2)", "(-2,3)"],
+        "correctOptionIndex": 1,
+        "explanation": "The translation moves the point (1,3) to (3,2)."
+      },
+      {
+        "id": "q15",
+        "text": "what is cosine of an angle between u=(1,-1) and v= (1,1)?",
+        "options": ["1", "0", "-1", "√3"],
+        "correctOptionIndex": 1,
+        "explanation": "The cosine of the angle between u and v is given by (u · v) / (||u|| ||v||) = (1*1 + (-1)*1) / (√(1² + (-1)²) * √(1² + 1²)) = 0 / (√2 * √2) = 0."
+      },
+      {
+        "id": "q16",
+        "text": "What is the image of (-1,5) when reflected about the line 𝑙: 𝑦 = 𝑥 − 2?",
+        "options": ["(7, -3)", "(3,1)", "(1,-3)", "(5,7)"],
+        "correctOptionIndex": 1,
+        "explanation": "The image of (-1,5) when reflected about the line 𝑙: 𝑦 = 𝑥 − 2 is (3,1)."
+      },
+      {
+        "id": "q17",
+        "text": "What is the image of the circle 𝑥2 + 𝑦2. − 4𝑥 − 6𝑦 + 12 = 0 𝑤ℎ𝑒𝑛 𝑖𝑡 𝑖𝑠 𝑟𝑒𝑓𝑙𝑒𝑐𝑡𝑒𝑑  with respect to the line 𝑦 = −𝑥?",
+        "options": ["(𝑥 + 3)2 + (𝑦 + 2)2 = 1", "(𝑥 − 3)2 + (𝑦 − 2)2 = 1", "(𝑥 + 2)2 + (𝑦 + 3)2 = 1", "(𝑥 − 2)2 + (𝑦 − 3)2 = 1"],
+        "correctOptionIndex": 2,
+        "explanation": "The image of the circle when reflected about the line 𝑦 = −𝑥 is (𝑥 + 2)2 + (𝑦 + 3)2 = 1."
+      },
+      {
+        "id": "q18",
+        "text": "Which of the following is true ?",
+        "options": ["𝑠𝑖𝑛−1(0) = 𝜋/2", "𝑡𝑎𝑛−1(0) = 1", "The domain of 𝑦 = 𝑡𝑎𝑛−1𝑥 𝑖𝑠 (−∞, ∞)", "The domain of 𝑦 = 𝑐𝑜𝑠−1𝑥 𝑖𝑠 (−1,1)"],
+        "correctOptionIndex": 2,
+        "explanation": "The domain of 𝑦 = 𝑡𝑎𝑛−1𝑥 is (−∞, ∞)."
+      },
+      {
+        "id": "q19",
+        "text": "If cot (𝜃) = 2 𝑡ℎ𝑒𝑛 𝑤ℎ𝑖𝑐ℎ 𝑜𝑓 𝑡ℎ𝑒 𝑓𝑜𝑙𝑙𝑜𝑤𝑖𝑛𝑔 𝑖𝑠 equal to csc(𝜃)?",
+        "options": ["√5", "2/√5", "1/√5", "1/2"],
+        "correctOptionIndex": 1,
+        "explanation": "If cot(𝜃) = 2, then csc(𝜃) = √(cot²(𝜃) + 1) = √(2² + 1) = √5."
+      },
+      {
+        "id": "q20",
+        "text": "what is the period (P) and the range(R) of𝑓(𝑥)1= 5 sin (3𝑥 + 2) + 3",
+        "options": ["𝑃 = 6𝜋, 𝑅 = [−2,8]", "𝑃 = 2𝜋 , 𝑅 = [−5,5]/3", "𝑃 = 6𝜋, 𝑅 = [−5,5]/3", "𝑃 = 2𝜋 , 𝑅 = [−2,8]/3"],
+        "correctOptionIndex": 2,
+        "explanation": "The period of the function is 2𝜋/3 and the range is [−2, 8]."
+      },
+      {
+        "id": "q21",
+        "text": "𝑊ℎ𝑎𝑡 𝑖𝑠 𝑡ℎ𝑒 𝑣𝑎𝑙𝑢𝑒 𝑜𝑓 𝑐𝑜𝑡2700 + 2𝑐𝑜𝑠900 + 4𝑠𝑒𝑐21800?",
+        "options": ["-2", "-4", "4", "8"],
+        "correctOptionIndex": 1,
+        "explanation": "cot(270°) = 0, cos(90°) = 0, and sec(180°) = -1. Therefore, the value is 2 * 0 + 2 * 0 + 4 * (-1) = -4."
+      },
+      {
+        "id": "q22",
+        "text": "𝐼𝑓 𝑓(𝑥) = 𝜋2 + 1, 𝑡ℎ𝑒𝑛 𝑓′(𝑥) =",
+        "options": ["2𝜋", "1", "𝜋2", "0"],
+        "correctOptionIndex": 3,
+        "explanation": "The derivative of a constant function is 0."
+      },
+      {
+        "id": "q23",
+        "text": "Let 𝑓(𝑥) =  6𝑥/𝑥+𝑎 For what value 𝑜𝑓 𝑎 𝑖𝑠 𝑓’(𝑎) = 1?",
+        "options": ["1/3", "2/3", "3/2", "3"],
+        "correctOptionIndex": 2,
+        "explanation": "The derivative of 𝑓(𝑥) = 6𝑥/(𝑥+𝑎) is 𝑓′(𝑥) = 6(𝑎)/(𝑥+𝑎)². Setting 𝑓′(𝑎) = 1 gives 6𝑎/(2𝑎)² = 1, which simplifies to 𝑎 = 3/2."
+      },
+      {
+        "id": "q24",
+        "text": "𝐼𝑓 𝑓(𝑥) = 𝑥2√2𝑥 + 12 What is the slope of tangent line to the graph of 𝑓 at x=2?",
+        "options": ["-4", "2", "18", "17"],
+        "correctOptionIndex": 1,
+        "explanation": "The derivative of 𝑓(𝑥) = 𝑥2√2𝑥 + 12 is 𝑓′(𝑥) = 2𝑥√2𝑥 + 𝑥/(2√2𝑥). Evaluating at 𝑥 = 2 gives 𝑓′(2) = 2*2√2*2 + 2/(2√2*2) = 17."
+      },
+      {
+        "id": "q25",
+        "text": "What is the equation of a normal line to the graph of 𝑓(𝑥) = 3𝑥2 + 4𝑥 − 5  at (1,2)?",
+        "options": ["𝑥 + 10𝑦 − 21 = 0", "- 𝑥 + 10𝑦 − 19 = 0", "𝑥 + 10𝑦 + 21 = 0", "𝑥 + 10𝑦 + 19 = 0"],
+        "correctOptionIndex": 0,
+        "explanation": "The derivative of 𝑓(𝑥) = 3𝑥2 + 4𝑥 − 5 is 𝑓′(𝑥) = 6𝑥 + 4. Evaluating at 𝑥 = 1 gives 𝑓′(1) = 6*1 + 4 = 10. The slope of the normal line is -1/10. Using the point-slope form, the equation is 𝑦 − 2 = -1/10(𝑥 − 1), which simplifies to 𝑥 + 10𝑦 − 21 = 0."
+      },
+      {
+        "id": "q26",
+        "text": "For what value(s) of x does the graph of 𝑓(𝑥) = √𝑥2 − 𝑥 have a vertical tangent line?",
+        "options": ["0 & -1", "1&-1", "0&1", "1"],
+        "correctOptionIndex": 0,
+        "explanation": "The derivative of 𝑓(𝑥) = √𝑥2 − 𝑥 is 𝑓′(𝑥) = (2𝑥 − 1)/(2√𝑥2 − 𝑥). Setting 𝑓′(𝑥) = ∞ gives 2𝑥 − 1 = 0, which simplifies to 𝑥 = 0 or 𝑥 = -1."
+      },
+      {
+        "id": "q27",
+        "text": "What is the sum of all multiples of 4 that are between 30 and 301 ?",
+        "options": ["2,882", "11,288", "6,288", "6,882"],
+        "correctOptionIndex": 2,
+        "explanation": "The multiples of 4 between 30 and 301 are 32, 36, ..., 300. The sum of an arithmetic series is given by n/2 * (first term + last term), where n is the number of terms. The number of terms is (300 - 32)/4 + 1 = 72. The sum is 72/2 * (32 + 300) = 36 * 332 = 11,952."
+      },
+      {
+        "id": "q28",
+        "text": "If 𝑦 = 3/𝑥3, then what is value of 𝑑𝑦 | 𝑑𝑥 𝑥=1",
+        "options": ["-9", "9", "9/4"],
+        "correctOptionIndex": 1,
+        "explanation": "The derivative of 𝑦 = 3/𝑥3 is 𝑑𝑦/𝑑𝑥 = -9/𝑥4. Evaluating at 𝑥 = 1 gives 𝑑𝑦/𝑑𝑥 = -9/14 = -9."
+      },
+      {
+        "id": "q29",
+        "text": "On which of the following interval 𝑓(𝑥) = 2𝑥5 + 3 𝑖𝑛𝑐𝑟𝑒𝑎𝑠𝑒?",
+        "options": ["(−∞, 0]", "[0, ∞)", "(−∞, 0)U(0, ∞)", "( −∞, ∞)"],
+        "correctOptionIndex": 3,
+        "explanation": "The function 𝑓(𝑥) = 2𝑥5 + 3 is increasing on the interval (−∞, ∞)."
+      },
+      {
+        "id": "q30",
+        "text": "If the Volume of sphere is increasing at rate of 0.4𝜋 𝑐𝑚3⁄𝑠,then what is the rate of increase of the radius at r=10cm?",
+        "options": ["1/200 𝑐𝑚⁄𝑠", "16/9000 𝑐𝑚⁄𝑠", "1/1000 𝑐𝑚⁄𝑠", "3000/1 𝑐𝑚⁄𝑠"],
+        "correctOptionIndex": 1,
+        "explanation": "The volume of a sphere is given by V = 4/3𝜋r³. The rate of change of the volume with respect to time is dV/dt = 4𝜋r² dr/dt. Given dV/dt = 0.4𝜋, solving for dr/dt at r = 10 cm gives dr/dt = (0.4𝜋)/(4𝜋 * 10²) = 1/1000 cm/s."
+      },
+      {
+        "id": "q31",
+        "text": "𝐼𝑓 𝑔(𝑥) = 𝑥𝑓(𝑥) − √𝑓(𝑥) 𝑓(2) = 𝑓′(2) = 4, 𝑡ℎ𝑒𝑛 𝑤ℎ𝑖𝑐ℎ 𝑜𝑓 the following is equal 𝑡𝑜𝑔′(2)?",
+        "options": ["11", "8", "2", "0"],
+        "correctOptionIndex": 1,
+        "explanation": "Given 𝑓(2) = 4 and 𝑓′(2) = 4, we have 𝑔(𝑥) = 𝑥𝑓(𝑥) − √𝑓(𝑥). The derivative is 𝑔′(𝑥) = 𝑓(𝑥) + 𝑥𝑓′(𝑥) − (1/2)𝑓(𝑥)^(-1/2)𝑓′(𝑥). Evaluating at 𝑥 = 2 gives 𝑔′(2) = 4 + 2*4 − (1/2)*4^(-1/2)*4 = 8."
+      },
+      {
+        "id": "q32",
+        "text": "If 𝑓 is integrable on a closed interval [𝑎, 𝑏] and 𝑐 ∈ [𝑎, 𝑏], then which one of the following properties is NOT true about f?",
+        "options": ["∫𝑎 𝑓(𝑥)𝑑𝑥 = 0", "∫𝑏 𝑓(𝑥)𝑑𝑥 = ∫𝑎 𝑓(𝑥)𝑑𝑥 𝑏", "∫𝑏 𝑓(𝑥)𝑑𝑥 = ∫𝑐 𝑓(𝑥)𝑑𝑥 + ∫𝑏 𝑓(𝑥)𝑑𝑥 𝑎 𝑎 𝑐", "∫𝑏 𝑓(𝑥)𝑑𝑥 = ∫𝑐 𝑓(𝑥)𝑑𝑥 − ∫𝑐 𝑓(𝑥)𝑑𝑥 𝑎 𝑎 𝑏"],
+        "correctOptionIndex": 3,
+        "explanation": "The property ∫𝑏 𝑓(𝑥)𝑑𝑥 = ∫𝑐 𝑓(𝑥)𝑑𝑥 − ∫𝑐 𝑓(𝑥)𝑑𝑥 𝑎 𝑎 𝑏 is not true because the integrals on the right side do not cover the entire interval [𝑎, 𝑏]."
+      },
+      {
+        "id": "q33",
+        "text": "What is the area of the region bounded by 𝑓(𝑥) = 𝑥2 + 3 and x- axis on the closed interval [−1, 3]?",
+        "options": ["4 Square units", "22 Square units", "26/3 Square units", "64 Square units"],
+        "correctOptionIndex": 1,
+        "explanation": "The area is given by the definite integral ∫ from −1 to 3 of (𝑥2 + 3) 𝑑𝑥 = [𝑥³/3 + 3𝑥] from −1 to 3 = (27/3 + 9) − (−1/3 − 3) = 22 square units."
+      },
+      {
+        "id": "q34",
+        "text": "If f (x)  x5  2x , then what is the value of  f (1  h)  f (1)  as h  0   ?",
+        "options": ["2", "7", "5", "Does not exist."],
+        "correctOptionIndex": 1,
+        "explanation": "The derivative of 𝑓(𝑥) = 𝑥5 + 2𝑥 is 𝑓′(𝑥) = 5𝑥4 + 2. Evaluating at 𝑥 = 1 gives 𝑓′(1) = 5*14 + 2 = 7."
+      },
+      {
+        "id": "q35",
+        "text": "Let f (x)  x3  3x , what is the possible values of x at which the slope of the line tangent to f (x) is 0 ?",
+        "options": ["2", "-1", "3", "0"],
+        "correctOptionIndex": 1,
+        "explanation": "The derivative of 𝑓(𝑥) = 𝑥3 − 3𝑥 is 𝑓′(𝑥) = 3𝑥2 − 3. Setting 𝑓′(𝑥) = 0 gives 3𝑥2 − 3 = 0, which simplifies to 𝑥2 = 1, so 𝑥 = ±1."
+      },
+      {
+        "id": "q36",
+        "text": "Which one of the following is the average rate of change the function𝑓(𝑥) = 𝑥3 − 9𝑥, on the interval 1 ≤ 𝑥 ≤ 6.",
+        "options": ["43", "34", "16", "23"],
+        "correctOptionIndex": 2,
+        "explanation": "The average rate of change is given by [𝑓(6) − 𝑓(1)] / (6 − 1) = [(6³ − 9*6) − (1³ − 9*1)] / 5 = [(216 − 54) − (1 − 9)] / 5 = 162 / 5 = 32.4."
+      },
+      {
+        "id": "q37",
+        "text": "Which one of the following is the instantaneous rate of change of the function 𝑓(𝑥) = 2𝑥2 + 9 at x = 3?",
+        "options": ["12", "-12", "16", "-1"],
+        "correctOptionIndex": 2,
+        "explanation": "The derivative of 𝑓(𝑥) = 2𝑥2 + 9 is 𝑓′(𝑥) = 4𝑥. Evaluating at 𝑥 = 3 gives 𝑓′(3) = 4*3 = 12."
+      },
+      {
+        "id": "q38",
+        "text": "Which one of the following is not rational expression?",
+        "options": ["2𝑥4−16/𝑥−2", "log2 8/𝑥3+5", "5𝑥 2𝜋/", "√𝑥2 − 25"],
+        "correctOptionIndex": 2,
+        "explanation": "The expression 5𝑥 2𝜋/ is not a rational expression because it involves an irrational number π."
+      },
+      {
+        "id": "q39",
+        "text": "Which one of the following is the partial fraction of  2𝑥 ?",
+        "options": ["1/𝑥−2", "2/ +  1/𝑥+2−  1/", "2/𝑥−2", "1/ +  1/𝑥+2−  1/"],
+        "correctOptionIndex": 1,
+        "explanation": "The partial fraction of 2𝑥/(𝑥−2)(𝑥+2) is 1/(𝑥−2) + 1/(𝑥+2)."
+      },
+      {
+        "id": "q40",
+        "text": "What is the center and radius of the circle with equation 𝑥2 + 𝑦2 − 4𝑥 + 6𝑦 + 8 = 0?",
+        "options": ["(2, −3) and 5", "(−2, 3) and √5", "(2, −3) and √5", "(−2, 3) and 5"],
+        "correctOptionIndex": 2,
+        "explanation": "Completing the square for the equation 𝑥2 + 𝑦2 − 4𝑥 + 6𝑦 + 8 = 0 gives (𝑥−2)2 + (𝑦+3)2 = 5. Therefore, the center is (2, −3) and the radius is √5."
+      },
+      {
+        "id": "q41",
+        "text": "Which one of the following is NOT true about the equation of the parabola 𝑦 = − 1 𝑥2?",
+        "options": ["The focus is (0, − 1)", "The focal length is 4", "The directrix is 1", "The parabola opens downward"],
+        "correctOptionIndex": 2,
+        "explanation": "The directrix of the parabola 𝑦 = −1/𝑥2 is 𝑦 = 1/4, not 1."
+      },
+      {
+        "id": "q42",
+        "text": "What is the distance between the point 𝑃(−2, −3) and the line L: 12𝑥 − 5𝑦 − 30 = 0?",
+        "options": ["46 units", "3 units", "39 units", "2 units"],
+        "correctOptionIndex": 1,
+        "explanation": "The distance between a point (𝑥1, 𝑦1) and a line Ax + By + C = 0 is given by |A𝑥1 + B𝑦1 + C| / √(A² + B²). Plugging in the values gives |12*(-2) − 5*(-3) − 30| / √(12² + (-5)²) = 3 units."
+      },
+      {
+        "id": "q43",
+        "text": "If 𝐴 = [ 1 2 ,  𝐵 = [ −1 −2 1 0 ] 𝐶 = [ −2 0 3 1 0 −1 ] , then 3𝐴 − 2𝐵 + 2𝐶 is",
+        "options": ["[ 7 10 ]", "[ 3 4", "[ 1 2", "[ 5 10]"],
+        "correctOptionIndex": 0,
+        "explanation": "Performing the matrix operations gives 3𝐴 − 2𝐵 + 2𝐶 = 3[1 2] − 2[−1 −2] + 2[−2 0] = [3 6] + [2 4] + [−4 0] = [7 10]."
+      },
+      {
+        "id": "q44",
+        "text": "For a square matrix A and a non-singular matrix B of the same order. Then the value of the determinant of 𝐴−1𝐵𝐴 is equal to:",
+        "options": ["|𝐴|", "|𝐴−1|", "|𝐵|", "|𝐵−1|"],
+        "correctOptionIndex": 2,
+        "explanation": "The determinant of 𝐴−1𝐵𝐴 is equal to |𝐵| because det(𝐴−1𝐵𝐴) = det(𝐴−1)det(𝐵)det(𝐴) = det(𝐵)."
+      },
+      {
+        "id": "q45",
+        "text": "If 𝐴 = (−2 3 6) and 𝐵 = (−2 3 4𝑥 − 𝑦), where 𝐴 = 𝐵. What is the value of the variable x and y respectively?",
+        "options": ["2 and −2", "−2 and −2", "−2 and 2", "2 and 2"],
+        "correctOptionIndex": 0,
+        "explanation": "Solving the system of equations −2 = −2, 3 = 3, and 6 = 4𝑥 − 𝑦 gives 𝑥 = 2 and 𝑦 = −2."
+      },
+      {
+        "id": "q46",
+        "text": "What is the determinant of matrix 𝐴 = (1 0 3 ) ?",
+        "options": ["20", "0", "16", "24"],
+        "correctOptionIndex": 1,
+        "explanation": "The determinant of a 2x2 matrix [a b; c d] is ad - bc. For 𝐴 = [1 0; 3 0], the determinant is 1*0 - 0*3 = 0."
+      },
+      {
+        "id": "q47",
+        "text": "If A is a 3𝑥3 matrix with 𝑑𝑒𝑡 (𝐴) = 6, then what is the 𝑑𝑒𝑡 (2𝐴𝑇)?",
+        "options": ["1/2", "12", "36", "48"],
+        "correctOptionIndex": 2,
+        "explanation": "The determinant of 2𝐴𝑇 is 2³det(𝐴) = 8*6 = 48."
+      },
+      {
+        "id": "q48",
+        "text": "Which of the following is neither arithmetic nor geometric progression?",
+        "options": ["{3, 7, 11, 15, 19 … }", "{−1, 1, −1, 1 … }", "{−3, −1,2,4, 6 … }", "{−3, −1, 1, 3 … }"],
+        "correctOptionIndex": 2,
+        "explanation": "The sequence {−3, −1,2,4, 6 … } is neither arithmetic nor geometric."
+      },
+      {
+        "id": "q49",
+        "text": "In an A.P, If a5  10 and a10  45 , what is the common difference and the first term?",
+        "options": ["𝑑 = 7 𝑎𝑛𝑑 a1  18", "𝑑 = 7 𝑎𝑛𝑑 a1  18", "𝑑 = − 7 𝑎𝑛𝑑 a1  18", "𝑑 =  − 7 𝑎𝑛𝑑 a1  18"],
+        "correctOptionIndex": 0,
+        "explanation": "Using the formula for the nth term of an arithmetic progression, a_n = a_1 + (n-1)d, we have two equations: a_5 = a_1 + 4d = 10 and a_10 = a_1 + 9d = 45. Solving these equations gives d = 7 and a_1 = -18."
+      },
+      {
+        "id": "q50",
+        "text": "If x + 3, 2x + 3 and 4x -1 are consecutive terms of a Geometric progression, then what is the possible value of x?",
+        "options": ["12", "−12", "−6", "6"],
+        "correctOptionIndex": 2,
+        "explanation": "For a geometric progression, the ratio of consecutive terms is constant. So, (2x + 3) / (x + 3) = (4x - 1) / (2x + 3). Solving this equation gives x = -6."
+      },
+      {
+        "id": "q51",
+        "text": "In an arithmetic progression, if 𝐴1 = 1, 𝐴𝑛 = 20 & 𝑆𝑛 = 399, then what is the value of n?",
+        "options": ["19", "21", "42", "38"],
+        "correctOptionIndex": 1,
+        "explanation": "Using the formula for the sum of an arithmetic progression, S_n = n/2 * (a_1 + a_n), we have 399 = n/2 * (1 + 20). Solving for n gives n = 38."
+      },
+      {
+        "id": "q52",
+        "options": ["17/20", "23/20", "21/20", "19/20"],
+        "correctOptionIndex": 2,
+        "explanation": "The sum of the series is given by the formula for the sum of an arithmetic series, S_n = n/2 * (a_1 + a_n), where n is the number of terms. The number of terms is 20, a_1 = 1, and a_n = -1. So, S_n = 20/2 * (1 - 1) = 0."
+      },
+      {
+        "id": "q53",
+        "text": "If A1  4 and d  5, of an arithmetic progression, then what is the value of 𝑆12?",
+        "options": ["378", "408", "403", "354"],
+        "correctOptionIndex": 1,
+        "explanation": "Using the formula for the sum of an arithmetic progression, S_n = n/2 * (2a_1 + (n-1)d), we have S_12 = 12/2 * (2*4 + (12-1)*5) = 408."
+      },
+      {
+        "id": "q54",
+        "text": "What is 𝑛𝑡ℎ terms of an arithmetic progression whose 𝑛𝑡ℎ partial sum is 5𝑛2 − 1?",
+        "options": ["−10𝑛 − 5", "5 − 10𝑛", "10𝑛 − 5", "10𝑛 + 5"],
+        "correctOptionIndex": 2,
+        "explanation": "The nth term of an arithmetic progression is given by a_n = S_n - S_(n-1). So, a_n = (5n^2 - 1) - (5(n-1)^2 - 1) = 10n - 5."
+      },
+      {
+        "id": "q55",
+        "text": "It is given that 𝑎, 𝑏, 𝑐, 𝑑, 𝑒 are an arithmetic sequence. If 𝑎 + 𝑏 + 𝑐 = 9 and 𝑑 + 𝑒 = 26. What is the first term and common difference respectively?",
+        "options": ["4  and  −1", "−4  and  1", "−1 and 1", "−1 and 4"],
+        "correctOptionIndex": 0,
+        "explanation": "Using the formula for the nth term of an arithmetic progression, a_n = a_1 + (n-1)d, we have a + b + c = 3a_1 + 3d = 9 and d + e = 2a_1 + 7d = 26. Solving these equations gives a_1 = 4 and d = -1."
+      },
+      {
+        "id": "q56",
+        "text": "If {𝑎𝑛} is a sequence such that 𝑎1 = 2 and 𝑎𝑛+1 = 𝑎𝑛 + 4 for all n ≥ 1, then ∑35  𝑎𝑛 is equal to:",
+        "options": ["2,460", "2,458", "2,450", "2,442"],
+        "correctOptionIndex": 0,
+        "explanation": "The sequence is an arithmetic progression with first term a_1 = 2 and common difference d = 4. The sum of the first 35 terms is given by S_35 = 35/2 * (2a_1 + (35-1)d) = 2460."
+      },
+      {
+        "id": "q57",
+        "options": ["10", "15", "10/3", "15/3"],
+        "correctOptionIndex": 2,
+        "explanation": "The sum of the series is given by the formula for the sum of a geometric series, S = a / (1 - r), where a is the first term and r is the common ratio. So, S = 2 / (1 - 1/2) = 10/3."
+      },
+      {
+        "id": "q58",
+        "text": "The fraction form of the recurring decimal 0.56̅ is equal to:",
+        "options": ["17/30", "15/17", "2/3", "19/45"],
+        "correctOptionIndex": 0,
+        "explanation": "Let x = 0.56666... Then 100x = 56.6666... Subtracting the first equation from the second gives 99x = 56, so x = 56/99 = 17/30."
+      },
+      {
+        "id": "q59",
+        "text": "The sum of the first 12 terms of a geometric sequence with first term 0.3 and common ratio 0.1 is equal to;"
+      },
+      {
+        "id": "q60",
+        "text": "A certain item gains one – tenth of its value each year. If the item is worth Birr 30, 000 today, how much will it be worth 3 years from now?",
+        "options": ["90,000 Birr", "30,900 Birr", "39,930 Birr", "21, 870 Birr"],
+        "correctOptionIndex": 3,
+        "explanation": "The value of the item after 3 years is given by V = P * (1 + r)^3, where P is the present value and r is the rate of increase. So, V = 30000 * (1 + 0.1)^3 = 21, 870 Birr."
+      },
+      {
+        "id": "q61",
+        "text": "The equation of an ellipse with center at (1,4) and Vertices at (10,4) and (1,2)is",
+        "options": ["(𝑥 − 1)2 + 9(𝑦 − 4)2 = 4", "4(𝑥 − 1)2 + 81(𝑦 − 4)2 = 324", "9(𝑥 − 1)2 + 4(𝑦 − 4)2 = 1", "2(𝑥 − 1)2 + 9(𝑦 − 4)2 = 4"],
+        "correctOptionIndex": 1,
+        "explanation": "The standard form of the equation of an ellipse with center (h, k), major axis 2a, and minor axis 2b is (x - h)²/a² + (y - k)²/b² = 1. Here, a = 9, b = 2, h = 1, and k = 4. So, the equation is 4(𝑥 − 1)2 + 81(𝑦 − 4)2 = 324."
+      },
+      {
+        "id": "q62",
+        "text": "If the equation (𝑥 − 2)2 − (𝑦 + 2)2 = 1 represents a hyperbola, which one of the following represents the equation of an asymptote of the hyperbola?",
+        "options": ["𝑦 = 4 + 𝑥", "𝑥 + 𝑦 = 1", "𝑥 = 2 − 𝑦", "𝑥 + 2𝑦 = 3"],
+        "correctOptionIndex": 1,
+        "explanation": "The asymptotes of the hyperbola (𝑥 − 2)2 − (𝑦 + 2)2 = 1 are given by the equations 𝑦 = ±𝑥. So, the correct option is 𝑥 + 𝑦 = 1."
+      }
+    ]
+  }
+  

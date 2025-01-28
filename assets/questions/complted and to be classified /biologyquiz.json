@@ -1,0 +1,455 @@
+{
+  "title": "Biology Quiz",
+  "duration": 60,
+  "numberOfQuestions": 77,
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Which of the following compounds is an important component of the bacterial cell wall?",
+      "options": ["Chitin", "Peptidoglycan", "Cellulose", "Pectin"],
+      "correctOptionIndex": 1,
+      "explanation": "Peptidoglycan is an important component of the bacterial cell wall."
+    },
+    {
+      "id": "q2",
+      "text": "Which of the following modes of material transport across the cell membrane is NOT governed by the concentration gradient of the transported material?",
+      "options": ["Simple diffusion", "Osmosis", "Facilitated diffusion", "Active transport"],
+      "correctOptionIndex": 3,
+      "explanation": "Active transport is not governed by the concentration gradient of the transported material."
+    },
+    {
+      "id": "q3",
+      "text": "Which of the following laboratory equipment is used to separate the organelles of the cell according to their density?",
+      "options": ["Incubator", "Measuring cylinder", "Centrifuge", "Filter paper with fine pores"],
+      "correctOptionIndex": 2,
+      "explanation": "A centrifuge is used to separate the organelles of the cell according to their density."
+    },
+    {
+      "id": "q4",
+      "text": "Which of the following ideas in the cell theory was contributed by Rudolf Virchow?",
+      "options": ["All plants are made up of cells.", "All animals are made up of cells.", "Cells are the structural unit of life", "Cells come from pre-existing cells"],
+      "correctOptionIndex": 3,
+      "explanation": "Rudolf Virchow contributed the idea that cells come from pre-existing cells."
+    },
+    {
+      "id": "q5",
+      "text": "The fluid mosaic model describes membrane as having",
+      "options": ["A set of protein channels by phospholipid", "A bilayer of phospholipid in which specialized proteins are embedded", "A sugar phosphate backbone that interconnects specific transport molecules", "Two sheets of protein with a layer of phospholipids sandwiched between them"],
+      "correctOptionIndex": 1,
+      "explanation": "The fluid mosaic model describes the membrane as having a bilayer of phospholipid in which specialized proteins are embedded."
+    },
+    {
+      "id": "q6",
+      "text": "Suppose we consider four hypothetical cells (designed A, B, C, and D) having cubic shape with their sides measuring 2, 4, 6, and 8 arbitrary units, respectively. Which of these cells has the largest surface area to volume ratio?",
+      "options": ["Cell A", "Cell B", "Cell C", "Cell D"],
+      "correctOptionIndex": 0,
+      "explanation": "Cell A has the largest surface area to volume ratio."
+    },
+    {
+      "id": "q7",
+      "text": "In the structural arrangement of the cell membrane, the organic molecules which serve as the structural backbone and prevent uncontrolled movement of water-soluble material are",
+      "options": ["Lipid bilayer", "Carbohydrate", "Cholesterol", "Peripheral protein"],
+      "correctOptionIndex": 0,
+      "explanation": "The lipid bilayer serves as the structural backbone and prevents uncontrolled movement of water-soluble material."
+    },
+    {
+      "id": "q8",
+      "text": "Biological membranes are normally permeable to which substance using simple diffusion?",
+      "options": ["Large, hydrophilic molecules.", "Large, hydrophobic molecules.", "Small, hydrophilic molecules.", "Small, hydrophobic molecules."],
+      "correctOptionIndex": 3,
+      "explanation": "Biological membranes are normally permeable to small, hydrophobic molecules using simple diffusion."
+    },
+    {
+      "id": "q9",
+      "text": "What is the function of cholesterol within membranes through its interactions with both hydrophobic and hydrophilic parts of phospholipids?",
+      "options": ["Water blocker", "pH buffer", "Temperature controller", "Fluidity buffer"],
+      "correctOptionIndex": 3,
+      "explanation": "Cholesterol functions as a fluidity buffer within membranes."
+    },
+    {
+      "id": "q10",
+      "text": "Who was/were the first to propose that cell membranes are phospholipid bilayers?",
+      "options": ["H. Davson and J. Danielli", "C. Overton", "S. Singer and G. Nicolson", "E. Gorter and F. Grendel"],
+      "correctOptionIndex": 3,
+      "explanation": "E. Gorter and F. Grendel were the first to propose that cell membranes are phospholipid bilayers."
+    },
+    {
+      "id": "q11",
+      "text": "Which of the following types of molecules are the major structural components of the cell membrane?",
+      "options": ["Phospholipids and cellulose", "Nucleic acids and proteins", "Phospholipids and proteins", "Proteins and cellulose"],
+      "correctOptionIndex": 2,
+      "explanation": "Phospholipids and proteins are the major structural components of the cell membrane."
+    },
+    {
+      "id": "q12",
+      "text": "Which of the following is a reasonable explanation for why unsaturated fatty acids help keep any membrane more fluid at lower temperatures?",
+      "options": ["The double bonds form kinks in the fatty acid tails, forcing adjacent lipids to be further apart.", "Unsaturated fatty acids have higher cholesterol content and therefore more cholesterol in the membrane", "Unsaturated fatty acids permit more water in the interior of the membrane.", "The double bonds block interaction among the hydrophilic head groups of the lipids"],
+      "correctOptionIndex": 0,
+      "explanation": "The double bonds form kinks in the fatty acid tails, forcing adjacent lipids to be further apart."
+    },
+    {
+      "id": "q13",
+      "text": "Of the following functions, which is most important for the glycoproteins and glycolipids of animal cell membranes?",
+      "options": ["Facilitated diffusion of molecules down their concentration gradients", "Maintaining the integrity of a fluid mosaic membrane", "Maintaining membrane fluidity at low temperatures", "A cell's ability to distinguish one type of neighboring cell from another"],
+      "correctOptionIndex": 3,
+      "explanation": "Glycoproteins and glycolipids are important for a cell's ability to distinguish one type of neighboring cell from another."
+    },
+    {
+      "id": "q14",
+      "text": "Which one of the following alternatives gives the products of aerobic respiration of glucose by yeast?",
+      "options": ["Lactic acid, CO2, 2ATP", "Alcohol, CO2, 2ATP", "CO2, H2O, 36ATP", "Alcohol, CO2, 36ATP"],
+      "correctOptionIndex": 3,
+      "explanation": "The products of aerobic respiration of glucose by yeast are alcohol, CO2, and 36ATP."
+    },
+    {
+      "id": "q15",
+      "text": "If a cell contains 10NADH + 10 FADH2 molecules, a total of how many ATP molecules would it produce from them?",
+      "options": ["20 ATP", "30 ATP", "50 ATP", "60 ATP"],
+      "correctOptionIndex": 2,
+      "explanation": "A cell would produce a total of 50 ATP molecules from 10NADH + 10 FADH2 molecules."
+    },
+    {
+      "id": "q16",
+      "text": "Which of these is not true of fermentation?",
+      "options": ["Net gain of only two ATP", "Begins with glucose", "NADH donates electrons to the electron transport system", "Occurs in the cytoplasm"],
+      "correctOptionIndex": 2,
+      "explanation": "NADH does not donate electrons to the electron transport system in fermentation."
+    },
+    {
+      "id": "q17",
+      "text": "Which one of the following is the correct sequence for the main processes of aerobic respiration?",
+      "options": ["Krebs cycle, electron transport system, glycolysis", "Glycolysis, Krebs cycle, electron transport system", "Electron transport system, Glycolysis, Krebs cycle", "Glycolysis, Electron transport system, Krebs cycle"],
+      "correctOptionIndex": 1,
+      "explanation": "The correct sequence for the main processes of aerobic respiration is Glycolysis, Krebs cycle, electron transport system."
+    },
+    {
+      "id": "q18",
+      "text": "The greatest contributor of electrons to the electron transport system is:",
+      "options": ["Oxygen", "The Krebs cycle", "The transition reaction", "Glycolysis"],
+      "correctOptionIndex": 1,
+      "explanation": "The Krebs cycle is the greatest contributor of electrons to the electron transport system."
+    },
+    {
+      "id": "q19",
+      "text": "Choose the final electron acceptor in the electron transport chain during aerobic respiration of eukaryotic cells?",
+      "options": ["H2O", "O2", "CO2", "NADP"],
+      "correctOptionIndex": 1,
+      "explanation": "O2 is the final electron acceptor in the electron transport chain during aerobic respiration of eukaryotic cells."
+    },
+    {
+      "id": "q20",
+      "text": "Where in the plant cell does the Krebs cycle (citric acid cycle) take place?",
+      "options": ["Nucleus", "Cytoplasm", "Mitochondrion", "Chloroplast"],
+      "correctOptionIndex": 2,
+      "explanation": "The Krebs cycle takes place in the mitochondrion."
+    },
+    {
+      "id": "q21",
+      "text": "If an animal inhales a radioactive form of oxygen, in which of the following products of cellular respiration would the radioactivity be detected?",
+      "options": ["Water", "Carbon dioxide", "ATP", "NADH"],
+      "correctOptionIndex": 0,
+      "explanation": "The radioactivity would be detected in water."
+    },
+    {
+      "id": "q22",
+      "text": "What is the final electron acceptor in the electron transport chain of cellular respiration?",
+      "options": ["H2", "O2", "NADP+", "NAD+"],
+      "correctOptionIndex": 1,
+      "explanation": "O2 is the final electron acceptor in the electron transport chain of cellular respiration."
+    },
+    {
+      "id": "q23",
+      "text": "Which of the following pairs are both organelles concerned with energy transformation?",
+      "options": ["Nucleus and nucleolus", "Mitochondria and nucleus", "Chloroplast and vacuole", "Chloroplast and mitochondria"],
+      "correctOptionIndex": 3,
+      "explanation": "Chloroplast and mitochondria are both organelles concerned with energy transformation."
+    },
+    {
+      "id": "q24",
+      "text": "When the muscle cells are in short supply of oxygen, which of the following compounds would be accumulated in them?",
+      "options": ["Ethanol", "Acetic acid", "Lactic acid", "Carbon dioxide"],
+      "correctOptionIndex": 2,
+      "explanation": "Lactic acid would be accumulated in muscle cells when they are in short supply of oxygen."
+    },
+    {
+      "id": "q25",
+      "text": "Which of the following is NOT one of the stages in cellular respiration?",
+      "options": ["Calvin cycle", "Glycolysis", "Electron transport", "Krebs cycle"],
+      "correctOptionIndex": 0,
+      "explanation": "The Calvin cycle is not one of the stages in cellular respiration."
+    },
+    {
+      "id": "q26",
+      "text": "If there were no free oxygen to breathe, which one of the following steps of the respiration process can operate in our body?",
+      "options": ["Glycolysis", "Electron transport chain", "Krebs cycle", "Link reaction"],
+      "correctOptionIndex": 0,
+      "explanation": "Glycolysis can operate in our body if there were no free oxygen to breathe."
+    },
+    {
+      "id": "q27",
+      "text": "At which stage most of the carbon dioxide released during aerobic respiration",
+      "options": ["Glycolysis", "Electron transport", "Chemiosmosis", "Krebs cycle"],
+      "correctOptionIndex": 3,
+      "explanation": "Most of the carbon dioxide is released during the Krebs cycle."
+    },
+    {
+      "id": "q28",
+      "text": "In which process is ATP generated during short distance high speed running?",
+      "options": ["Aerobic respiration", "Anaerobic respiration", "Mitochondrial energy transformation", "The Krebs cycle"],
+      "correctOptionIndex": 1,
+      "explanation": "ATP is generated during anaerobic respiration during short distance high speed running."
+    },
+    {
+      "id": "q29",
+      "text": "From which of the processes of cellular respiration is the majority of the ATP generated?",
+      "options": ["Substrate level phosphorylation", "Oxidative phosphorylation", "Glycolysis", "Krebs cycle & glycolysis"],
+      "correctOptionIndex": 1,
+      "explanation": "The majority of the ATP is generated from oxidative phosphorylation."
+    },
+    {
+      "id": "q30",
+      "text": "Phosphorylation process does not happen in:",
+      "options": ["Glycolysis", "Krebs cycle", "Link reaction", "Electron transport system"],
+      "correctOptionIndex": 3,
+      "explanation": "Phosphorylation process does not happen in the electron transport system."
+    },
+    {
+      "id": "q31",
+      "text": "Which of these are not embedded in the lipid bilayer at all?",
+      "options": ["Transmembrane proteins", "Integral proteins", "Peripheral proteins", "Glycoproteins"],
+      "correctOptionIndex": 2,
+      "explanation": "Peripheral proteins are not embedded in the lipid bilayer at all."
+    },
+    {
+      "id": "q32",
+      "text": "White blood cells engulf bacteria through what process?",
+      "options": ["Exocytosis", "Phagocytosis", "Pinocytosis", "Receptor-mediated exocytosis"],
+      "correctOptionIndex": 1,
+      "explanation": "White blood cells engulf bacteria through the process of phagocytosis."
+    },
+    {
+      "id": "q33",
+      "text": "If a membrane protein in an animal cell is involved in the co-transport of glucose and sodium ions into the cell, which of the following is most likely true?",
+      "options": ["Glucose is entering the cell along its concentration gradient.", "Sodium ions can move down their electrochemical gradient through the co-transporter whether or not glucose is present outside the cell.", "Potassium ions move across the same gradient as sodium ions.", "A substance that blocked sodium ions from binding to the co-transport protein would also block the transport of glucose."],
+      "correctOptionIndex": 3,
+      "explanation": "A substance that blocked sodium ions from binding to the co-transport protein would also block the transport of glucose."
+    },
+    {
+      "id": "q34",
+      "text": "Which of the following statements is correct about diffusion?",
+      "options": ["It is very rapid over long distances.", "It requires an expenditure of energy by the cell.", "It is a passive process in which molecules move from a region of higher concentration to a region of lower concentration.", "It is an active process in which molecules move from a region of lower concentration to one of higher concentration."],
+      "correctOptionIndex": 2,
+      "explanation": "Diffusion is a passive process in which molecules move from a region of higher concentration to a region of lower concentration."
+    },
+    {
+      "id": "q35",
+      "text": "Which of the following factors would tend to increase membrane fluidity?",
+      "options": ["A greater proportion of unsaturated phospholipids", "A greater proportion of saturated phospholipids", "A lower temperature", "A relatively high protein content in the membrane"],
+      "correctOptionIndex": 0,
+      "explanation": "A greater proportion of unsaturated phospholipids would tend to increase membrane fluidity."
+    },
+    {
+      "id": "q36",
+      "text": "Which of the following processes includes all others?",
+      "options": ["Osmosis", "Diffusion of a solute across a membrane", "Facilitated diffusion", "Passive transport"],
+      "correctOptionIndex": 3,
+      "explanation": "Passive transport includes all other processes."
+    },
+    {
+      "id": "q37",
+      "text": "The solutions in the arms of a U-tube are separated at the bottom of the tube by a selectively permeable membrane. The membrane is permeable to sodium chloride but not to glucose. Side A is filled with a solution of 0.4 M glucose and 0.5 M sodium chloride (NaCl), and side B is filled with a solution containing 0.8 M glucose and 0.4 M sodium chloride. Initially, the volume in both arms is the same.",
+      "options": ["Side A is hypertonic to side B.", "Side A is hypertonic to side B with respect to glucose.", "Side A is hypotonic to side B.", "Side A is hypotonic to side B with respect to NaCl."],
+      "correctOptionIndex": 3,
+      "explanation": "Side A is hypotonic to side B with respect to NaCl."
+    },
+    {
+      "id": "q38",
+      "text": "Suppose three potato cylinders are kept for some time in 15%, 8%, and 4% sucrose solutions, respectively, and the fourth cylinder is kept in distilled water. Which of the cylinders will be more flaccid?",
+      "options": ["The cylinder in 4% solution.", "The cylinder in 15% solution.", "The cylinder in 8% solution.", "The cylinder in distilled water."],
+      "correctOptionIndex": 3,
+      "explanation": "The cylinder in distilled water will be more flaccid."
+    },
+    {
+      "id": "q39",
+      "text": "10 divisions on the scale of an eyepiece graticule correspond to 4 small divisions on the stage micrometer. Each small division on the stage micrometer = 10 μm. 4 cells fit across 10 divisions of the eyepiece graticule. The length of each cell is:",
+      "options": ["10 μm", "40 μm", "40 mm", "10 mm"],
+      "correctOptionIndex": 1,
+      "explanation": "The length of each cell is 40 μm."
+    },
+    {
+      "id": "q40",
+      "text": "The surface-area-to-volume ratio of a cell is important because it is a measure of:",
+      "options": ["How efficiently the cell releases energy in respiration", "How efficient the cell is in conserving energy", "How efficient the cell is in obtaining the oxygen it needs for respiration", "How efficiently the cell uses the energy it releases in respiration"],
+      "correctOptionIndex": 2,
+      "explanation": "The surface-area-to-volume ratio of a cell is important because it is a measure of how efficient the cell is in obtaining the oxygen it needs for respiration."
+    },
+    {
+      "id": "q41",
+      "text": "It is thought that eukaryotic cells originated by several prokaryotic cells becoming associated. This theory is the:",
+      "options": ["Endosymbiont theory", "Membrane association theory", "Both of the above", "Neither of the above"],
+      "correctOptionIndex": 0,
+      "explanation": "This theory is the Endosymbiont theory."
+    },
+    {
+      "id": "q42",
+      "text": "During photosynthesis, which of the following acts as a reservoir for hydrogen ions?",
+      "options": ["Cristae", "Stroma", "Thylakoid space", "Matrix"],
+      "correctOptionIndex": 2,
+      "explanation": "The thylakoid space acts as a reservoir for hydrogen ions during photosynthesis."
+    },
+    {
+      "id": "q43",
+      "text": "What is the source of the oxygen that green plants release during photosynthesis?",
+      "options": ["Sugar", "Carbon dioxide", "Water", "Chlorophyll"],
+      "correctOptionIndex": 2,
+      "explanation": "Water is the source of the oxygen that green plants release during photosynthesis."
+    },
+    {
+      "id": "q44",
+      "text": "Which of the following processes of photosynthesis does NOT require the presence of light to take place?",
+      "options": ["The splitting of water", "Reduction of NADP", "ATP formation", "Carbon fixation"],
+      "correctOptionIndex": 3,
+      "explanation": "Carbon fixation does not require the presence of light to take place."
+    },
+    {
+      "id": "q45",
+      "text": "Which of the following is NOT true about photosystem-II?",
+      "options": ["Its reaction center molecule is P680.", "It passes excited electrons to Photosystem-I.", "The energy lost from its excited electrons reduces NADP.", "It replenishes its lost electrons from photolysis of water"],
+      "correctOptionIndex": 2,
+      "explanation": "The energy lost from its excited electrons does not reduce NADP."
+    },
+    {
+      "id": "q46",
+      "text": "What is the importance of chemiosmosis in photosynthesis and cellular respiration?",
+      "options": ["Splitting of water molecule", "Combining hydrogen and carbon", "Operating the proton pump", "Synthesizing ATP"],
+      "correctOptionIndex": 3,
+      "explanation": "The importance of chemiosmosis in photosynthesis and cellular respiration is synthesizing ATP."
+    },
+    {
+      "id": "q47",
+      "text": "Where does the light-dependent reaction of photosynthesis occur in the chloroplast?",
+      "options": ["In the thylakoid membrane", "In the fluid of the stroma", "In all parts of the chloroplast", "In the stomatal opening"],
+      "correctOptionIndex": 0,
+      "explanation": "The light-dependent reaction of photosynthesis occurs in the thylakoid membrane."
+    },
+    {
+      "id": "q48",
+      "text": "Which of the following substances is NOT necessary for photosynthesis to take place?",
+      "options": ["Chlorophyll", "Carbon dioxide", "Oxygen", "Water"],
+      "correctOptionIndex": 2,
+      "explanation": "Oxygen is not necessary for photosynthesis to take place."
+    },
+    {
+      "id": "q49",
+      "text": "If photosynthesizing green algae are provided with CO2 synthesized with heavy oxygen (18 Oxygen), later analysis shows that all of the following compounds produced by the algae contain the 18 O labels except",
+      "options": ["PGA", "Glucose", "RuBP", "O2"],
+      "correctOptionIndex": 3,
+      "explanation": "O2 does not contain the 18 O labels."
+    },
+    {
+      "id": "q50",
+      "text": "What are the products of the light reactions that are subsequently used by the Calvin cycle?",
+      "options": ["Oxygen and carbon dioxide", "Water and carbon", "Carbon dioxide and RuBP", "ATP and NADPH"],
+      "correctOptionIndex": 3,
+      "explanation": "The products of the light reactions that are subsequently used by the Calvin cycle are ATP and NADPH."
+    },
+    {
+      "id": "q51",
+      "text": "A plant has a unique photosynthetic pigment. The leaves of this plant appear to be reddish-yellow. What wavelengths of visible light are being absorbed by this pigment?",
+      "options": ["Red and yellow", "Green and yellow", "Blue and violet", "Green, blue, and yellow"],
+      "correctOptionIndex": 2,
+      "explanation": "The pigment absorbs blue and violet wavelengths of visible light."
+    },
+    {
+      "id": "q52",
+      "text": "Assume a thylakoid is somehow punctured so that the interior of the thylakoid is no longer separated from the stroma. This damage will have the most direct effect on which of the following processes?",
+      "options": ["The splitting of water", "The absorption of light energy by chlorophyll", "The flow of electrons from photosystem II to photosystem I", "The synthesis of ATP"],
+      "correctOptionIndex": 3,
+      "explanation": "The synthesis of ATP will be most directly affected."
+    },
+    {
+      "id": "q53",
+      "text": "In a plant cell, where are the ATP synthase complexes located?",
+      "options": ["Thylakoid membrane", "Inner mitochondrial membrane", "Plasma membrane", "A and C"],
+      "correctOptionIndex": 3,
+      "explanation": "The ATP synthase complexes are located in the thylakoid membrane and the inner mitochondrial membrane."
+    },
+    {
+      "id": "q54",
+      "text": "Cellular activities are carried out more efficiently in eukaryotic cells than in prokaryotes, and this can be explained by the",
+      "options": ["Absence of cytoplasm in prokaryotes.", "Presence of membrane-bound organelles in eukaryotic cells", "Absence of DNA in prokaryotic cells", "Presence of enzymes in prokaryotic cells"],
+      "correctOptionIndex": 1,
+      "explanation": "The presence of membrane-bound organelles in eukaryotic cells explains why cellular activities are carried out more efficiently."
+    },
+    {
+      "id": "q55",
+      "text": "Which of the following statements best describes the relationship between photosynthesis and respiration?",
+      "options": ["Respiration is the reversal of the biochemical pathways of photosynthesis.", "Photosynthesis stores energy in complex organic molecules, while respiration releases it.", "Photosynthesis occurs only in plants and respiration occurs only in animals.", "ATP molecules are produced in photosynthesis and used up in respiration."],
+      "correctOptionIndex": 1,
+      "explanation": "Photosynthesis stores energy in complex organic molecules, while respiration releases it."
+    },
+    {
+      "id": "q56",
+      "text": "Synthesis of ATP by the chemiosmotic mechanism occurs during",
+      "options": ["Photosynthesis.", "Respiration.", "Both photosynthesis and respiration.", "Neither photosynthesis nor respiration."],
+      "correctOptionIndex": 2,
+      "explanation": "Synthesis of ATP by the chemiosmotic mechanism occurs during both photosynthesis and respiration."
+    },
+    {
+      "id": "q57",
+      "text": "Which of the following groups of plants carry out light-dependent and light-independent reactions of photosynthesis in separate cells?",
+      "options": ["C-3 plants", "C-4 plants", "CAM plants", "Plants without chlorophyll"],
+      "correctOptionIndex": 1,
+      "explanation": "C-4 plants carry out light-dependent and light-independent reactions of photosynthesis in separate cells."
+    },
+    {
+      "id": "q58",
+      "text": "The biochemical mechanism by which chlorophyll absorbs light energy is efficient because",
+      "options": ["The different pigment molecules in the antenna complex absorb the same wavelength of light", "The molecules of photosystems and ETCs are fixed in the membrane of thylakoid", "The same pigment molecules in the antenna complex absorb different wavelengths of light.", "The molecules of photosystems and ETCs are floating around in a solution."],
+      "correctOptionIndex": 2,
+      "explanation": "The same pigment molecules in the antenna complex absorb different wavelengths of light."
+    },
+    {
+      "id": "q59",
+      "text": "On which of the following does the rate of algal photosynthesis in a lake depend?",
+      "options": ["The oxygen content of the water", "The nitrogen content of the water", "The elevation where the lake is found", "The amount of light that penetrates the lake water"],
+      "correctOptionIndex": 3,
+      "explanation": "The rate of algal photosynthesis in a lake depends on the amount of light that penetrates the lake water."
+    },
+    {
+      "id": "q60",
+      "text": "Which of the following is supplied to the Calvin cycle by the light reactions of photosynthesis?",
+      "options": ["CO2 and ATP", "ATP and NADPH", "ATP and NAD+", "H2O and ATP"],
+      "correctOptionIndex": 1,
+      "explanation": "ATP and NADPH are supplied to the Calvin cycle by the light reactions of photosynthesis."
+    },
+    {
+      "id": "q61",
+      "text": "A green plant is kept in a brightly lighted area for 48 hours. What will most likely occur if the light intensity is then reduced slightly during the next 48 hours?",
+      "options": ["The rate at which nitrogen is used by the plant will increase.", "Photosynthesis will stop completely.", "The rate at which oxygen is released from the plant will decrease.", "Glucose production inside each plant cell will increase."],
+      "correctOptionIndex": 2,
+      "explanation": "The rate at which oxygen is released from the plant will decrease."
+    },
+    {
+      "id": "q62",
+      "text": "Plants that follow CAM photosynthesis pathway carry out the two stages of photosynthesis at different times. Which of the following products are formed during the night?",
+      "options": ["ATP and NADPH", "Malate and sugar", "CO2 and sugar", "Oxaloacetate and malate"],
+      "correctOptionIndex": 3,
+      "explanation": "Oxaloacetate and malate are formed during the night in CAM photosynthesis."
+    },
+    {
+      "id": "q63",
+      "text": "The cells of C3 plants in the tropics close their stomata to minimize water loss, as a result, the concentration of CO2 in the leaves falls. When C3 plants face such a problem, ribulose bisphosphate reacts with oxygen and produces",
+      "options": ["Oxaloacetate and water in the peroxisome", "Triose phosphate and sugar in mitochondria", "Glycerate phosphate and phosphoglycolate in the chloroplast", "H2O2 and CO2 in the mitochondria"],
+      "correctOptionIndex": 2,
+      "explanation": "Glycerate phosphate and phosphoglycolate are produced in the chloroplast."
+    },
+    {
+      "id": "q64",
+      "text": "Sorghum and wheat are C4 plants which are well adapted to photosynthesize efficiently in hot and bright days. Peas and carrots would not photosynthesize efficiently in such conditions because they are C3 plants. Which of the following features do these plants have in similar?",
+      "options": ["The cells where CO2 fixation takes place", "Presence of chloroplast in bundle sheath cells", "The cells where the Calvin cycle takes place", "Enzymes used to fix CO2"],
+      "correctOptionIndex": 3,
+      "explanation": "The enzymes used to fix CO2 are similar in both C3 and C4 plants."
+    }
+  ]
+}

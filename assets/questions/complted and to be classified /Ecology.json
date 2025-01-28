@@ -1,0 +1,1822 @@
+{
+    "title": "Entrance examination for grade 12 from 1995 – 2011",
+    "duration": 60,
+    "constants": {},
+    "numberOfQuestions": 259,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Which aspects of biodiversity is best covered in a study that assess the abundance of species in a given area?",
+        "options": ["Species diversity", "genetic diversity", "Ecosystem diversity", "cultural diversity"],
+        "correctOptionIndex": 0,
+        "explanation": "Species diversity refers to the variety of species within a particular region or ecosystem."
+      },
+      {
+        "id": "q2",
+        "text": "Which global problem of environment results from materials added to it by human action?",
+        "options": ["Hunting in protected area", "Pesticide accumulation", "Deforestation in a natural forest", "habitat loss"],
+        "correctOptionIndex": 1,
+        "explanation": "Pesticide accumulation is a result of human activities adding harmful materials to the environment."
+      },
+      {
+        "id": "q3",
+        "text": "Choose the appropriate terminology for an ecological association between two species of organisms living together where one is benefited and the other remain an affected",
+        "options": ["Amensalism", "commensalism", "Mutualism", "neutralism"],
+        "correctOptionIndex": 1,
+        "explanation": "Commensalism is a relationship where one species benefits and the other is unaffected."
+      },
+      {
+        "id": "q4",
+        "text": "Which ecosystem in Ethiopia has forest coffee in it?",
+        "options": ["lowland dry forest ecosystem", "dry ever green montane ecosystem", "Afroalpine ecosystem", "Moist evergreen montane ecosystem"],
+        "correctOptionIndex": 3,
+        "explanation": "The Moist evergreen montane ecosystem is known for having forest coffee."
+      },
+      {
+        "id": "q5",
+        "text": "What is the name of the major agricultural system in Ethiopia where cereals and other grain crops are most dominant?",
+        "options": ["Enset planting complex", "Seed farming complex", "Pastoral complex", "Shifting cultivation"],
+        "correctOptionIndex": 1,
+        "explanation": "The Seed farming complex is the major agricultural system in Ethiopia focused on cereals and grain crops."
+      },
+      {
+        "id": "q6",
+        "text": "What is the technical term for science of rearing fishes under controlled conditions?",
+        "options": ["Sillviculture", "Apiculture", "Fisheries", "Pisciculture"],
+        "correctOptionIndex": 3,
+        "explanation": "Pisciculture is the science of rearing fishes under controlled conditions."
+      },
+      {
+        "id": "q7",
+        "text": "which of the benefits of biological diversity comes under benefits of ecosystem service?",
+        "options": ["Recreational value", "Aesthetic value", "Cultural value", "Nutrient storage and cycling"],
+        "correctOptionIndex": 3,
+        "explanation": "Nutrient storage and cycling is a benefit of ecosystem services provided by biological diversity."
+      },
+      {
+        "id": "q8",
+        "text": "Choose the biome that contains the greatest diversity of life?",
+        "options": ["Desert", "Tropical rainforest", "Temperate forest", "Temperate grass land"],
+        "correctOptionIndex": 1,
+        "explanation": "Tropical rainforests are known for their high biodiversity."
+      },
+      {
+        "id": "q9",
+        "text": "Which of the following is important in classification of the ecosystem of Ethiopia?",
+        "options": ["Amount of rain fall", "Altitude", "Major vegetation types", "Major cell types"],
+        "correctOptionIndex": 2,
+        "explanation": "Major vegetation types are important in classifying the ecosystems of Ethiopia."
+      },
+      {
+        "id": "q10",
+        "text": "Of the following biomes of the world which one has the highest primary productivity?",
+        "options": ["Tropical rain forest", "temperate grass land", "temperate forest", "Savannah"],
+        "correctOptionIndex": 0,
+        "explanation": "Tropical rain forests have the highest primary productivity."
+      },
+      {
+        "id": "q11",
+        "text": "What is the main difficulty for accepting that barley was domesticated in Ethiopia?",
+        "options": ["Poor genetic variation of coffee in Ethiopia", "Barley is cultivated in other countries", "Ethiopian farmers still cultivate barley in traditional way", "Wild relatives of barley have not been found in Ethiopia"],
+        "correctOptionIndex": 3,
+        "explanation": "The absence of wild relatives of barley in Ethiopia makes it difficult to accept that it was domesticated there."
+      },
+      {
+        "id": "q12",
+        "text": "Which of the following is biological method of pest control?",
+        "options": ["cleaning the breeding ground of the pest", "spraying insecticide", "Fumigating stored grains", "introducing natural enemies of the pest"],
+        "correctOptionIndex": 3,
+        "explanation": "Introducing natural enemies of the pest is a biological method of pest control."
+      },
+      {
+        "id": "q13",
+        "text": "Which of the following terms best includes all the rest?",
+        "options": ["Herbivores", "Carnivores", "Omnivores", "Heterotrophs"],
+        "correctOptionIndex": 3,
+        "explanation": "Heterotrophs include herbivores, carnivores, and omnivores."
+      },
+      {
+        "id": "q14",
+        "text": "Which ecological interactions between two species result in negative effect on both organisms?",
+        "options": ["Mutualism", "Competition", "Predation", "Neutralism"],
+        "correctOptionIndex": 1,
+        "explanation": "Competition results in a negative effect on both organisms."
+      },
+      {
+        "id": "q15",
+        "text": "Choose the animal group that is represented in Ethiopia by a higher proportion of endemic species in relation to the total number of species of that animal group found in the country?",
+        "options": ["Birds", "reptiles", "Amphibians", "Fishes"],
+        "correctOptionIndex": 2,
+        "explanation": "Amphibians have a higher proportion of endemic species in Ethiopia."
+      },
+      {
+        "id": "q16",
+        "text": "Which term applies to the rearing of fish under more or less controlled condition?",
+        "options": ["Agriculture", "Pisciculture", "Silviculture", "Aaquaculture"],
+        "correctOptionIndex": 3,
+        "explanation": "Aaquaculture refers to the rearing of fish under controlled conditions."
+      },
+      {
+        "id": "q17",
+        "text": "Based on our mode of nutrition, to which of the following groups do we humans belong?",
+        "options": ["Omnivores", "Carnivores", "Herbivores", "Autotrophs"],
+        "correctOptionIndex": 0,
+        "explanation": "Humans are omnivores, consuming both plants and animals."
+      },
+      {
+        "id": "q18",
+        "text": "What is the best term used to refer to the association of different species of organisms interacting and living together?",
+        "options": ["Ecosystem", "Community", "Pyramid", "Niche"],
+        "correctOptionIndex": 1,
+        "explanation": "A community refers to the association of different species of organisms interacting and living together."
+      },
+      {
+        "id": "q19",
+        "text": "To which trophic level do plants belong?",
+        "options": ["zero", "first", "second", "third"],
+        "correctOptionIndex": 1,
+        "explanation": "Plants belong to the first trophic level as primary producers."
+      },
+      {
+        "id": "q20",
+        "text": "Which of the following crop species is not an oil crop?",
+        "options": ["Guizatia abyssinica", "Arachis hypogaea", "Lens culinaris", "Sesamum indicum"],
+        "correctOptionIndex": 2,
+        "explanation": "Lens culinaris (lentil) is not an oil crop."
+      },
+      {
+        "id": "q21",
+        "text": "What is the method of conservation in which animals are kept in captivity and plants are grown in botanical garden?",
+        "options": ["In situ conservation", "Zoo conservation", "Ex situ conservation", "Complementary in situ and Ex situ conservation"],
+        "correctOptionIndex": 2,
+        "explanation": "Ex situ conservation involves keeping animals in captivity and growing plants in botanical gardens."
+      },
+      {
+        "id": "q22",
+        "text": "In which region of Ethiopia would you look for an ecosystem dominated by lowland dry forest?",
+        "options": ["Afar region", "Somali region", "Gambella region", "Southern region"],
+        "correctOptionIndex": 1,
+        "explanation": "The Somali region is known for its lowland dry forest ecosystem."
+      },
+      {
+        "id": "q23",
+        "text": "In life cycle of a moss plant, Which of the following is diploid?",
+        "options": ["Gametophyte generation", "Sporophyte generation", "Protonema", "Spores"],
+        "correctOptionIndex": 1,
+        "explanation": "The sporophyte generation in the life cycle of a moss plant is diploid."
+      },
+      {
+        "id": "q24",
+        "text": "Which of the following illustrates loss of biodiversity?",
+        "options": ["The death of an individual insect that belongs to a successful species", "A complex forest ecosystem is converted to a field of modern high yielding crop variety", "A new plant species is introduced from a neighboring country and becomes part of the flora", "A species develops a number of distinct varieties"],
+        "correctOptionIndex": 1,
+        "explanation": "Converting a complex forest ecosystem to a field of modern high yielding crop variety illustrates loss of biodiversity."
+      },
+      {
+        "id": "q25",
+        "text": "To which category of biodiversity would taxonomic diversity be grouped at best?",
+        "options": ["Genetic diversity", "Species diversity", "Ecosystem diversity", "Cultural diversity"],
+        "correctOptionIndex": 1,
+        "explanation": "Taxonomic diversity is best grouped under species diversity."
+      },
+      {
+        "id": "q26",
+        "text": "Which of the following world biomes has the least amount of primary productivity per m2/year?",
+        "options": ["Tropical rain forest", "temperate forest", "Temperate grass land", "tropical grasslands"],
+        "correctOptionIndex": 3,
+        "explanation": "Tropical grasslands have the least amount of primary productivity per m2/year."
+      },
+      {
+        "id": "q27",
+        "text": "Which tree genera is found in open forest of the Ethiopian lowland?",
+        "options": ["Podocarpus", "Pauteria", "Acacia", "Juniperus"],
+        "correctOptionIndex": 2,
+        "explanation": "Acacia is found in the open forest of the Ethiopian lowland."
+      },
+      {
+        "id": "q28",
+        "text": "Choose the alternative that include crops in the same crop category",
+        "options": ["Tef, faba, beans, enset", "Noug, orange, pepper", "Linseed, sesame, sunflower", "Coffee, ginger, papaya"],
+        "correctOptionIndex": 2,
+        "explanation": "Linseed, sesame, and sunflower are all oil crops."
+      },
+      {
+        "id": "q29",
+        "text": "Which of the following depicts a more complete concept of biodiversity?",
+        "options": ["All natural resources of the globe", "Everything the biosphere", "The variety of life, genes and their habitats", "All domestic plants and animals taken together"],
+        "correctOptionIndex": 2,
+        "explanation": "Biodiversity encompasses the variety of life, genes, and their habitats."
+      },
+      {
+        "id": "q30",
+        "text": "In primary succession which of the following plant types are the pioneer colonizer?",
+        "options": ["Herbs", "Shrubs", "Lichens", "Mosses"],
+        "correctOptionIndex": 2,
+        "explanation": "Lichens are often the pioneer colonizers in primary succession."
+      },
+      {
+        "id": "q31",
+        "text": "In Ethiopia which of the following animal group has the highest percentage of endemic species?",
+        "options": ["Reptiles", "Amphibians", "Fresh water fish", "Birds"],
+        "correctOptionIndex": 2,
+        "explanation": "Fresh water fish have the highest percentage of endemic species in Ethiopia."
+      },
+      {
+        "id": "q32",
+        "text": "If destroyed which of the following result in the biggest loss of the world biodiversity?",
+        "options": ["Temperate evergreen forest", "Savannah woodlands", "Temperate deciduous forest", "Tropical rain forest"],
+        "correctOptionIndex": 3,
+        "explanation": "Destroying tropical rain forests would result in the biggest loss of world biodiversity."
+      },
+      {
+        "id": "q33",
+        "text": "In food chain consisting of Grass →Rodents → Snakes → Birds, Which groups contains the least amount of food energy?",
+        "options": ["Grass", "Rodents", "Snakes", "Birds"],
+        "correctOptionIndex": 3,
+        "explanation": "Birds contain the least amount of food energy in this food chain."
+      },
+      {
+        "id": "q34",
+        "text": "Which of the following contains members of single species?",
+        "options": ["Ecosystem", "Biosphere", "Population", "community"],
+        "correctOptionIndex": 2,
+        "explanation": "A population contains members of a single species."
+      },
+      {
+        "id": "q35",
+        "text": "Which of the following groups of microorganisms convert nitrogen compounds in the soil to atmospheric nitrogen?",
+        "options": ["Nitrogen fixing bacteria", "Nitrifying bacteria", "Denitrifying bacteria", "Cyanobacteria"],
+        "correctOptionIndex": 2,
+        "explanation": "Denitrifying bacteria convert nitrogen compounds in the soil to atmospheric nitrogen."
+      },
+      {
+        "id": "q36",
+        "text": "Which of the following ecological pyramid presents the weight of living materials available at different trophic level?",
+        "options": ["Pyramid of number", "Pyramid of biomass", "Pyramid of energy", "Inverted pyramid of number"],
+        "correctOptionIndex": 1,
+        "explanation": "The pyramid of biomass presents the weight of living materials available at different trophic levels."
+      },
+      {
+        "id": "q37",
+        "text": "Suppose in a population of 1000 individuals 100 new individuals were born and 50 died, what is the percentage growth of the population?",
+        "options": ["2.5%", "5%", "15%", "50%"],
+        "correctOptionIndex": 1,
+        "explanation": "The percentage growth of the population is 5%."
+      },
+      {
+        "id": "q38",
+        "text": "What is the term for species that is found in one particular country only?",
+        "options": ["Endemic species", "Geographic species", "Exotic species", "Indigenous specious"],
+        "correctOptionIndex": 0,
+        "explanation": "An endemic species is found in one particular country only."
+      },
+      {
+        "id": "q39",
+        "text": "In life cycle of ferns, which of the following is the largest?",
+        "options": ["Sporophyte generation", "Gametophyte generation", "Sporangium", "Gametogonium"],
+        "correctOptionIndex": 0,
+        "explanation": "The sporophyte generation is the largest in the life cycle of ferns."
+      },
+      {
+        "id": "q40",
+        "text": "Which of the following forms the base of an ecological pyramid?",
+        "options": ["Herbivores", "Decomposers", "Omnivores", "Producers"],
+        "correctOptionIndex": 3,
+        "explanation": "Producers form the base of an ecological pyramid."
+      },
+      {
+        "id": "q41",
+        "text": "Which of the following could be better example of mutualism?",
+        "options": ["Flies on dog", "A lion preying on buffalo", "A beetle living on elephant dung", "A butterfly feeding on the nectar of the flower"],
+        "correctOptionIndex": 2,
+        "explanation": "A beetle living on elephant dung is an example of mutualism."
+      },
+      {
+        "id": "q42",
+        "text": "To which of the following kingdom would you classify lichen?",
+        "options": ["Plantae", "Protista", "Monera", "Fungi"],
+        "correctOptionIndex": 3,
+        "explanation": "Lichen is classified under the kingdom Fungi."
+      },
+      {
+        "id": "q43",
+        "text": "One of the following measures will be effective to reduce human population growth rate in Ethiopia?",
+        "options": ["open more school", "Operant conditioning", "Provide better health care", "Expand family planning programme"],
+        "correctOptionIndex": 3,
+        "explanation": "Expanding family planning programs will be effective in reducing human population growth rate."
+      },
+      {
+        "id": "q44",
+        "text": "Of the following, choose the consumer that feeds on waste material and other remains of organisms within the food chain",
+        "options": ["Predator", "Scavenger", "Decomposers", "omnivores"],
+        "correctOptionIndex": 2,
+        "explanation": "Decomposers feed on waste material and other remains of organisms within the food chain."
+      },
+      {
+        "id": "q45",
+        "text": "Which stage in the life cycle of lepidopteron insect pests cause more damage to crop plants?",
+        "options": ["Pupa", "Adult", "egg", "Larvae"],
+        "correctOptionIndex": 3,
+        "explanation": "The larvae stage of lepidopteron insect pests causes more damage to crop plants."
+      },
+      {
+        "id": "q46",
+        "text": "From which flower structure fruit normally derived?",
+        "options": ["Anthers", "Petals", "Pistil", "Receptacle"],
+        "correctOptionIndex": 2,
+        "explanation": "Fruit is normally derived from the pistil of a flower."
+      },
+      {
+        "id": "q47",
+        "text": "Which measure would you not recommend as a means to protect Ethiopian ecosystem and their biodiversity?",
+        "options": ["In situ conservation", "Gazettement of the protected rehabilitation", "Ecosystem restoration and rehabilitation", "Human encroachment into the natural ecosystem"],
+        "correctOptionIndex": 3,
+        "explanation": "Human encroachment into the natural ecosystem is not recommended for protecting biodiversity."
+      },
+      {
+        "id": "q48",
+        "text": "The gametophyte generations of angiosperms are",
+        "options": ["Pistil and stamen", "Ovary and anther", "Endosperm and embryo", "Embryo sac and pollen grain"],
+        "correctOptionIndex": 3,
+        "explanation": "The gametophyte generations of angiosperms are the embryo sac and pollen grain."
+      },
+      {
+        "id": "q49",
+        "text": "Which cattle breed is commonly found in Ethiopia?",
+        "options": ["Abigar", "Ayrshire", "Kerry", "Norwegian red"],
+        "correctOptionIndex": 0,
+        "explanation": "Abigar is a cattle breed commonly found in Ethiopia."
+      },
+      {
+        "id": "q50",
+        "text": "Which one of the following shows the main advantage of ploughing leguminous crops such as beans in the soil?",
+        "options": ["Controlling soil erosion", "Conserving moisture in the soil", "improving the level of nitrates in the soil", "Controlling weeds growing in the farmland"],
+        "correctOptionIndex": 2,
+        "explanation": "Ploughing leguminous crops such as beans improves the level of nitrates in the soil."
+      },
+      {
+        "id": "q51",
+        "text": "Which Ethiopian lake ids well known for its high species of the fish known as barbus?",
+        "options": ["Lake awassa", "Lake chamo", "Lake tana", "Lake zeway"],
+        "correctOptionIndex": 2,
+        "explanation": "Lake Tana is well known for its high species of the fish known as barbus."
+      },
+      {
+        "id": "q52",
+        "text": "The stage of metamorphosis observed in an organism which is different from insect is",
+        "options": ["Nymph", "Larvae", "pupa", "Tadpole"],
+        "correctOptionIndex": 3,
+        "explanation": "The tadpole stage of metamorphosis is observed in amphibians, not insects."
+      },
+      {
+        "id": "q53",
+        "text": "Which of the following is the primary source of energy for all the others?",
+        "options": ["Herbivores", "producers", "Omnivores", "Decomposers"],
+        "correctOptionIndex": 1,
+        "explanation": "Producers are the primary source of energy for all other organisms."
+      },
+      {
+        "id": "q54",
+        "text": "The adult frog in the pond feeds on insects. What type of consumer is the frog?",
+        "options": ["Carnivore", "Herbivore", "parasite", "saprophyte"],
+        "correctOptionIndex": 0,
+        "explanation": "The frog is a carnivore, feeding on insects."
+      },
+      {
+        "id": "q55",
+        "text": "Which organism has the longest gestation period?",
+        "options": ["Human", "cattle", "Giraffe", "elephant"],
+        "correctOptionIndex": 3,
+        "explanation": "The elephant has the longest gestation period."
+      },
+      {
+        "id": "q56",
+        "text": "Which of the following food chain can result in inverted pyramid of number?",
+        "options": ["Grass→ Rabbit Foxes", "Tree → Birds → Parasite of birds", "Tree → Monkey → Leopard", "Grass → Insects → birds"],
+        "correctOptionIndex": 1,
+        "explanation": "The food chain Tree → Birds → Parasite of birds can result in an inverted pyramid of number."
+      },
+      {
+        "id": "q57",
+        "text": "The chameleon is known to evade capture by its enemies as it mimics the back ground environment in which it is found. This can be taken as an example of which characteristics of life?",
+        "options": ["Organization", "Growth and development", "Adaptation", "Maintenance of internal body condition"],
+        "correctOptionIndex": 2,
+        "explanation": "This is an example of adaptation."
+      },
+      {
+        "id": "q58",
+        "text": "Which of the following trophic levels contains the least amount of total energy in an ecosystem?",
+        "options": ["First trophic level", "Second trophic level", "Third trophic level", "Fourth trophic level"],
+        "correctOptionIndex": 3,
+        "explanation": "The fourth trophic level contains the least amount of total energy in an ecosystem."
+      },
+      {
+        "id": "q59",
+        "text": "For which of the following species of cultivated plants is Ethiopia generally believed to be secondary center of diversity",
+        "options": ["Guizotia abyssiica", "Haedeum Vulkgare", "Coffee arbica", "Ensete ventricosum"],
+        "correctOptionIndex": 2,
+        "explanation": "Ethiopia is generally believed to be a secondary center of diversity for Coffee arabica."
+      },
+      {
+        "id": "q60",
+        "text": "Which of the following insects are important pests of stored grains?",
+        "options": ["Coleopterans", "Migratory locusts", "Butterflies", "Grasshoppers"],
+        "correctOptionIndex": 0,
+        "explanation": "Coleopterans (beetles) are important pests of stored grains."
+      },
+      {
+        "id": "q61",
+        "text": "Which of the following leguminous crops ranks first in its annual production in Ethiopia?",
+        "options": ["Horse bean", "Chickpea", "Haricot bean", "Lentil"],
+        "correctOptionIndex": 3,
+        "explanation": "Lentil ranks first in its annual production in Ethiopia."
+      },
+      {
+        "id": "q62",
+        "text": "Which livestock group has the highest population in Ethiopia?",
+        "options": ["Cattle", "camels", "Goats", "Sheep"],
+        "correctOptionIndex": 0,
+        "explanation": "Cattle have the highest population in Ethiopia."
+      },
+      {
+        "id": "q63",
+        "text": "In ecosystem between which of the following airs is interspecific competition expected to be strongest",
+        "options": ["Producers versus herbivores", "herbivores versus carnivores", "Producers versus decomposers", "Carnivores versus carnivores"],
+        "correctOptionIndex": 1,
+        "explanation": "Interspecific competition is expected to be strongest between herbivores and carnivores."
+      },
+      {
+        "id": "q64",
+        "text": "In which biome ephemerals most typically found?",
+        "options": ["Savanna", "tropical rain forest", "Taiga", "Desert"],
+        "correctOptionIndex": 3,
+        "explanation": "Ephemerals are most typically found in the desert biome."
+      },
+      {
+        "id": "q65",
+        "text": "Which agricultural practice is least related to biological pest control system?",
+        "options": ["The chemical method", "the crop rotation method", "The mixed cropping method", "the method of cleaning fields and removing crop residue"],
+        "correctOptionIndex": 0,
+        "explanation": "The chemical method is least related to biological pest control systems."
+      },
+      {
+        "id": "q66",
+        "text": "Which of the following groups of animals has external fertilization?",
+        "options": ["Marsupials", "birds", "Reptiles", "frogs"],
+        "correctOptionIndex": 3,
+        "explanation": "Frogs have external fertilization."
+      },
+      {
+        "id": "q67",
+        "text": "What is the appropriate term that collectively refers to the fungi and bacteria that change the dead organic matter to the small elemental units?",
+        "options": ["Producers", "carnivores", "Autotrophs", "Decomposers"],
+        "correctOptionIndex": 3,
+        "explanation": "Decomposers refer to the fungi and bacteria that change dead organic matter to small elemental units."
+      },
+      {
+        "id": "q68",
+        "text": "Which primary germ layer of chordate animals produces the organs like liver, pancreas and lungs?",
+        "options": ["Ectoderm", "Blatoderm", "Mesoderm", "Endoderm"],
+        "correctOptionIndex": 3,
+        "explanation": "The endoderm produces organs like the liver, pancreas, and lungs."
+      },
+      {
+        "id": "q69",
+        "text": "Which one of the following term is used to refer to the maximum number of individuals that a given environment can support over a long period of time without degradation of the environmental resources?",
+        "options": ["Limiting factor", "carrying capacity", "Climax community", "density"],
+        "correctOptionIndex": 1,
+        "explanation": "Carrying capacity refers to the maximum number of individuals that a given environment can support over a long period of time without degradation of the environmental resources."
+      },
+      {
+        "id": "q70",
+        "text": "Which biome of the world is characterized by less than 250mm of annual rain fall and plants called ephemerals?",
+        "options": ["Desert", "Deciduous forests", "Coniferous forests", "tropical rain forest"],
+        "correctOptionIndex": 0,
+        "explanation": "The desert biome is characterized by less than 250mm of annual rainfall and plants called ephemerals."
+      },
+      {
+        "id": "q71",
+        "text": "Which of the following approaches of pest control is considered biological contro?",
+        "options": ["Crop rotation", "Fumigation to kill pests", "using natural enemy of the pest", "combining all methods of pest control available"],
+        "correctOptionIndex": 2,
+        "explanation": "Using natural enemies of the pest is considered biological control."
+      },
+      {
+        "id": "q72",
+        "text": "Which of the following global biomes would you classify the upper part of the Bale mountains environment?",
+        "options": ["Desert biome", "deciduous forest biome", "Alpine biome", "Savanna biome"],
+        "correctOptionIndex": 2,
+        "explanation": "The upper part of the Bale mountains environment is classified as an Alpine biome."
+      },
+      {
+        "id": "q73",
+        "text": "Which one of the following is true about population whose size is maintained at the carrying capacity of the environment?",
+        "options": ["It grows at its biotic potential", "Its growth rate eventually decline", "it overshoots the environmental resistance", "It maintains dynamic equilibrium with the environment"],
+        "correctOptionIndex": 3,
+        "explanation": "A population whose size is maintained at the carrying capacity of the environment maintains dynamic equilibrium with the environment."
+      },
+      {
+        "id": "q74",
+        "text": "Which of the following is the starting point of primary succession?",
+        "options": ["Abandoned farm land", "Forest destroyed by fire", "Forest cleared by humans", "Land never been colonized before by life"],
+        "correctOptionIndex": 3,
+        "explanation": "The starting point of primary succession is land that has never been colonized before by life."
+      },
+      {
+        "id": "q75",
+        "text": "Which groups of organisms show double fertilization?",
+        "options": ["Ferns", "Bryophytes", "Lower plants", "Angiosperms"],
+        "correctOptionIndex": 3,
+        "explanation": "Angiosperms show double fertilization."
+      },
+      {
+        "id": "q76",
+        "text": "Which mammalian pest has economic importance in Ethiopia?",
+        "options": ["quelea", "Beetles", "Rodents", "Desert locust"],
+        "correctOptionIndex": 2,
+        "explanation": "Rodents are a mammalian pest with economic importance in Ethiopia."
+      },
+      {
+        "id": "q77",
+        "text": "Which of the following sources of energy is renewable?",
+        "options": ["Mineral coal", "Petroleum", "Bio fuel such as ethanol", "Natural gas such as methane"],
+        "correctOptionIndex": 2,
+        "explanation": "Bio fuel such as ethanol is a renewable source of energy."
+      },
+      {
+        "id": "q78",
+        "text": "Which group of two words means the same in meaning?",
+        "options": ["Autotrophs and producers", "Autotroph and consumer", "Autotroph and carnivore", "Heterotrophs and producers"],
+        "correctOptionIndex": 0,
+        "explanation": "Autotrophs and producers mean the same."
+      },
+      {
+        "id": "q79",
+        "text": "In which biome of the world are epiphytes and lianas commonly found?",
+        "options": ["Savanna", "Desert", "Tundra", "Tropical rain forest"],
+        "correctOptionIndex": 3,
+        "explanation": "Epiphytes and lianas are commonly found in the tropical rain forest biome."
+      },
+      {
+        "id": "q80",
+        "text": "In alternation of generation, which phase of life cycle of the plant is diploid generation?",
+        "options": ["The gametophytes", "Thee gametes", "The sporophyte", "the protionema"],
+        "correctOptionIndex": 2,
+        "explanation": "The sporophyte is the diploid generation in the life cycle of the plant."
+      },
+      {
+        "id": "q81",
+        "text": "The alkaloid that is consumed when you drink tea is",
+        "options": ["Nicotine", "Cocane", "Hashish", "Caffeine"],
+        "correctOptionIndex": 3,
+        "explanation": "Caffeine is the alkaloid consumed when you drink tea."
+      },
+      {
+        "id": "q82",
+        "text": "The name given to the pioneer plants that begin primary succession on very dry substratum like bare rock, sand dune, or cooled volcanic lava is",
+        "options": ["Hydrophytes", "Mesophytes", "Halophytes", "xerophytes"],
+        "correctOptionIndex": 3,
+        "explanation": "Xerophytes are the pioneer plants that begin primary succession on very dry substratum."
+      },
+      {
+        "id": "q83",
+        "text": "In which biome of the world are ephemerals and succulents more common?",
+        "options": ["Savanna", "Desert", "Deciduous forest", "Temperate forest"],
+        "correctOptionIndex": 1,
+        "explanation": "Ephemerals and succulents are more common in the desert biome."
+      },
+      {
+        "id": "q84",
+        "text": "In order for population to grow at its biotic potential, which one of the following should be available?",
+        "options": ["Strong environmental resistance", "Maximum density dependent effect", "Maximum density independent effect", "Unlimited supply of resource"],
+        "correctOptionIndex": 3,
+        "explanation": "An unlimited supply of resources is necessary for a population to grow at its biotic potential."
+      },
+      {
+        "id": "q85",
+        "text": "Identify the ability of the camel that allows it to survive in desert environments where there is lower waste supply?",
+        "options": ["Fluctuation of the body temperature to save water by reducing evaporation", "Evaporate more water through the skin to keep itself cools", "Sleep during the day and feed at night", "Move in flocks to avoid evaporation of water from the body"],
+        "correctOptionIndex": 0,
+        "explanation": "Fluctuation of the body temperature to save water by reducing evaporation allows the camel to survive in desert environments."
+      },
+      {
+        "id": "q86",
+        "text": "One of the following is true about mutualistic interaction between two species",
+        "options": ["Both species benefits", "Both species are harmed", "One species benefits and the second harmed", "One species benefits and the second remain unaffected"],
+        "correctOptionIndex": 0,
+        "explanation": "In a mutualistic interaction, both species benefit."
+      },
+      {
+        "id": "q87",
+        "text": "In which aspect of biodiversity are such measures like richness, abundance and taxonomic diversity in population commonly applied?",
+        "options": ["Ecosystem diversity", "cultural diversity", "Genetic diversity", "Species diversity"],
+        "correctOptionIndex": 3,
+        "explanation": "Measures like richness, abundance, and taxonomic diversity are commonly applied in species diversity."
+      },
+      {
+        "id": "q88",
+        "text": "Which of the following terms is synonymous with producers?",
+        "options": ["Omnivore", "Herbivore", "carnivore", "Autotroph"],
+        "correctOptionIndex": 3,
+        "explanation": "Autotroph is synonymous with producers."
+      },
+      {
+        "id": "q89",
+        "text": "Which aspect of life is grouped into autotrophic in some organisms and heterotrophic in others?",
+        "options": ["The transport system", "The aspect of nutrition", "Anaerobic respiration", "the coordination system"],
+        "correctOptionIndex": 1,
+        "explanation": "The aspect of nutrition is grouped into autotrophic in some organisms and heterotrophic in others."
+      },
+      {
+        "id": "q90",
+        "text": "Which of the following processes release oxygen to the atmosphere?",
+        "options": ["Respiration", "Photosynthesis", "Transpiration", "Burning of fossil fuels"],
+        "correctOptionIndex": 1,
+        "explanation": "Photosynthesis releases oxygen to the atmosphere."
+      },
+      {
+        "id": "q91",
+        "text": "The concentration of which of the following gases is on the increase in the atmosphere in recent years than before?",
+        "options": ["Carbon dioxide", "Oxygen", "Nitrogen", "Ozone"],
+        "correctOptionIndex": 0,
+        "explanation": "The concentration of carbon dioxide is on the increase in the atmosphere in recent years."
+      },
+      {
+        "id": "q92",
+        "text": "With which type of agricultural crops is nitrogen fixing bacteria more associated?",
+        "options": ["Legumes", "Cereals", "Vegetables", "Fruits"],
+        "correctOptionIndex": 0,
+        "explanation": "Nitrogen-fixing bacteria are more associated with legumes."
+      },
+      {
+        "id": "q93",
+        "text": "Which of the following plant group is good pioneer colonizer in primary successions that start with bare rock?",
+        "options": ["Mosses", "Lichens", "Liverworts", "weeds"],
+        "correctOptionIndex": 1,
+        "explanation": "Lichens are good pioneer colonizers in primary successions that start with bare rock."
+      },
+      {
+        "id": "q94",
+        "text": "Which of the following methods of avoiding predation by animals is mimicry?",
+        "options": ["Resembling another organism", "Producing warning colonization", "Fighting away the enemy", "Running away from the enemy"],
+        "correctOptionIndex": 0,
+        "explanation": "Mimicry involves resembling another organism to avoid predation."
+      },
+      {
+        "id": "q95",
+        "text": "Which stage of life cycle of lepidopterous insect is the pest?",
+        "options": ["Egg", "Larvae", "Pupa", "Adult"],
+        "correctOptionIndex": 1,
+        "explanation": "The larvae stage of lepidopterous insects is the pest."
+      },
+      {
+        "id": "q96",
+        "text": "In an ecosystem, the presence of which of the following groups is essential in order for the other to be present?",
+        "options": ["Autotrophs", "herbivores", "Decomposers", "omnivores"],
+        "correctOptionIndex": 0,
+        "explanation": "Autotrophs are essential for the presence of other groups in an ecosystem."
+      },
+      {
+        "id": "q97",
+        "text": "What is biome?",
+        "options": ["A group of interacting individuals of the same spices", "The total life zones of the earth’s surface", "A group of population that interacts with the physical environments", "A region of the earth characterized by distinctive life forms"],
+        "correctOptionIndex": 3,
+        "explanation": "A biome is a region of the earth characterized by distinctive life forms."
+      },
+      {
+        "id": "q98",
+        "text": "What is implied by biological magnification?",
+        "options": ["Increase in the sizes of organisms with increasing trophic level", "Increase in number of organisms at higher trophic level", "more concentration of chemicals in organisms of higher trophic level", "Capture of small organisms by large organisms"],
+        "correctOptionIndex": 2,
+        "explanation": "Biological magnification implies more concentration of chemicals in organisms of higher trophic levels."
+      },
+      {
+        "id": "q99",
+        "text": "What does feeding relationship in an ecosystem consists of?",
+        "options": ["Many stages of community succession", "Always a network of interconnected food chain", "One organism feeds on another but itself eaten by another one", "recycling of solar energy between the source and the trophic levels"],
+        "correctOptionIndex": 1,
+        "explanation": "Feeding relationships in an ecosystem consist of a network of interconnected food chains."
+      },
+      {
+        "id": "q100",
+        "text": "Coffee and tea are normally grouped into which type of substance?",
+        "options": ["Pulses", "Perfumes", "Stimulants", "Grains"],
+        "correctOptionIndex": 2,
+        "explanation": "Coffee and tea are normally grouped into stimulants."
+      },
+      {
+        "id": "q101",
+        "text": "Which of the following stages happen after all the others during the development of the human embryo?",
+        "options": ["Cleavage", "formation of blastula", "Formation of grastula", "Organogenesis"],
+        "correctOptionIndex": 3,
+        "explanation": "Organogenesis happens after all the other stages during the development of the human embryo."
+      },
+      {
+        "id": "q102",
+        "text": "Which one of the following belongs to the category of heterotrophic organisms?",
+        "options": ["Algae", "fungi", "Higher plants", "Mosses"],
+        "correctOptionIndex": 1,
+        "explanation": "Fungi belong to the category of heterotrophic organisms."
+      },
+      {
+        "id": "q103",
+        "text": "In an ecosystem that consists of grass, birds, grasshopper, and frog, which of the following food chain is possible?",
+        "options": ["grass → frog → grasshopper→ r birds", "Grass→   grasshopper → frog → birds", "Grass→ birds→ grasshopper→ frog", "birds→ frog→ grasshopper → grass"],
+        "correctOptionIndex": 1,
+        "explanation": "The possible food chain is Grass → grasshopper → frog → birds."
+      },
+      {
+        "id": "q104",
+        "text": "If a forest is protected in order to conserve wild coffee in the forest, what sort of conservation we call this?",
+        "options": ["In situ conservation", "Ex situ conservation", "On farm conservation", "Cryopreservation"],
+        "correctOptionIndex": 0,
+        "explanation": "Protecting a forest to conserve wild coffee is an example of in situ conservation."
+      },
+      {
+        "id": "q105",
+        "text": "In which agricultural system of Ethiopia does the production of grain crops dominate over other crop categories?",
+        "options": ["Shifting cultivation", "Seed farming complex", "Enset planting complex", "Pastoral complex"],
+        "correctOptionIndex": 1,
+        "explanation": "The production of grain crops dominates in the Seed farming complex."
+      },
+      {
+        "id": "q106",
+        "text": "Which of the following makes food webs of an ecosystem different from food chain?",
+        "options": ["the presence of many trophic levels", "clear sign of cycling of materials", "Presence of many interconnected food chains", "the presence of many organisms through which energy passes"],
+        "correctOptionIndex": 2,
+        "explanation": "Food webs consist of many interconnected food chains."
+      },
+      {
+        "id": "q107",
+        "text": "How do plants contribute to the carbon cycle?",
+        "options": ["When they respire, they release CO2 in to the atmosphere", "When they photosynthesize, they consume CO2 from the atmosphere", "they do not contribute to carbon cycled", "only A and B are answer"],
+        "correctOptionIndex": 3,
+        "explanation": "Plants contribute to the carbon cycle by releasing CO2 when they respire and consuming CO2 when they photosynthesize."
+      },
+      {
+        "id": "q108",
+        "text": "The CO2 produced during the respiratory cycle and other processes is largely absorbed by which of the following?",
+        "options": ["The ozone layer", "Animals", "Plants", "The sky"],
+        "correctOptionIndex": 2,
+        "explanation": "The CO2 produced during the respiratory cycle and other processes is largely absorbed by plants."
+      },
+      {
+        "id": "q109",
+        "text": "Which one of the following has unidirectional flow in an ecosystem?",
+        "options": ["Nitrogen", "Carbon dioxide", "Phosphorus", "energy"],
+        "correctOptionIndex": 3,
+        "explanation": "Energy has a unidirectional flow in an ecosystem."
+      },
+      {
+        "id": "q110",
+        "text": "Which term better capture the concept of variety of organisms present in a whole continent as well as all the genus found in them?",
+        "options": ["Niche", "Biodiversity", "Ecosystem", "Biome"],
+        "correctOptionIndex": 1,
+        "explanation": "Biodiversity better captures the concept of the variety of organisms present in a whole continent as well as all the genera found in them."
+      },
+      {
+        "id": "q111",
+        "text": "All other factors remaining the same, which of the following decreases the size of population?",
+        "options": ["Birth rate that is greater than death rate", "Emigration rate that is less than immigration rate", "Immigration rate that is greater than death rate", "emigration rate that is greater than death rate"],
+        "correctOptionIndex": 3,
+        "explanation": "An emigration rate that is greater than the death rate decreases the size of the population."
+      },
+      {
+        "id": "q112",
+        "text": "In a given ecosystem, members of which one of the following feeding groups release nutrients that are locked up in organic molecule?",
+        "options": ["Herbivores", "Producers", "carnivores", "decomposers"],
+        "correctOptionIndex": 3,
+        "explanation": "Decomposers release nutrients that are locked up in organic molecules."
+      },
+      {
+        "id": "q113",
+        "text": "What is biomass?",
+        "options": ["The number of species in a given biome", "The total weight of living matter in a given area", "The density of a species in a given area", "the total energy found in plants and animals in an ecosystem"],
+        "correctOptionIndex": 1,
+        "explanation": "Biomass is the total weight of living matter in a given area."
+      },
+      {
+        "id": "q114",
+        "text": "Which one of the following term is most appropriate to collectively refer to all the plants, animals and microorganisms found in munesa forest in Ethiopia?",
+        "options": ["Ecology", "Ecosystem", "Population", "community"],
+        "correctOptionIndex": 3,
+        "explanation": "Community is the most appropriate term to collectively refer to all the plants, animals, and microorganisms found in Munessa forest in Ethiopia."
+      },
+      {
+        "id": "q115",
+        "text": "Which of the following is expected to have positive effect on the biodiversity of Ethiopia?",
+        "options": ["Diverse ecology", "extensive deforestation", "overgrazing by livestock", "Logging and fuel wood removal"],
+        "correctOptionIndex": 0,
+        "explanation": "Diverse ecology is expected to have a positive effect on the biodiversity of Ethiopia."
+      },
+      {
+        "id": "q116",
+        "text": "How many animals do obtain nitrogen?",
+        "options": ["By absorbing nitrates and ammonia from the soil", "from the proteins in the organism they consume", "By absorbing nitrogen gas from the atmosphere", "through mutualistic relationship with nitrogen fixing bacteria"],
+        "correctOptionIndex": 1,
+        "explanation": "Animals obtain nitrogen from the proteins in the organisms they consume."
+      },
+      {
+        "id": "q117",
+        "text": "What is the collective name for plants that are well adapted to live in very dry environment?",
+        "options": ["Epiphytes", "Xerophytes", "Mesophytes", "Hydrophytes"],
+        "correctOptionIndex": 1,
+        "explanation": "Xerophytes are plants that are well adapted to live in very dry environments."
+      },
+      {
+        "id": "q118",
+        "text": "Which of the following is more likely to ensure the conservation of all the rest?",
+        "options": ["Soil conservation", "Wild life conservation", "Plant conservation", "Watershed conservation"],
+        "correctOptionIndex": 3,
+        "explanation": "Watershed conservation is more likely to ensure the conservation of all the rest."
+      },
+      {
+        "id": "q119",
+        "text": "The mature fruit of flowering plant burst open when touched, forcefully ejecting the seeds contained in the pods. Why is this advantageous to the plant?",
+        "options": ["It attracts insects that aid in pollination", "It aids in n dispersal of the species", "It prevents seed germination", "It can cause genetic change to occur"],
+        "correctOptionIndex": 1,
+        "explanation": "This aids in the dispersal of the species."
+      },
+      {
+        "id": "q120",
+        "text": "In which of the following biomes are epiphytes typically present as characteristic element?",
+        "options": ["Tundra", "Boreal forest", "Cold desert", "Tropical rain forest"],
+        "correctOptionIndex": 3,
+        "explanation": "Epiphytes are typically present as a characteristic element in the tropical rain forest biome."
+      },
+      {
+        "id": "q121",
+        "text": "What is the best term that refers to the maximum number of individuals that a given environment can support over a long period of time without degradation?",
+        "options": ["Density", "climax community", "Carrying capacity", "Limiting factors"],
+        "correctOptionIndex": 2,
+        "explanation": "Carrying capacity refers to the maximum number of individuals that a given environment can support over a long period of time without degradation."
+      },
+      {
+        "id": "q122",
+        "text": "How is it possible for different species to coexist in an ecosystem?",
+        "options": ["Each species has specific biome of its own", "Each species occupies a different niche within the ecosystem", "There is no competition for resource among species in an ecosystem", "All resources are equally shared among species in an ecosystem"],
+        "correctOptionIndex": 1,
+        "explanation": "Different species can coexist in an ecosystem by occupying different niches."
+      },
+      {
+        "id": "q123",
+        "text": "Which of the following land biomes occupy a large part of Brazil, parts of equatorial west Africa and south east Asia?",
+        "options": ["Acacia forest", "Deciduous temperate forest", "Coniferous forest", "tropical rain forest"],
+        "correctOptionIndex": 3,
+        "explanation": "The tropical rain forest biome occupies a large part of Brazil, parts of equatorial west Africa, and south east Asia."
+      },
+      {
+        "id": "q124",
+        "text": "In Ethiopia, which of the following groups of vertebrates is the most diverse in terms of species number?",
+        "options": ["Mammals", "Birds", "reptiles", "Amphibians"],
+        "correctOptionIndex": 1,
+        "explanation": "Birds are the most diverse group of vertebrates in Ethiopia in terms of species number."
+      },
+      {
+        "id": "q125",
+        "text": "Which of the following is a threat to the survival of small population?",
+        "options": ["Habitat destruction", "Breeding in captivity", "Disease resistance", "Absence of competition"],
+        "correctOptionIndex": 0,
+        "explanation": "Habitat destruction is a threat to the survival of small populations."
+      },
+      {
+        "id": "q126",
+        "text": "In what ways are mode of nutrition of animals and saprophytes similar?",
+        "options": ["No enzymes are produced", "Digestions external to their cells", "they build up protein from light", "They autotrophic organisms"],
+        "correctOptionIndex": 1,
+        "explanation": "The mode of nutrition of animals and saprophytes involves digestion external to their cells."
+      },
+      {
+        "id": "q127",
+        "text": "Which one is a biotic factor that can influence the plant?",
+        "options": ["The PH of soil", "A pollinating animal", "CO2 concentration", "The amount of radiant energy"],
+        "correctOptionIndex": 1,
+        "explanation": "A pollinating animal is a biotic factor that can influence the plant."
+      },
+      {
+        "id": "q128",
+        "text": "Which of the following is not recycled between organism, and their environment in an ecosystem?",
+        "options": ["Energy", "Carbon", "Nitrogen", "Phosphorus"],
+        "correctOptionIndex": 0,
+        "explanation": "Energy is not recycled between organisms and their environment in an ecosystem."
+      },
+      {
+        "id": "q129",
+        "text": "What is the term that refers to all parts of earth where living things are found?",
+        "options": ["Population", "Ecosystem", "Biosphere", "Environment"],
+        "correctOptionIndex": 2,
+        "explanation": "The biosphere refers to all parts of the earth where living things are found."
+      },
+      {
+        "id": "q130",
+        "text": "In which kingdom of life are the unicellular eukaryote grouped?",
+        "options": ["Monera", "Protista", "Plantae", "Animalia"],
+        "correctOptionIndex": 1,
+        "explanation": "Unicellular eukaryotes are grouped in the kingdom Protista."
+      },
+      {
+        "id": "q131",
+        "text": "Select the function that living things are not capable of performing?",
+        "options": ["Maintain their internal body environment", "Pass genetic information to their offspring", "Responds to other organisms found in their surrounding", "Determine the amount of radiation reaching the environment"],
+        "correctOptionIndex": 3,
+        "explanation": "Living things are not capable of determining the amount of radiation reaching the environment."
+      },
+      {
+        "id": "q132",
+        "text": "Which one of the following is the main source of the greenhouse gas that are concentrating in the atmosphere of the earth?",
+        "options": ["Burning of fossil fuels", "Plants growing in greenhouses", "Photosynthesis by aquatic plants", "Respiration by animals and plants"],
+        "correctOptionIndex": 0,
+        "explanation": "Burning of fossil fuels is the main source of the greenhouse gases that are concentrating in the atmosphere of the earth."
+      },
+      {
+        "id": "q133",
+        "text": "Which one of the following is not one of the roles that microorganisms play in an ecosystem?",
+        "options": ["Nutrient recycling", "carbon fixation", "Nitrogen fixation", "energy recycling"],
+        "correctOptionIndex": 3,
+        "explanation": "Energy recycling is not one of the roles that microorganisms play in an ecosystem."
+      },
+      {
+        "id": "q134",
+        "text": "Which one of the following demographic factors affects the number of human population globally?",
+        "options": ["Natality", "Migration", "emigration", "immigration"],
+        "correctOptionIndex": 0,
+        "explanation": "Natality affects the number of human population globally."
+      },
+      {
+        "id": "q135",
+        "text": "When do populations of living organisms show exponential growth?",
+        "options": ["when the resource is plentiful", "whenever they enter the new environment", "when they face strong competitions", "when the carrying capacity of the environment is reached"],
+        "correctOptionIndex": 0,
+        "explanation": "Populations of living organisms show exponential growth when the resource is plentiful."
+      },
+      {
+        "id": "q136",
+        "text": "Which of the following terrestrial biome experience hot days and cold days?",
+        "options": ["tundra", "tropical rain forest", "Desert", "Grass land"],
+        "correctOptionIndex": 2,
+        "explanation": "The desert biome experiences hot days and cold nights."
+      },
+      {
+        "id": "q137",
+        "text": "Which group of organisms found in Ethiopia is represented by the highest number of endemic taxa?",
+        "options": ["Mammals", "Amphibians", "Birds", "Plants"],
+        "correctOptionIndex": 3,
+        "explanation": "Plants are represented by the highest number of endemic taxa in Ethiopia."
+      },
+      {
+        "id": "q138",
+        "text": "Which alternatives contain only crops known to have been domesticated with in Ethiopia?",
+        "options": ["Guizotia abssinica, Zea mays, pisum sativum", "Vicia faba, Carica papaya, Musa paradisiacal", "Oriza sativa, triticum aestivum, solanum tuberosum", "Coffe Arabica, Eragrostis tef,  Ensete ventricosulum"],
+        "correctOptionIndex": 3,
+        "explanation": "Coffea Arabica, Eragrostis tef, and Ensete ventricosum are crops known to have been domesticated within Ethiopia."
+      },
+      {
+        "id": "q139",
+        "text": "Which of the following statement is true about nitrogen cycle?",
+        "options": ["Plants fix nitrates from atmospheric nitrogen", "The nitrogen used by animals largely comes from plants", "Nitrogen is consumed by bacteria and removed from the soil", "Nitrogen fixing bacteria reduce the total amount of available nitrogen"],
+        "correctOptionIndex": 1,
+        "explanation": "The nitrogen used by animals largely comes from plants."
+      },
+      {
+        "id": "q140",
+        "text": "What would be the main reason behind the currently observed slow or stable rate of population growth in the industrial countries?",
+        "options": ["God family planning", "Increasing death rate", "poor health condition", "high rate of child death"],
+        "correctOptionIndex": 0,
+        "explanation": "Good family planning is the main reason behind the currently observed slow or stable rate of population growth in industrial countries."
+      },
+      {
+        "id": "q141",
+        "text": "What is the average projected rate of loss of biodiversity every 50 years?",
+        "options": ["5%", "10%", "20%", "50%"],
+        "correctOptionIndex": 1,
+        "explanation": "The average projected rate of loss of biodiversity every 50 years is 10%."
+      },
+      {
+        "id": "q142",
+        "text": "What is the biome of the world where succulent plants are commonly found?",
+        "options": ["Deciduous forest", "Thorn forest", "Hot desert", "temperate grass land"],
+        "correctOptionIndex": 2,
+        "explanation": "Succulent plants are commonly found in the hot desert biome."
+      },
+      {
+        "id": "q143",
+        "text": "The following statements are correct regarding ecological succession except",
+        "options": ["Species diversity increase as succession proceeds", "The food chain relationship becomes more complex", "Ecological succession is random process", "The role of decomposers become more and more important"],
+        "correctOptionIndex": 2,
+        "explanation": "Ecological succession is not a random process."
+      },
+      {
+        "id": "q144",
+        "text": "Which of the following steps in life cycle of HIV is blocked if antiretroviral drug that inhibits the reverse transcription enzyme is given to an AIDS patient?",
+        "options": ["Formation of DNA from RNA", "The entry of HIV in to CD4 cells", "The assembly of parts into HIV particle", "The integration of HIV DNA into host chromosome"],
+        "correctOptionIndex": 0,
+        "explanation": "The formation of DNA from RNA is blocked if an antiretroviral drug that inhibits the reverse transcription enzyme is given to an AIDS patient."
+      },
+      {
+        "id": "q145",
+        "text": "Which stage in primary ecological succession contains more biodiversity?",
+        "options": ["The third serial stage", "The second serial stage", "The climax community", "The pioneer community"],
+        "correctOptionIndex": 2,
+        "explanation": "The climax community contains more biodiversity in primary ecological succession."
+      },
+      {
+        "id": "q146",
+        "text": "In tropical rainforest largely found in South America and Africa can be best characterized by combination of which environmental factors?",
+        "options": ["Low rainfall and low temperature", "high rain fall and high temperature", "Low rain fall and high temperature", "High rain fall and low temperature"],
+        "correctOptionIndex": 1,
+        "explanation": "Tropical rainforests are characterized by high rainfall and high temperature."
+      },
+      {
+        "id": "q147",
+        "text": "Which of the following terms mean stage in an ecological succession?",
+        "options": ["Pioneer", "climaxes", "Seres", "Niches"],
+        "correctOptionIndex": 2,
+        "explanation": "Seres mean stage in an ecological succession."
+      },
+      {
+        "id": "q148",
+        "text": "Which component of the soil fertility is improved when farmers grow legumes in crop rotation?",
+        "options": ["Nitrogen", "sulfur", "Carbon", "Magnesium"],
+        "correctOptionIndex": 0,
+        "explanation": "Nitrogen is improved when farmers grow legumes in crop rotation."
+      },
+      {
+        "id": "q149",
+        "text": "One of the following biomes of Africa is supporting large wild mammals such as elephants, giraffe and lion?",
+        "options": ["The Congo rain forest", "The rain forest of western Ethiopia", "The savanna grassland", "The Sahara desert"],
+        "correctOptionIndex": 2,
+        "explanation": "The savanna grassland supports large wild mammals such as elephants, giraffes, and lions."
+      },
+      {
+        "id": "q150",
+        "text": "What is the important role played by microorganisms such as bacteria and fungi in an ecosystem?",
+        "options": ["Antibiotic production", "Recycling of nutrients", "forming organic substance", "Supplying energy to the ecosystem"],
+        "correctOptionIndex": 1,
+        "explanation": "Microorganisms such as bacteria and fungi play an important role in recycling nutrients in an ecosystem."
+      },
+      {
+        "id": "q151",
+        "text": "In which one of the following aspects is he tropical rain forest biome poor/",
+        "options": ["Species diversity", "amount of sun light", "Amount of precipitation", "Soil fertility"],
+        "correctOptionIndex": 3,
+        "explanation": "The tropical rain forest biome is poor in soil fertility."
+      },
+      {
+        "id": "q152",
+        "text": "Which of their following is not usually true as an ecological succession of progresses advanced seral stages?",
+        "options": ["ore ecological niches are formed", "Species become more divers", "the depth of the soil increase", "less population are supported"],
+        "correctOptionIndex": 3,
+        "explanation": "Less population is not usually supported as an ecological succession progresses to advanced seral stages."
+      },
+      {
+        "id": "q153",
+        "text": "In which of the four phase of population growth is the number of the population the highest?",
+        "options": ["Lag phase", "log phase", "Constant phase", "Decline phase"],
+        "correctOptionIndex": 2,
+        "explanation": "The number of the population is the highest in the constant phase."
+      },
+      {
+        "id": "q154",
+        "text": "What is the type of community called when it has reached the final and most complex stages of a succession?",
+        "options": ["Pioneer community", "Seral community", "Climax community", "Secondary community"],
+        "correctOptionIndex": 2,
+        "explanation": "A community that has reached the final and most complex stages of a succession is called a climax community."
+      },
+      {
+        "id": "q155",
+        "text": "Which of the following is an ecosystem/",
+        "options": ["Tropical rain forest", "the African continent", "All the organisms in the given area", "the non-living component of the environment"],
+        "correctOptionIndex": 0,
+        "explanation": "A tropical rain forest is an ecosystem."
+      },
+      {
+        "id": "q156",
+        "text": "What is the main reason for high species richness of plants and animals observed in Ethiopia?",
+        "options": ["Lack of predators", "Lack of disturbance", "Presence of several biome within the country", "Efficient management of ecological resource"],
+        "correctOptionIndex": 2,
+        "explanation": "The presence of several biomes within the country is the main reason for high species richness of plants and animals observed in Ethiopia."
+      },
+      {
+        "id": "q157",
+        "text": "Under which of the following groups can fungi be more conveniently placed?",
+        "options": ["Autotrophs", "Heterotrophs", "Prokaryotes", "Plants"],
+        "correctOptionIndex": 1,
+        "explanation": "Fungi can be more conveniently placed under heterotrophs."
+      },
+      {
+        "id": "q158",
+        "text": "In which of the following are flowers and fruits found?",
+        "options": ["Ferns and relatives", "gymnosperms and ferns", "Mosses and conifers", "Monocots and dicots"],
+        "correctOptionIndex": 3,
+        "explanation": "Flowers and fruits are found in monocots and dicots."
+      },
+      {
+        "id": "q159",
+        "text": "Which one of the following concept contains all the others?",
+        "options": ["Species", "Gen=us", "population", "Community"],
+        "correctOptionIndex": 3,
+        "explanation": "Community contains all the other concepts."
+      },
+      {
+        "id": "q160",
+        "text": "Which of the following statement is true about matter and energy in the ecosystem?",
+        "options": ["both matter and energy are recycled", "Matter is not recycled, energy is recycled", "Matter is recycled, energy is not nor recycled", "Energy is recycled more than matter does"],
+        "correctOptionIndex": 2,
+        "explanation": "Matter is recycled, energy is not nor recycled."
+      },
+      {
+        "id": "q161",
+        "text": "Which of the following parts of plant root is harboring nitrogen fixing bacteria?",
+        "options": ["Root nodule", "root hair", "Root tip", "root cap"],
+        "correctOptionIndex": 0,
+        "explanation": "The root nodule harbors nitrogen-fixing bacteria."
+      },
+      {
+        "id": "q162",
+        "text": "Which forms of nitrogen is readily utilized by green plants?",
+        "options": ["Atmospheric nitrogen", "Nitrite", "Ammonium ion", "Nitrate"],
+        "correctOptionIndex": 3,
+        "explanation": "Nitrate is readily utilized by green plants."
+      },
+      {
+        "id": "q163",
+        "text": "Which one of the following ways the tundra biomes differ from desert biome?",
+        "options": ["It is a tree less biome", "It has little biodiversity", "It receives little precipitation", "It has permanently frozen sub soil"],
+        "correctOptionIndex": 3,
+        "explanation": "The tundra biome has permanently frozen subsoil, unlike the desert biome."
+      },
+      {
+        "id": "q164",
+        "text": "In Ethiopia, which one of the following vertebrate groups has the largest member of genera?",
+        "options": ["Mammals", "Birds", "reptiles", "Amphibians"],
+        "correctOptionIndex": 1,
+        "explanation": "Birds have the largest member of genera in Ethiopia."
+      },
+      {
+        "id": "q165",
+        "text": "Which of the following resource is used by an ecosystem from outside in order to sustain itself?",
+        "options": ["Producers", "macronutrients", "Micronutrients", "sunlight"],
+        "correctOptionIndex": 3,
+        "explanation": "Sunlight is used by an ecosystem from outside in order to sustain itself."
+      },
+      {
+        "id": "q166",
+        "text": "Which of the following applies to the tropical rain forest?",
+        "options": ["Low rain fall and high temperature", "low rain fall and low temperature", "high rain fall and high temperature", "High rain fall and low temperature"],
+        "correctOptionIndex": 2,
+        "explanation": "The tropical rain forest has high rainfall and high temperature."
+      },
+      {
+        "id": "q167",
+        "text": "What is perfect flower?",
+        "options": ["a flower with petals and pistil", "A flower with stamens and sepals", "A flower with stamens and pistil", "A flower with sepals and petals"],
+        "correctOptionIndex": 2,
+        "explanation": "A perfect flower has both stamens and pistil."
+      },
+      {
+        "id": "q168",
+        "text": "Which term describes the process by which water is lost by evaporation through the stomata of the leaves?",
+        "options": ["Transport", "transpiration", "Anchorage", "Adhesion"],
+        "correctOptionIndex": 1,
+        "explanation": "Transpiration describes the process by which water is lost by evaporation through the stomata of the leaves."
+      },
+      {
+        "id": "q169",
+        "text": "In which kingdom of life is it most likely to find many examples of organisms that can undergo metamorphosis?",
+        "options": ["Monera", "fungi", "Plantae", "Animalia"],
+        "correctOptionIndex": 3,
+        "explanation": "It is most likely to find many examples of organisms that can undergo metamorphosis in the kingdom Animalia."
+      },
+      {
+        "id": "q170",
+        "text": "Suppose sites A, B, C, and D have simpson’s index of diversity (d) value of 20, 8, 16 and 3 respectively, which site is dominated by one or just a few species/",
+        "options": ["site A", "Site B", "site C", "site D"],
+        "correctOptionIndex": 3,
+        "explanation": "Site D is dominated by one or just a few species."
+      },
+      {
+        "id": "q171",
+        "text": "Which of the following can create strong interspecific competition if shared by two or more species?",
+        "options": ["habitat", "ecosystem", "Niche", "Predators"],
+        "correctOptionIndex": 2,
+        "explanation": "A niche can create strong interspecific competition if shared by two or more species."
+      },
+      {
+        "id": "q172",
+        "text": "Among the following, which one has little or no contribution to the loss of biodiversity?",
+        "options": ["Over grazing by domestic animals", "Clearing forest to grow crops", "Growing crops of improved varieties", "Growing cops of landraces"],
+        "correctOptionIndex": 3,
+        "explanation": "Growing crops of landraces has little or no contribution to the loss of biodiversity."
+      },
+      {
+        "id": "q173",
+        "text": "Which of the following is the largest ecological unit?",
+        "options": ["A Community", "A biome", "A population", "An ecosystem"],
+        "correctOptionIndex": 1,
+        "explanation": "A biome is the largest ecological unit."
+      },
+      {
+        "id": "q174",
+        "text": "What is the ecological successions in which plant communities establish after an area has been completely demolished by fire?",
+        "options": ["Tree succession", "Secondary succession", "Primary succession", "Bare rock succession"],
+        "correctOptionIndex": 1,
+        "explanation": "Secondary succession is the ecological succession in which plant communities establish after an area has been completely demolished by fire."
+      },
+      {
+        "id": "q175",
+        "text": "From which organism is the first antibiotic used in medicine produced?",
+        "options": ["Gram negative bacteria", "Members of the fungi", "Genetically modified protozoa", "Higher plants"],
+        "correctOptionIndex": 1,
+        "explanation": "The first antibiotic used in medicine was produced from members of the fungi."
+      },
+      {
+        "id": "q176",
+        "text": "Which of the following organisms in the ecosystems release nutrients locked up in dead bodies of organisms?",
+        "options": ["Parasites", "decomposers", "Autotrophs", "Carnivores"],
+        "correctOptionIndex": 1,
+        "explanation": "Decomposers release nutrients locked up in dead bodies of organisms."
+      },
+      {
+        "id": "q177",
+        "text": "Which one of the following crops has its center of origin and diversity in Ethiopia has become a leading international commodity of commerce?",
+        "options": ["Teff", "Enset", "Coffee", "Anchote"],
+        "correctOptionIndex": 2,
+        "explanation": "Coffee has its center of origin and diversity in Ethiopia and has become a leading international commodity of commerce."
+      },
+      {
+        "id": "q178",
+        "text": "Which groups of animals the highest numbers of total and endemic species in Ethiopia?",
+        "options": ["Amphibians", "Birds", "Mammals", "Reptiles"],
+        "correctOptionIndex": 1,
+        "explanation": "Birds have the highest numbers of total and endemic species in Ethiopia."
+      },
+      {
+        "id": "q179",
+        "text": "Which of the following is not the correct characteristic of tropical rain forest?",
+        "options": ["low biodiversity", "High temperature", "Heavy precipitation", "Trees of different height"],
+        "correctOptionIndex": 0,
+        "explanation": "Low biodiversity is not a correct characteristic of tropical rain forests."
+      },
+      {
+        "id": "q180",
+        "text": "What are the long term primary effects of the current tree planting activities that Ethiopia is undertaking?",
+        "options": ["It will protect from harm full solar rays", "It will increase the global temperature", "It will reduce the atmospheric CO2", "It will mend the holes in the ozone layer"],
+        "correctOptionIndex": 2,
+        "explanation": "The long-term primary effect of the current tree planting activities that Ethiopia is undertaking is that it will reduce the atmospheric CO2."
+      },
+      {
+        "id": "q181",
+        "text": "What do you call group of genetically identical plants produced by vegetative reproduction?",
+        "options": ["Family", "Clone", "Hybrid", "genus"],
+        "correctOptionIndex": 1,
+        "explanation": "A group of genetically identical plants produced by vegetative reproduction is called a clone."
+      },
+      {
+        "id": "q182",
+        "text": "From where do plants get most of their nutrients?",
+        "options": ["Chlorophyll", "Soil", "Light", "Atmosphere"],
+        "correctOptionIndex": 1,
+        "explanation": "Plants get most of their nutrients from the soil."
+      },
+      {
+        "id": "q183",
+        "text": "Which one of the following shows the feeding methods of the decomposer?",
+        "options": ["Saprobiotic nutrition", "Autotrophic nutrition", "Parasitic nutrition", "intracellular digestion"],
+        "correctOptionIndex": 0,
+        "explanation": "Saprobiotic nutrition shows the feeding methods of the decomposer."
+      },
+      {
+        "id": "q184",
+        "text": "Which of the following factor is abiotic factor operating within an ecosystem?",
+        "options": ["The amount of helium gas in the air", "The rate of flow of water in the river", "The carnivores that consumes other animals", "The type of climate in the given region"],
+        "correctOptionIndex": 3,
+        "explanation": "The type of climate in the given region is an abiotic factor operating within an ecosystem."
+      },
+      {
+        "id": "q185",
+        "text": "Which of the following is a not true characteristic of the population of most of the developing countries of the world?",
+        "options": ["High fertility rate", "Increase population size", "More number of old people than young people", "Birth rate greater than mortality rate"],
+        "correctOptionIndex": 2,
+        "explanation": "More number of old people than young people is not a true characteristic of the population of most developing countries."
+      },
+      {
+        "id": "q186",
+        "text": "The following are simpsoms index of species diversity calculated for four areas containing the same type of species. Which index value is from the area dominated relatively by a fewer number of species?",
+        "options": ["8.00", "6.00", "3.5", "2.5"],
+        "correctOptionIndex": 3,
+        "explanation": "The index value of 2.5 is from the area dominated relatively by a fewer number of species."
+      },
+      {
+        "id": "q187",
+        "text": "What is the reason that plants do not use nitrogen directly from the atmosphere?",
+        "options": ["nitrogen concentration is low in the atmosphere", "The molecular size of the nitrogen is too large to pass through the stomata", "Nitrogen can enter plants through the root hairs", "Plants lack the necessary process to use elementary nitrogen"],
+        "correctOptionIndex": 3,
+        "explanation": "Plants lack the necessary process to use elementary nitrogen directly from the atmosphere."
+      },
+      {
+        "id": "q188",
+        "text": "Which of the following biome of the earth has the greatest biodiversity of species?",
+        "options": ["Deciduous forest", "Tropical rain forest", "desert", "tundra"],
+        "correctOptionIndex": 1,
+        "explanation": "The tropical rain forest biome has the greatest biodiversity of species."
+      },
+      {
+        "id": "q189",
+        "text": "Of the following, which one is the main source from which plants get the nutrients necessary for their growth and development?",
+        "options": ["Light", "Chlorophyll", "Atmosphere", "Soil"],
+        "correctOptionIndex": 3,
+        "explanation": "Soil is the main source from which plants get the nutrients necessary for their growth and development."
+      },
+      {
+        "id": "q190",
+        "text": "If two species are known to belong to the same order, they must also belong to which taxonomic category?",
+        "options": ["Class", "family", "Species", "genus"],
+        "correctOptionIndex": 0,
+        "explanation": "If two species are known to belong to the same order, they must also belong to the same class."
+      },
+      {
+        "id": "q191",
+        "text": "Which of the following organisms usually forms the pioneer community in a primary biological succession?",
+        "options": ["Annual herbs", "Lichens", "Trees", "Ferns"],
+        "correctOptionIndex": 1,
+        "explanation": "Lichens usually form the pioneer community in a primary biological succession."
+      },
+      {
+        "id": "q192",
+        "text": "In the carbon cycle, which of the following processes removes CO2 from the atmosphere?",
+        "options": ["respiration", "decomposition", "Photosynthesis", "combustion"],
+        "correctOptionIndex": 2,
+        "explanation": "Photosynthesis removes CO2 from the atmosphere."
+      },
+      {
+        "id": "q193",
+        "text": "Which of the following is not universal property of all living things?",
+        "options": ["Heritable characters", "reproduction", "Photosynthesis", "Growth and development"],
+        "correctOptionIndex": 2,
+        "explanation": "Photosynthesis is not a universal property of all living things."
+      },
+      {
+        "id": "q194",
+        "text": "What are the possible consequences of deforestation of the tropical rain forest?",
+        "options": ["An increase in existing ecological niches", "Reduction in species diversity of an area", "Increased removal of CO2 from the atmosphere", "An increase in the amount of nitrogen in the soil"],
+        "correctOptionIndex": 1,
+        "explanation": "Deforestation of the tropical rain forest can lead to a reduction in species diversity of an area."
+      },
+      {
+        "id": "q195",
+        "text": "Which of the following release CO2 into the atmosphere?",
+        "options": ["respiration", "Assimilation", "Feeding", "photosynthesis"],
+        "correctOptionIndex": 0,
+        "explanation": "Respiration releases CO2 into the atmosphere."
+      },
+      {
+        "id": "q196",
+        "text": "If an area is just dominated by one species having very many individuals, what would be its index of diversity?",
+        "options": ["Fluctuating", "High", "Low", "unpredictable"],
+        "correctOptionIndex": 2,
+        "explanation": "If an area is just dominated by one species having very many individuals, its index of diversity would be low."
+      },
+      {
+        "id": "q197",
+        "text": "Among the vertebrates found in Ethiopia, which class has the highest percentage of endemic species?",
+        "options": ["Amphibians", "Reptiles", "Birds", "Mammals"],
+        "correctOptionIndex": 2,
+        "explanation": "Birds have the highest percentage of endemic species among the vertebrates found in Ethiopia."
+      },
+      {
+        "id": "q198",
+        "text": "Which of the following terms refers to movement of individuals out of population?",
+        "options": ["Mortality", "Immigration", "Emigration", "Natality"],
+        "correctOptionIndex": 2,
+        "explanation": "Emigration refers to the movement of individuals out of a population."
+      },
+      {
+        "id": "q199",
+        "text": "In Ethiopia animal diversity, which group is represented by the highest number of orders, families, genera and species?",
+        "options": ["Birds", "Amphibians", "Fish", "Mammals"],
+        "correctOptionIndex": 0,
+        "explanation": "Birds are represented by the highest number of orders, families, genera, and species in Ethiopia."
+      },
+      {
+        "id": "q200",
+        "text": "Witch of the following process involved in water cycle is carried out by green plants?",
+        "options": ["Evaporation", "Precipitation", "condensation", "Transpiration"],
+        "correctOptionIndex": 3,
+        "explanation": "Transpiration is a process involved in the water cycle that is carried out by green plants."
+      },
+      {
+        "id": "q201",
+        "text": "To which biomes are epiphytes typically present as a characteristics element?",
+        "options": ["Tropical Montana forest", "Cold desert wood land", "The tundra environment", "Boreal deciduous forest"],
+        "correctOptionIndex": 0,
+        "explanation": "Epiphytes are typically present as a characteristic element in the tropical montane forest biome."
+      },
+      {
+        "id": "q202",
+        "text": "If a country have large number of young people relative to the number of old people, to which categories of countries dos it belong?",
+        "options": ["Industrial", "Hunter gatherer", "C, postindustrial", "Developing"],
+        "correctOptionIndex": 3,
+        "explanation": "A country with a large number of young people relative to the number of old people belongs to the category of developing countries."
+      },
+      {
+        "id": "q203",
+        "text": "Which of the following is an important way by which green plants mitigate the greenhouse effect?",
+        "options": ["Use of fire wood to replace coal", "Removing CO2 from the atmosphere", "Releasing water to the atmosphere", "Releasing oxygen to the atmosphere"],
+        "correctOptionIndex": 1,
+        "explanation": "Removing CO2 from the atmosphere is an important way by which green plants mitigate the greenhouse effect."
+      },
+      {
+        "id": "q204",
+        "text": "What do we call place where e organisms live in their ecosystem?",
+        "options": ["Abiotic", "Biotic", "Habitat", "Niche"],
+        "correctOptionIndex": 2,
+        "explanation": "The place where organisms live in their ecosystem is called a habitat."
+      },
+      {
+        "id": "q205",
+        "text": "Which of the following is not recycled in an ecosystem?",
+        "options": ["Sulfur", "Energy", "carbon", "Phosphorus"],
+        "correctOptionIndex": 1,
+        "explanation": "Energy is not recycled in an ecosystem."
+      },
+      {
+        "id": "q206",
+        "text": "Which of the following type of ecological succession that starts from a cleaned forest area?",
+        "options": ["Hydrosere", "Primary", "Secondary", "Pioneer"],
+        "correctOptionIndex": 2,
+        "explanation": "Secondary succession starts from a cleaned forest area."
+      },
+      {
+        "id": "q207",
+        "text": "Which of the major role played by bacteria and fungi in the ecosystem?",
+        "options": ["Causing disease", "recycling nutrients", "Fixing carbon dioxide", "Producing antibodies"],
+        "correctOptionIndex": 1,
+        "explanation": "Bacteria and fungi play a major role in recycling nutrients in the ecosystem."
+      },
+      {
+        "id": "q208",
+        "text": "Among the following which one is held most responsible for the present fast depletion of the world biodiversity?",
+        "options": ["Herbivores", "Carnivores", "Grazers", "Humans"],
+        "correctOptionIndex": 3,
+        "explanation": "Humans are held most responsible for the present fast depletion of the world's biodiversity."
+      },
+      {
+        "id": "q209",
+        "text": "Which of the following demographic factors can increase the size of the world population?",
+        "options": ["Natality", "Migration", "emigration", "Immigration"],
+        "correctOptionIndex": 0,
+        "explanation": "Natality can increase the size of the world population."
+      },
+      {
+        "id": "q210",
+        "text": "Which of the following processes is most important to release nutrients from dead organic matter into the soil?",
+        "options": ["Fixation", "Decomposition", "Excretion", "Respiration"],
+        "correctOptionIndex": 1,
+        "explanation": "Decomposition is most important to release nutrients from dead organic matter into the soil."
+      },
+      {
+        "id": "q211",
+        "text": "Which of the following biomes support highest diversity of plants and animals life?",
+        "options": ["Tropical rain forest", "Deciduous forest", "Grass land", "African savannah"],
+        "correctOptionIndex": 0,
+        "explanation": "The tropical rain forest biome supports the highest diversity of plant and animal life."
+      },
+      {
+        "id": "q212",
+        "text": "Biome where trees predominant are called?",
+        "options": ["Polar biomes", "desert biomes", "Forest biomes", "grass land biomes"],
+        "correctOptionIndex": 2,
+        "explanation": "Biome where trees predominate are called forest biomes."
+      },
+      {
+        "id": "q213",
+        "text": "The goal of biodiversity conservation include all of the following except",
+        "options": ["Protecting individual species", "introducing exotic species into new environment", "Preserving habitat and ecosystem", "making sure local people benefit from conservation efforts"],
+        "correctOptionIndex": 1,
+        "explanation": "Introducing exotic species into a new environment is not a goal of biodiversity conservation."
+      },
+      {
+        "id": "q214",
+        "text": "The maximum population growth rate characteristics of the species is called",
+        "options": ["Limiting factor", "Biotic potential", "Carrying capacity", "Exponential growth rate pattern"],
+        "correctOptionIndex": 1,
+        "explanation": "The maximum population growth rate characteristic of the species is called biotic potential."
+      },
+      {
+        "id": "q215",
+        "text": "The total amount of living tissue within a given trophic level is called?",
+        "options": ["Organic mass", "Energy mass", "Trophic mas", "Biomass"],
+        "correctOptionIndex": 3,
+        "explanation": "The total amount of living tissue within a given trophic level is called biomass."
+      },
+      {
+        "id": "q216",
+        "text": "What mode of feeding does soil organisms that release nutrients from dead organic matter into the soil have?",
+        "options": ["Photoautotrophic", "Saprophytic", "Chemoautotrophic", "Parasitic"],
+        "correctOptionIndex": 1,
+        "explanation": "Soil organisms that release nutrients from dead organic matter into the soil have a saprophytic mode of feeding."
+      },
+      {
+        "id": "q217",
+        "text": "Which group of bacteria reduces nitrates to nitrogen gas in the nitrogen cycle?",
+        "options": ["Nitrogen fixing bacteria", "Ammonium ion forming bacteria", "denitrifying bacteria", "photosynthetic bacteria"],
+        "correctOptionIndex": 2,
+        "explanation": "Denitrifying bacteria reduce nitrates to nitrogen gas in the nitrogen cycle."
+      },
+      {
+        "id": "q218",
+        "text": "When farmers using fewer and fewer number of crop varieties, what would happen to the genetic diversity of our crop plants?",
+        "options": ["It would get erode", "It would be more conserved", "It would be more diverse", "Nothing would happen to it"],
+        "correctOptionIndex": 0,
+        "explanation": "When farmers use fewer and fewer numbers of crop varieties, the genetic diversity of our crop plants would get eroded."
+      },
+      {
+        "id": "q219",
+        "text": "In which parts of Ethiopia are lions, elephants, and giraffes found more commonly?",
+        "options": ["In the afro alpine and sub afro alpine zones", "In the high land area of northern Ethiopia", "In the grassland of southwestern Ethiopia", "The central and northern part of rift valley"],
+        "correctOptionIndex": 2,
+        "explanation": "Lions, elephants, and giraffes are found more commonly in the grassland of southwestern Ethiopia."
+      },
+      {
+        "id": "q220",
+        "text": "The main factors that determines the type of terrestrial biomes in certain geographical area are",
+        "options": ["Soil and vegetation formation", "Soil and biological diversity", "Complexity in ecological succession", "Precipitation and temperature"],
+        "correctOptionIndex": 3,
+        "explanation": "Precipitation and temperature are the main factors that determine the type of terrestrial biomes in a certain geographical area."
+      },
+      {
+        "id": "q221",
+        "text": "Which of the following is the most unlikely action that would be expected from Ethiopians who have been given adequate biological literacy?",
+        "options": ["Engagement in activities resulting in biodiversity loss", "supporting activities with food security", "Awareness about climate change and its problem", "Engagement in biological resource conservation"],
+        "correctOptionIndex": 0,
+        "explanation": "Engagement in activities resulting in biodiversity loss is the most unlikely action that would be expected from Ethiopians who have been given adequate biological literacy."
+      },
+      {
+        "id": "q222",
+        "text": "Why do microorganisms decompose dead organic matter?",
+        "options": ["To release mineral nutrients for plants", "To clear up the ecosystem", "To drive energy for their own use", "To keep the balance of atmospheric gases"],
+        "correctOptionIndex": 2,
+        "explanation": "Microorganisms decompose dead organic matter to derive energy for their own use."
+      },
+      {
+        "id": "q223",
+        "text": "The practice of modern agriculture that reduces crop biodiversity is",
+        "options": ["Overgrazing", "Forest clearing", "Growing land races", "Growing few high yielding varieties"],
+        "correctOptionIndex": 3,
+        "explanation": "Growing few high yielding varieties is a practice of modern agriculture that reduces crop biodiversity."
+      },
+      {
+        "id": "q224",
+        "text": "What kind of nutrition do most of the decomposers have in general?",
+        "options": ["Autotrophic nutrition", "endosymbiont nutrition", "Saprobiotic nutrition", "Chemosynthetic nutrition"],
+        "correctOptionIndex": 2,
+        "explanation": "Most decomposers have saprobiotic nutrition."
+      },
+      {
+        "id": "q225",
+        "text": "The amount of organic matter present at a given time per unit area is called?",
+        "options": ["Carbon sequestration", "Standing crop", "Carbon foot print", "Productivity"],
+        "correctOptionIndex": 1,
+        "explanation": "The amount of organic matter present at a given time per unit area is called standing crop."
+      },
+      {
+        "id": "q226",
+        "text": "In the energy pyramid, which groups of organisms has the least amount of energy?",
+        "options": ["Primary producers", "tertiary producers", "Herbivores", "Animals"],
+        "correctOptionIndex": 1,
+        "explanation": "Tertiary producers have the least amount of energy in the energy pyramid."
+      },
+      {
+        "id": "q227",
+        "text": "What is the nutritional mode of those bacteria which decompose dead organic matter and thus recycle nutrients?",
+        "options": ["Autotrophic", "Parasitic", "saprobiotic", "Symbiotic"],
+        "correctOptionIndex": 2,
+        "explanation": "The nutritional mode of those bacteria which decompose dead organic matter and thus recycle nutrients is saprobiotic."
+      },
+      {
+        "id": "q228",
+        "text": "Which of the following is not true about flow of energy in the ecosystem?",
+        "options": ["It is recycled by decomposers", "It passes from one trophic level to the next", "It enters the ecosystem in the form of light", "it leaves the ecosystem in the form of heat"],
+        "correctOptionIndex": 0,
+        "explanation": "Energy is not recycled by decomposers."
+      },
+      {
+        "id": "q229",
+        "text": "Through which of the following do all living organisms contribute to carbon cycle?",
+        "options": ["Photosynthesis", "cellular respiration", "Decomposition", "combustion"],
+        "correctOptionIndex": 1,
+        "explanation": "All living organisms contribute to the carbon cycle through cellular respiration."
+      },
+      {
+        "id": "q230",
+        "text": "In ecological context, which of the following is population?",
+        "options": ["All living organisms in a habitat", "All the producers in a habitat", "All the consumers in a habitat", "All individuals of same species in a habitat"],
+        "correctOptionIndex": 3,
+        "explanation": "In ecological context, a population is all individuals of the same species in a habitat."
+      },
+      {
+        "id": "q231",
+        "text": "What is the other name for the primary consumers of the ecosystem?",
+        "options": ["Herbivores", "Carnivores", "Green plants", "Predators"],
+        "correctOptionIndex": 0,
+        "explanation": "The other name for the primary consumers of the ecosystem is herbivores."
+      },
+      {
+        "id": "q232",
+        "text": "Of the following activities, which one is considered to have an indirect negative effect on biodiversity?",
+        "options": ["Human and livestock population growth", "Charcoal making and illegal logging", "Deforestation for cultivation and urbanization", "Monoculture farming with improved crop varieties"],
+        "correctOptionIndex": 0,
+        "explanation": "Human and livestock population growth is considered to have an indirect negative effect on biodiversity."
+      },
+      {
+        "id": "q233",
+        "text": "Current human concern such as famine, pestilence and environmental degradation would be solved through the use of",
+        "options": ["Biological principle", "Irrigation", "Aquaculture", "Terracing"],
+        "correctOptionIndex": 0,
+        "explanation": "Current human concerns such as famine, pestilence, and environmental degradation would be solved through the use of biological principles."
+      },
+      {
+        "id": "q234",
+        "text": "Recycling of nutrients through ecosystem",
+        "options": ["Food processing", "Genetic engineering", "Recycling of mineral through ecosystem", "Waste water treatment"],
+        "correctOptionIndex": 2,
+        "explanation": "Recycling of nutrients through the ecosystem is a natural process."
+      },
+      {
+        "id": "q235",
+        "text": "Carbon cycle is important in nature because",
+        "options": ["The amount of energy before and after reaction must be the same", "It continuously reuse and recycles carbon in the ecosystem", "it consumes oxygen and nitrogen in the atmosphere", "it is used in the energy capture and recapture"],
+        "correctOptionIndex": 1,
+        "explanation": "The carbon cycle is important in nature because it continuously reuses and recycles carbon in the ecosystem."
+      },
+      {
+        "id": "q236",
+        "text": "Which of the following is not in situ conservation of biodiversity?",
+        "options": ["Botanical garden", "Sanctuary", "Biosphere reserves", "National parks"],
+        "correctOptionIndex": 0,
+        "explanation": "A botanical garden is not an in situ conservation of biodiversity."
+      },
+      {
+        "id": "q237",
+        "text": "Which one of the following represents the population growth curve of a species with limited resource?",
+        "options": ["Logistic", "Exponential", "Lognormal", "Competitive exclusion"],
+        "correctOptionIndex": 0,
+        "explanation": "The logistic curve represents the population growth curve of a species with limited resources."
+      },
+      {
+        "id": "q238",
+        "text": "What major consequences does primary ecological succession involve normally?",
+        "options": ["Complexity of food web increase", "Number of species present decrease", "Abiotic factors become less favorable", "Habitats become harsher and deteriorate"],
+        "correctOptionIndex": 0,
+        "explanation": "Primary ecological succession normally involves an increase in the complexity of the food web."
+      },
+      {
+        "id": "q239",
+        "text": "How quickly a population would increase or decrease in size is probable least influence by the presence of",
+        "options": ["Adequate supply of oxygen", "Disproportionate human races", "Severe interspecific competition", "Carnivores and herbivores"],
+        "correctOptionIndex": 1,
+        "explanation": "The presence of disproportionate human races is least likely to influence how quickly a population would increase or decrease in size."
+      },
+      {
+        "id": "q240",
+        "text": "What does a low values for simpson’s index of diversity normally indicate to researchers?",
+        "options": ["An area with high number of endemic species", "An area dominated by one or just a few species", "A biodiversity hotspot with abundant species", "An area with plants but no species of animals"],
+        "correctOptionIndex": 1,
+        "explanation": "A low value for Simpson’s index of diversity normally indicates an area dominated by one or just a few species."
+      },
+      {
+        "id": "q241",
+        "text": "A country with high youth population but low old age population and low infant population shows?",
+        "options": ["A population pyramid with bulge in the middle", "A population with wide base and narrow apex", "An inverted pyramid", "A pyramid assuming a rectangular shape"],
+        "correctOptionIndex": 1,
+        "explanation": "A country with a high youth population but low old age population and low infant population shows a population with a wide base and narrow apex."
+      },
+      {
+        "id": "q242",
+        "text": "Which of the following terms specifically refers to an ecological succession that starts in aquatic environment?",
+        "options": ["Xerosere", "Hydrosere", "Primary succession", "Secondary succession"],
+        "correctOptionIndex": 1,
+        "explanation": "Hydrosere specifically refers to an ecological succession that starts in an aquatic environment."
+      },
+      {
+        "id": "q243",
+        "text": "Suppose age pyramid of a population has broad base with narrow top, which of the following is not true about the population?",
+        "options": ["It is fast growing", "It has high life expectancy", "It is dominated by young people", "it has high birth rate"],
+        "correctOptionIndex": 1,
+        "explanation": "A population with a broad base and narrow top does not necessarily have high life expectancy."
+      },
+      {
+        "id": "q244",
+        "text": "What is another name for secondary consumer?",
+        "options": ["Producers", "Carnivore", "herbivore", "Decomposer"],
+        "correctOptionIndex": 1,
+        "explanation": "Another name for a secondary consumer is a carnivore."
+      },
+      {
+        "id": "q245",
+        "text": "Which of the following best describes the role of bacteria in nitrogen cycle? Bacteria turns",
+        "options": ["Oxygen into nitrogen for plant to use", "Nitrogen into usable form in the process called transpiration", "Nitrogen into usable form for the plant use called ammonia", "CO2 in o oxygen during the process of photosynthesis"],
+        "correctOptionIndex": 2,
+        "explanation": "Bacteria turn nitrogen into a usable form for the plant use called ammonia."
+      },
+      {
+        "id": "q246",
+        "text": "Both photosynthesis and respiration are involved in",
+        "options": ["Carbon cycle", "nitrogen cycle", "Water cycle", "Phosphorus cycle"],
+        "correctOptionIndex": 0,
+        "explanation": "Both photosynthesis and respiration are involved in the carbon cycle."
+      },
+      {
+        "id": "q247",
+        "text": "Which one of the following terms best describes the number of different spices in the biosphere or in the particular area?",
+        "options": ["Biodiversity", "Species diversity", "Ecosystem diversity", "genetic diversity"],
+        "correctOptionIndex": 1,
+        "explanation": "Species diversity best describes the number of different species in the biosphere or in a particular area."
+      },
+      {
+        "id": "q248",
+        "text": "Which bacterial genus fixes nitrogen in the nodules of leguminous plant?",
+        "options": ["Agrobacterium", "Rhizobium", "Escherichia", "Azxobacter"],
+        "correctOptionIndex": 1,
+        "explanation": "Rhizobium is the bacterial genus that fixes nitrogen in the nodules of leguminous plants."
+      },
+      {
+        "id": "q249",
+        "text": "Which of the following pairs of process add CO2 to the atmosphere?",
+        "options": ["Decomposition and combustion", "Respiration and photosynthesis", "Photosynthesis and podsolization", "Combustion and respiration"],
+        "correctOptionIndex": 3,
+        "explanation": "Combustion and respiration add CO2 to the atmosphere."
+      },
+      {
+        "id": "q250",
+        "text": "Which of the following agricultural practices does not have a negative effect on biodiversity?",
+        "options": ["Use of pesticide", "Use of insecticide", "growing landraces", "Growing improved varieties"],
+        "correctOptionIndex": 2,
+        "explanation": "Growing landraces does not have a negative effect on biodiversity."
+      },
+      {
+        "id": "q251",
+        "text": "What is the general name of crop plants that add nitrogen to the soil because of their symbiotic association with certain types of bacteria?",
+        "options": ["Legumes", "Nodules", "Cereals", "Herbs?"],
+        "correctOptionIndex": 0,
+        "explanation": "Legumes are the general name of crop plants that add nitrogen to the soil because of their symbiotic association with certain types of bacteria."
+      },
+      {
+        "id": "q252",
+        "text": "The most abundant inorganic molecule in the atmosphere that traps heat is",
+        "options": ["H2S", "O2", "CO2", "H2O"],
+        "correctOptionIndex": 2,
+        "explanation": "CO2 is the most abundant inorganic molecule in the atmosphere that traps heat."
+      },
+      {
+        "id": "q253",
+        "text": "The active sludge method of sewage treatment is based on the principle of",
+        "options": ["Denitrification", "Removal of polluting organic matter through filtration", "Decomposition and removal of organic matter", "Anaerobic respiration"],
+        "correctOptionIndex": 2,
+        "explanation": "The active sludge method of sewage treatment is based on the principle of decomposition and removal of organic matter."
+      },
+      {
+        "id": "q254",
+        "text": "Under ideal condition and unlimited resource, continuous population growth pattern is known as",
+        "options": ["Density dependent growth", "Logistic growth", "Population distribution growth", "exponential growth"],
+        "correctOptionIndex": 3,
+        "explanation": "Under ideal conditions and unlimited resources, continuous population growth pattern is known as exponential growth."
+      },
+      {
+        "id": "q255",
+        "text": "Ethiopia is a regional center of biological diversity which of the following diversity is expressed?",
+        "options": ["The many mountain, valley, river, and scenic beauty", "Wide range of altitude and climate", "High number of endemic wild and domestic plant species", "The number of different biomes in the country"],
+        "correctOptionIndex": 2,
+        "explanation": "Ethiopia is a regional center of biological diversity expressed by the high number of endemic wild and domestic plant species."
+      },
+      {
+        "id": "q256",
+        "text": "If you were to travel from the Arctic Circle to the equator, what sequence of biomes would you most likely pass through?",
+        "options": ["Tundra, taiga, temperate forest, tropical rain forest", "Taiga, tundra, temperate forest, tropical rain forest", "Tropical rain forest, temperate forest, taiga, tundra", "Tundra, temperate forest, taiga, tropical rain forest"],
+        "correctOptionIndex": 0,
+        "explanation": "If you were to travel from the Arctic Circle to the equator, you would most likely pass through the sequence of biomes: tundra, taiga, temperate forest, tropical rain forest."
+      },
+      {
+        "id": "q257",
+        "text": "Occurrence of endemic species in Ethiopia is due to",
+        "options": ["The fact that those species have been extinct from the other region", "The fact that there is no terrestrial route to this place", "Continental separation", "Retrogressive evolution"],
+        "correctOptionIndex": 2,
+        "explanation": "The occurrence of endemic species in Ethiopia is due to continental separation."
+      },
+      {
+        "id": "q258",
+        "text": "What is the population growth phase of the current world population?",
+        "options": ["Static phase", "Lag phase", "Decline phase", "Exponential phase"],
+        "correctOptionIndex": 3,
+        "explanation": "The population growth phase of the current world population is the exponential phase."
+      },
+      {
+        "id": "q259",
+        "text": "As an ecological succession passes from lower to higher seral stage, which of the following will not happen?",
+        "options": ["Soil nutrient is depleted", "Ecological niches increase", "Species get more diverse", "The community gets more complex"],
+        "correctOptionIndex": 0,
+        "explanation": "Soil nutrient is not depleted as an ecological succession passes from lower to higher seral stages."
+      }
+    ]
+  }
+  

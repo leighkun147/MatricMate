@@ -1,0 +1,814 @@
+{
+  "title": "Chemistry Questions",
+  "duration": 150,
+  "constants": null,
+  "numberOfQuestions": 80,
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Which of the following branches of chemistry involves separating, identifying and determining the relative amount of a sample of matter?",
+      "options": [
+        "A. Analytical chemistry",
+        "B. Physical chemistry",
+        "C. Organic chemistry",
+        "D. Inorganic chemistry"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Analytical chemistry deals with separating, identifying, and quantifying matter."
+    },
+    {
+      "id": "q2",
+      "text": "Which of the following is correct?",
+      "options": [
+        "A. 10L=1dm3",
+        "B. 1L=10dm3",
+        "C. 1L=1dm3",
+        "D. 1L=1m3"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "1 liter is equivalent to 1 cubic decimeter (1L = 1dm³)."
+    },
+    {
+      "id": "q3",
+      "text": "A piece of silver metal weighing 160 g is placed in a graduated cylinder containing 220 ml of water. The volume of water now reads 240 ml. What is the density of the silver metal?",
+      "options": [
+        "A. 8.5 g/ml",
+        "B. 8.0 g/ml",
+        "C. 0.73 g/ml",
+        "D. 0.35 g/ml"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "The volume displaced is 240 ml - 220 ml = 20 ml. The density is mass/volume = 160 g / 20 ml = 8.0 g/ml."
+    },
+    {
+      "id": "q4",
+      "text": "What is the first step of the scientific method?",
+      "options": [
+        "A. Performing an experiment",
+        "B. Forming a hypothesis",
+        "C. Predicting the result of an experiment",
+        "D. Making observation"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "The first step is making observations about the problem or phenomenon."
+    },
+    {
+      "id": "q5",
+      "text": "A student uses a digital balance (± 0.01), a thermometer (± 0.02), a measuring cylinder (± 0.03) and a beaker (± 0.04) during an experiment. Which of the above instruments is more precise?",
+      "options": [
+        "A. The beaker",
+        "B. The thermometer",
+        "C. The digital balance",
+        "D. The measuring cylinder"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "The digital balance is the most precise, with the smallest margin of error."
+    },
+    {
+      "id": "q6",
+      "text": "Which of the following postulates of Dalton’s atomic theory is disproved by the modern atomic theory?",
+      "options": [
+        "A. Atoms combine in small whole numbers to form compounds",
+        "B. Elements are made up of small particles called atoms",
+        "C. Atoms of different elements have different masses and size",
+        "D. All atoms of the same elements are identical and have the same mass"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "The modern atomic theory shows that atoms of the same element can have different masses, called isotopes."
+    },
+    {
+      "id": "q7",
+      "text": "The main purpose of Robert Millikan’s oil drop experiment is to determine",
+      "options": [
+        "A. The ratio of mass of electron to charge of electron",
+        "B. The speed of electron",
+        "C. The magnitude of charge of electron",
+        "D. The mass of electron"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Millikan's experiment determined the charge of the electron."
+    },
+    {
+      "id": "q8",
+      "text": "Pb has an average atomic mass of 207.19 amu. The three major isotopes of Pb-206 (205.98 amu), Pb-207 (206.98 amu) and Pb-208 (207.98 amu). If the isotopes of Pb-207 and Pb-208 are present in equal amounts, what is the percent abundance of Pb-206, Pb-207 and Pb-208 respectively?",
+      "options": [
+        "A. 19.34 %, 40.33 % and 40.33 %",
+        "B. 24.16 %, 37.92 % and 37.92 %",
+        "C. 15.22 %, 42.39 % and 42.39 %",
+        "D. 34.08 %, 32.96 % and 32.96 %"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Using the average atomic mass and isotope data, the correct percentages are 19.34% for Pb-206, 40.33% for Pb-207, and 40.33% for Pb-208."
+    },
+    {
+      "id": "q9",
+      "text": "Which region of the electromagnetic spectrum is capable of inducing electron transition with the greatest energy?",
+      "options": [
+        "A. Orange",
+        "B. Red",
+        "C. Violet",
+        "D. Green"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Violet light has the shortest wavelength and the highest energy."
+    },
+    {
+      "id": "q10",
+      "text": "What is the wavelength of the yellow sodium emission, which has a frequency of 5.09 x 10^14 s^-1? (C = 3 x 10^8 m/s)",
+      "options": [
+        "A. 400 nm",
+        "B. 589 nm",
+        "C. 670 nm",
+        "D. 890 nm"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "Using the formula λ = c / f, the wavelength λ = (3 x 10^8 m/s) / (5.09 x 10^14 s^-1) = 589 nm."
+    },
+    {
+      "id": "q11",
+      "text": "What are the possible values of the azimuthal quantum number for an electron in the 4f sub shell?",
+      "options": [
+        "A. 0",
+        "B. 1",
+        "C. 2",
+        "D. 3"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "For the 4f sub shell, the possible values of the azimuthal quantum number (l) are 3."
+    },
+    {
+      "id": "q12",
+      "text": "How many 3d electrons are present in the ground state of 52Cr?",
+      "options": [
+        "A. 5",
+        "B. 6",
+        "C. 4",
+        "D. 10"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "In the ground state, chromium (Cr) has 5 electrons in the 3d orbital."
+    },
+    {
+      "id": "q13",
+      "text": "All of the following properties of an element increase across a period, EXCEPT:",
+      "options": [
+        "A. Electron affinity",
+        "B. Electronegativity",
+        "C. Atomic size",
+        "D. Ionization energy"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Atomic size decreases across a period, while electron affinity, electronegativity, and ionization energy increase."
+    },
+    {
+      "id": "q14",
+      "text": "All of the following are properties of ionic compounds in the solid phase, EXCEPT:",
+      "options": [
+        "A. High electrical conductivity",
+        "B. High density",
+        "C. High melting point",
+        "D. Soluble in water"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Ionic compounds in the solid phase do not conduct electricity because their ions are not free to move."
+    },
+    {
+      "id": "q15",
+      "text": "Which of the following ionic compounds has the highest lattice energy?",
+      "options": [
+        "A. NaCl",
+        "B. NaF",
+        "C. MgO",
+        "D. AlN"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "MgO has the highest lattice energy due to the small size and high charge of Mg2+ and O2- ions."
+    },
+    {
+      "id": "q16",
+      "text": "Which one of the substances contains ionic, covalent and dative bonds between their atoms?",
+      "options": [
+        "A. KI",
+        "B. NH4CN",
+        "C. Mg3N2",
+        "D. CH3OH"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "NH4CN contains ionic bonds between NH4+ and CN-, covalent bonds within NH4+ and CN-, and a dative bond in NH4+."
+    },
+    {
+      "id": "q17",
+      "text": "All of the following molecules are an example of polar covalent compounds, EXCEPT:",
+      "options": [
+        "A. NH3",
+        "B. SF4",
+        "C. SO2",
+        "D. CS2"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "CS2 is a nonpolar molecule, while the others are polar covalent."
+    },
+    {
+      "id": "q18",
+      "text": "Which one of the following is a non-polar molecule with individual bonds that are polar?",
+      "options": [
+        "A. O2",
+        "B. Cl2",
+        "C. CO2",
+        "D. SO2"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "CO2 is a linear molecule, and despite having polar bonds, it is nonpolar due to its symmetrical shape."
+    },
+    {
+      "id": "q19",
+      "text": "Which bond between the following groups of elements will be the most polar?",
+      "options": [
+        "A. S-I",
+        "B. S-Cl",
+        "C. S-F",
+        "D. S-Br"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "S-F is the most polar because the electronegativity difference between sulfur and fluorine is the greatest."
+    },
+    {
+      "id": "q20",
+      "text": "Which one of the following is the geometry of ICl4-?",
+      "options": [
+        "A. Octahedral",
+        "B. Trigonal planar",
+        "C. Tetrahedral",
+        "D. Square planar"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "The geometry of ICl4- is square planar due to its electron cloud arrangement."
+    }, 
+    
+    {
+      "id": "q21",
+      "text": "Which one of the following is NOT true of metallic bonding?",
+      "options": [
+        "A. It gives rise to excellent electrical conductivity",
+        "B. Electrons are free to move throughout the structure",
+        "C. The strength of metallic bonds increases down a group",
+        "D. The strength of metallic bonding affects the boiling points of metals"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "The strength of metallic bonds generally decreases as you move down a group due to the increasing size of atoms and distance between nuclei and electrons."
+    },
+    {
+      "id": "q22",
+      "text": "What type of hybridization is used by carbon in C2H2 (acetylene)?",
+      "options": [
+        "A. sp",
+        "B. sp3",
+        "C. sp2",
+        "D. sp2d"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "In acetylene (C2H2), each carbon atom is sp hybridized due to the formation of a triple bond between the two carbon atoms."
+    },
+    {
+      "id": "q23",
+      "text": "Which molecule listed below has two sigma (σ) and two pi (π) bonds?",
+      "options": [
+        "A. C2H4",
+        "B. HCN",
+        "C. N2F2",
+        "D. N2"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "N2F2 has two sigma and two pi bonds due to the double bonds between the nitrogen atoms and the single bonds with the fluorine atoms."
+    },
+    {
+      "id": "q24",
+      "text": "Which of the following is the correct rate equation for the given elementary reaction?",
+      "options": [
+        "A. 2A → P, Rate = K[A]",
+        "B. A + B + C → P, Rate = K[A][C]",
+        "C. A + 2B → P, Rate = K[A]2",
+        "D. A + B → P, Rate = K[A][B]"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "For an elementary reaction, the rate law follows the stoichiometry, so the rate equation for A + B → P is Rate = K[A][B]."
+    },
+    {
+      "id": "q25",
+      "text": "Given the reaction: 2NO (g) + O2 (g) → 2NO2 (g), Rate = K[NO]2[O]. Which of the following is true if the pressure of NO is doubled?",
+      "options": [
+        "A. The reaction rate increases by a factor of four",
+        "B. The reaction rate increases by a factor of two",
+        "C. The reaction rate increases by a factor of three",
+        "D. The reaction rate increases by a factor of eight"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Since the rate law is second order with respect to NO, doubling the concentration of NO will increase the rate by a factor of 2^2 = 4."
+    },
+    {
+      "id": "q26",
+      "text": "Which conditions generally will increase the rate of a chemical reaction?",
+      "options": [
+        "A. Decreasing temperature and increasing concentration of the reactants.",
+        "B. Decreasing temperature and decreasing concentration of the reactants.",
+        "C. Increasing temperature and increasing concentration of the reactants.",
+        "D. Increasing temperature and decreasing concentration of the reactants."
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Increasing both temperature and concentration of reactants typically increases the rate of a chemical reaction."
+    },
+    {
+      "id": "q27",
+      "text": "What is the value of rate constant (K) for first order reaction with half-life 3000 second?",
+      "options": [
+        "A. 2.31 x 10−3",
+        "B. 2.31 x 10−4",
+        "C. 2079",
+        "D. 207.9"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "For a first-order reaction, the half-life (t½) is related to the rate constant by the equation t½ = 0.693 / K. Solving for K gives a value of 2.31 x 10−4 s−1."
+    },
+    {
+      "id": "q28",
+      "text": "For a certain reaction, rate = k [A], the rate when [A] = 0.60 M, if the rate is 0.020 M/s when [A] = 1.0 M. What is the rate when [A] = 0.60 M?",
+      "options": [
+        "A. 0.0033M/s",
+        "B. 0.04M/s",
+        "C. 0.033M/s",
+        "D. 0.0093M/s"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "Since the rate is directly proportional to [A], the rate when [A] = 0.60 M is (0.60/1.0) × 0.020 M/s = 0.012 M/s."
+    },
+    {
+      "id": "q29",
+      "text": "Which of the following is a termolecular reaction?",
+      "options": [
+        "A. PCl5 → PCl3 + Cl2",
+        "B. N2 + 3H2 → 2NH3",
+        "C. 2HI → H2 + I2",
+        "D. 2CO + O2 → 2CO2"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "A termolecular reaction involves three reactants. The reaction N2 + 3H2 → 2NH3 is termolecular because it involves four molecules of reactants."
+    },
+    {
+      "id": "q30",
+      "text": "Which one of the following indicates the correct expression for the equilibrium constant (K)? PCl5 (s) ⇌ PCl3 (l) + Cl2 (g)",
+      "options": [
+        "A. [PCl3][Cl2]/[PCl5]",
+        "B. [Cl2]",
+        "C. [PCl3][Cl2]",
+        "D. [PCl5]/[PCl3][Cl2]"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "The equilibrium expression only includes the concentrations of gases and aqueous species. The solid PCl5 does not appear in the expression, so the correct expression is K = [Cl2]."
+    }
+ , {
+      "id": "q41",
+      "text": "One of the following is true about acid and base?",
+      "options": [
+        "A. Base is the substance when dissolved in water increases the [H3O+]",
+        "B. Acid is the substance when dissolved in water increases the [OH᎗]",
+        "C. Base is proton acceptor",
+        "D. Acid is electron donor"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "The Bronsted-Lowry definition states that bases are proton acceptors."
+    },
+    {
+      "id": "q42",
+      "text": "What are the products in the self-ionization of water molecules?",
+      "options": [
+        "A. H2O & OH᎗",
+        "B. H3O+ & O2᎗",
+        "C. H3O+ & H2O",
+        "D. H3O+ & OH᎗"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "Water self-ionizes to form hydronium (H3O+) and hydroxide (OH᎗) ions."
+    },
+    {
+      "id": "q43",
+      "text": "The conjugate base of H3O+ is:",
+      "options": [
+        "A. OH᎗",
+        "B. H2O",
+        "C. NH3",
+        "D. H+"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "When H3O+ donates a proton, it forms its conjugate base, H2O."
+    },
+    {
+      "id": "q44",
+      "text": "Given the reaction: H2PO− + H2O ⇌ H3O+ + HPO2−. Which of the following represents a conjugate acid-base pair?",
+      "options": [
+        "A. H2PO− and HPO2−",
+        "B. H2PO− and H2O",
+        "C. H2PO− and H3O+",
+        "D. H2O and HPO2−"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "H2PO− donates a proton to form HPO2−, making them a conjugate acid-base pair."
+    },
+    {
+      "id": "q45",
+      "text": "The POH of a 0.00008 M NaOH aqueous solution is:",
+      "options": [
+        "A. 3.1",
+        "B. 4.1",
+        "C. 5.1",
+        "D. 2.1"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "POH = -log[OH-], so POH = -log(0.00008) ≈ 4.1."
+    },
+    {
+      "id": "q46",
+      "text": "What is the PH of an aqueous solution in which [OH᎗] = 10000 [H3O+] at 25 ℃?",
+      "options": [
+        "A. 4",
+        "B. 12",
+        "C. 8",
+        "D. 9"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Since the concentration of OH᎗ is much higher, the solution is basic, and pH > 7."
+    },
+    {
+      "id": "q47",
+      "text": "What is the percent dissociation in 1M solution of HF containing the concentration of [H3O+] = 2.7 × 10−2 M?",
+      "options": [
+        "A. 37%",
+        "B. 3.7%",
+        "C. 2.7%",
+        "D. 27%"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "Percent dissociation = ([H3O+]/1M) * 100 = (2.7 × 10−2 / 1) * 100 = 2.7%."
+    },
+    {
+      "id": "q48",
+      "text": "The concentration of H3O+ and OH− respectively with POH = 3 at 25°C are:",
+      "options": [
+        "A. 1.0 × 10−11 M and 1.0 × 10−3 M",
+        "B. 1.0 × 10−3 M and 1.0 × 10−11 M",
+        "C. 1.0 × 10−2 M and 1.0 × 10−12 M",
+        "D. 1.0 × 10−10 M and 1.0 × 10−4 M"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "Using the relationship pOH + pH = 14, we can calculate the concentration of H3O+ and OH−."
+    },
+    {
+      "id": "q49",
+      "text": "Which of the following is a property of 1.0 M HCl but not a property of 1.0 M CH3COOH?",
+      "options": [
+        "A. Turns litmus red",
+        "B. Has a PH less than 7",
+        "C. Ionizes completely",
+        "D. Produces H3O+ in solution"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "HCl ionizes completely in solution, unlike CH3COOH which is a weak acid."
+    },
+    {
+      "id": "q50",
+      "text": "What is the PH and POH of an aqueous solution at 25°C if [H3O+] = 0.0004 M respectively?",
+      "options": [
+        "A. 3.4 and 10.6",
+        "B. 2.6 and 11.4",
+        "C. 8.6 and 5.4",
+        "D. 7.6 and 6.4"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "pH = -log[H3O+] = 3.4 and pOH = 14 - pH = 10.6."
+    }, 
+
+    {
+      "id": "q51",
+      "text": "What is the effect if 0.3 M of CH3COONa is added into aqueous solution of 0.2 M CH3COOH?",
+      "options": [
+        "A. CH3COOH becomes more acidic",
+        "B. The concentration H3O+ will increase",
+        "C. The equilibrium shifts to the left",
+        "D. PH value will decrease"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Adding CH3COONa (a salt of the conjugate base) to CH3COOH (a weak acid) shifts the equilibrium to the left, decreasing the acidity."
+    },
+    {
+      "id": "q52",
+      "text": "How is a buffer solution prepared?",
+      "options": [
+        "A. By mixing a weak acid and a strong acid",
+        "B. By mixing a strong base and its conjugate acid",
+        "C. By mixing a strong acid and its conjugate base",
+        "D. By mixing a weak acid and its conjugate base"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "A buffer solution is typically prepared by mixing a weak acid and its conjugate base."
+    },
+    {
+      "id": "q53",
+      "text": "The POH of an aqueous solution which is created by adding 0.5 M NH3 and 0.5 M NH4Cl (Kb NH3 = 1.8x10−5)",
+      "options": [
+        "A. 9.26",
+        "B. 10.26",
+        "C. 4.74",
+        "D. 3.74"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "The POH is calculated based on the Kb of NH3 and the concentrations of NH3 and NH4Cl, giving a value of 10.26."
+    },
+    {
+      "id": "q54",
+      "text": "In which of the following combination buffer solution possibly formed?",
+      "options": [
+        "A. CH3COOH/HCl",
+        "B. NaOH/HNO3",
+        "C. HCl/NaOH",
+        "D. CH3COOH/CH3COONa"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "CH3COOH (a weak acid) and CH3COONa (its conjugate base) form a buffer solution."
+    },
+    {
+      "id": "q55",
+      "text": "The Ka of benzoic acid is 6.30 x 10−5. What is the pH of a buffer prepared by combining 50 ml of 1.0 M potassium benzoate and 50 ml of 1.0 M benzoic acid?",
+      "options": [
+        "A. 4.2",
+        "B. 3.7",
+        "C. 3.4",
+        "D. 1.7"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Using the Henderson-Hasselbalch equation, the pH of the buffer is found to be approximately 4.2."
+    },
+    {
+      "id": "q56",
+      "text": "Which of the following is a basic salt?",
+      "options": [
+        "A. NH4NO3",
+        "B. HCOOK",
+        "C. NaCl",
+        "D. NH4Cl"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "HCOOK (potassium formate) is the salt of a weak acid and a strong base, making it basic."
+    },
+    {
+      "id": "q57",
+      "text": "Which one of the following hydrolysis of salt results in an acidic solution?",
+      "options": [
+        "A. Weak acid and strong base",
+        "B. Weak base and strong acid",
+        "C. Strong acid and strong base",
+        "D. Weak acid and salt of the weak acid"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "The hydrolysis of a weak base with a strong acid results in an acidic solution."
+    },
+    {
+      "id": "q58",
+      "text": "The acid-base indicator methyl orange has a Ka of 1 x 10−6. Its acidic form is red while its basic form is yellow. If methyl orange is added to a solution with a pH = 5, the color will be;",
+      "options": [
+        "A. Pink",
+        "B. Orange",
+        "C. Yellow",
+        "D. Red"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "At pH = 5, methyl orange will be orange, as it lies between the red and yellow forms."
+    },
+    {
+      "id": "q59",
+      "text": "Which of the following titrations will have an equivalence point at a pH > 7?",
+      "options": [
+        "A. Weak acid with weak base",
+        "B. Weak acid with strong base",
+        "C. Strong acid with weak base",
+        "D. Strong acid with strong base"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "The equivalence point for a weak acid and strong base titration is above pH 7."
+    },
+    {
+      "id": "q60",
+      "text": "What volume of 0.2 M KOH is required to neutralize completely 50 mL of 1.5 M H2SO4?",
+      "options": [
+        "A. 750 mL",
+        "B. 375 mL",
+        "C. 250 mL",
+        "D. 50 mL"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Using stoichiometry, 0.2 M KOH requires 250 mL to neutralize 50 mL of 1.5 M H2SO4."
+    },
+    {
+      "id": "q61",
+      "text": "What is the normality of 0.3 M solution of Al2(SO4)3?",
+      "options": [
+        "A. 0.9",
+        "B. 1.8",
+        "C. 0.6",
+        "D. 0.9"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Normality = Molarity × equivalent factor, where Al2(SO4)3 has an equivalent factor of 3, so normality is 0.9."
+    },
+    {
+      "id": "q62",
+      "text": "What is the molarity from complete ionization of 1.5N H2SO4?",
+      "options": [
+        "A. 3 M",
+        "B. 2 M",
+        "C. 1.5 M",
+        "D. 0.75 M"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "Molarity = Normality / number of equivalents, so 1.5 N H2SO4 gives 2 M."
+    },
+    {
+      "id": "q63",
+      "text": "Which of the following can conduct electricity?",
+      "options": [
+        "A. Salt solution",
+        "B. Ethanol solution",
+        "C. Sugar solution",
+        "D. Nonpolar solution"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Salt solutions conduct electricity because they contain ions."
+    },
+    {
+      "id": "q64",
+      "text": "Which of the following is not correct about electrolytic cells?",
+      "options": [
+        "A. Cathode is negative electrode",
+        "B. Convert chemical to electrical energy",
+        "C. Oxidation occurs at the anode",
+        "D. Redox reaction takes place in the cells"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "Electrolytic cells convert electrical energy to chemical energy, not the other way around."
+    },
+    {
+      "id": "q65",
+      "text": "The oxidation number of phosphorous in PO3− is;",
+      "options": [
+        "A. -5",
+        "B. -3",
+        "C. +5",
+        "D. +1"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "In PO3−, the oxidation number of phosphorus is -3."
+    },
+    {
+      "id": "q66",
+      "text": "In the reaction H2S(aq) + I2(aq) ⇌ S(s) + 2H+(aq) + 2I−(aq) the reducing agent is:",
+      "options": [
+        "A. S (s)",
+        "B. H2S (aq)",
+        "C. 2I−(aq)",
+        "D. I2 (aq)"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "H2S is oxidized, thus acting as the reducing agent."
+    }
+ ,     {
+      "id": "q67",
+      "text": "One of the following is true in the electrolysis of Brine solution?",
+      "options": [
+        "A. NaOH is formed in the cell",
+        "B. Cl2 is formed at cathode",
+        "C. H2 is formed at anode",
+        "D. Na is formed at cathode"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "During the electrolysis of brine, NaOH is formed at the cathode and chlorine gas (Cl2) at the anode."
+    },
+    {
+      "id": "q68",
+      "text": "The products for the electrolysis of molten CuCl2",
+      "options": [
+        "A. O2 at anode and Cl2 at cathode",
+        "B. Cu at anode and O2 at cathode",
+        "C. Cl2 at anode and H2 at cathode",
+        "D. Cl2 at anode and Cu at cathode"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "In the electrolysis of molten CuCl2, chlorine gas (Cl2) is produced at the anode, and copper (Cu) is deposited at the cathode."
+    },
+    {
+      "id": "q69",
+      "text": "For the electrolysis of an aqueous solution of Na2SO4",
+      "options": [
+        "A. O2 at cathode & H2 at anode are formed",
+        "B. Na at cathode & S2 at anode are formed",
+        "C. H2 at cathode & O2 at anode are formed",
+        "D. SO2 at cathode & Na at anode are formed"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "During the electrolysis of Na2SO4 solution, hydrogen gas (H2) is formed at the cathode and oxygen gas (O2) at the anode."
+    },
+    {
+      "id": "q70",
+      "text": "From the electrolysis of aqueous solution of AgNO3",
+      "options": [
+        "A. H2 is formed at cathode",
+        "B. O2 is formed at cathode",
+        "C. Ag is formed at cathode",
+        "D. NaOH is formed in the cell"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "During the electrolysis of AgNO3, silver (Ag) is deposited at the cathode."
+    },
+    {
+      "id": "q71",
+      "text": "In the electrolysis of aqueous solution of copper sulphate using active copper electrode;",
+      "options": [
+        "A. Cu (s) → Cu2+ (aq) + 2e",
+        "B. 2H+ (aq) + 2e → H2 (g)",
+        "C. 4OH− (aq) → O2 (g) + 2H2O (l) + 4e",
+        "D. Cu (s) + H2O (l) → Cu(OH)2 + H2 (g)"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "During the electrolysis of copper sulfate solution, copper metal at the anode oxidizes to Cu2+ and releases electrons."
+    },
+    {
+      "id": "q72",
+      "text": "What mass of Mg is formed by passing a current of 0.965 A through molten MgCl2 for a period of 100 seconds? (Molar mass of Mg = 24 g/mol, F = 96500 C)",
+      "options": [
+        "A. 10.2 g",
+        "B. 0.024 g",
+        "C. 34.05 g",
+        "D. 0.012 g"
+      ],
+      "correctOptionIndex": 1,
+      "explanation": "Using the equation /( m = \frac{I /cdot t /cdot M}{n /cdot F} /), the mass of magnesium formed is calculated as 0.024 g."
+    },
+    {
+      "id": "q73",
+      "text": "What is the mass of Aluminium deposited by the electrolysis of aqueous solution Al2(SO4)3 placed in series with AgNO3 aqueous solution when 10.8 g of Ag is deposited? (Molar mass of Ag = 108, Al = 27)",
+      "options": [
+        "A. 0.9 g",
+        "B. 27 g",
+        "C. 2.7 g",
+        "D. 9 g"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Using stoichiometry and Faraday's law, the mass of aluminium deposited is found to be 0.9 g."
+    },
+    {
+      "id": "q74",
+      "text": "The volume of O2 formed at STP when OH− is oxidized by passing 100 A in 965 seconds?",
+      "options": [
+        "A. 9.6 L",
+        "B. 22.4 L",
+        "C. 5.6 L",
+        "D. 0.25 L"
+      ],
+      "correctOptionIndex": 0,
+      "explanation": "Using Faraday's law, the volume of oxygen gas produced is calculated as 9.6 L at STP."
+    },
+    {
+      "id": "q75",
+      "text": "All of the following are uses of electrolysis, except;",
+      "options": [
+        "A. Purification of metals",
+        "B. Electroplating of metals",
+        "C. Production of metals",
+        "D. Production of electricity"
+      ],
+      "correctOptionIndex": 3,
+      "explanation": "Electrolysis is not typically used to produce electricity; it is used for processes like purification and electroplating."
+    },
+    {
+      "id": "q76",
+      "text": "All of the following are uses of electroplating, except;",
+      "options": [
+        "A. Prevent corrosion",
+        "B. Increase the beauty of the metals",
+        "C. Increase the reaction at the cathode",
+        "D. Increase the strength of the metals"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "Electroplating is used for improving the appearance, strength, and corrosion resistance of metals, but not for increasing reactions at the cathode."
+    },
+    {
+      "id": "q77",
+      "text": "Consider the standard voltaic cell, which answer identifies the cathode and gives the E0? Given E0red (Au+3/Au = 1.50 V, Fe+2/Fe = -0.44 V)",
+      "options": [
+        "A. Fe, -0.44 V",
+        "B. Au, 1.94 V",
+        "C. Au, 1.06 V",
+        "D. Fe, 1.94 V"
+      ],
+      "correctOptionIndex": 2,
+      "explanation": "In a standard voltaic cell, gold (Au) is the cathode with a reduction potential of 1.50 V, and the overall cell potential is 1.06 V."
+    }  
+  ]
+}

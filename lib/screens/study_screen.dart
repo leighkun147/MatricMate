@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fl_chart/fl_chart.dart';
 import '../models/subject.dart';
 import '../utils/stream_utils.dart';
@@ -151,12 +151,11 @@ class _StudyScreenState extends State<StudyScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Center(
-                      child: SvgPicture.asset(
-                        subject.iconPath,
-                        colorFilter: ColorFilter.mode(
-                          Theme.of(context).colorScheme.primary,
-                          BlendMode.srcIn,
-                        ),
+                      child: Image.asset(
+                        'assets/icons/${subject.name.toLowerCase()}.png',
+                        width: 64,
+                        height: 64,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),

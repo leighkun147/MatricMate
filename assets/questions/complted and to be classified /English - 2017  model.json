@@ -1,0 +1,849 @@
+{
+    "title": "CITY GOVERNMENT OF ADDIS ABABA EDUCATION BUREAU ARADA SUB-CITY EDUCATION OFFICE 2017 E.C 1ST SEMISTER ECONOMICS GRADE 12TH MODEL EXAMINATIONS TIME ALLOWED 2:30",
+    "duration": 150,
+    "constants": {},
+    "numberOfQuestions": 120,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Which of the following defines marginal utility?",
+        "options": ["The change in total utility divided by the price of a product.", "The maximum amount of satisfaction from consuming a product.", "The total satisfaction received from consuming as much of the product that is available for consumption.", "The additional satisfaction received from consuming one more unit of a product."],
+        "correctOptionIndex": 3,
+        "explanation": "Marginal utility is the additional satisfaction received from consuming one more unit of a product."
+      },
+      {
+        "id": "q2",
+        "text": "Which one of the following is best expresses the law of diminishing marginal utility?",
+        "options": ["The more consumption of a product, the smaller is the total and marginal utility from the consumption.", "The less consumption of a product, the greater is the total and marginal utility of the consumption.", "The more consumption of a product, the smaller is the marginal utility from consuming an additional unit.", "The more consumption of a product, the smaller is the total and marginal utility from the consumption."],
+        "correctOptionIndex": 2,
+        "explanation": "The law of diminishing marginal utility states that the more consumption of a product, the smaller is the marginal utility from consuming an additional unit."
+      },
+      {
+        "id": "q3",
+        "text": "Which one of the following is incorrect statement about characteristics of indifference curve?",
+        "options": ["Indifference curves are convex to the origin.", "Indifference curves can cross each other.", "Indifference curves are downward sloping.", "The further indifference curve away from the origin gives high level of satisfaction."],
+        "correctOptionIndex": 1,
+        "explanation": "Indifference curves cannot cross each other."
+      },
+      {
+        "id": "q4",
+        "text": "All are assumptions of ordinal utility theory except one.",
+        "options": ["Consumers are rational", "Utility is ordinal", "Utility is cardinal", "Complete ordering"],
+        "correctOptionIndex": 2,
+        "explanation": "Utility is cardinal is not an assumption of ordinal utility theory."
+      },
+      {
+        "id": "q5",
+        "text": "Consider two goods, X and Y. If the consumer is indifferent between consuming bundles of (10X, 5Y) and (5X, 10Y) then, what kind of relationship exists between the goods?",
+        "options": ["Perfect complements", "Perfect substitutes", "Independent", "Cannot be determined from this information"],
+        "correctOptionIndex": 1,
+        "explanation": "If the consumer is indifferent between the bundles, the goods are perfect substitutes."
+      },
+      {
+        "id": "q6",
+        "text": "The locus of combinations or bundle of goods that can be purchased if all the income spent is -",
+        "options": ["Demand", "Utility", "Budget Line", "Supply"],
+        "correctOptionIndex": 2,
+        "explanation": "The budget line represents the combinations of goods that can be purchased if all the income is spent."
+      },
+      {
+        "id": "q7",
+        "text": "When a consumer is below his budget line rather than on it, this implies that the consumer",
+        "options": ["Has spent all of his income.", "Has obtained maximum satisfaction", "Did not spend all of his/her personal.", "Is at equilibrium"],
+        "correctOptionIndex": 2,
+        "explanation": "Being below the budget line implies that the consumer did not spend all of his/her income."
+      },
+      {
+        "id": "q8",
+        "text": "If the consumer’s income is Birr 900 and the price of X is Birr 8 per unit and the price of Y is Birr 16 per unit then, calculate the slope of budget line.",
+        "options": ["0.3", "0.5", "0.8", "0.7"],
+        "correctOptionIndex": 1,
+        "explanation": "The slope of the budget line is -(Px/Py) = -(8/16) = -0.5."
+      },
+      {
+        "id": "q9",
+        "text": "Given two commodities X and Y and level of income M, if price of good X decreases (money income and price of Y remaining the same), which of the following is true?",
+        "options": ["The budget line rotates to the left.", "The budget line rotates inward for the X commodity.", "The slope of the budget line remains the same.", "The budget line rotates outward for the X commodity."],
+        "correctOptionIndex": 3,
+        "explanation": "If the price of X decreases, the budget line rotates outward for the X commodity."
+      },
+      {
+        "id": "q10",
+        "text": "At equilibrium, the slope of highest attainable indifference curve is:",
+        "options": ["Greater than the slope of the budget line", "Less than the slope of the budget line", "Equal to the slope of the budget line", "Indeterminate"],
+        "correctOptionIndex": 2,
+        "explanation": "At equilibrium, the slope of the highest attainable indifference curve is equal to the slope of the budget line."
+      },
+      {
+        "id": "q11",
+        "text": "The main criteria to classify or distinguish markets are",
+        "options": ["Nature of the product", "Location of the firm", "Location of Consumers", "Profit of the firm"],
+        "correctOptionIndex": 0,
+        "explanation": "Markets are classified based on the nature of the product."
+      },
+      {
+        "id": "q12",
+        "text": "Based on the numbers of firm in the market which one indicates correctly chronological order from largest to smallest.",
+        "options": ["Monopoly - Oligopoly - Monopolistic Competition - Perfect Competition", "Oligopoly - Monopolistic Competition - Monopoly - Perfect Competition", "Monopolistic Competition - Perfect Competition - Oligopoly - Monopoly", "Perfect Competition - Monopolistic Competition - Oligopoly - Monopoly"],
+        "correctOptionIndex": 2,
+        "explanation": "The correct order from largest to smallest number of firms is Perfect Competition - Monopolistic Competition - Oligopoly - Monopoly."
+      },
+      {
+        "id": "q13",
+        "text": "Perfect competition is characterized by all of the following EXCEPT",
+        "options": ["Well-informed buyers and sellers with respect to prices.", "A large number of buyers and sellers.", "No restrictions on entry into or exit from the industry.", "Considerable advertising by individual firms"],
+        "correctOptionIndex": 3,
+        "explanation": "Perfect competition does not involve considerable advertising by individual firms."
+      },
+      {
+        "id": "q14",
+        "text": "All of the following are true about the long-run equilibrium of perfectly competitive firms EXCEPT",
+        "options": ["The downward portion of long-run average cost curve is tangent to the demand curve, then long run equilibrium is achieved.", "The minimum long-run average cost curve is tangent to the demand curve then, long run equilibrium is achieved.", "Firms in perfectly competitive market earn a normal profit.", "Price and average cost of the firm are equal due to free entry"],
+        "correctOptionIndex": 0,
+        "explanation": "The downward portion of the long-run average cost curve being tangent to the demand curve does not achieve long-run equilibrium."
+      },
+      {
+        "id": "q15",
+        "text": "Perfectly competitive firm has a marginal cost function of MC = 2Q + 20 and the equilibrium price is Birr 100. Find the profit maximizing level of output.",
+        "options": ["50", "30", "40", "80"],
+        "correctOptionIndex": 1,
+        "explanation": "To find the profit-maximizing level of output, set MC = P. 2Q + 20 = 100 => 2Q = 80 => Q = 40."
+      },
+      {
+        "id": "q16",
+        "text": "Which one of the following is NOT true about reasons for the existence of monopolies?",
+        "options": ["Absence of close-substitutes", "Diseconomies of scale in production", "Ownership of strategic or key input", "Patent right for products"],
+        "correctOptionIndex": 1,
+        "explanation": "Diseconomies of scale in production is not a reason for the existence of monopolies."
+      },
+      {
+        "id": "q17",
+        "text": "What is the difference between first degree and second degree price discrimination in monopoly market?",
+        "options": ["The first charges different price based on amount but the second charges different price based on consumer’s ability.", "The first charges different price based on consumer’s ability but the second charges different price based on amount.", "The first charges different price based on divided the market into sub market but the second charges different price based on amount.", "The first charges different price based on amount but the second charges different price based on divided the market into sub market."],
+        "correctOptionIndex": 0,
+        "explanation": "First-degree price discrimination charges different prices based on the amount, while second-degree price discrimination charges different prices based on the consumer's ability."
+      },
+      {
+        "id": "q18",
+        "text": "Which market structure differentiates product?",
+        "options": ["Perfect competition", "Oligopoly", "Monopolistic competition", "Monopoly"],
+        "correctOptionIndex": 2,
+        "explanation": "Monopolistic competition differentiates products."
+      },
+      {
+        "id": "q19",
+        "text": "What is the difference between perfect competition and monopolistic competition?",
+        "options": ["Perfect competition has a large number of small firms while monopolistic competition does not.", "In perfect competition, firms produce identical goods, while in monopolistic competition, firms produce slightly different goods.", "Perfect competition has no barriers to entry, while monopolistic competition does.", "Perfect competition has barriers to entry while monopolistic competition does not."],
+        "correctOptionIndex": 2,
+        "explanation": "Perfect competition has no barriers to entry, while monopolistic competition does."
+      },
+      {
+        "id": "q20",
+        "text": "Which one of the following are not the features of oligopoly firm?",
+        "options": ["Produce homogeneous or differentiated product", "Interdependence among firms", "Many sellers and buyers", "Few dominant firms in the market"],
+        "correctOptionIndex": 2,
+        "explanation": "Oligopoly firms have few dominant firms in the market, not many sellers and buyers."
+      },
+      {
+        "id": "q21",
+        "text": "If a firm sells its output on a market that is characterized by few sellers and many buyers and limited long-run resource mobility, then the firm is",
+        "options": ["Monopoly", "An oligopolistic", "A perfect competitor", "A monopolistic competitor"],
+        "correctOptionIndex": 1,
+        "explanation": "The firm is an oligopolistic firm."
+      },
+      {
+        "id": "q22",
+        "text": "Which one are not the reasons of National income accounting practice is good for an economy?",
+        "options": ["It enables us to know the level of output of an economy.", "To observe the short-run trend of the economy.", "It helps in policy formulation since it can be used as evidence in policy making.", "It makes cross-country comparison easier."],
+        "correctOptionIndex": 1,
+        "explanation": "National income accounting practice helps in observing the long-run trend of the economy, not the short-run trend."
+      },
+      {
+        "id": "q23",
+        "text": "Which one of the following is best describe national income accounting?",
+        "options": ["It is regional measurements of economy of the world.", "It is official measurement of flow of income and product.", "It is the official measure of income only in the economy.", "It measures net transfers and aids only."],
+        "correctOptionIndex": 1,
+        "explanation": "National income accounting is the official measurement of the flow of income and product."
+      },
+      {
+        "id": "q24",
+        "text": "Which one of the following statement is false EXCEPT.",
+        "options": ["National income accounting is represented by GDP.", "GDP is wider concept than GNP", "GDP measures both territorial products and factor income.", "GDP is not official measure of flow of income and products."],
+        "correctOptionIndex": 3,
+        "explanation": "GDP is the official measure of the flow of income and products."
+      },
+      {
+        "id": "q25",
+        "text": "Which one of the following statement correctly represent GNP?",
+        "options": ["It is the difference between GDP and factor income.", "It is a flow concept but not stock measure.", "It measures the only factors of production produced in a country.", "It measures the market value of human labour in the economy"],
+        "correctOptionIndex": 0,
+        "explanation": "GNP is the difference between GDP and factor income."
+      },
+      {
+        "id": "q26",
+        "text": "Which one of the following statement is false about product approach of measuring GDP except.",
+        "options": ["It is the market value of all final goods and services.", "It is the market values of all intermediate goods.", "It is the market value of only necessity goods.", "It is the amount of money collected by sellers on final goods and services."],
+        "correctOptionIndex": 1,
+        "explanation": "The product approach of measuring GDP includes the market value of all final goods and services, not intermediate goods."
+      },
+      {
+        "id": "q27",
+        "text": "Which statement is correct about trade balance?",
+        "options": ["It is the difference between buying to foreigner and sell to foreigners", "It may be deficit when export greater than import.", "It may be surplus when export less than import.", "It may be balance when import less than export."],
+        "correctOptionIndex": 0,
+        "explanation": "Trade balance is the difference between exports and imports."
+      },
+      {
+        "id": "q28",
+        "text": "Which one of the following is NOT common problem of measuring GDP?",
+        "options": ["Double counting", "The existence of large informal sector.", "Unproductive transactions", "Transfer payments and aids."],
+        "correctOptionIndex": 3,
+        "explanation": "Transfer payments and aids are not a common problem of measuring GDP."
+      },
+      {
+        "id": "q29",
+        "text": "Which statement is false about nominal and real GDP?",
+        "options": ["Nominal GDP is measured by constant price but real GDP is measured by current price.", "Nominal GDP is valued by current price but real GDP is measured by constant price.", "Nominal GDP increases when the amount of goods and services increases.", "Real GDP increases when either output or price increases."],
+        "correctOptionIndex": 0,
+        "explanation": "Nominal GDP is valued by current prices, while real GDP is measured by constant prices."
+      },
+      {
+        "id": "q30",
+        "text": "The measure of price typical basket of goods bought by firm.",
+        "options": ["Consumer price index", "Producer price index", "GDP deflator", "Nominal GDP."],
+        "correctOptionIndex": 2,
+        "explanation": "The GDP deflator measures the price of a typical basket of goods bought by firms."
+      },
+      {
+        "id": "q31",
+        "text": "Which one of the following statement is true about price index?",
+        "options": ["GDP deflator measures the price of producer goods but CPI measures only consumer goods", "GDP deflator measures the price of both producer and consumer goods but CPI measures goods bought by consumers.", "Both GDP deflator and CPI measure the same thing.", "Increase in imported goods affects GDP deflator."],
+        "correctOptionIndex": 1,
+        "explanation": "GDP deflator measures the price of both producer and consumer goods, while CPI measures the price of goods bought by consumers."
+      },
+      {
+        "id": "q32",
+        "text": "If consumer has 3000ETB and makes consumption expenditure of 2000ETB, the APC of a household is:",
+        "options": ["0.75", "0.66", "0.5", "1"],
+        "correctOptionIndex": 0,
+        "explanation": "APC (Average Propensity to Consume) = Consumption Expenditure / Income = 2000ETB / 3000ETB = 0.66."
+      },
+      {
+        "id": "q33",
+        "text": "Which one of the following statement is true?",
+        "options": ["APC is greater than 1 when income is very high.", "APC is less than 1 when income is very low", "APC is greater than 1 when income is very low.", "APC is equal to 1 when income is very low"],
+        "correctOptionIndex": 2,
+        "explanation": "APC is greater than 1 when income is very low."
+      },
+      {
+        "id": "q34",
+        "text": "An increase in consumer confidence is MOST likely to lead to:",
+        "options": ["Decrease in autonomous consumption", "Decrease in overall consumption", "An increase in overall consumption", "A decrease in the marginal propensity to consume"],
+        "correctOptionIndex": 2,
+        "explanation": "An increase in consumer confidence is most likely to lead to an increase in overall consumption."
+      },
+      {
+        "id": "q35",
+        "text": "Which of the following best describes the concept of marginal propensity to consume (MPC)?",
+        "options": ["The total amount of income spent on consumption.", "The proportion of total income that is saved.", "The change in consumption resulting from a change in income.", "The average level of consumption over time"],
+        "correctOptionIndex": 2,
+        "explanation": "MPC is the change in consumption resulting from a change in income."
+      },
+      {
+        "id": "q36",
+        "text": "If the marginal propensity to save (MPS) is 0.2, what is the marginal propensity to consume (MPC)?",
+        "options": ["0.1", "0.2", "0.8", "1.2"],
+        "correctOptionIndex": 2,
+        "explanation": "MPC = 1 - MPS = 1 - 0.2 = 0.8."
+      },
+      {
+        "id": "q37",
+        "text": "What is the primary purpose of investment in economics?",
+        "options": ["To consume goods and services.", "To increase current spending.", "To increase future production and income.", "To reduce savings."],
+        "correctOptionIndex": 2,
+        "explanation": "The primary purpose of investment in economics is to increase future production and income."
+      },
+      {
+        "id": "q38",
+        "text": "Which of the following is NOT typically considered a component of business investment?",
+        "options": ["Purchase of new equipment.", "Construction of new factories.", "Government bonds.", "Changes in inventory."],
+        "correctOptionIndex": 2,
+        "explanation": "Government bonds are not typically considered a component of business investment."
+      },
+      {
+        "id": "q39",
+        "text": "What does the term 'present value' refer to in the context of investment?",
+        "options": ["The original cost of an asset", "The current value of a future sum of money.", "The expected profit from an investment.", "The total costs associated with an investment."],
+        "correctOptionIndex": 1,
+        "explanation": "Present value refers to the current value of a future sum of money."
+      },
+      {
+        "id": "q40",
+        "text": "Suppose BEKELE has a monthly income of $3,000 and he wants to save 15% of it. What is the amount he allocates to save in each month?",
+        "options": ["$150", "$300", "$450", "$500"],
+        "correctOptionIndex": 1,
+        "explanation": "15% of $3,000 is $450."
+      },
+      {
+        "id": "q41",
+        "text": "What would be the consequence of a country consistently having a trade deficit?",
+        "options": ["A consistent increase in the country's GDP", "A constant increase in the country's standard of living", "A decrease in the country's net exports which negatively affects the GDP", "A significant increase in local production"],
+        "correctOptionIndex": 2,
+        "explanation": "A consistent trade deficit leads to a decrease in the country's net exports, which negatively affects the GDP."
+      },
+      {
+        "id": "q42",
+        "text": "Which of the following is a key measure of national income?",
+        "options": ["Consumer Price Index (CPI)", "Gross Domestic Product (GDP)", "Unemployment Rate", "Interest Rate"],
+        "correctOptionIndex": 1,
+        "explanation": "Gross Domestic Product (GDP) is a key measure of national income."
+      },
+      {
+        "id": "q43",
+        "text": "The expenditure approach to calculating GDP includes which of the following components?",
+        "options": ["Wages, rents, and profits.", "Consumption, investment, government spending, and net exports.", "Taxes, transfers, and subsidies.", "Imports, exports, and tariffs."],
+        "correctOptionIndex": 1,
+        "explanation": "The expenditure approach to calculating GDP includes consumption, investment, government spending, and net exports."
+      },
+      {
+        "id": "q44",
+        "text": "Which approach to measuring GDP is most likely to be affected by changes in inventory levels?",
+        "options": ["Income Approach", "Expenditure Approach", "Production Approach", "The production and income approaches are equally affected by inventory."],
+        "correctOptionIndex": 1,
+        "explanation": "The expenditure approach to measuring GDP is most likely to be affected by changes in inventory levels."
+      },
+      {
+        "id": "q45",
+        "text": "An economy experiences a decline in business investment and an increase in consumer spending. What would likely be the impact on the different approaches to calculating GDP?",
+        "options": ["Both approaches will measure the same decline in GDP.", "Both approaches will measure the same increase in GDP.", "The expenditure approach will show a smaller increase than the income approach.", "The expenditure approach may show a smaller impact than the income approach, due to less production, but the results will be the same."],
+        "correctOptionIndex": 2,
+        "explanation": "The expenditure approach may show a smaller impact than the income approach due to less production, but the results will be the same."
+      },
+      {
+        "id": "q46",
+        "text": "What is a potential limitation of using the income approach to measure GDP?",
+        "options": ["It does not measure consumption.", "It only includes profits.", "It can be difficult to accurately measure all types of income.", "It fails to account for government"],
+        "correctOptionIndex": 2,
+        "explanation": "It can be difficult to accurately measure all types of income using the income approach."
+      },
+      {
+        "id": "q47",
+        "text": "Which of the following is a potential weakness of the expenditure approach to measuring GDP?",
+        "options": ["It ignores government spending.", "It does not include investment.", "It does not capture all economic activities within a given economy.", "It includes double counting of the value of goods and services."],
+        "correctOptionIndex": 2,
+        "explanation": "The expenditure approach does not capture all economic activities within a given economy."
+      },
+      {
+        "id": "q48",
+        "text": "Why are firms in an oligopoly considered 'mutually interdependent'?",
+        "options": ["Because they operate completely independently of each other.", "Because their actions directly impact each other's profits.", "Because they produce identical products.", "Because they all share the same production methods."],
+        "correctOptionIndex": 1,
+        "explanation": "Firms in an oligopoly are considered mutually interdependent because their actions directly impact each other's profits."
+      },
+      {
+        "id": "q49",
+        "text": "How does product differentiation affect firms in an oligopoly?",
+        "options": ["Reduces the power of each individual firm.", "Increases the power of each individual firm.", "Has no impact on the firms' power.", "Encourages perfect competition in the market."],
+        "correctOptionIndex": 1,
+        "explanation": "Product differentiation increases the power of each individual firm in an oligopoly."
+      },
+      {
+        "id": "q50",
+        "text": "Which one of the following is false in perfectly competitive market?",
+        "options": ["Goods are heterogeneous", "Free exit and entry", "Firms are price takers", "Many buyers and many sellers"],
+        "correctOptionIndex": 0,
+        "explanation": "In a perfectly competitive market, goods are homogeneous."
+      },
+      {
+        "id": "q51",
+        "text": "What is a 'kinked demand curve' used to describe in oligopoly theory?",
+        "options": ["Highly elastic demand for a product.", "Relatively stable prices due to mutual interdependence.", "A single firm with no competition.", "Firms having very little market share."],
+        "correctOptionIndex": 1,
+        "explanation": "A kinked demand curve describes relatively stable prices due to mutual interdependence in an oligopoly."
+      },
+      {
+        "id": "q52",
+        "text": "How might the presence of an oligopoly affect consumer choice compared to a perfectly competitive market?",
+        "options": ["Consumers will have more product choice.", "Consumers will have less product choice.", "Oligopoly will have no impact on the amount of choice that consumers have.", "Consumers will have access to homogeneous products"],
+        "correctOptionIndex": 1,
+        "explanation": "The presence of an oligopoly may result in less product choice for consumers compared to a perfectly competitive market."
+      },
+      {
+        "id": "q53",
+        "text": "In evaluating an oligopolistic market, which of the following is the most relevant factor to analyze?",
+        "options": ["The total number of firms in the industry", "The extent of barriers to entry", "The degree of government regulation", "The level of product differentiation and the degree of collusion."],
+        "correctOptionIndex": 1,
+        "explanation": "The extent of barriers to entry is the most relevant factor to analyze in an oligopolistic market."
+      },
+      {
+        "id": "q54",
+        "text": "Which one of the following is not the objective of macroeconomics analyzing?",
+        "options": ["It helps to understand how individual economy growth", "It helps to understand how to nation increasing economic growth", "It helps to understand how inflation is controlled", "It helps to understand how the domestic economy interacts with the rest of the world"],
+        "correctOptionIndex": 0,
+        "explanation": "Macroeconomics analyzing helps to understand how the national economy grows, not individual economy growth."
+      },
+      {
+        "id": "q55",
+        "text": "Which one of the following is correct?",
+        "options": ["GNP = GDP + NFI", "GNP = GDP - NFI", "NFI - GNP = GDP", "NFI = GDP"],
+        "correctOptionIndex": 0,
+        "explanation": "GNP = GDP + NFI (Net Factor Income from abroad)."
+      },
+      {
+        "id": "q56",
+        "text": "Consumer Price Index in 2001 E.C is 140, and in 2002 is 120, then, what is the inflation rate from 2000 to 2002?",
+        "options": ["14.3%", "9.5%", "-14.3%", "9.5%"],
+        "correctOptionIndex": 2,
+        "explanation": "Inflation rate = [(CPI in 2002 - CPI in 2001) / CPI in 2001] * 100 = [(120 - 140) / 140] * 100 = -14.3%."
+      },
+      {
+        "id": "q57",
+        "text": "What is the minimum amount of remuneration that an employer is required to pay to wage earners for the work that is performed during a given period?",
+        "options": ["Minimum wages", "Maximum wage", "Income wages", "Price floor"],
+        "correctOptionIndex": 0,
+        "explanation": "The minimum amount of remuneration that an employer is required to pay to wage earners is minimum wages."
+      },
+      {
+        "id": "q58",
+        "text": "What are the types of inflation, if the inflation rate is 3% to 10%?",
+        "options": ["Galloping inflation", "Hyperinflation", "Walking inflation", "Running inflation"],
+        "correctOptionIndex": 2,
+        "explanation": "An inflation rate of 3% to 10% is considered walking inflation."
+      },
+      {
+        "id": "q59",
+        "text": "Which one of the following refers to the recurrent ups and downs in the level of economic activity?",
+        "options": ["Economic boom", "Economic trough", "Unemployment", "Business cycle"],
+        "correctOptionIndex": 3,
+        "explanation": "The business cycle refers to the recurrent ups and downs in the level of economic activity."
+      },
+      {
+        "id": "q60",
+        "text": "Which one of the following is not true about GDP?",
+        "options": ["Total income earned by all citizens of the country", "The total value of all goods and services sold in economy", "The total value of all final goods and services with in a country's border", "The total value of goods and services of intermediate in country"],
+        "correctOptionIndex": 3,
+        "explanation": "GDP does not include the total value of goods and services of intermediate in the country."
+      },
+      {
+        "id": "q61",
+        "text": "In a country A, the price index was 100 in 2003, 125 in 2004 and 150 in 2005. What was the changes to inflation in the country in 2005?",
+        "options": ["Decreasing inflation", "Increasing inflation", "Unchanged", "Not determined"],
+        "correctOptionIndex": 1,
+        "explanation": "The price index increased from 125 in 2004 to 150 in 2005, indicating increasing inflation."
+      },
+      {
+        "id": "q62",
+        "text": "The phase of business cycle during which business confidence in the economy is at its lowest is known as:",
+        "options": ["Peak", "Depression", "Recovery", "Contraction"],
+        "correctOptionIndex": 1,
+        "explanation": "The phase of the business cycle during which business confidence in the economy is at its lowest is known as depression."
+      },
+      {
+        "id": "q63",
+        "text": "Labor force consists of all those:",
+        "options": ["Who are fit for work", "Who are not willing to work", "Who are not available for work", "Pensioners"],
+        "correctOptionIndex": 0,
+        "explanation": "Labor force consists of all those who are fit for work."
+      },
+      {
+        "id": "q64",
+        "text": "Suppose the government of Ethiopia decided to build a new school. Which category of Expenditure budget will the money be spent?",
+        "options": ["Recurrent expenditure budget", "Capital expenditure budget", "Revenue budget", "Deficit financial budget"],
+        "correctOptionIndex": 1,
+        "explanation": "The money for building a new school will be spent from the capital expenditure budget."
+      },
+      {
+        "id": "q65",
+        "text": "The Government body responsible for the implementation of monetary policy is",
+        "options": ["Commercial Bank of Ethiopia", "Ministry of Finance and Economic Development", "Ministry of Trade and Industry", "National Bank of Ethiopia"],
+        "correctOptionIndex": 3,
+        "explanation": "The National Bank of Ethiopia is responsible for the implementation of monetary policy."
+      },
+      {
+        "id": "q66",
+        "text": "Macroeconomic policy reforms taken in Ethiopia include",
+        "options": ["A tight monetary policy to ensure macro-economic stability", "An exchange rate policy which revalued birr to encourage exports and discourage imports", "A fiscal policy undertaken to increase fiscal deficit", "Interest rate policy which imposed interest rate ceiling on borrowers"],
+        "correctOptionIndex": 1,
+        "explanation": "An exchange rate policy which revalued birr to encourage exports and discourage imports is a macroeconomic policy reform taken in Ethiopia."
+      },
+      {
+        "id": "q67",
+        "text": "Who is the economist mostly close to associated with monetarist school thought?",
+        "options": ["Karl Marx", "John Maynard Keynes", "Milton Friedman", "Adam Smith"],
+        "correctOptionIndex": 2,
+        "explanation": "Milton Friedman is mostly associated with the monetarist school of thought."
+      },
+      {
+        "id": "q68",
+        "text": "Which one of the following is the best description of the inflation?",
+        "options": ["A situation where unemployment is low", "A growth of economy", "An increase in general price level of goods and services", "A decrease in general price level of goods and services"],
+        "correctOptionIndex": 2,
+        "explanation": "Inflation is an increase in the general price level of goods and services."
+      },
+      {
+        "id": "q69",
+        "text": "Under fixed exchange rate policy, what is an increase in the exchange rates due to political and economic decisions of the government?",
+        "options": ["Devaluation", "Revaluation", "Depression", "Floating"],
+        "correctOptionIndex": 0,
+        "explanation": "An increase in the exchange rates due to political and economic decisions of the government is called devaluation."
+      },
+      {
+        "id": "q70",
+        "text": "Which one of the following factors causes an increase of one country GDP?",
+        "options": ["Decrease in the value of export", "An increasing value of investment", "An increase value of import", "Decrease government investment."],
+        "correctOptionIndex": 1,
+        "explanation": "An increasing value of investment causes an increase in one country's GDP."
+      },
+      {
+        "id": "q71",
+        "text": "In the case of inflationary gap:",
+        "options": ["AD > AS", "AD = AS", "AD < AS", "AD and AS = 0"],
+        "correctOptionIndex": 0,
+        "explanation": "In the case of an inflationary gap, aggregate demand (AD) is greater than aggregate supply (AS)."
+      },
+      {
+        "id": "q72",
+        "text": "Aggregate demand is determined by:",
+        "options": ["Population of the country", "Cost of inputs", "Managerial efficiency", "State of technology"],
+        "correctOptionIndex": 3,
+        "explanation": "Aggregate demand is determined by the state of technology."
+      },
+      {
+        "id": "q73",
+        "text": "To control the situation of deficient demand, what is the government measurement?",
+        "options": ["Government expenditure is reduced.", "Tax rates are increased.", "Public borrowing is increased.", "The interest rate is increased."],
+        "correctOptionIndex": 2,
+        "explanation": "To control the situation of deficient demand, public borrowing is increased."
+      },
+      {
+        "id": "q74",
+        "text": "What is the role of central bank to control the situation of excess demand?",
+        "options": ["The central bank reduces bank rate.", "The central bank sells government securities.", "The central bank decreases CRR.", "The central bank collects tax."],
+        "correctOptionIndex": 1,
+        "explanation": "The central bank sells government securities to control the situation of excess demand."
+      },
+      {
+        "id": "q75",
+        "text": "A reduction in bank interest rate is:",
+        "options": ["Contractionary fiscal policy", "An expansionary fiscal policy", "An expansionary monetary policy", "Contractionary monetary policy"],
+        "correctOptionIndex": 2,
+        "explanation": "A reduction in bank interest rate is an expansionary monetary policy."
+      },
+      {
+        "id": "q76",
+        "text": "Which one of the following is the components of aggregate demand that includes output, the cost of capital and expectation about the future.",
+        "options": ["Consumption", "Investment", "Government spending", "Net export"],
+        "correctOptionIndex": 1,
+        "explanation": "Investment is the component of aggregate demand that includes output, the cost of capital, and expectation about the future."
+      },
+      {
+        "id": "q77",
+        "text": "C + I + G + (X - M) = ?",
+        "options": ["Aggregate Supply", "Aggregate Demand", "GNP", "GTP"],
+        "correctOptionIndex": 1,
+        "explanation": "C + I + G + (X - M) represents aggregate demand."
+      },
+      {
+        "id": "q78",
+        "text": "Which one of the following is not true about aggregate demand?",
+        "options": ["The total amount of money which all sectors spent.", "All spent of money households, firms, and governments", "Sum of spending by consumers, businesses, and governments which depends on the level of prices", "Total amount of goods and services different sectors in the economy willingly supply"],
+        "correctOptionIndex": 3,
+        "explanation": "Aggregate demand is the total amount of money which all sectors spent, not the total amount of goods and services different sectors in the economy willingly supply."
+      },
+      {
+        "id": "q79",
+        "text": "Which one of the following is NOT the determinant of aggregate demand?",
+        "options": ["General level of income of the people", "Real interest rate", "The level of exports", "Taste of the preference"],
+        "correctOptionIndex": 3,
+        "explanation": "Taste of the preference is not a determinant of aggregate demand."
+      },
+      {
+        "id": "q80",
+        "text": "The Keynesian aggregate supply curve is:",
+        "options": ["Vertical", "Horizontal", "Parallel", "Straight line"],
+        "correctOptionIndex": 1,
+        "explanation": "The Keynesian aggregate supply curve is horizontal."
+      },
+      {
+        "id": "q81",
+        "text": "An increase in aggregate demand:",
+        "options": ["Lowers real GDP", "Raises the employment rate", "Raises aggregate level of prices", "Reduces the employment rate"],
+        "correctOptionIndex": 2,
+        "explanation": "An increase in aggregate demand raises the aggregate level of prices."
+      },
+      {
+        "id": "q82",
+        "text": "Suppose that the nominal wages is $30 an hour, and the price level as measured by price index is 1.50. What is the real wages?",
+        "options": ["$20", "$30", "$40", "$50"],
+        "correctOptionIndex": 0,
+        "explanation": "Real wages = Nominal wages / Price index = $30 / 1.50 = $20."
+      },
+      {
+        "id": "q83",
+        "text": "Aggregate demand curve is typically:",
+        "options": ["Upward sloping", "Downward sloping", "Vertical", "Horizontal"],
+        "correctOptionIndex": 1,
+        "explanation": "The aggregate demand curve is typically downward sloping."
+      },
+      {
+        "id": "q84",
+        "text": "Which one of the following is not the components of aggregate demand?",
+        "options": ["Consumption", "Investment", "Government spending", "Aggregate supply"],
+        "correctOptionIndex": 3,
+        "explanation": "Aggregate supply is not a component of aggregate demand."
+      },
+      {
+        "id": "q85",
+        "text": "What is the market failure in economics?",
+        "options": ["An inefficient distribution of goods and services in the free market.", "An efficient distribution of goods and services in the free market.", "An inefficient distribution of goods but not services in the free market.", "An efficient distribution of services but not goods in the free market."],
+        "correctOptionIndex": 0,
+        "explanation": "Market failure is an inefficient distribution of goods and services in the free market."
+      },
+      {
+        "id": "q86",
+        "text": "Which one of the following is not the cause of market failure?",
+        "options": ["Externalities", "Public goods", "In perfect competition", "Information asymmetry"],
+        "correctOptionIndex": 2,
+        "explanation": "In perfect competition is not a cause of market failure."
+      },
+      {
+        "id": "q87",
+        "text": "Which one of the following is not the example of pure public goods?",
+        "options": ["National defense", "Clean air", "Biodiversity", "Food"],
+        "correctOptionIndex": 3,
+        "explanation": "Food is not an example of pure public goods."
+      },
+      {
+        "id": "q88",
+        "text": "A positive externality exists when:",
+        "options": ["Third party incurs a cost from transaction", "The market produces too much of a good", "A third party benefits from a transaction", "Market fails to exist"],
+        "correctOptionIndex": 2,
+        "explanation": "A positive externality exists when a third party benefits from a transaction."
+      },
+      {
+        "id": "q89",
+        "text": "According to A.C. Pigou, which one is not a solution assumption of externality?",
+        "options": ["Externality is the difference between MSC and MPC", "There is no competitive industry.", "A firm producing output and emitting smoke.", "The external cost of pollution is borne by others."],
+        "correctOptionIndex": 1,
+        "explanation": "There is no competitive industry is not a solution assumption of externality."
+      },
+      {
+        "id": "q90",
+        "text": "Which one of the following is correct about externalities?",
+        "options": ["Externalities can be either positive or negative.", "Externalities can be generated by only consumers", "Externalities are not reciprocal in nature", "Externalities can be generated by only producers."],
+        "correctOptionIndex": 0,
+        "explanation": "Externalities can be either positive or negative."
+      },
+      {
+        "id": "q91",
+        "text": "When there is negative externality:",
+        "options": ["MSC > PMC", "MSC < PMC", "MSC = PMC", "MSC + PMC = 0"],
+        "correctOptionIndex": 1,
+        "explanation": "When there is a negative externality, MSC < PMC."
+      },
+      {
+        "id": "q92",
+        "text": "What is a situation in which different agents have a different amount of information about a good, when one party in a transaction is in possession of more information than the other?",
+        "options": ["Asymmetric information", "Signaling", "Screening", "Producer surplus"],
+        "correctOptionIndex": 0,
+        "explanation": "Asymmetric information is a situation in which different agents have a different amount of information about a good."
+      },
+      {
+        "id": "q93",
+        "text": "Which types of asymmetric information is situations where one side of the market cannot observe the 'type' or quality of the goods on the other side of the market?",
+        "options": ["Hidden information problem", "Moral hazard", "Ex-post moral hazard", "Signaling"],
+        "correctOptionIndex": 0,
+        "explanation": "Hidden information problem is a situation where one side of the market cannot observe the type or quality of the goods on the other side of the market."
+      },
+      {
+        "id": "q94",
+        "text": "What is the goal of consumer’s protection?",
+        "options": ["To safeguard the interest and rights of consumers only.", "To measures adopted for the protection of consumers as they affected by unscrupulous", "To provide them with speedy redress of their grievances.", "To promote misleading advertisements."],
+        "correctOptionIndex": 1,
+        "explanation": "The goal of consumer protection is to safeguard the interest and rights of consumers and to measures adopted for the protection of consumers as they affected by unscrupulous."
+      },
+      {
+        "id": "q95",
+        "text": "Which one of the following arguments that favors of consumer protection, when business must be guided by certain social and ethical norms?",
+        "options": ["Social Responsibility", "Increasing Awareness", "Consumer Satisfaction", "Principle of Trusteeship"],
+        "correctOptionIndex": 0,
+        "explanation": "Social Responsibility is an argument that favors consumer protection when business must be guided by certain social and ethical norms."
+      },
+      {
+        "id": "q96",
+        "text": "The main objectives of the Consumer Protection Act in Ethiopia are to:",
+        "options": ["Protect the business community from anti-competitive and unfair market practices", "To discourage a competitive free market.", "Ensure that consumers get goods and services less safe guarded.", "To accelerate economic development and unscrupulous market"],
+        "correctOptionIndex": 0,
+        "explanation": "The main objectives of the Consumer Protection Act in Ethiopia are to protect the business community from anti-competitive and unfair market practices."
+      },
+      {
+        "id": "q97",
+        "text": "What is the general objectives of macroeconomic policy?",
+        "options": ["To minimize feasible output", "To decrease rate of economic growth", "To achieve full employment and price stability", "To equality in the distribution of income"],
+        "correctOptionIndex": 2,
+        "explanation": "The general objectives of macroeconomic policy are to achieve full employment and price stability."
+      },
+      {
+        "id": "q98",
+        "text": "Which economic thought believed that an automatic mechanism works to restore stability in the economy recession would cure itself and inflation will be automatically controlled?",
+        "options": ["Classical", "Keynesian", "Monetarism", "New Keynesians"],
+        "correctOptionIndex": 0,
+        "explanation": "Classical economic thought believed that an automatic mechanism works to restore stability in the economy, recession would cure itself, and inflation will be automatically controlled."
+      },
+      {
+        "id": "q99",
+        "text": "Which one of the following is excluded under the government spending?",
+        "options": ["Salaries of public servants", "Purchase of weapons for the military", "Investment expenditure", "Capital gains from investment"],
+        "correctOptionIndex": 3,
+        "explanation": "Capital gains from investment are excluded under the government spending."
+      },
+      {
+        "id": "q100",
+        "text": "Which types of tax the government imposes on export and import goods?",
+        "options": ["Tariff", "Personal income tax", "Excise tax", "Value added tax"],
+        "correctOptionIndex": 0,
+        "explanation": "The government imposes tariffs on export and import goods."
+      },
+      {
+        "id": "q101",
+        "text": "What do you think would be the sign of the net exports (NX) of Ethiopia?",
+        "options": ["Negative", "Positive", "Zero", "Unknown"],
+        "correctOptionIndex": 1,
+        "explanation": "The sign of the net exports (NX) of Ethiopia is positive."
+      },
+      {
+        "id": "q102",
+        "text": "The total market value of all final goods and services which are produced annually by resources of a country irrespective of the location of these resources.",
+        "options": ["GNP", "GDP", "Net Export", "Import"],
+        "correctOptionIndex": 0,
+        "explanation": "GNP is the total market value of all final goods and services which are produced annually by resources of a country irrespective of the location of these resources."
+      },
+      {
+        "id": "q103",
+        "text": "Which one of the following is NOT parts of consumption expenditure?",
+        "options": ["Investment", "Durable goods", "Non-durable goods", "Service"],
+        "correctOptionIndex": 0,
+        "explanation": "Investment is not a part of consumption expenditure."
+      },
+      {
+        "id": "q104",
+        "text": "When there is a single owner, these types of business form is:",
+        "options": ["Sole proprietorship", "Ownership", "Micro enterprise", "Corporation"],
+        "correctOptionIndex": 0,
+        "explanation": "Sole proprietorship is a type of business form with a single owner."
+      },
+      {
+        "id": "q105",
+        "text": "Product differentiation is a typical feature of:",
+        "options": ["Oligopoly", "Monopoly", "Pure competition", "Monopolistic competition"],
+        "correctOptionIndex": 3,
+        "explanation": "Product differentiation is a typical feature of monopolistic competition."
+      },
+      {
+        "id": "q106",
+        "text": "Which one of the following is not method of measuring GDP?",
+        "options": ["Sum of transactions in economy", "Value of final goods and services in economy", "Sum of value added in economy", "Sum of incomes"],
+        "correctOptionIndex": 3,
+        "explanation": "Sum of incomes is not a method of measuring GDP."
+      },
+      {
+        "id": "q107",
+        "text": "What is the types of unemployment exists due to technological change?",
+        "options": ["Frictional unemployment", "Cyclical unemployment", "Structural unemployment", "Voluntary unemployment"],
+        "correctOptionIndex": 2,
+        "explanation": "Structural unemployment exists due to technological change."
+      },
+      {
+        "id": "q108",
+        "text": "Which one of the following factors shifts the aggregate demand curve to the right?",
+        "options": ["Increase in interest rate", "Decrease in income tax", "Increase in future expectation", "Increase in general price level"],
+        "correctOptionIndex": 2,
+        "explanation": "An increase in future expectation shifts the aggregate demand curve to the right."
+      },
+      {
+        "id": "q109",
+        "text": "Which one of the following is most likely to cause decrease in aggregate demand?",
+        "options": ["Decrease in interest rate", "Decrease in taxes", "An increase in government spending", "Decrease in consumer price index"],
+        "correctOptionIndex": 3,
+        "explanation": "A decrease in the consumer price index is most likely to cause a decrease in aggregate demand."
+      },
+      {
+        "id": "q110",
+        "text": "The increase in spending that occurs because of the increase in the real value of money, when the price level falls is called",
+        "options": ["Wealth effect", "Interest rate effect", "Foreign trade effect", "Income effect"],
+        "correctOptionIndex": 0,
+        "explanation": "The increase in spending that occurs because of the increase in the real value of money, when the price level falls, is called the wealth effect."
+      },
+      {
+        "id": "q111",
+        "text": "Which of the following best describes the concept of marginal propensity to consume (MPC)?",
+        "options": ["The total amount of income spent on consumption.", "The proportion of total income that is saved.", "The change in consumption resulting from a change in income.", "The average level of consumption over time"],
+        "correctOptionIndex": 2,
+        "explanation": "MPC is the change in consumption resulting from a change in income."
+      },
+      {
+        "id": "q112",
+        "text": "If the marginal propensity to save (MPS) is 0.2, what is the marginal propensity to consume (MPC)?",
+        "options": ["0.1", "0.2", "0.8", "1.2"],
+        "correctOptionIndex": 2,
+        "explanation": "MPC = 1 - MPS = 1 - 0.2 = 0.8."
+      },
+      {
+        "id": "q113",
+        "text": "What is the primary purpose of investment in economics?",
+        "options": ["To consume goods and services.", "To increase current spending.", "To increase future production and income.", "To reduce savings."],
+        "correctOptionIndex": 2,
+        "explanation": "The primary purpose of investment in economics is to increase future production and income."
+      },
+      {
+        "id": "q114",
+        "text": "Which of the following is NOT typically considered a component of business investment?",
+        "options": ["Purchase of new equipment.", "Construction of new factories.", "Government bonds.", "Changes in inventory."],
+        "correctOptionIndex": 2,
+        "explanation": "Government bonds are not typically considered a component of business investment."
+      },
+      {
+        "id": "q115",
+        "text": "What does the term 'present value' refer to in the context of investment?",
+        "options": ["The original cost of an asset", "The current value of a future sum of money.", "The expected profit from an investment.", "The total costs associated with an investment."],
+        "correctOptionIndex": 1,
+        "explanation": "Present value refers to the current value of a future sum of money."
+      },
+      {
+        "id": "q116",
+        "text": "Suppose BEKELE has a monthly income of $3,000 and he wants to save 15% of it. What is the amount he allocates to save in each month?",
+        "options": ["$150", "$300", "$450", "$500"],
+        "correctOptionIndex": 1,
+        "explanation": "15% of $3,000 is $450."
+      },
+      {
+        "id": "q117",
+        "text": "What would be the consequence of a country consistently having a trade deficit?",
+        "options": ["A consistent increase in the country's GDP", "A constant increase in the country's standard of living", "A decrease in the country's net exports which negatively affects the GDP", "A significant increase in local production"],
+        "correctOptionIndex": 2,
+        "explanation": "A consistent trade deficit leads to a decrease in the country's net exports, which negatively affects the GDP."
+      },
+      {
+        "id": "q118",
+        "text": "Which of the following is a key measure of national income?",
+        "options": ["Consumer Price Index (CPI)", "Gross Domestic Product (GDP)", "Unemployment Rate", "Interest Rate"],
+        "correctOptionIndex": 1,
+        "explanation": "Gross Domestic Product (GDP) is a key measure of national income."
+      },
+      {
+        "id": "q119",
+        "text": "The expenditure approach to calculating GDP includes which of the following components?",
+        "options": ["Wages, rents, and profits.", "Consumption, investment, government spending, and net exports.", "Taxes, transfers, and subsidies.", "Imports, exports, and tariffs."],
+        "correctOptionIndex": 1,
+        "explanation": "The expenditure approach to calculating GDP includes consumption, investment, government spending, and net exports."
+      },
+      {
+        "id": "q120",
+        "text": "Which approach to measuring GDP is most likely to be affected by changes in inventory levels?",
+        "options": ["Income Approach", "Expenditure Approach", "Production Approach", "The production and income approaches are equally affected by inventory."],
+        "correctOptionIndex": 1,
+        "explanation": "The expenditure approach to measuring GDP is most likely to be affected by changes in inventory levels."
+      }
+    ]
+  }
+  

@@ -1,0 +1,687 @@
+{
+    "title": "Economics Quiz",
+    "duration": 60,
+    "numberOfQuestions": 239,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "What is Aggregate Demand (AD)?",
+        "options": ["The total amount of money spent on imports and exports", "The total amount of money spent on goods and services in an economy", "The total amount of money spent by the government on infrastructure projects", "The total amount of money spent by households on luxury items"],
+        "correctOptionIndex": 1,
+        "explanation": "Aggregate Demand (AD) is the total amount of money spent on goods and services in an economy."
+      },
+      {
+        "id": "q2",
+        "text": "What are the four major components of Aggregate Demand (AD)?",
+        "options": ["Household consumption demand, private investment demand, government demand for goods and services, net export demand", "Household savings, government spending, business investments, trade deficits", "Household consumption demand, government investment demand, business spending, import demand", "Household income, government subsidies, business loans, export demand"],
+        "correctOptionIndex": 0,
+        "explanation": "The four major components of Aggregate Demand (AD) are household consumption demand, private investment demand, government demand for goods and services, and net export demand."
+      },
+      {
+        "id": "q3",
+        "text": "Why does the Aggregate Demand (AD) curve slope downward?",
+        "options": ["Due to changes in interest rates", "Due to changes in government spending", "Due to changes in the value of monetary wealth", "Due to changes in exchange rates"],
+        "correctOptionIndex": 2,
+        "explanation": "The Aggregate Demand (AD) curve slopes downward due to changes in the value of monetary wealth."
+      },
+      {
+        "id": "q4",
+        "text": "What is the real balance effect in relation to the Aggregate Demand (AD) curve?",
+        "options": ["A rise in the price level increases a person's monetary wealth", "A rise in the price level decreases a person's monetary wealth", "A fall in the price level decreases a person's monetary wealth", "A fall in the price level increases a person's monetary wealth."],
+        "correctOptionIndex": 1,
+        "explanation": "The real balance effect in relation to the Aggregate Demand (AD) curve states that a rise in the price level decreases a person's monetary wealth."
+      },
+      {
+        "id": "q5",
+        "text": "Which of the following is NOT a component of aggregate demand (AD)?",
+        "options": ["Household consumption demand", "Private investment demand", "Government demand for goods and services", "Net export demand plus net factor income from abroad"],
+        "correctOptionIndex": 3,
+        "explanation": "Net export demand plus net factor income from abroad is not a component of aggregate demand (AD)."
+      },
+      {
+        "id": "q6",
+        "text": "What is the relationship between the price level and the quantity demanded of real GDP along the aggregate demand curve?",
+        "options": ["Positive", "Negative", "Zero", "U-shaped"],
+        "correctOptionIndex": 1,
+        "explanation": "The relationship between the price level and the quantity demanded of real GDP along the aggregate demand curve is negative."
+      },
+      {
+        "id": "q7",
+        "text": "Which of the following is NOT a factor that explains why the aggregate demand curve slopes downward?",
+        "options": ["Real balance effect", "Interest rate effect", "Income effect", "International trade effect"],
+        "correctOptionIndex": 2,
+        "explanation": "The income effect is not a factor that explains why the aggregate demand curve slopes downward."
+      },
+      {
+        "id": "q8",
+        "text": "What is the difference between a change in the quantity demanded of real GDP and a change in aggregate demand?",
+        "options": ["A change in the quantity demanded of real GDP is a movement along the same demand curve, while a change in aggregate demand is a shift in the demand curve.", "A change in aggregate demand is a movement along the same demand curve, while a change in the quantity demanded of real GDP is a shift in the demand curve.", "There is no difference between a change in the quantity demanded of real GDP and a change in aggregate demand.", "A change in the quantity demanded of real GDP is a shift in the supply curve, while a change in aggregate demand is a movement along the same supply curve."],
+        "correctOptionIndex": 0,
+        "explanation": "A change in the quantity demanded of real GDP is a movement along the same demand curve, while a change in aggregate demand is a shift in the demand curve."
+      },
+      {
+        "id": "q9",
+        "text": "Which of the following factors would cause a rightward shift in the aggregate demand curve?",
+        "options": ["A higher consumption", "A decrease in interest rates", "A depreciation of the exchange rate", "All of the above"],
+        "correctOptionIndex": 3,
+        "explanation": "A higher consumption, a decrease in interest rates, and a depreciation of the exchange rate would all cause a rightward shift in the aggregate demand curve."
+      },
+      {
+        "id": "q10",
+        "text": "What does the Aggregate Demand (AD) curve show?",
+        "options": ["The relationship between unemployment and inflation.", "The amount of real output desired at each price level.", "The relationship between interest rates and investment.", "The total government spending over time."],
+        "correctOptionIndex": 1,
+        "explanation": "The Aggregate Demand (AD) curve shows the amount of real output desired at each price level."
+      },
+      {
+        "id": "q11",
+        "text": "Why does the Aggregate Demand (AD) curve slope downward?",
+        "options": ["Due to changes in interest rates.", "Because of the Real Balance Effect, the Interest Rate Effect, and the International Trade Effect.", "Because of changes in consumer preferences.", "Due to changes in government policies."],
+        "correctOptionIndex": 1,
+        "explanation": "The Aggregate Demand (AD) curve slopes downward because of the Real Balance Effect, the Interest Rate Effect, and the International Trade Effect."
+      },
+      {
+        "id": "q12",
+        "text": "What is the Real Balance Effect?",
+        "options": ["Real GDP is directly related to the price level.", "It describes the relationship between price level and real GDP demanded through changes in monetary wealth.", "It explains the impact of interest rates on consumer spending.", "It refers to changes in government spending influencing the price level."],
+        "correctOptionIndex": 1,
+        "explanation": "The Real Balance Effect describes the relationship between price level and real GDP demanded through changes in monetary wealth."
+      },
+      {
+        "id": "q13",
+        "text": "How does the Interest Rate Effect influence Aggregate Demand?",
+        "options": ["Higher prices lead to lower interest rates.", "It increases consumer spending.", "It leads to tight money and decreases total real spending.", "It has no impact on the economy."],
+        "correctOptionIndex": 2,
+        "explanation": "The Interest Rate Effect influences Aggregate Demand by leading to tight money and decreasing total real spending."
+      },
+      {
+        "id": "q14",
+        "text": "What effect does the International Trade Effect have on Aggregate Demand?",
+        "options": ["It increases the demand for domestic goods.", "It decreases foreign investment.", "It influences the relationship between the price level and real GDP through foreign sector spending.", "It has no effect on Aggregate Demand."],
+        "correctOptionIndex": 2,
+        "explanation": "The International Trade Effect influences Aggregate Demand by influencing the relationship between the price level and real GDP through foreign sector spending."
+      },
+      {
+        "id": "q15",
+        "text": "What causes a change in the quantity demanded of real GDP along the Aggregate Demand curve?",
+        "options": ["Changes in government spending.", "Changes in interest rates.", "Changes in the price level.", "Changes in export demand."],
+        "correctOptionIndex": 2,
+        "explanation": "A change in the quantity demanded of real GDP along the Aggregate Demand curve is caused by changes in the price level."
+      },
+      {
+        "id": "q16",
+        "text": "What constitutes a change in Aggregate Demand?",
+        "options": ["Changes in the quantity demanded of real GDP due to price level changes.", "A shift in the Aggregate Demand curve.", "An increase in imports.", "A decrease in government spending."],
+        "correctOptionIndex": 1,
+        "explanation": "A change in Aggregate Demand is constituted by a shift in the Aggregate Demand curve."
+      },
+      {
+        "id": "q17",
+        "text": "How does a positive change in factors affecting Aggregate Demand impact the AD curve?",
+        "options": ["It shifts the curve leftward.", "It causes a rightward shift in the AD curve.", "It has no effect on the curve.", "It leads to a contraction of the economy."],
+        "correctOptionIndex": 1,
+        "explanation": "A positive change in factors affecting Aggregate Demand impacts the AD curve by causing a rightward shift."
+      },
+      {
+        "id": "q18",
+        "text": "What is Aggregate Demand (AD) according to the given description?",
+        "options": ["The total expenditure on consumption and investment", "The total amount of money which all sections are ready to spend on the purchase of goods and services, produced in an economy during a given period.", "The sum of spending by consumers, businesses, and governments", "All of the above"],
+        "correctOptionIndex": 3,
+        "explanation": "Aggregate Demand (AD) is the total amount of money which all sections are ready to spend on the purchase of goods and services, produced in an economy during a given period."
+      },
+      {
+        "id": "q19",
+        "text": "What are the major components of AD according to the text?",
+        "options": ["Household consumption demand (C) and private investment demand (I)", "Government demand for goods and services (G) and net export demand (X-M)", "Household consumption demand (C), private investment demand (I), government demand for goods and services (G), and net export demand (X-M)", "Household consumption demand (C) and net export demand (X-M)"],
+        "correctOptionIndex": 2,
+        "explanation": "The major components of AD are household consumption demand (C), private investment demand (I), government demand for goods and services (G), and net export demand (X-M)."
+      },
+      {
+        "id": "q20",
+        "text": "What does the aggregate demand (AD) curve represent?",
+        "options": ["A schedule that shows the amount of real output that buyers collectively desire to purchase at each price level ceteris paribus", "The general price level", "A downward sloping curve", "All of the above"],
+        "correctOptionIndex": 0,
+        "explanation": "The aggregate demand (AD) curve represents a schedule that shows the amount of real output that buyers collectively desire to purchase at each price level ceteris paribus."
+      },
+      {
+        "id": "q21",
+        "text": "What is the real balance effect according to the text?",
+        "options": ["Changes in the value of monetary wealth", "A higher price level leads to a decrease in spending", "A rise in the price level causes the demand for money to increase", "All of the above"],
+        "correctOptionIndex": 3,
+        "explanation": "The real balance effect according to the text includes changes in the value of monetary wealth, a higher price level leading to a decrease in spending, and a rise in the price level causing the demand for money to increase."
+      },
+      {
+        "id": "q22",
+        "text": "What is the interest rate effect?",
+        "options": ["States that a higher price level increases the demand for money", "Says that higher interest rates lead to a decline in total real spending", "Explains how a rise in the price level with a fixed money supply leads to tight money and produces a decline in total real spending", "All of the above"],
+        "correctOptionIndex": 2,
+        "explanation": "The interest rate effect explains how a rise in the price level with a fixed money supply leads to tight money and produces a decline in total real spending."
+      },
+      {
+        "id": "q23",
+        "text": "Which factor does NOT cause a shift in the AD curve?",
+        "options": ["Change in price level", "Change in income level", "Change in wealth of individuals", "Change in foreign exchange policy"],
+        "correctOptionIndex": 0,
+        "explanation": "A change in price level does not cause a shift in the AD curve."
+      },
+      {
+        "id": "q24",
+        "text": "On the aggregate demand (AD) curve, a change in the quantity demanded of real GDP indicates a:",
+        "options": ["Shift in the AD curve", "Movement along the same demand curve", "Downward sloping curve", "Ceteris paribus condition"],
+        "correctOptionIndex": 1,
+        "explanation": "On the aggregate demand (AD) curve, a change in the quantity demanded of real GDP indicates a movement along the same demand curve."
+      },
+      {
+        "id": "q25",
+        "text": "Which event does not lead to an increase in the quantity demanded of real GDP according to the text?",
+        "options": ["A fall in the general price level", "An increase in government spending", "A decrease in the interest rate", "An increase in the demand for money"],
+        "correctOptionIndex": 3,
+        "explanation": "An increase in the demand for money does not lead to an increase in the quantity demanded of real GDP."
+      },
+      {
+        "id": "q26",
+        "text": "According to the provided information, what is the relationship between a change in any of the factors and the shift in the AD curve?",
+        "options": ["A positive change in any of these factors will cause the AD curve to shift leftward, while a negative change will cause the AD curve to shift rightward.", "A negative change in any of these factors will cause the AD curve to shift rightward, while a positive change will cause the AD curve to shift leftward.", "A positive change in any of these factors will cause the AD curve to shift rightward, while a negative change will cause the AD curve to shift leftward.", "A negative change in any of these factors will cause the AD curve to shift leftward, while a positive change will cause the AD curve to shift rightward."],
+        "correctOptionIndex": 2,
+        "explanation": "A positive change in any of these factors will cause the AD curve to shift rightward, while a negative change will cause the AD curve to shift leftward."
+      },
+      {
+        "id": "q27",
+        "text": "The Aggregate Demand curve slopes downward because:",
+        "options": ["As prices rise, people can afford to buy less, decreasing the quantity demanded.", "As prices rise, businesses produce more, increasing the quantity supplied.", "As prices fall, people save more, decreasing the quantity demanded.", "As prices fall, businesses invest less, decreasing the quantity supplied."],
+        "correctOptionIndex": 0,
+        "explanation": "The Aggregate Demand curve slopes downward because as prices rise, people can afford to buy less, decreasing the quantity demanded."
+      },
+      {
+        "id": "q28",
+        "text": "The Real Balance Effect explains the downward slope of the AD curve by stating that:",
+        "options": ["Higher price levels decrease the value of money holdings, leading to less spending.", "Higher price levels increase the value of money holdings, leading to more spending.", "Lower price levels decrease the value of money holdings, leading to less spending.", "Lower price levels increase the value of money holdings, leading to more spending."],
+        "correctOptionIndex": 0,
+        "explanation": "The Real Balance Effect explains the downward slope of the AD curve by stating that higher price levels decrease the value of money holdings, leading to less spending."
+      },
+      {
+        "id": "q29",
+        "text": "The Interest Rate Effect explains the downward slope of the AD curve by stating that",
+        "options": ["Higher price levels lead to lower interest rates, encouraging borrowing and spending.", "Higher price levels lead to higher interest rates, discouraging borrowing and spending.", "Lower price levels lead to lower interest rates, discouraging borrowing and spending.", "Lower price levels lead to higher interest rates, encouraging borrowing and spending."],
+        "correctOptionIndex": 1,
+        "explanation": "The Interest Rate Effect explains the downward slope of the AD curve by stating that higher price levels lead to higher interest rates, discouraging borrowing and spending."
+      },
+      {
+        "id": "q30",
+        "text": "The International Trade Effect explains the downward slope of the AD curve by stating that:",
+        "options": ["Higher domestic prices make exports more competitive, increasing AD.", "Higher domestic prices make exports less competitive, decreasing AD.", "Lower domestic prices make exports more competitive, decreasing AD.", "Lower domestic prices make exports less competitive, increasing AD."],
+        "correctOptionIndex": 1,
+        "explanation": "The International Trade Effect explains the downward slope of the AD curve by stating that higher domestic prices make exports less competitive, decreasing AD."
+      },
+      {
+        "id": "q31",
+        "text": "A movement along the AD curve is caused by:",
+        "options": ["A change in the price level.", "A change in government spending.", "A change in consumption.", "A change in tax rates."],
+        "correctOptionIndex": 0,
+        "explanation": "A movement along the AD curve is caused by a change in the price level."
+      },
+      {
+        "id": "q32",
+        "text": "A shift in the AD curve is caused by:",
+        "options": ["A change in the price level.", "A change in government spending.", "A change in consumer confidence.", "Both b and c."],
+        "correctOptionIndex": 3,
+        "explanation": "A shift in the AD curve is caused by a change in government spending and a change in consumer confidence."
+      },
+      {
+        "id": "q33",
+        "text": "Which of the following would cause a rightward shift (increase) in the AD curve?",
+        "options": ["A decrease in government spending.", "An increase in taxes.", "A decrease in consumer confidence.", "An increase in investment spending."],
+        "correctOptionIndex": 3,
+        "explanation": "An increase in investment spending would cause a rightward shift (increase) in the AD curve."
+      },
+      {
+        "id": "q34",
+        "text": "Which of the following would cause a leftward shift (decrease) in the AD curve?",
+        "options": ["A decrease in interest rates.", "An increase in net exports.", "A decrease in the value of the domestic currency.", "An increase in the price level of imported goods."],
+        "correctOptionIndex": 2,
+        "explanation": "A decrease in the value of the domestic currency would cause a leftward shift (decrease) in the AD curve."
+      },
+      {
+        "id": "q35",
+        "text": "Which of the following is NOT a component of Aggregate Demand (AD)?",
+        "options": ["Household consumption demand", "Government demand for goods and services", "Net export demand", "Savings"],
+        "correctOptionIndex": 3,
+        "explanation": "Savings is not a component of Aggregate Demand (AD)."
+      },
+      {
+        "id": "q36",
+        "text": "What is the relationship between the price level and aggregate demand?",
+        "options": ["Positive", "Negative", "U-shaped", "No relationship"],
+        "correctOptionIndex": 1,
+        "explanation": "The relationship between the price level and aggregate demand is negative."
+      },
+      {
+        "id": "q37",
+        "text": "Which of the following factors does NOT affect the slope of the Aggregate Demand curve?",
+        "options": ["Real balance effect", "Interest rate effect", "Exchange rate", "International trade effect"],
+        "correctOptionIndex": 2,
+        "explanation": "The exchange rate does not affect the slope of the Aggregate Demand curve."
+      },
+      {
+        "id": "q38",
+        "text": "What happens to the aggregate demand curve when the price level falls?",
+        "options": ["It shifts to the right", "It shifts to the left", "It becomes steeper", "It becomes flatter"],
+        "correctOptionIndex": 0,
+        "explanation": "The aggregate demand curve shifts to the right when the price level falls."
+      },
+      {
+        "id": "q39",
+        "text": "Which of the following is a change in quantity demanded?",
+        "options": ["A movement from one point to another along the same demand curve", "A shift in the demand curve", "A change in the price level", "A change in income"],
+        "correctOptionIndex": 0,
+        "explanation": "A change in quantity demanded is a movement from one point to another along the same demand curve."
+      },
+      {
+        "id": "q40",
+        "text": "What causes a rightward shift in the Aggregate Demand curve?",
+        "options": ["An increase in household consumption demand", "A decrease in government spending", "A rise in the interest rate", "A depreciation of the currency"],
+        "correctOptionIndex": 3,
+        "explanation": "A depreciation of the currency causes a rightward shift in the Aggregate Demand curve."
+      },
+      {
+        "id": "q41",
+        "text": "Which of the following factors would cause a leftward shift in the Aggregate Demand curve?",
+        "options": ["A decrease in business investment", "An increase in net exports", "A fall in the price level", "An expansionary fiscal policy"],
+        "correctOptionIndex": 1,
+        "explanation": "An increase in net exports would cause a leftward shift in the Aggregate Demand curve."
+      },
+      {
+        "id": "q42",
+        "text": "What is the Real Balance Effect?",
+        "options": ["The effect of changes in the price level on the value of monetary wealth", "The effect of interest rates on investment spending", "The effect of exchange rates on net exports", "The effect of government spending on aggregate demand"],
+        "correctOptionIndex": 0,
+        "explanation": "The Real Balance Effect is the effect of changes in the price level on the value of monetary wealth."
+      },
+      {
+        "id": "q43",
+        "text": "Which of the following is NOT a reason for the inverse slope of the Aggregate Demand curve?",
+        "options": ["The Real Balance Effect", "The Interest Rate Effect", "The Fiscal Policy Effect", "The International Trade Effect"],
+        "correctOptionIndex": 2,
+        "explanation": "The Fiscal Policy Effect is not a reason for the inverse slope of the Aggregate Demand curve."
+      },
+      {
+        "id": "q44",
+        "text": "What is the main difference between a change in quantity demanded and a change in aggregate demand?",
+        "options": ["The price level changes in one case but not the other", "The quantity demanded changes in one case but not the other", "The aggregate demand curve shifts in one case but not the other", "All of the above"],
+        "correctOptionIndex": 3,
+        "explanation": "The main difference between a change in quantity demanded and a change in aggregate demand is that the aggregate demand curve shifts in one case but not the other."
+      },
+      {
+        "id": "q45",
+        "text": "Which of the following factors would cause a leftward shift in the aggregate demand curve?",
+        "options": ["An increase in income taxes", "An increase in business taxes", "A decrease in government spending", "All of the above"],
+        "correctOptionIndex": 3,
+        "explanation": "An increase in income taxes, an increase in business taxes, and a decrease in government spending would all cause a leftward shift in the aggregate demand curve."
+      },
+      {
+        "id": "q46",
+        "text": "What is the effect of a depreciation of the exchange rate on net exports?",
+        "options": ["Net exports increase", "Net exports decrease", "Net exports remain unchanged", "The effect is ambiguous"],
+        "correctOptionIndex": 0,
+        "explanation": "A depreciation of the exchange rate causes net exports to increase."
+      },
+      {
+        "id": "q47",
+        "text": "What is the effect of an increase in foreign real national income on net exports?",
+        "options": ["Net exports increase", "Net exports decrease", "Net exports remain unchanged", "The effect is ambiguous"],
+        "correctOptionIndex": 0,
+        "explanation": "An increase in foreign real national income causes net exports to increase."
+      },
+      {
+        "id": "q48",
+        "text": "Which of the following is NOT a factor that affects investment?",
+        "options": ["Interest rate", "Expectations about future sales", "Business taxes", "Government spending"],
+        "correctOptionIndex": 3,
+        "explanation": "Government spending is not a factor that affects investment."
+      },
+      {
+        "id": "q49",
+        "text": "What is the effect of a decrease in interest rates on investment?",
+        "options": ["Investment increases", "Investment decreases", "Investment remains unchanged", "The effect is ambiguous"],
+        "correctOptionIndex": 0,
+        "explanation": "A decrease in interest rates causes investment to increase."
+      },
+      {
+        "id": "q50",
+        "text": "Which of the following would cause an increase in consumption (C) and thus, Aggregate Demand (AD)?",
+        "options": ["A decrease in income taxes.", "An increase in interest rates.", "A decrease in consumer confidence.", "An increase in the price level."],
+        "correctOptionIndex": 0,
+        "explanation": "A decrease in income taxes would cause an increase in consumption (C) and thus, Aggregate Demand (AD)."
+      },
+      {
+        "id": "q51",
+        "text": "An increase in government spending, with all else equal, would cause:",
+        "options": ["A leftward shift in the AD curve.", "A rightward shift in the AD curve.", "A movement along the AD curve.", "No change in the AD curve."],
+        "correctOptionIndex": 1,
+        "explanation": "An increase in government spending, with all else equal, would cause a rightward shift in the AD curve."
+      },
+      {
+        "id": "q52",
+        "text": "If the Ethiopian Birr appreciates in value relative to other currencies, this would likely cause:",
+        "options": ["An increase in net exports and AD.", "A decrease in net exports and AD.", "An increase in imports and a decrease in AD.", "A decrease in imports and an increase in AD."],
+        "correctOptionIndex": 1,
+        "explanation": "If the Ethiopian Birr appreciates in value relative to other currencies, this would likely cause a decrease in net exports and AD."
+      },
+      {
+        "id": "q53",
+        "text": "An increase in foreign real national income would most likely lead to:",
+        "options": ["A decrease in Ethiopian exports and AD.", "An increase in Ethiopian exports and AD.", "A decrease in Ethiopian imports and AD.", "An increase in Ethiopian imports and AD."],
+        "correctOptionIndex": 1,
+        "explanation": "An increase in foreign real national income would most likely lead to an increase in Ethiopian exports and AD."
+      },
+      {
+        "id": "q54",
+        "text": "Which of the following is NOT a factor affecting net exports?",
+        "options": ["Domestic and foreign incomes.", "The exchange rate.", "Government spending.", "Trade policies."],
+        "correctOptionIndex": 2,
+        "explanation": "Government spending is not a factor affecting net exports."
+      },
+      {
+        "id": "q55",
+        "text": "An increase in income tax will most likely result in:",
+        "options": ["An increase in consumption and a rightward shift in AD.", "A decrease in consumption and a leftward shift in AD.", "No change in consumption and no shift in AD.", "An increase in investment and a rightward shift in AD."],
+        "correctOptionIndex": 1,
+        "explanation": "An increase in income tax will most likely result in a decrease in consumption and a leftward shift in AD."
+      },
+      {
+        "id": "q56",
+        "text": "A decrease in interest rates will most likely result in:",
+        "options": ["A decrease in investment and a leftward shift in AD.", "An increase in investment and a rightward shift in AD.", "A decrease in consumption and a leftward shift in AD.", "No change in investment and no shift in AD."],
+        "correctOptionIndex": 1,
+        "explanation": "A decrease in interest rates will most likely result in an increase in investment and a rightward shift in AD."
+      },
+      {
+        "id": "q57",
+        "text": "If businesses become pessimistic about future sales, this will most likely lead to:",
+        "options": ["An increase in investment and a rightward shift in AD.", "A decrease in investment and a leftward shift in AD.", "An increase in government spending and a rightward shift in AD.", "A decrease in net exports and a leftward shift in AD."],
+        "correctOptionIndex": 1,
+        "explanation": "If businesses become pessimistic about future sales, this will most likely lead to a decrease in investment and a leftward shift in AD."
+      },
+      {
+        "id": "q58",
+        "text": "A decrease in business taxes will most likely result in:",
+        "options": ["A decrease in investment and a leftward shift in AD.", "An increase in investment and a rightward shift in AD.", "A decrease in government spending and a leftward shift in AD.", "An increase in net exports and a rightward shift in AD."],
+        "correctOptionIndex": 1,
+        "explanation": "A decrease in business taxes will most likely result in an increase in investment and a rightward shift in AD."
+      },
+      {
+        "id": "q59",
+        "text": "An increase in government spending on infrastructure projects will most likely result in:",
+        "options": ["A leftward shift in the AD curve.", "A rightward shift in the AD curve.", "No shift in the AD curve.", "A decrease in the price level."],
+        "correctOptionIndex": 1,
+        "explanation": "An increase in government spending on infrastructure projects will most likely result in a rightward shift in the AD curve."
+      },
+      {
+        "id": "q60",
+        "text": "If the Ethiopian Birr appreciates against foreign currencies, this will most likely lead to:",
+        "options": ["An increase in net exports and a rightward shift in AD.", "A decrease in net exports and a leftward shift in AD.", "An increase in imports and a rightward shift in AD.", "A decrease in imports and a leftward shift in AD."],
+        "correctOptionIndex": 1,
+        "explanation": "If the Ethiopian Birr appreciates against foreign currencies, this will most likely lead to a decrease in net exports and a leftward shift in AD."
+      },
+      {
+        "id": "q61",
+        "text": "Which of the following would NOT cause a shift in the AD curve?",
+        "options": ["A change in the price level.", "A change in expectations about future economic conditions.", "A change in government tax policy.", "A change in the exchange rate."],
+        "correctOptionIndex": 0,
+        "explanation": "A change in the price level would not cause a shift in the AD curve."
+      },
+      {
+        "id": "q62",
+        "text": "If foreign real national income increases, this will most likely lead to:",
+        "options": ["A decrease in Ethiopian exports and a leftward shift in AD.", "An increase in Ethiopian exports and a rightward shift in AD.", "A decrease in Ethiopian imports and a rightward shift in AD.", "No change in net exports and no shift in AD."],
+        "correctOptionIndex": 1,
+        "explanation": "If foreign real national income increases, this will most likely lead to an increase in Ethiopian exports and a rightward shift in AD."
+      },
+      {
+        "id": "q63",
+        "text": "Depreciation of the Ethiopian Birr will make:",
+        "options": ["Foreign goods cheaper for Ethiopians and Ethiopian goods cheaper for foreigners.", "Foreign goods more expensive for Ethiopians and Ethiopian goods cheaper for foreigners.", "Foreign goods cheaper for Ethiopians and Ethiopian goods more expensive for foreigners.", "Foreign goods more expensive for Ethiopians and Ethiopian goods more expensive for foreigners."],
+        "correctOptionIndex": 1,
+        "explanation": "Depreciation of the Ethiopian Birr will make foreign goods more expensive for Ethiopians and Ethiopian goods cheaper for foreigners."
+      },
+      {
+        "id": "q64",
+        "text": "A shift in the Aggregate Demand curve occurs when:",
+        "options": ["The price level changes.", "There is a movement along the existing AD curve.", "There is a change in the quantity of goods and services demanded at a given price level.", "None of the above."],
+        "correctOptionIndex": 2,
+        "explanation": "A shift in the Aggregate Demand curve occurs when there is a change in the quantity of goods and services demanded at a given price level."
+      },
+      {
+        "id": "q65",
+        "text": "Which of the following is NOT a factor that can cause a shift in the AD curve?",
+        "options": ["Changes in government spending.", "Changes in consumer expectations.", "Changes in the price level.", "Changes in investment spending."],
+        "correctOptionIndex": 2,
+        "explanation": "Changes in the price level is not a factor that can cause a shift in the AD curve."
+      },
+      {
+        "id": "q66",
+        "text": "An increase in household wealth is likely to cause:",
+        "options": ["A rightward shift in the AD curve.", "A leftward shift in the AD curve.", "No shift in the AD curve.", "A movement along the AD curve."],
+        "correctOptionIndex": 0,
+        "explanation": "An increase in household wealth is likely to cause a rightward shift in the AD curve."
+      },
+      {
+        "id": "q67",
+        "text": "If consumers expect prices to rise in the future, they are likely to:",
+        "options": ["Increase their current consumption spending.", "Decrease their current consumption spending.", "Maintain their current consumption spending.", "Invest in the stock market."],
+        "correctOptionIndex": 0,
+        "explanation": "If consumers expect prices to rise in the future, they are likely to increase their current consumption spending."
+      },
+      {
+        "id": "q68",
+        "text": "A decrease in interest rates is likely to cause:",
+        "options": ["A decrease in investment spending.", "An increase in consumption spending.", "A decrease in government spending.", "An increase in taxes."],
+        "correctOptionIndex": 1,
+        "explanation": "A decrease in interest rates is likely to cause an increase in consumption spending."
+      },
+      {
+        "id": "q69",
+        "text": "An increase in income taxes is likely to cause:",
+        "options": ["An increase in consumption spending.", "A decrease in consumption spending.", "An increase in government spending.", "A decrease in net exports."],
+        "correctOptionIndex": 1,
+        "explanation": "An increase in income taxes is likely to cause a decrease in consumption spending."
+      },
+      {
+        "id": "q70",
+        "text": "If businesses become more optimistic about future sales, they are likely to:",
+        "options": ["Increase investment spending.", "Decrease investment spending.", "Increase business taxes.", "Decrease wages."],
+        "correctOptionIndex": 0,
+        "explanation": "If businesses become more optimistic about future sales, they are likely to increase investment spending."
+      },
+      {
+        "id": "q71",
+        "text": "A depreciation of a country's currency is likely to cause:",
+        "options": ["An increase in net exports.", "A decrease in net exports.", "An increase in imports.", "A decrease in exports."],
+        "correctOptionIndex": 1,
+        "explanation": "A depreciation of a country's currency is likely to cause a decrease in net exports."
+      },
+      {
+        "id": "q72",
+        "text": "Which of the following policies would be most effective in stimulating aggregate demand during a recession?",
+        "options": ["Increasing income taxes.", "Decreasing government spending.", "Increasing interest rates.", "Increasing government spending."],
+        "correctOptionIndex": 3,
+        "explanation": "Increasing government spending would be most effective in stimulating aggregate demand during a recession."
+      },
+      {
+        "id": "q73",
+        "text": "The AD-AS model is used to analyze:",
+        "options": ["The relationship between individual supply and demand.", "The relationship between inflation and unemployment.", "The determination of equilibrium price and quantity in a specific market.", "None of the above."],
+        "correctOptionIndex": 1,
+        "explanation": "The AD-AS model is used to analyze the relationship between inflation and unemployment."
+      },
+      {
+        "id": "q74",
+        "text": "A decrease in business taxes would most likely lead to:",
+        "options": ["A decrease in investment spending and AD.", "An increase in investment spending and AD.", "A decrease in consumption spending and AD.", "No change in investment spending or AD."],
+        "correctOptionIndex": 1,
+        "explanation": "A decrease in business taxes would most likely lead to an increase in investment spending and AD."
+      },
+      {
+        "id": "q75",
+        "text": "If businesses become pessimistic about future sales, this would likely cause:",
+        "options": ["An increase in investment spending and AD.", "A decrease in investment spending and AD.", "An increase in government spending and AD.", "A decrease in net exports and AD."],
+        "correctOptionIndex": 1,
+        "explanation": "If businesses become pessimistic about future sales, this would likely cause a decrease in investment spending and AD."
+      },
+      {
+        "id": "q76",
+        "text": "A decrease in interest rates would most likely have what effect on investment and AD?",
+        "options": ["Decrease investment and decrease AD.", "Increase investment and increase AD.", "Decrease investment and increase AD.", "No effect on investment or AD."],
+        "correctOptionIndex": 1,
+        "explanation": "A decrease in interest rates would most likely increase investment and increase AD."
+      },
+      {
+        "id": "q77",
+        "text": "If the government increases income taxes, this would likely cause:",
+        "options": ["A decrease in consumption and AD.", "An increase in consumption and AD.", "An increase in investment and AD.", "A decrease in net exports and AD."],
+        "correctOptionIndex": 0,
+        "explanation": "If the government increases income taxes, this would likely cause a decrease in consumption and AD."
+      },
+      {
+        "id": "q78",
+        "text": "All else equal, which of the following would NOT cause a shift in the AD curve?",
+        "options": ["A change in consumer expectations.", "A change in government spending.", "A change in the price level.", "A change in the exchange rate."],
+        "correctOptionIndex": 2,
+        "explanation": "A change in the price level would not cause a shift in the AD curve."
+      },
+      {
+        "id": "q79",
+        "text": "If businesses become pessimistic about future sales, this will most likely lead to:",
+        "options": ["An increase in investment and a rightward shift in AD.", "A decrease in investment and a leftward shift in AD.", "An increase in government spending and a rightward shift in AD.", "A decrease in net exports and a leftward shift in AD."],
+        "correctOptionIndex": 1,
+        "explanation": "If businesses become pessimistic about future sales, this will most likely lead to a decrease in investment and a leftward shift in AD."
+      },
+      {
+        "id": "q80",
+        "text": "Net exports are calculated as:",
+        "options": ["Exports + Imports.", "Exports - Imports.", "Imports - Exports.", "Exports + Imports) / 2."],
+        "correctOptionIndex": 1,
+        "explanation": "Net exports are calculated as Exports - Imports."
+      },
+      {
+        "id": "q81",
+        "text": "An increase in net exports will result in:",
+        "options": ["A leftward shift in the Aggregate Demand (AD) curve.", "A rightward shift in the AD curve.", "No shift in the AD curve.", "A decrease in the price level."],
+        "correctOptionIndex": 1,
+        "explanation": "An increase in net exports will result in a rightward shift in the AD curve."
+      },
+      {
+        "id": "q82",
+        "text": "A depreciation of the Ethiopian Birr means that:",
+        "options": ["It takes more Birr to buy one unit of foreign currency.", "It takes fewer Birr to buy one unit of foreign currency.", "The value of the Birr has increased relative to foreign currencies.", "Ethiopian goods become more expensive for foreigners."],
+        "correctOptionIndex": 0,
+        "explanation": "A depreciation of the Ethiopian Birr means that it takes more Birr to buy one unit of foreign currency."
+      },
+      {
+        "id": "q83",
+        "text": "If the Ethiopian Birr depreciates, this will likely cause:",
+        "options": ["An increase in Ethiopian exports and a decrease in imports.", "A decrease in Ethiopian exports and an increase in imports.", "An increase in both exports and imports.", "A decrease in both exports and imports."],
+        "correctOptionIndex": 1,
+        "explanation": "If the Ethiopian Birr depreciates, this will likely cause a decrease in Ethiopian exports and an increase in imports."
+      },
+      {
+        "id": "q84",
+        "text": "An appreciation of the Ethiopian Birr will likely cause:",
+        "options": ["A decrease in the price of foreign goods for Ethiopians.", "An increase in the price of foreign goods for Ethiopians.", "An increase in the price of Ethiopian goods for foreigners.", "No change in the relative prices of goods."],
+        "correctOptionIndex": 1,
+        "explanation": "An appreciation of the Ethiopian Birr will likely cause an increase in the price of foreign goods for Ethiopians."
+      },
+      {
+        "id": "q85",
+        "text": "Which of the following would lead to a decrease in net exports and a leftward shift in the AD curve?",
+        "options": ["An increase in foreign incomes.", "A decrease in Ethiopian incomes.", "An appreciation of the Ethiopian Birr.", "A decrease in foreign prices."],
+        "correctOptionIndex": 2,
+        "explanation": "An appreciation of the Ethiopian Birr would lead to a decrease in net exports and a leftward shift in the AD curve."
+      },
+      {
+        "id": "q86",
+        "text": "If the Ethiopian government wants to increase net exports, it could:",
+        "options": ["Implement policies to depreciate the Birr.", "Implement policies to appreciate the Birr.", "Increase taxes on exports.", "Increase tariffs on imports."],
+        "correctOptionIndex": 0,
+        "explanation": "The Ethiopian government could implement policies to depreciate the Birr to increase net exports."
+      },
+      {
+        "id": "q87",
+        "text": "The international trade effect suggests that:",
+        "options": ["Changes in exchange rates can impact net exports and aggregate demand.", "Government spending is the primary determinant of net exports.", "The price level has no impact on net exports.", "Net exports are always positive."],
+        "correctOptionIndex": 0,
+        "explanation": "The international trade effect suggests that changes in exchange rates can impact net exports and aggregate demand."
+      },
+      {
+        "id": "q88",
+        "text": "A decrease in foreign incomes would likely cause:",
+        "options": ["A decrease in Ethiopian exports and a leftward shift in AD.", "An increase in Ethiopian exports and a rightward shift in AD.", "A decrease in Ethiopian imports and a rightward shift in AD.", "An increase in Ethiopian imports and a leftward shift in AD."],
+        "correctOptionIndex": 0,
+        "explanation": "A decrease in foreign incomes would likely cause a decrease in Ethiopian exports and a leftward shift in AD."
+      },
+      {
+        "id": "q89",
+        "text": "If Ethiopian consumers switch from buying domestically produced goods to imported goods, this will likely cause:",
+        "options": ["An increase in net exports.", "A decrease in net exports.", "An increase in aggregate demand.", "No change in net exports."],
+        "correctOptionIndex": 1,
+        "explanation": "If Ethiopian consumers switch from buying domestically produced goods to imported goods, this will likely cause a decrease in net exports."
+      },
+      {
+        "id": "q90",
+        "text": "What is aggregate supply?",
+        "options": ["The quantity demanded of all goods and services at various price levels", "The quantity supplied of all goods and services at various price levels", "The relationship between the price level and the quantity of goods and services demanded", "The relationship between the price level and the quantity of goods and services supplied"],
+        "correctOptionIndex": 1,
+        "explanation": "Aggregate supply is the quantity supplied of all goods and services at various price levels."
+      },
+      {
+        "id": "q91",
+        "text": "Which of the following is NOT included in aggregate supply?",
+        "options": ["Short-run aggregate supply", "Long-run aggregate supply", "Potential output", "Consumption"],
+        "correctOptionIndex": 3,
+        "explanation": "Consumption is not included in aggregate supply."
+      },
+      {
+        "id": "q92",
+        "text": "What is the Keynesian assumption about the aggregate supply curve?",
+        "options": ["It is horizontal", "It is vertical", "It is upward sloping", "It is downward sloping"],
+        "correctOptionIndex": 0,
+        "explanation": "The Keynesian assumption about the aggregate supply curve is that it is horizontal."
+      },
+      {
+        "id": "q93",
+        "text": "What is the classical assumption about the aggregate supply curve?",
+        "options": ["It is horizontal", "It is vertical", "It is upward sloping", "It is downward sloping"],
+        "correctOptionIndex": 1,
+        "explanation": "The classical assumption about the aggregate supply curve is that it is vertical."
+      },
+      {
+        "id": "q94",
+        "text": "Why is the short-run aggregate supply curve upward sloping?",
+        "options": ["Sticky wages", "Worker misperceptions", "Both (a) and (b)", "Neither (a) nor (b)"],
+        "correctOptionIndex": 2,
+        "explanation": "The short-run aggregate supply curve is upward sloping due to sticky wages and worker misperceptions."
+      },
+      {
+        "id": "q95",
+        "text": "What happens to the quantity supplied of labor when real wages rise?",
+        "options": ["It increases", "It decreases", "It remains the same", "It becomes indeterminate"],
+        "correctOptionIndex": 1,
+        "explanation": "The quantity supplied of labor decreases when real wages rise."
+      },
+      {
+        "id": "q96",
+        "text": "What happens to the quantity demanded of labor when real wages rise?",
+        "options": ["It increases", "It decreases", "It remains the same", "It becomes indeterminate"],
+        "correctOptionIndex": 1,
+        "explanation": "The quantity demanded of labor decreases when real wages rise."
+      },
+      {
+        "id": "q97",
+        "text": "What is the effect of a decrease in the price level on the short-run aggregate supply curve?",
+        "options": ["It shifts to the right", "It shifts to the left", "It becomes steeper", "It becomes flatter"],
+        "correctOptionIndex": 1,
+        "explanation": "A decrease in the price level on the short-run aggregate supply curve shifts it to the left."
+      }
+    ]
+  }
+  

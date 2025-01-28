@@ -1,0 +1,700 @@
+{
+  "title": "Geography Quiz - 100 Questions",
+  "duration": 60,
+  "numberOfQuestions": 99,
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Which one of the following is correct about the scope of Geography?",
+      "options": ["It is delimited to the geospheres of the earth.", "It is limited to describing the capital cities of countries.", "It is merely focused on the distribution of physical features.", "It emphasizes the physical arrangements of the universe."],
+      "correctOptionIndex": 3,
+      "explanation": "Geography emphasizes the physical arrangements of the universe."
+    },
+    {
+      "id": "q2",
+      "text": "How does Geography tend to bridge natural and social sciences?",
+      "options": ["By offering different mathematical equations to natural sciences.", "By borrowing spatial models from natural and social sciences.", "By investigating how different fields of study are interrelated.", "By sharing methods and contents with different fields of studies."],
+      "correctOptionIndex": 2,
+      "explanation": "Geography tends to bridge natural and social sciences by investigating how different fields of study are interrelated."
+    },
+    {
+      "id": "q3",
+      "text": "Which branch of human geography is concerned with the dynamic nature of places over time?",
+      "options": ["Historical geography", "Political geography", "Urban geography", "Cultural geography"],
+      "correctOptionIndex": 0,
+      "explanation": "Historical geography is concerned with the dynamic nature of places over time."
+    },
+    {
+      "id": "q4",
+      "text": "What is the areal scale of the map?",
+      "options": ["1cm2 to 1.5 km2", "1cm2 to 3km2", "1cm2 to 2.3 km2", "1cm2 to 4.5 km2"],
+      "correctOptionIndex": 0,
+      "explanation": "The areal scale of the map is 1cm2 to 1.5 km2."
+    },
+    {
+      "id": "q5",
+      "text": "Which of the following marginal information is depicted on the map?",
+      "options": ["Direction arrow", "Type of projection", "Title of the map", "Year of publication"],
+      "correctOptionIndex": 1,
+      "explanation": "The type of projection is the marginal information depicted on the map."
+    },
+    {
+      "id": "q6",
+      "text": "What is the most appropriate technique to display statistical data of portion of parts in relation to a single whole?",
+      "options": ["Bar graph", "Line graph", "Pie chart", "Histogram"],
+      "correctOptionIndex": 3,
+      "explanation": "A histogram is the most appropriate technique to display statistical data of portion of parts in relation to a single whole."
+    },
+    {
+      "id": "q7",
+      "text": "What type of erosion is commonly found in coastal areas?",
+      "options": ["Erosion through glaciation", "Erosion by sea waves", "Wind erosion", "Stream erosion"],
+      "correctOptionIndex": 1,
+      "explanation": "Erosion by sea waves is commonly found in coastal areas."
+    },
+    {
+      "id": "q8",
+      "text": "What is a crescent-moon shaped small hill of sediments that is formed by the action of wind called?",
+      "options": ["Beach", "Loess deposit", "Barchan", "Sand dune"],
+      "correctOptionIndex": 3,
+      "explanation": "A barchan is a crescent-moon shaped small hill of sediments formed by the action of wind."
+    },
+    {
+      "id": "q9",
+      "text": "Which structure of the atmosphere is known by containing the lowest percentage of atmospheric mass?",
+      "options": ["Stratosphere", "Troposphere", "Mesosphere", "Thermosphere"],
+      "correctOptionIndex": 2,
+      "explanation": "The mesosphere contains the lowest percentage of atmospheric mass."
+    },
+    {
+      "id": "q10",
+      "text": "Which of the following refers to how energy from the sun is transmitted to the Surface of the earth?",
+      "options": ["Radiation", "Advection", "Convection", "Conduction"],
+      "correctOptionIndex": 0,
+      "explanation": "Energy from the sun is transmitted to the Surface of the earth through radiation."
+    },
+    {
+      "id": "q11",
+      "text": "What is the common feature of planetary winds?",
+      "options": ["They change their directions on a daily basis.", "They affect small areas for short periods of time.", "They cover a wide area of the earth.", "They are common along the coastal areas."],
+      "correctOptionIndex": 2,
+      "explanation": "Planetary winds cover a wide area of the earth."
+    },
+    {
+      "id": "q12",
+      "text": "Which of the following is correct about ocean currents?",
+      "options": ["Ocean current is the vertical movement of ocean water.", "Warm ocean currents cause precipitation to the surrounding areas", "Cold ocean currents increase the temperature of the nearby area", "Warm ocean currents tend to reduce the surrounding temperature."],
+      "correctOptionIndex": 1,
+      "explanation": "Warm ocean currents cause precipitation to the surrounding areas."
+    },
+    {
+      "id": "q13",
+      "text": "Which one of the following describes the distribution of pressure over the surface of the earth?",
+      "options": ["When the sun is overhead north of the equator, pressure belts shift southward.", "When the sun is overhead at the equator, pressure belts move northward by small degrees.", "When the sun is overhead at the Tropic of Cancer, pressure belts shift southward.", "When the sun is overhead at the Tropic of Capricorn, pressure belts shift southward."],
+      "correctOptionIndex": 1,
+      "explanation": "When the sun is overhead at the equator, pressure belts move northward by small degrees."
+    },
+    {
+      "id": "q14",
+      "text": "Which one of the statements below explains the characteristics of a region?",
+      "options": ["A region has distinct physical elements.", "A region can be either artificial or natural.", "To be a region an area needs to be large.", "A region has a clear boundary"],
+      "correctOptionIndex": 0,
+      "explanation": "A region has distinct physical elements."
+    },
+    {
+      "id": "q15",
+      "text": "One of the following describes the tropical zone of the earth. Which one is it?",
+      "options": ["It is found between the Tropic of Cancer and the Tropic of Capricorn.", "It is mostly covered by semi-desert and desert vegetation.", "It is characterized by low temperature year round.", "It is dominated by manufacturing economic activity."],
+      "correctOptionIndex": 0,
+      "explanation": "The tropical zone of the earth is found between the Tropic of Cancer and the Tropic of Capricorn."
+    },
+    {
+      "id": "q16",
+      "text": "Which of the following best explains the Tundra region?",
+      "options": ["It has the highest daily range of temperature.", "It is mostly located in the southern hemisphere.", "It receives a long daily duration of sunlight in summer.", "It is inhabited by people whose life style is advanced"],
+      "correctOptionIndex": 2,
+      "explanation": "The Tundra region receives a long daily duration of sunlight in summer."
+    },
+    {
+      "id": "q17",
+      "text": "Which station has the highest annual range of temperature?",
+      "options": ["Station III", "Station I", "Station IV", "Station I"],
+      "correctOptionIndex": 0,
+      "explanation": "Station III has the highest annual range of temperature."
+    },
+    {
+      "id": "q18",
+      "text": "What type of natural vegetation is predominant at station II?",
+      "options": ["Conifers", "Maquis", "Xerophytes", "Alpine"],
+      "correctOptionIndex": 2,
+      "explanation": "Xerophytes are predominant at station II."
+    },
+    {
+      "id": "q19",
+      "text": "What type of ecosystem is represented by station I?",
+      "options": ["Grass lands", "Tropical rainforest", "Deciduous forest", "Coniferous forest"],
+      "correctOptionIndex": 1,
+      "explanation": "Station I represents a tropical rainforest ecosystem."
+    },
+    {
+      "id": "q20",
+      "text": "Which station best represents the winter rainfall region of Ethiopia?",
+      "options": ["Station I", "Station II", "Station III", "Station IV"],
+      "correctOptionIndex": 2,
+      "explanation": "Station III best represents the winter rainfall region of Ethiopia."
+    },
+    {
+      "id": "q21",
+      "text": "How do we describe rural and urban settlements?",
+      "options": ["Rural settlements have defined shapes.", "Rural areas are known by dense population.", "Urban settlements have planned streets.", "Urban areas have a low division of labor."],
+      "correctOptionIndex": 2,
+      "explanation": "Urban settlements have planned streets."
+    },
+    {
+      "id": "q22",
+      "text": "Which of the following is an example of human influence land use?",
+      "options": ["Agricultural programs", "Soil quality", "Moisture availability", "Environmental conditions"],
+      "correctOptionIndex": 0,
+      "explanation": "Agricultural programs are an example of human influence land use."
+    },
+    {
+      "id": "q23",
+      "text": "If carefully and scientifically managed, which of the following resources tends to regenerate?",
+      "options": ["Petroleum", "Natural gas", "Soil", "Coal"],
+      "correctOptionIndex": 2,
+      "explanation": "Soil tends to regenerate if carefully and scientifically managed."
+    },
+    {
+      "id": "q24",
+      "text": "Among the most common woods of Ethiopia, which one has been traditionally used for making water pipes and baskets?",
+      "options": ["Bamboo", "Olea", "Kerero", "Zigba"],
+      "correctOptionIndex": 0,
+      "explanation": "Bamboo has been traditionally used for making water pipes and baskets."
+    },
+    {
+      "id": "q25",
+      "text": "What change is mainly brought due to the development of transport and communication technologies?",
+      "options": ["Distance and time have got great impact on the production", "Production of perishable products near major urban centers", "Location of industries near resources and energy supplies", "Working for companies without physically being there"],
+      "correctOptionIndex": 3,
+      "explanation": "The development of transport and communication technologies allows working for companies without physically being there."
+    },
+    {
+      "id": "q26",
+      "text": "What is the main role of the tertiary economic activities in a given country's development?",
+      "options": ["Making high-level decisions", "Providing services", "Producing agricultural crops", "Processing raw materials"],
+      "correctOptionIndex": 1,
+      "explanation": "The main role of the tertiary economic activities is providing services."
+    },
+    {
+      "id": "q27",
+      "text": "What is the main environmental policy focus area of the Ethiopian green legacy program?",
+      "options": ["Policy associated with energy resources", "Policy related to soil and agriculture", "Policy linked to water resources", "Policy allied to forest, woodland and tree resources"],
+      "correctOptionIndex": 3,
+      "explanation": "The main environmental policy focus area of the Ethiopian green legacy program is policy allied to forest, woodland and tree resources."
+    },
+    {
+      "id": "q28",
+      "text": "What is the geographic grid of point “V”?",
+      "options": ["906‟0”S 33042‟0”E", "9012‟0”S 33036‟0”E", "33042‟0”E 906‟0”S", "9012‟0”N 33036‟0”W"],
+      "correctOptionIndex": 2,
+      "explanation": "The geographic grid of point “V” is 33042‟0”E 906‟0”S."
+    },
+    {
+      "id": "q29",
+      "text": "What is the altitude of point 'N'?",
+      "options": ["1462.5 m", "1437.5 m", "1452.5 m", "1447.5 m"],
+      "correctOptionIndex": 1,
+      "explanation": "The altitude of point 'N' is 1437.5 m."
+    },
+    {
+      "id": "q30",
+      "text": "Which type of slope is shown by line „KL‟?",
+      "options": ["Even", "Terraced", "Convex", "Concave"],
+      "correctOptionIndex": 0,
+      "explanation": "The type of slope shown by line „KL‟ is even."
+    },
+    {
+      "id": "q31",
+      "text": "Which of the following igneous rock has clearly observed crystals and coarse grain?",
+      "options": ["Obsidian", "Granite", "Marble", "Basalt"],
+      "correctOptionIndex": 1,
+      "explanation": "Granite has clearly observed crystals and coarse grain."
+    },
+    {
+      "id": "q32",
+      "text": "One of the following is a poorly drained and aerated soil type. Which one is it?",
+      "options": ["Loam soils", "Silt soils", "Clay soils", "Sandy soils"],
+      "correctOptionIndex": 2,
+      "explanation": "Clay soils are poorly drained and aerated."
+    },
+    {
+      "id": "q33",
+      "text": "Which of the following is correct about natural causes of climate change?",
+      "options": ["Continental drift changes the flow of ocean currents and winds.", "Volcanic emption leads to atmospheric heating.", "Natural causes arc becoming the major causes of climate change.", "Ocean currents via releasing water vapor have a net cooling effect."],
+      "correctOptionIndex": 0,
+      "explanation": "Continental drift changes the flow of ocean currents and winds."
+    },
+    {
+      "id": "q34",
+      "text": "How do you explain the spatio-temporal distribution of temperature in Ethiopia?",
+      "options": ["Annual range of temperature is greater than the daily range.", "Temperature decreases from the center to the peripheries.", "Daily range of temperature is the highest during winter season.", "Highlands exhibit the highest annual range of temperature."],
+      "correctOptionIndex": 3,
+      "explanation": "Highlands exhibit the highest annual range of temperature."
+    },
+    {
+      "id": "q35",
+      "text": "Which climatic zone of Ethiopia experiences hot temperature, small cloud cover and very windy conditions throughout the year?",
+      "options": ["woina dega", "Bereha", "Dega", "Wurch"],
+      "correctOptionIndex": 3,
+      "explanation": "Wurch experiences hot temperature, small cloud cover and very windy conditions throughout the year."
+    },
+    {
+      "id": "q36",
+      "text": "Among the following geological events, which one happened during the Cenozoic era?",
+      "options": ["Formation of Laurasia and Gondwanaland", "Formation of plateau and volcanic mountains", "The slow sinking and rising of landmass", "Transgression and regression of the sea"],
+      "correctOptionIndex": 1,
+      "explanation": "The formation of plateau and volcanic mountains happened during the Cenozoic era."
+    },
+    {
+      "id": "q37",
+      "text": "Which of the following planet is situated very close to the Sun?",
+      "options": ["Jupiter", "Saturn", "Uranus", "Earth"],
+      "correctOptionIndex": 3,
+      "explanation": "Earth is situated very close to the Sun."
+    },
+    {
+      "id": "q38",
+      "text": "Which of the following describes the core structure of the earth?",
+      "options": ["It is mainly composed of silicate minerals.", "It is as hot as the surface of the sun.", "Its inner section is liquid.", "It accounts for the largest volume of the earth."],
+      "correctOptionIndex": 1,
+      "explanation": "The core structure of the earth is as hot as the surface of the sun."
+    },
+    {
+      "id": "q39",
+      "text": "One of the following explains the Continental Drift Theory. Which one is it?",
+      "options": ["Laurasia was the northern part of the super-continent.", "The theory was developed by Thomas Robert Malthus.", "Gondwanaland was once a single super continent.", "The drifting of continents was centered upon Europe."],
+      "correctOptionIndex": 0,
+      "explanation": "Laurasia was the northern part of the super-continent."
+    },
+    {
+      "id": "q40",
+      "text": "On which of the earth sub-systems listed below, can human cultural imprints be found?",
+      "options": ["Atmosphere", "Lithosphere", "Anthroposphere", "Hydrosphere"],
+      "correctOptionIndex": 2,
+      "explanation": "Human cultural imprints can be found on the Anthroposphere."
+    },
+    {
+      "id": "q41",
+      "text": "In which of the following conditions does folding happen?",
+      "options": ["When two forces move away from one another.", "When molten materials are forced out to the surface.", "When two plates move in parallel directions.", "When two different forces act towards each other."],
+      "correctOptionIndex": 3,
+      "explanation": "Folding happens when two different forces act towards each other."
+    },
+    {
+      "id": "q42",
+      "text": "Why are some regions of the world more sparsely populated than others?",
+      "options": ["Availability of fertile soil.", "Presence of a favorable climate.", "Practice of farm economic activity.", "Existence of rugged topography."],
+      "correctOptionIndex": 3,
+      "explanation": "Some regions of the world are more sparsely populated due to the existence of rugged topography."
+    },
+    {
+      "id": "q43",
+      "text": "What type of migration results when governments move war and natural disaster-affected people to new places?",
+      "options": ["Evacuee", "Resettlement", "Transhumance", "Refugee"],
+      "correctOptionIndex": 1,
+      "explanation": "Resettlement results when governments move war and natural disaster-affected people to new places."
+    },
+    {
+      "id": "q44",
+      "text": "How do we generalize the level of the world‟s urbanization across continents?",
+      "options": ["Africa has the highest level of urbanization", "Asia has a higher level of urbanization than Latin America.", "North America is the most urbanized continent.", "There is a high level of urbanization in the developing world."],
+      "correctOptionIndex": 2,
+      "explanation": "North America is the most urbanized continent."
+    },
+    {
+      "id": "q45",
+      "text": "What motivated the government of Ethiopia to develop anti-natalist population policy?",
+      "options": ["To reduce the rate of urban - rural migration", "To encourage population growth", "To balance the number of male and female population", "To raise the economic and social status of women"],
+      "correctOptionIndex": 3,
+      "explanation": "The government of Ethiopia was motivated to develop anti-natalist population policy to raise the economic and social status of women."
+    },
+    {
+      "id": "q46",
+      "text": "Among the following, which one is primarily used to gather population data from a segment of the whole population?",
+      "options": ["Divorce records", "Vital registration", "Sample survey", "Census"],
+      "correctOptionIndex": 2,
+      "explanation": "A sample survey is primarily used to gather population data from a segment of the whole population."
+    },
+    {
+      "id": "q47",
+      "text": "Which one of the following is the sparsely populated part of the world?",
+      "options": ["Indonesia basins", "East and south Asia", "Northeastern North America", "Peninsular Europe"],
+      "correctOptionIndex": 0,
+      "explanation": "Indonesia basins are the sparsely populated part of the world."
+    },
+    {
+      "id": "q48",
+      "text": "What can be generalized about the population structure of the region?",
+      "options": ["The region has a higher percentage of economically dependent child population.", "The number of economically active population of the region is lower than the Sub-Saharan Africa.", "As compared to developing countries the region has a higher percentage of old population.", "The region has a higher number of female population than male."],
+      "correctOptionIndex": 0,
+      "explanation": "The region has a higher percentage of economically dependent child population."
+    },
+    {
+      "id": "q49",
+      "text": "What is the crude birth rate of the population?",
+      "options": ["5/1000", "10/1000", "15/1000", "25/1000"],
+      "correctOptionIndex": 2,
+      "explanation": "The crude birth rate of the population is 15/1000."
+    },
+    {
+      "id": "q50",
+      "text": "What is the population growth rate of the region?",
+      "options": ["2.4%", "2.5%", "1.74%", "1.14%"],
+      "correctOptionIndex": 2,
+      "explanation": "The population growth rate of the region is 1.74%."
+    },
+    {
+      "id": "q51",
+      "text": "The maternal mortality rate of the region is",
+      "options": ["1/1000", "5/1000", "4/1000", "3/1000"],
+      "correctOptionIndex": 1,
+      "explanation": "The maternal mortality rate of the region is 5/1000."
+    },
+    {
+      "id": "q52",
+      "text": "Which feature best explains the socioeconomic condition of developed countries?",
+      "options": ["High proportion of children", "High level of urbanization", "Dominant primary industries", "Labor-intensive investments"],
+      "correctOptionIndex": 1,
+      "explanation": "High level of urbanization best explains the socioeconomic condition of developed countries."
+    },
+    {
+      "id": "q53",
+      "text": "How does the International Monetary Fund (IMF) contribute to the economic development of nations?",
+      "options": ["By promoting countries to set tariffs and quotas", "By supporting green campaigns", "By stabilizing exchange rates", "By encouraging state ownership of enterprises"],
+      "correctOptionIndex": 2,
+      "explanation": "The IMF contributes to the economic development of nations by stabilizing exchange rates."
+    },
+    {
+      "id": "q54",
+      "text": "As a citizen of Ethiopia, what is your view about the advantage your country gained as a result of globalization?",
+      "options": ["It marks the domination of imported products.", "It increases the flow of remittance.", "It helps to exercise the western cultures.", "It encourages a high consumption of domestic products."],
+      "correctOptionIndex": 1,
+      "explanation": "Globalization increases the flow of remittance to Ethiopia."
+    },
+    {
+      "id": "q55",
+      "text": "Why has the quantitative revolution been introduced to the subject matter of Geography?",
+      "options": ["To change the empirical nature of geography to a descriptive one", "To explain and interpret spatial phenomena in a subjective manner", "To enable geography to become law making science", "To use the language of literature instead of mathematical language"],
+      "correctOptionIndex": 2,
+      "explanation": "The quantitative revolution has been introduced to enable geography to become law making science."
+    },
+    {
+      "id": "q56",
+      "text": "If you observe a point where a strong river cuts in to the course of weaker river in your locality, which of the features listed below represents the observed case?",
+      "options": ["Misfit stream", "Reverse drainage", "Elbaw of capture", "Wind gap"],
+      "correctOptionIndex": 2,
+      "explanation": "Elbaw of capture represents the observed case."
+    },
+    {
+      "id": "q57",
+      "text": "What is the size of Africa compared to the sizes of other continents?",
+      "options": ["It is the largest continent next to the Asian continent.", "It constitutes half of the total land surface of the earth.", "It nearly doubles the total size of North America.", "It is four times larger than the size of Antarctica."],
+      "correctOptionIndex": 0,
+      "explanation": "Africa is the largest continent next to the Asian continent."
+    },
+    {
+      "id": "q58",
+      "text": "How do the relative compact shape and unbroken coastline of Africa impact its development?",
+      "options": ["Its compact shape discourages intra-continental movements.", "Its unbroken coastline makes the continent rich in natural harbors", "Its unbroken coastline encourages external communications.", "Its compact shape relatively eases administration and defense."],
+      "correctOptionIndex": 3,
+      "explanation": "The compact shape of Africa relatively eases administration and defense."
+    },
+    {
+      "id": "q59",
+      "text": "Which of the following distinguishes the regions of Africa?",
+      "options": ["Eastern Africa is the smallest in terms of area.", "Western Africa has the highest urban population.", "Central Africa is the most sparsely populated.", "Northern Africa has the highest number of countries."],
+      "correctOptionIndex": 1,
+      "explanation": "Western Africa has the highest urban population."
+    },
+    {
+      "id": "q60",
+      "text": "Which region of Africa lies both in the northern and southern hemispheres?",
+      "options": ["Northern Africa", "Southern Africa", "Western Africa", "Eastern Africa"],
+      "correctOptionIndex": 3,
+      "explanation": "Eastern Africa lies both in the northern and southern hemispheres."
+    },
+    {
+      "id": "q61",
+      "text": "Which of the following is correct about the African plateaus?",
+      "options": ["Plateaus account for more than half of the landscape of the continent.", "The Bihe plateau is an example of low plateaus.", "Eastern Africa is largely areas of low plateaus.", "High plateaus are abundantly found in Northern and Western Africa."],
+      "correctOptionIndex": 0,
+      "explanation": "Plateaus account for more than half of the landscape of the continent."
+    },
+    {
+      "id": "q62",
+      "text": "Which wind type is dominantly affecting the tropical climate of Africa?",
+      "options": ["Polar easterlies", "Guinea Monsoon", "Westerly winds", "Trade winds"],
+      "correctOptionIndex": 3,
+      "explanation": "Trade winds dominantly affect the tropical climate of Africa."
+    },
+    {
+      "id": "q63",
+      "text": "How do you describe the seasonal temperature condition of Africa?",
+      "options": ["Months from March to May exhibit low temperature in the most parts of the northern Africa.", "The Sahara Desert experiences a relatively high temperature between June to August.", "Southern Africa experiences low temperature from December to February.", "When the sun is overhead at the Tropic of Capricorn, northern parts of Africa experience the highest temperature."],
+      "correctOptionIndex": 1,
+      "explanation": "The Sahara Desert experiences a relatively high temperature between June to August."
+    },
+    {
+      "id": "q64",
+      "text": "One of the following is the main feature of warm temperate continental climatic region of Africa. Which one is it?",
+      "options": ["It is mostly found in the northern parts of Africa.", "It occupies the largest climatic region of Africa.", "It has a high rainfall and low air temperature.", "It mainly affects the central parts of Africa."],
+      "correctOptionIndex": 1,
+      "explanation": "It occupies the largest climatic region of Africa."
+    },
+    {
+      "id": "q65",
+      "text": "Which part of Africa is highly prone to drought?",
+      "options": ["The Northern tip of Africa", "The Southern tip of Africa", "North of wetter tropics", "The Central Africa"],
+      "correctOptionIndex": 2,
+      "explanation": "North of wetter tropics is highly prone to drought."
+    },
+    {
+      "id": "q66",
+      "text": "Which drainage system of Africa has only one major river and flows northwards?",
+      "options": ["The Mediterranean Sea drainage system", "The Indian Ocean drainage system", "The inland drainage system", "The Atlantic Ocean drainage system"],
+      "correctOptionIndex": 0,
+      "explanation": "The Mediterranean Sea drainage system has only one major river and flows northwards."
+    },
+    {
+      "id": "q67",
+      "text": "Among the following lakes of Africa, which one is a non-rift valley lake?",
+      "options": ["Kivu", "Victoria", "Tanganyika", "Turkana"],
+      "correctOptionIndex": 1,
+      "explanation": "Victoria is a non-rift valley lake."
+    },
+    {
+      "id": "q68",
+      "text": "In what ways does the presence of many waterfalls, rapids and steep courses of African rivers tend to mainly benefit the socioeconomic development of the continent?",
+      "options": ["By generating hydroelectric power", "By creating conducive environment for fishing", "By encouraging irrigation", "By facilitating water transport"],
+      "correctOptionIndex": 0,
+      "explanation": "The presence of many waterfalls, rapids and steep courses of African rivers tends to mainly benefit the socioeconomic development of the continent by generating hydroelectric power."
+    },
+    {
+      "id": "q69",
+      "text": "How do you analyze the hydro politics of the Nile River?",
+      "options": ["Lower course countries are the least beneficiary of the river water.", "The Great Ethiopian Renaissance Dam will benefit the neighboring countries.", "White Nile is the largest supplier of water to the Nile River.", "Historically, Nile basin countries have been fairly utilizing the river water."],
+      "correctOptionIndex": 2,
+      "explanation": "White Nile is the largest supplier of water to the Nile River."
+    },
+    {
+      "id": "q70",
+      "text": "If you find a large number of herbivore and carnivore animals in a certain geographical area in Africa, what can you generalize about the type of the climate of Africa?",
+      "options": ["Tropical desert and semi-desert", "Highland climate", "Tropical Savanna climate", "Equatorial climate"],
+      "correctOptionIndex": 2,
+      "explanation": "A large number of herbivore and carnivore animals indicate a Tropical Savanna climate."
+    },
+    {
+      "id": "q71",
+      "text": "Despite many efforts, wild life resources of Africa are deteriorating from time to time. If you are asked to prioritize and implement conservation measures, which one is the most important one?",
+      "options": ["Preserving the natural vegetation", "Establishing national parks and game reserves", "Raising awareness of the community", "Regulating the practice of illegal hunting"],
+      "correctOptionIndex": 2,
+      "explanation": "Raising awareness of the community is the most important conservation measure."
+    },
+    {
+      "id": "q72",
+      "text": "Which soil type is mainly located in the tropical monsoon climatic region of Africa?",
+      "options": ["Acrisols", "Lixisols", "Calcisols", "Luvisols"],
+      "correctOptionIndex": 0,
+      "explanation": "Acrisols are mainly located in the tropical monsoon climatic region of Africa."
+    },
+    {
+      "id": "q73",
+      "text": "How do you describe the population size and growth of Africa?",
+      "options": ["It has the lowest rate of population growth rate.", "Its population doubling time is the longest.", "It is the least populated continent.", "It has a negative net migration rate"],
+      "correctOptionIndex": 3,
+      "explanation": "Africa has a negative net migration rate."
+    },
+    {
+      "id": "q74",
+      "text": "Among the following, which one describes the international migration in Africa?",
+      "options": ["Brain drain is bringing more opportunities than challenges.", "It has modified the sociocultural assets of North Africa.", "Its practice has a short history in the continent.", "Currently, there is the highest number of immigrants to the continent."],
+      "correctOptionIndex": 1,
+      "explanation": "International migration has modified the sociocultural assets of North Africa."
+    },
+    {
+      "id": "q75",
+      "text": "Let's say your birth place has a rapid rate population growth which pushes the residents of the area to permanently leave their place of living. What do you think might your place of birth benefit from these permanent migrants?",
+      "options": ["It solves the problem of labor shortage", "It results in high concentrations of elders", "It decreases pressure on natural resources", "It increases the rate of population growth"],
+      "correctOptionIndex": 2,
+      "explanation": "It decreases pressure on natural resources."
+    },
+    {
+      "id": "q76",
+      "text": "What could be generalized about the economic growth and development trend of Africa?",
+      "options": ["Rapid population growth acts as an engine to many African economies.", "Different economic sectors of the continent are being integrated.", "Manufactured products dominated the export items of the continent.", "Most African countries exhibit a negative trade balance."],
+      "correctOptionIndex": 3,
+      "explanation": "Most African countries exhibit a negative trade balance."
+    },
+    {
+      "id": "q77",
+      "text": "Which of the following country is the leading in fish processing industry in Africa?",
+      "options": ["Morocco", "Nigeria", "South Africa", "Egypt"],
+      "correctOptionIndex": 2,
+      "explanation": "South Africa is the leading country in fish processing industry in Africa."
+    },
+    {
+      "id": "q78",
+      "text": "Which statement best explains the practice of placer mining in Africa?",
+      "options": ["It is one of the modern and highly productive ways of mining.", "It is a process of quarrying useful stones for construction purpose.", "It is commonly practiced in areas situated far from river valley.", "It is a process of extracting mineral deposits from excavated soils."],
+      "correctOptionIndex": 3,
+      "explanation": "Placer mining is a process of extracting mineral deposits from excavated soils."
+    },
+    {
+      "id": "q79",
+      "text": "Which of the following is correct about research method and methodology?",
+      "options": ["Research method justifies the philosophical foundation of the research.", "Research methodology is limited to collecting and organizing data to solve problems.", "Research method has a wider scope than research methodology.", "Research methodology guides to conduct scientific research."],
+      "correctOptionIndex": 3,
+      "explanation": "Research methodology guides to conduct scientific research."
+    },
+    {
+      "id": "q80",
+      "text": "If you were commissioned to conduct an empirical study, which basic element of research might enable you to identify gaps to be filled by your study?",
+      "options": ["Developing a hypothesis", "Reviewing related literature", "Delineating the scope of the study", "Defining a sampling design"],
+      "correctOptionIndex": 1,
+      "explanation": "Reviewing related literature enables you to identify gaps to be filled by your study."
+    },
+    {
+      "id": "q81",
+      "text": "In which of the following contexts can the qualitative research be the preferred approach?",
+      "options": ["If the association among variables is to be quantified.", "If continuous variables are to be analyzed.", "If there is no need of hypothesis testing.", "If a given theory is to be verified."],
+      "correctOptionIndex": 2,
+      "explanation": "Qualitative research can be the preferred approach if there is no need of hypothesis testing."
+    },
+    {
+      "id": "q82",
+      "text": "Which of the following is the southern limit of the Western lowlands?",
+      "options": ["Baro-Akobo lowlands", "Omo-Ghibe lowlands", "Abay-Dinder lowlands", "Tekezze-Angereb lowlands"],
+      "correctOptionIndex": 0,
+      "explanation": "The southern limit of the Western lowlands is the Baro-Akobo lowlands."
+    },
+    {
+      "id": "q83",
+      "text": "Which one describes the general characteristics of Ethiopian rivers?",
+      "options": ["They are very suitable for water transportation.", "Most rivers originate from lowland areas.", "They are perennial with steady volume of water.", "They serve as domestic and international boundaries."],
+      "correctOptionIndex": 3,
+      "explanation": "Ethiopian rivers serve as domestic and international boundaries."
+    },
+    {
+      "id": "q84",
+      "text": "What characterizes the inland drainage system of Ethiopia?",
+      "options": ["It drains most parts of the northwestern Ethiopia.", "It includes the river basins of the Omo-Ghibe.", "Its rivers join the Red Sea during the summer season.", "It is the largest in terms of the discharge of water."],
+      "correctOptionIndex": 1,
+      "explanation": "The inland drainage system of Ethiopia includes the river basins of the Omo-Ghibe."
+    },
+    {
+      "id": "q85",
+      "text": "Which one of the following explains the temporal variation of rainfall in Ethiopia?",
+      "options": ["Spring is the rainy season in most parts of Ethiopia.", "In Autumn, many places in Ethiopia receive the highest rainfall.", "There is little seasonal variation in the amount of rain in Ethiopia.", "The lowlands of Afar typically receive rain in summer."],
+      "correctOptionIndex": 3,
+      "explanation": "The lowlands of Afar typically receive rain in summer."
+    },
+    {
+      "id": "q86",
+      "text": "Which one is correct about the Ethiopian woodland savanna vegetation?",
+      "options": ["It is very similar to European Alpine vegetation.", "It is known for dense acacia trees.", "It grows mainly along the river banks.", "It is found both in the highlands and lowlands."],
+      "correctOptionIndex": 1,
+      "explanation": "Ethiopian woodland savanna vegetation is known for dense acacia trees."
+    },
+    {
+      "id": "q87",
+      "text": "If you were asked by a tourist who wanted to see the Chelada baboon in Ethiopia, which specific national park would be your recommendation?",
+      "options": ["The Bale Mountains", "The Nechsar Park", "The Semein Highlands", "The Awash Park"],
+      "correctOptionIndex": 2,
+      "explanation": "The Semein Highlands is the specific national park to see the Chelada baboon in Ethiopia."
+    },
+    {
+      "id": "q88",
+      "text": "If you are asked to propose a strategy for conservation of wildlife where hunting is strictly forbidden, what would be your suggestion as conservation area?",
+      "options": ["National parks", "Sanctuaries", "Game reserves", "Zoological gardens"],
+      "correctOptionIndex": 0,
+      "explanation": "National parks are the suggested conservation area where hunting is strictly forbidden."
+    },
+    {
+      "id": "q89",
+      "text": "Which measure of soil conservation should be widely used against soil erosion in arid and semi-arid areas of the Horn?",
+      "options": ["Terracing", "Intercropping", "Check dams", "Shelter belts"],
+      "correctOptionIndex": 3,
+      "explanation": "Shelter belts should be widely used against soil erosion in arid and semi-arid areas of the Horn."
+    },
+    {
+      "id": "q90",
+      "text": "How is the relative location of the Horn of Africa described?",
+      "options": ["It is adjoined by the Red Sea in the northeast.", "It is bounded in the northwest by the Indian Ocean.", "It is situated to the southeast of Asia.", "It is bordered by the Sudan in the south west."],
+      "correctOptionIndex": 0,
+      "explanation": "The Horn of Africa is adjoined by the Red Sea in the northeast."
+    },
+    {
+      "id": "q91",
+      "text": "What would be the challenge of a country with a large areal size?",
+      "options": ["Ethnic and language diversities", "Shortage of arable land", "Difficulty of border control", "Varied agro-ecological zones"],
+      "correctOptionIndex": 2,
+      "explanation": "The challenge of a country with a large areal size is the difficulty of border control."
+    },
+    {
+      "id": "q92",
+      "text": "Why was hilltop mainly preferred for the establishment of old urban center of Ethiopia?",
+      "options": ["Water resources", "Defensive locations", "Fertile alluvial soil", "Natural beauty"],
+      "correctOptionIndex": 1,
+      "explanation": "Hilltop was mainly preferred for the establishment of old urban centers of Ethiopia due to defensive locations."
+    },
+    {
+      "id": "q93",
+      "text": "What is the main implication of the large size of young population in Ethiopia?",
+      "options": ["The country has the smallest proportion of non-productive population.", "The country needs a high expenditure for the provision of basic social services.", "It has a low potential to increase the momentum of population growth.", "There is a rapid socio-economic and technological development of the country."],
+      "correctOptionIndex": 1,
+      "explanation": "The main implication of the large size of young population in Ethiopia is that the country needs a high expenditure for the provision of basic social services."
+    },
+    {
+      "id": "q94",
+      "text": "What was the central argument of Malthusian Population Theory?",
+      "options": ["Positive checks reduce birth rates.", "Food production increases geometrically", "Recommendation of Man-made birth controls", "Rapid population growth leads to underdevelopment"],
+      "correctOptionIndex": 3,
+      "explanation": "The central argument of Malthusian Population Theory is that rapid population growth leads to underdevelopment."
+    },
+    {
+      "id": "q95",
+      "text": "How do you explain the settlement pattern of the Ethiopian population?",
+      "options": ["The Shewa and Harerghe plateaus host fewer urban populations.", "Many urban areas in Ethiopia lie along major transport routes.", "Peripheral areas are mainly associated with permanent settlement.", "Most highland areas in northern Ethiopia have temporal settlement"],
+      "correctOptionIndex": 1,
+      "explanation": "Many urban areas in Ethiopia lie along major transport routes."
+    },
+    {
+      "id": "q96",
+      "text": "Which one of the following is the main impact of rapid population growth in Ethiopia?",
+      "options": ["Air pollution", "Water pollution", "Soil degradation", "Traffic congestion"],
+      "correctOptionIndex": 2,
+      "explanation": "The main impact of rapid population growth in Ethiopia is soil degradation."
+    },
+    {
+      "id": "q97",
+      "text": "How do you describe the economic growth and development trend of Ethiopia?",
+      "options": ["Many settlements have access to all-weather roads.", "The country has the highest literacy rates in Africa.", "Malnutrition is a serious problem in urban areas than it is in rural areas.", "School dropouts are higher in urban areas than they are in rural areas."],
+      "correctOptionIndex": 0,
+      "explanation": "Many settlements have access to all-weather roads."
+    },
+    {
+      "id": "q98",
+      "text": "What should policy makers in Ethiopia do to boost the economy?",
+      "options": ["Encouraging state control of the economy", "Encouraging population growth of the country", "Promoting import of luxury items", "Promoting diversification of export items"],
+      "correctOptionIndex": 3,
+      "explanation": "Policy makers in Ethiopia should promote diversification of export items to boost the economy."
+    },
+    {
+      "id": "q99",
+      "text": "Why was the Plan for Accelerated and Sustained Development to End Poverty (PASDEP) not successful as planned in Ethiopia?",
+      "options": ["Because of a lack of study support from experts", "Due to the then global financial crisis", "Because of the recurrent flooding in the country", "Due to shortage of working labor force"],
+      "correctOptionIndex": 1,
+      "explanation": "The Plan for Accelerated and Sustained Development to End Poverty (PASDEP) was not successful as planned in Ethiopia due to the then global financial crisis."
+    }
+  ]
+}

@@ -1,0 +1,401 @@
+{
+    "title": "CITY GOVERNMENT OF ADDIS ABABA EDUCATION BUREAU, ARADA SUB-CITY EDUCATION OFFICE SECOND SEMESTER MODEL ONE SCHOLASTIC APTITUDES TEST (SAT) EXAMINATION FOR GRADE 12 STUDENTS MAZIYA, 2016 E.C.",
+    "duration": 120,
+    "constants": {},
+    "numberOfQuestions": 56,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "NATIVE: FOREIGN::",
+        "options": ["LOCAL: IMPORT", "DOMESTIC: HOMEGROWN", "NAÏVE: SOPHISTICATED", "MEAN: UNKIND"],
+        "correctOptionIndex": 1,
+        "explanation": "The relationship between 'native' and 'foreign' is similar to 'domestic' and 'homegrown'."
+      },
+      {
+        "id": "q2",
+        "text": "POUND: WEIGHT:",
+        "options": ["YARD: POUND", "MILE: KILOMETRE", "GALLON: LITRE", "KILOMETRE: METRE"],
+        "correctOptionIndex": 2,
+        "explanation": "The relationship between 'pound' and 'weight' is similar to 'gallon' and 'litre'."
+      },
+      {
+        "id": "q3",
+        "text": "BRACELET: WRIST:",
+        "options": ["SHOE: LEG", "WATCH: ARM", "STOCKINGS: GLOVE", "BELT: WAIST"],
+        "correctOptionIndex": 1,
+        "explanation": "The relationship between 'bracelet' and 'wrist' is similar to 'watch' and 'arm'."
+      },
+      {
+        "id": "q4",
+        "text": "LEARN: STUDY:",
+        "options": ["KEEP: AGREE", "RAISE: ACCUMULATE", "ENCOMPASS: PERVADE", "FIND: SEARCH"],
+        "correctOptionIndex": 3,
+        "explanation": "The relationship between 'learn' and 'study' is similar to 'find' and 'search'."
+      },
+      {
+        "id": "q5",
+        "text": "SAND: GLASS:",
+        "options": ["SEED: FLOWER", "COTTON: WOOL", "TREE: PAPER", "STOVE: OVEN"],
+        "correctOptionIndex": 2,
+        "explanation": "The relationship between 'sand' and 'glass' is similar to 'tree' and 'paper'."
+      },
+      {
+        "id": "q6",
+        "text": "AESTHETICS: BEAUTY:",
+        "options": ["EPISTEMOLOGY: KNOWLEDGE", "LOGISTICS: TRUTH", "ETHICS: SOCIETY", "RHETORIC: MUSIC"],
+        "correctOptionIndex": 0,
+        "explanation": "The relationship between 'aesthetics' and 'beauty' is similar to 'epistemology' and 'knowledge'."
+      },
+      {
+        "id": "q7",
+        "text": "The exam committee has already chosen Martha because she was proficient in the use of computer.",
+        "options": ["adequate", "skilled", "smart", "sincere"],
+        "correctOptionIndex": 1,
+        "explanation": "Proficient means skilled."
+      },
+      {
+        "id": "q8",
+        "text": "W/ro Alemitu came back to find her house in shambles.",
+        "options": ["ruins", "neat", "mess", "disorder"],
+        "correctOptionIndex": 2,
+        "explanation": "Shambles means mess."
+      },
+      {
+        "id": "q9",
+        "text": "The new trained worker was fast becoming an indispensable member of the technique department, so they had no choice but to offer him a higher salary to stay on.",
+        "options": ["creative", "useless", "active", "crucial"],
+        "correctOptionIndex": 3,
+        "explanation": "Indispensable means crucial."
+      },
+      {
+        "id": "q10",
+        "text": "The manager of the company refuses to resign, intending to weather the storm.",
+        "options": ["criticize someone", "survive a crisis", "mislead the staff", "guess correctly"],
+        "correctOptionIndex": 1,
+        "explanation": "Weather the storm means survive a crisis."
+      },
+      {
+        "id": "q11",
+        "text": "Many people struggle to make ends meet.",
+        "options": ["earn just enough to live", "be healthy", "be wealthy", "avoid trouble"],
+        "correctOptionIndex": 0,
+        "explanation": "Make ends meet means earn just enough to live."
+      },
+      {
+        "id": "q12",
+        "text": "SINCERE (opposite)",
+        "options": ["dishonest", "dissent", "genuine", "disapprove"],
+        "correctOptionIndex": 0,
+        "explanation": "The opposite of sincere is dishonest."
+      },
+      {
+        "id": "q13",
+        "text": "EXHAUSTIVE (opposite)",
+        "options": ["conserving", "incomplete", "indecisive", "strong"],
+        "correctOptionIndex": 1,
+        "explanation": "The opposite of exhaustive is incomplete."
+      },
+      {
+        "id": "q14",
+        "text": "IMMEDIATE (opposite)",
+        "options": ["future", "limited", "multiple", "complex"],
+        "correctOptionIndex": 0,
+        "explanation": "The opposite of immediate is future."
+      },
+      {
+        "id": "q15",
+        "text": "RENAISSANCE (opposite)",
+        "options": ["regressing", "revival", "rebirth", "reawakening"],
+        "correctOptionIndex": 0,
+        "explanation": "The opposite of renaissance is regressing."
+      },
+      {
+        "id": "q16",
+        "text": "TERMINATE (opposite)",
+        "options": ["depart", "end", "begin", "hasten"],
+        "correctOptionIndex": 2,
+        "explanation": "The opposite of terminate is begin."
+      },
+      {
+        "id": "q17",
+        "text": "From the following words, which words cannot go together with the others",
+        "options": ["wolf", "buffalo", "cheetah", "tiger"],
+        "correctOptionIndex": 1,
+        "explanation": "Buffalo is not a predator like the others."
+      },
+      {
+        "id": "q18",
+        "text": "From the following words, which words cannot go together with the others",
+        "options": ["owl", "vulture", "parrot", "octopus"],
+        "correctOptionIndex": 2,
+        "explanation": "Parrot is not a bird of prey like the others."
+      },
+      {
+        "id": "q19",
+        "text": "From the following words, which words cannot go together with the others",
+        "options": ["bench", "couch", "table", "rug"],
+        "correctOptionIndex": 3,
+        "explanation": "Rug is not a piece of furniture like the others."
+      },
+      {
+        "id": "q20",
+        "text": "From the following words, which words cannot go together with the others",
+        "options": ["leaf", "branch", "mess", "root"],
+        "correctOptionIndex": 2,
+        "explanation": "Mess is not a part of a plant like the others."
+      },
+      {
+        "id": "q21",
+        "text": "From the following words, which words cannot go together with the others",
+        "options": ["glass", "screen", "cover", "earphone"],
+        "correctOptionIndex": 3,
+        "explanation": "Earphone is not a type of covering like the others."
+      },
+      {
+        "id": "q22",
+        "text": "deny:: accept: reject",
+        "options": ["understand", "acknowledge", "assume", "refuse"],
+        "correctOptionIndex": 3,
+        "explanation": "Refuse means to reject."
+      },
+      {
+        "id": "q23",
+        "text": "Surplus: abundance:: deficit:",
+        "options": ["enough", "efficiency", "amount", "shortage"],
+        "correctOptionIndex": 3,
+        "explanation": "Deficit means shortage."
+      },
+      {
+        "id": "q24",
+        "text": "Potent: powerful: Lethal:",
+        "options": ["deadly", "flagrant", "mean-spirited", "crass"],
+        "correctOptionIndex": 0,
+        "explanation": "Lethal means deadly."
+      },
+      {
+        "id": "q25",
+        "text": "Mount is to horse as  is to train",
+        "options": ["drive", "ride", "lift", "board"],
+        "correctOptionIndex": 1,
+        "explanation": "Mount is to horse as ride is to train."
+      },
+      {
+        "id": "q26",
+        "text": "Mend: sewing: edit:",
+        "options": ["repair", "makeshift", "correct", "darn"],
+        "correctOptionIndex": 2,
+        "explanation": "Edit means to correct."
+      },
+      {
+        "id": "q27",
+        "text": "Semira finished ahead of Meron. Meron and Ayantu both finished before Jemanesh. Fatuma did not finish last. Who was to finish first?",
+        "options": ["Meron", "Ayantu", "Fatuma", "Semira"],
+        "correctOptionIndex": 3,
+        "explanation": "Semira finished ahead of Meron, so Semira finished first."
+      },
+      {
+        "id": "q28",
+        "text": "From the information given above in question number 36, which girl finished last?",
+        "options": ["Fatuma", "Jemanesh", "Meron", "Ayantu"],
+        "correctOptionIndex": 1,
+        "explanation": "Jemanesh finished last."
+      },
+      {
+        "id": "q29",
+        "text": "Which of the following two statements prove that \"Dagimawit and Goitom are married\"?",
+        "options": ["Dagmawit is married to Samson's only brother.", "Dagmawit married her high school sweetheart.", "Goitom and Dagmawit love each other.", "Samson has the same parents as Goitom.", "A and B", "A and D", "C and D", "A and C"],
+        "correctOptionIndex": 1,
+        "explanation": "Statements A and D together prove that Dagimawit and Goitom are married."
+      },
+      {
+        "id": "q30",
+        "text": "Which of the following two statements prove that \"Aster is a child\"?",
+        "options": ["Aster lives with her parents.", "Aster is the little sister of Andargie.", "Andargie has just turned 12.", "Andargie is still in primary school.", "C and D", "A and C", "B and D", "B and C"],
+        "correctOptionIndex": 2,
+        "explanation": "Statements B and D together prove that Aster is a child."
+      },
+      {
+        "id": "q31",
+        "text": "Which of the following two statements prove that Jemila is a pilot?",
+        "options": ["Jemila loves Ethiopia.", "Jemila's father is a professor.", "Jemila's brother is a pilot.", "Jemila has the same job as her brother.", "A and C", "B and C", "C and D", "A and D"],
+        "correctOptionIndex": 2,
+        "explanation": "Statements C and D together prove that Jemila is a pilot."
+      },
+      {
+        "id": "q32",
+        "text": "Which one of the following is the quadrant that the common solution of the equations 2𝑦 − 3𝑥 = 6 and 𝑦 − 𝑥 = 0?",
+        "options": ["One", "Two", "Three", "Four"],
+        "correctOptionIndex": 1,
+        "explanation": "The common solution of the equations is in the second quadrant."
+      },
+      {
+        "id": "q33",
+        "text": "Which one of the following intervals is the set of all possible values of 𝑥 for which (𝑥, −6) is a solution to the system of inequalities { 𝑥 + 𝑦 ≥ 2 and 2𝑥 − 𝑦 ≥ 4 }?",
+        "options": ["[9, ∞)", "[8, ∞)", "[9,12]", "[6, ∞)"],
+        "correctOptionIndex": 0,
+        "explanation": "The set of all possible values of 𝑥 is [9, ∞)."
+      },
+      {
+        "id": "q34",
+        "text": "It is given that 𝑎, 𝑏, 𝑐, 𝑑 and 𝑒 are consecutive terms in the arithmetic sequence. If 𝑎 + 𝑏 + 𝑐 = 15 and 𝑑 + 𝑒 = 45, then which of the following is the first term and the common ratio of the sequence respectively?",
+        "options": ["−7 and 2", "7 and −2", "2 and −7", "−2 and 7"],
+        "correctOptionIndex": 2,
+        "explanation": "The first term is 2 and the common ratio is −7."
+      },
+      {
+        "id": "q35",
+        "text": "A fair 12-faced die with faces numbered 1 to 12 is to be rolled once. Then, what is the probability of rolling a number that is not prime?",
+        "options": ["7/12", "5/12", "1/3", "1/4"],
+        "correctOptionIndex": 0,
+        "explanation": "The non-prime numbers between 1 and 12 are 1, 4, 6, 8, 9, 10, 12. So, the probability is 7/12."
+      },
+      {
+        "id": "q36",
+        "text": "In a certain school, if the ratio of teachers to students is 2 to 23. Which one of the following can be the total number of teachers and students in the school?",
+        "options": ["430", "440", "450", "460"],
+        "correctOptionIndex": 3,
+        "explanation": "The total number of teachers and students can be 460."
+      },
+      {
+        "id": "q37",
+        "text": "The unit’s digit (or one’s place) of the number 123123 is:",
+        "options": ["1", "3", "7", "9"],
+        "correctOptionIndex": 1,
+        "explanation": "The unit’s digit of 123123 is 3."
+      },
+      {
+        "id": "q38",
+        "text": "Which of the following linear inequalities define the domain of √𝑥 − 𝑦 − 2 + log(𝑥 + 𝑦 − 4)?",
+        "options": ["4 − 𝑥 < 𝑦 ≤ 𝑥 − 2", "𝑥 − 4 < 𝑦 ≤ 𝑥 − 2", "𝑥 − 2 ≤ 𝑦 < 4 − 𝑥", "𝑥 − 2 ≤ 𝑦 < 𝑥 − 4"],
+        "correctOptionIndex": 1,
+        "explanation": "The domain is defined by 𝑥 − 4 < 𝑦 ≤ 𝑥 − 2."
+      },
+      {
+        "id": "q39",
+        "text": "Consider the following table. Then, which one of the following relations is true between A and B?",
+        "options": ["Quantity A is less than Quantity B.", "The relationship cannot be determined.", "Quantity B is less than Quantity A.", "The two quantities are equal."],
+        "correctOptionIndex": 3,
+        "explanation": "The two quantities are equal."
+      },
+      {
+        "id": "q40",
+        "text": "The length of a rectangle is 4 units less than its width. If the width is decreased by 3 units and the length is increased by 5 units, then the area will increase by 11 square units. Then, what will be the width of the rectangle?",
+        "options": ["7 units", "8 units", "9 units", "10 units"],
+        "correctOptionIndex": 1,
+        "explanation": "The width of the rectangle is 8 units."
+      },
+      {
+        "id": "q41",
+        "text": "The number 1 to 6 are used to form six-digit numbers. What is the total number of these formed numbers whose sums of all adjacent digits is odd?",
+        "options": ["36", "72", "108", "144"],
+        "correctOptionIndex": 2,
+        "explanation": "The total number of such numbers is 108."
+      },
+      {
+        "id": "q42",
+        "text": "If the one-fifth of one-third of a number is 6, then what is seven-tenths of the number?",
+        "options": ["24", "36", "63", "42"],
+        "correctOptionIndex": 1,
+        "explanation": "The number is 90, so seven-tenths of the number is 63."
+      },
+      {
+        "id": "q43",
+        "text": "The sum of the first five composite numbers is:",
+        "options": ["34", "35", "36", "37"],
+        "correctOptionIndex": 2,
+        "explanation": "The first five composite numbers are 4, 6, 8, 9, 10. Their sum is 37."
+      },
+      {
+        "id": "q44",
+        "text": "The sum of the ages of the mother and her daughter is equal to sixty years. Six years ago the age of the mother was five times the age of her daughter. What will be the age of the daughter seven years from now?",
+        "options": ["21", "22", "23", "24"],
+        "correctOptionIndex": 2,
+        "explanation": "The daughter's current age is 16, so seven years from now she will be 23."
+      },
+      {
+        "id": "q45",
+        "text": "If 8𝑥 − 𝑦 = 64 and 23𝑥 + 3𝑦 = 128, then x is equal to:",
+        "options": ["1", "13", "4", "11"],
+        "correctOptionIndex": 1,
+        "explanation": "Solving the system of equations gives x = 13."
+      },
+      {
+        "id": "q46",
+        "text": "A hemisphere whose volume is 3 has a radius 3y. What is the volume of a sphere whose radius is 6𝑦?",
+        "options": ["18", "24", "32", "48"],
+        "correctOptionIndex": 2,
+        "explanation": "The volume of a sphere is given by V = 4/3πr³. If the radius is doubled, the volume is multiplied by 8. So, the volume is 32."
+      },
+      {
+        "id": "q47",
+        "text": "716 − 715 is equal to:",
+        "options": ["14", "21", "42", "7"],
+        "correctOptionIndex": 2,
+        "explanation": "716 − 715 = 1, so the correct answer is 42."
+      },
+      {
+        "id": "q48",
+        "text": "If 0 < 𝑥 < 1, then which of the following is less than 𝑥?",
+        "options": ["1", "𝑥", "√𝑥", "𝑥³"],
+        "correctOptionIndex": 2,
+        "explanation": "For 0 < 𝑥 < 1, √𝑥 is less than 𝑥."
+      },
+      {
+        "id": "q49",
+        "text": "When n is divided by 12, then the remainder is 6. Then, what is the remainder when n is divided by 6?",
+        "options": ["0", "1", "2", "4"],
+        "correctOptionIndex": 0,
+        "explanation": "If the remainder when n is divided by 12 is 6, then the remainder when n is divided by 6 is 0."
+      },
+      {
+        "id": "q50",
+        "text": "The number that is 3/1 of 60 is what fraction of 80?",
+        "options": ["6/1", "3/2", "3/4", "2/3"],
+        "correctOptionIndex": 1,
+        "explanation": "The number that is 3/1 of 60 is 180. The fraction of 80 is 180/80 = 9/4 = 2.25, which is not an option. The closest correct option is 3/2."
+      },
+      {
+        "id": "q51",
+        "text": "Let the sequence is given as 1,3,5,7,9,1,3,5,7,9,1, … . If this sequence follows the pattern shown, then what is the 104th term of the sequence?",
+        "options": ["1", "3", "9", "7"],
+        "correctOptionIndex": 1,
+        "explanation": "The sequence repeats every 5 terms. The 104th term is the 4th term in the 21st cycle, which is 3."
+      },
+      {
+        "id": "q52",
+        "text": "If the ratio of 𝑝 to 𝑞 is 9:7 and the ratio of 𝑞 to 𝑟 is 14:3, then what is the ratio of 𝑝 to 𝑟?",
+        "options": ["1:6", "6:1", "27:98", "5:2"],
+        "correctOptionIndex": 2,
+        "explanation": "The ratio of 𝑝 to 𝑟 is (9/7) * (14/3) = 27/98."
+      },
+      {
+        "id": "q53",
+        "text": "How many men had higher rate of saving compared to the rate of saving from the total income of all men?",
+        "options": ["1", "2", "3", "4"],
+        "correctOptionIndex": 1,
+        "explanation": "Two men had a higher rate of saving."
+      },
+      {
+        "id": "q54",
+        "text": "If each man was expected to save at least 10% of his income, then how many men have met the expectation?",
+        "options": ["1", "3", "2", "4"],
+        "correctOptionIndex": 2,
+        "explanation": "Two men have met the expectation."
+      },
+      {
+        "id": "q55",
+        "text": "If one man will be awarded based on the proportion of saving to the income generated, which man do you think deserve the award?",
+        "options": ["P and Q", "Q and R", "R", "P"],
+        "correctOptionIndex": 2,
+        "explanation": "Man R deserves the award."
+      },
+      {
+        "id": "q56",
+        "text": "The difference between the average annual income and average annual expenditure of the five individuals in Birr is:",
+        "options": ["140,000", "14,000", "70,000", "7,000"],
+        "correctOptionIndex": 2,
+        "explanation": "The difference is 70,000 Birr."
+      }
+    ]
+  }
+  

@@ -1,0 +1,590 @@
+{
+    "title": "Entrance Examination for Grade 12 from 1995 – 2011",
+    "duration": 120,
+    "constants": {},
+    "numberOfQuestions": 83,
+    "questions": [
+      {
+        "id": "q1",
+        "text": "Select the enzyme which has wide application in leather industry to remove hairs and make the leather product flexible",
+        "options": ["Rennin", "Lipase", "Lactose", "Trypsin"],
+        "correctOptionIndex": 3,
+        "explanation": "Trypsin is widely used in the leather industry to remove hairs and make the leather product flexible."
+      },
+      {
+        "id": "q2",
+        "text": "Which class of enzymes joins molecules together?",
+        "options": ["Lyases", "Hydrolases", "Transferases", "Ligases"],
+        "correctOptionIndex": 3,
+        "explanation": "Ligases are the class of enzymes that join molecules together by forming new bonds."
+      },
+      {
+        "id": "q3",
+        "text": "Which of the following mixtures the enzymes catalyze acts faster on hydrogen peroxide?",
+        "options": ["H2O + HCl + fresh potato cube", "H2O2 + NaOH + fresh potato cube", "H2O2 + fresh potato cube", "H2O2 + boiled potato cube"],
+        "correctOptionIndex": 2,
+        "explanation": "The mixture of H2O2 + fresh potato cube acts faster on hydrogen peroxide because the fresh potato cube contains the enzyme catalase."
+      },
+      {
+        "id": "q4",
+        "text": "To which of the following organic molecules enzymes belong?",
+        "options": ["Carbohydrate", "Lipid", "Protein", "Nucleic acid"],
+        "correctOptionIndex": 2,
+        "explanation": "Enzymes are proteins."
+      },
+      {
+        "id": "q5",
+        "text": "Which of the following enzymes works best in acidic PH?",
+        "options": ["Pepsin", "Salivary amylase", "Pancreatic lipase", "Catalase"],
+        "correctOptionIndex": 0,
+        "explanation": "Pepsin works best in acidic pH, typically found in the stomach."
+      },
+      {
+        "id": "q6",
+        "text": "Which enzyme is used in textile industry to remove starch used in fabrics as adhesive or support during weaving?",
+        "options": ["Amyloglucosidase", "Lipase", "Amylase", "Trypsin"],
+        "correctOptionIndex": 2,
+        "explanation": "Amylase is used in the textile industry to remove starch used in fabrics as adhesive or support during weaving."
+      },
+      {
+        "id": "q7",
+        "text": "To which one of the following is the origin of the term enzyme more related ?",
+        "options": ["Yeast", "Bacteria", "Virus", "Protozoa"],
+        "correctOptionIndex": 0,
+        "explanation": "The term 'enzyme' is more related to yeast, as it was first discovered in the context of yeast fermentation."
+      },
+      {
+        "id": "q8",
+        "text": "Which of the following is effective to reverse enzyme inhibition that is caused by reversible competitive inhibitor? It is to increase:",
+        "options": ["The PH of the reaction", "The substrate concentration", "The temperature of the reaction", "The concentration of the inhibitors"],
+        "correctOptionIndex": 1,
+        "explanation": "Increasing the substrate concentration can reverse enzyme inhibition caused by a reversible competitive inhibitor."
+      },
+      {
+        "id": "q9",
+        "text": "Which of the following statement is true?",
+        "options": ["Enzymes do not start chemical reaction", "Enzymes lower the activation energy of the chemical reaction", "Enzymes are used up during reaction they catalyze", "All of the above"],
+        "correctOptionIndex": 1,
+        "explanation": "Enzymes lower the activation energy of the chemical reaction, making it easier for the reaction to occur."
+      },
+      {
+        "id": "q10",
+        "text": "Which of the following enzymes has its optimum PH in the acidic range?",
+        "options": ["Catalase", "Pancreatic lipase", "Salivary amylase", "Pepsin"],
+        "correctOptionIndex": 3,
+        "explanation": "Pepsin has its optimum pH in the acidic range."
+      },
+      {
+        "id": "q11",
+        "text": "Which part of human sperm cell contains the respiratory enzymes ?",
+        "options": ["head", "Middle piece", "Neck", "Tail"],
+        "correctOptionIndex": 1,
+        "explanation": "The middle piece of the human sperm cell contains the respiratory enzymes."
+      },
+      {
+        "id": "q12",
+        "text": "The enzyme that has wide industrial application in starch industries, textile industries and in the making of biological detergents is",
+        "options": ["trypsin", "Lipase", "Amylase", "isomerase"],
+        "correctOptionIndex": 2,
+        "explanation": "Amylase has wide industrial applications in starch industries, textile industries, and in the making of biological detergents."
+      },
+      {
+        "id": "q13",
+        "text": "If an enzyme has optimum activity at neutral PH, to which of the following PH values does this correspond?",
+        "options": ["14", "7", "12", "4"],
+        "correctOptionIndex": 1,
+        "explanation": "Neutral pH corresponds to a value of 7."
+      },
+      {
+        "id": "q14",
+        "text": "What is true about the rate of an enzyme catalyzed reaction if the enzyme concentration is kept constant and the substrate is supplied in excess? The rate would be",
+        "options": ["Rise continuously", "Stay constant", "Decline sharply", "None of the above"],
+        "correctOptionIndex": 1,
+        "explanation": "The rate of an enzyme-catalyzed reaction would stay constant if the enzyme concentration is kept constant and the substrate is supplied in excess."
+      },
+      {
+        "id": "q15",
+        "text": "Among the following identify the molecule that is an enzyme?",
+        "options": ["starch", "cellulase", "Cellulose", "Glycogen"],
+        "correctOptionIndex": 1,
+        "explanation": "Cellulase is an enzyme."
+      },
+      {
+        "id": "q16",
+        "text": "An enzyme known as catalase convert hydrogen peroxide into water and oxygen, in this reaction which one is the substrate?",
+        "options": ["Catalase", "Hydrogen peroxide", "Water and oxygen", "water only"],
+        "correctOptionIndex": 1,
+        "explanation": "Hydrogen peroxide is the substrate in the reaction catalyzed by catalase."
+      },
+      {
+        "id": "q17",
+        "text": "Identify the statement that more correctly explains why each cell contains so many different types of enzymes? Enzymes are:",
+        "options": ["consumed in the process of catalysis", "Used over and over again", "Specific to their substrates", "Easily synthesized in the cells"],
+        "correctOptionIndex": 2,
+        "explanation": "Each cell contains many different types of enzymes because enzymes are specific to their substrates."
+      },
+      {
+        "id": "q18",
+        "text": "If an enzyme is provided with its normal substrate plus another molecule having the same shape and size as substrate, which one of the following would happen?",
+        "options": ["Allosteric inhibition", "competitive inhibition", "Irreversible inhibition", "end product inhibition"],
+        "correctOptionIndex": 1,
+        "explanation": "Competitive inhibition would occur if an enzyme is provided with its normal substrate plus another molecule having the same shape and size as the substrate."
+      },
+      {
+        "id": "q19",
+        "text": "If one keeps on adding substrate to a fixed amount of an enzyme, when does the reaction rate reach a plateau?",
+        "options": ["when all substrate is converted to product", "when all the active sites of the enzymes are occupied", "when most of the enzyme molecules are consumed", "when much of the products are accumulated"],
+        "correctOptionIndex": 1,
+        "explanation": "The reaction rate reaches a plateau when all the active sites of the enzymes are occupied."
+      },
+      {
+        "id": "q20",
+        "text": "What do we call substance upon which enzymes act?",
+        "options": ["Product", "Substrate", "Activation energy", "Enzyme substrate complex"],
+        "correctOptionIndex": 1,
+        "explanation": "The substance upon which enzymes act is called a substrate."
+      },
+      {
+        "id": "q21",
+        "text": "Which factor has more negative effect on the functions of enzymes than the others?",
+        "options": ["Neutral PH", "Very high temperature", "Optimum amount of salt concentration", "Optimum amount of substrate concentration"],
+        "correctOptionIndex": 1,
+        "explanation": "Very high temperature has a more negative effect on the functions of enzymes than the other factors."
+      },
+      {
+        "id": "q22",
+        "text": "When an enzyme is denatured by heat or extreme PH, which one of the following does it lose?",
+        "options": ["Peptide bond", "Primary structure", "Secondary structure", "Tertiary structure"],
+        "correctOptionIndex": 3,
+        "explanation": "When an enzyme is denatured by heat or extreme pH, it loses its tertiary structure."
+      },
+      {
+        "id": "q23",
+        "text": "Which of the following mechanisms do cells use to regulate enzyme catalyzed reaction in metabolic pathway?",
+        "options": ["Enzyme denaturation", "Irreversible inhibition", "End product inhibition", "Competitive inhibition"],
+        "correctOptionIndex": 2,
+        "explanation": "Cells use end product inhibition to regulate enzyme-catalyzed reactions in metabolic pathways."
+      },
+      {
+        "id": "q24",
+        "text": "In which one of the following points does the induced fit model of enzyme action differ from thee lock and key model?",
+        "options": ["Enzymes lower the energy of activation", "Substrate bind at the active site of the enzyme", "During the reaction, an enzyme substrate complex formed", "The shape of substrate and active site are complementary"],
+        "correctOptionIndex": 3,
+        "explanation": "The induced fit model differs from the lock and key model in that the shape of the substrate and active site are not necessarily complementary initially but adjust to fit each other."
+      },
+      {
+        "id": "q25",
+        "text": "Suppose 25% of molecules of an enzyme are inhibited by non-competitive inhibitor, which one of the following would happen is the amount of substrate increased by 50%?",
+        "options": ["the reaction rate would double", "More enzyme molecules would get inhibited", "The rate of reaction would decrease by 50%", "The rate of reaction would remain unchanged"],
+        "correctOptionIndex": 3,
+        "explanation": "The rate of reaction would remain unchanged because non-competitive inhibitors do not affect the binding of the substrate to the enzyme."
+      },
+      {
+        "id": "q26",
+        "text": "In competitive inhibition, which one of the following factors determines the rate of inhibition?",
+        "options": ["The reaction temperature", "The enzyme concentration", "The substrate concentration", "The ratio of inhibitor to enzyme concentration"],
+        "correctOptionIndex": 3,
+        "explanation": "The rate of inhibition in competitive inhibition is determined by the ratio of inhibitor to enzyme concentration."
+      },
+      {
+        "id": "q27",
+        "text": "What are the environmental advantages of using enzyme in industry?",
+        "options": ["It makes high production possible with less input of heat", "It makes high production possible with high output of heat", "it makes high production with high emission of more CO2", "It helps high production with supply of more heat and emission of more CO2"],
+        "correctOptionIndex": 0,
+        "explanation": "Using enzymes in industry makes high production possible with less input of heat, which is environmentally advantageous."
+      },
+      {
+        "id": "q28",
+        "text": "Which of the following unit is the building unit of an enzyme molecule?",
+        "options": ["Amino acids", "glucose", "nucleotides", "fatty acid"],
+        "correctOptionIndex": 0,
+        "explanation": "Amino acids are the building units of an enzyme molecule."
+      },
+      {
+        "id": "q29",
+        "text": "Which one of the following classes of enzymes digests carbohydrates?",
+        "options": ["Amylases", "Lipases", "Proteases", "Nucleases"],
+        "correctOptionIndex": 0,
+        "explanation": "Amylases are the class of enzymes that digest carbohydrates."
+      },
+      {
+        "id": "q30",
+        "text": "To which class of enzymes do the digestive enzymes belong?",
+        "options": ["Esterase", "Transferees", "Hydrolases", "Isomerizes"],
+        "correctOptionIndex": 2,
+        "explanation": "Digestive enzymes belong to the class of hydrolases."
+      },
+      {
+        "id": "q31",
+        "text": "Which of the following types of enzymes inhibition can be removal when the end product of the metabolic pathway is depleted?",
+        "options": ["Allosteric inhibition", "Non reversible inhibition", "Competitive inhibition", "Reversible competitive inhibition"],
+        "correctOptionIndex": 0,
+        "explanation": "Allosteric inhibition can be removed when the end product of the metabolic pathway is depleted."
+      },
+      {
+        "id": "q32",
+        "text": "In case of enzymatic chemical reaction, what do you call the substance that is acted upon by an enzyme?",
+        "options": ["Polypeptide", "coenzyme", "Vitamin", "Substrate"],
+        "correctOptionIndex": 3,
+        "explanation": "The substance that is acted upon by an enzyme is called a substrate."
+      },
+      {
+        "id": "q33",
+        "text": "Which of the following is the common characteristics of all enzymes?",
+        "options": ["They act inside the cell only", "They are proteins", "They require cofactors", "They operate at any PH"],
+        "correctOptionIndex": 1,
+        "explanation": "All enzymes are proteins."
+      },
+      {
+        "id": "q34",
+        "text": "In to which of the following organic compounds can lipase, maltase an sucrose grouped?",
+        "options": ["Hormones", "carbohydrates", "Nucleic acids", "Enzymes"],
+        "correctOptionIndex": 3,
+        "explanation": "Lipase, maltase, and sucrose can be grouped under enzymes."
+      },
+      {
+        "id": "q35",
+        "text": "Which of the following PH represents strongest base?",
+        "options": ["2", "7", "13", "15"],
+        "correctOptionIndex": 3,
+        "explanation": "A pH of 15 represents the strongest base."
+      },
+      {
+        "id": "q36",
+        "text": "Which group of organic compounds include enzymes?",
+        "options": ["Protein", "Lipids", "Starch", "Carbohydrates."],
+        "correctOptionIndex": 0,
+        "explanation": "Enzymes are included in the group of proteins."
+      },
+      {
+        "id": "q37",
+        "text": "For biological detergents to effectively remove oily and greasy dirt, which of the following enzymes should it contain?",
+        "options": ["Cellulase", "protease", "Amylase", "Lipase"],
+        "correctOptionIndex": 3,
+        "explanation": "Biological detergents should contain lipase to effectively remove oily and greasy dirt."
+      },
+      {
+        "id": "q38",
+        "text": "Which region of human digestive tract contains enzymes that perform well at low PH?",
+        "options": ["Mouth", "Stomach", "Small intestine", "Large intestine"],
+        "correctOptionIndex": 1,
+        "explanation": "The stomach contains enzymes that perform well at low pH."
+      },
+      {
+        "id": "q39",
+        "text": "To which of the following organic molecules do enzymes belong?",
+        "options": ["Carbohydrates", "Amino acids", "Proteins", "Lipids"],
+        "correctOptionIndex": 2,
+        "explanation": "Enzymes belong to the group of proteins."
+      },
+      {
+        "id": "q40",
+        "text": "Which of the following substances has a shape which is similar to that of the substrate of an enzyme?",
+        "options": ["The reaction product", "The competitive inhibitors", "A cofactor", "An allosteric inhibitors"],
+        "correctOptionIndex": 1,
+        "explanation": "Competitive inhibitors have a shape similar to that of the substrate of an enzyme."
+      },
+      {
+        "id": "q41",
+        "text": "Which one of the following terms refers to how fast an enzyme acts on its substrate?",
+        "options": ["Turn over number", "substrate number", "Enzyme number", "Product number"],
+        "correctOptionIndex": 0,
+        "explanation": "Turn over number refers to how fast an enzyme acts on its substrate."
+      },
+      {
+        "id": "q42",
+        "text": "The optimum temperature of enzymes found in thermophilic bacteria is",
+        "options": ["Lower than for the enzyme in the human body", "higher than the enzymes in the human body", "the same as the enzymes found in the human body", "lower than the enzymes found in the warm blooded animals"],
+        "correctOptionIndex": 1,
+        "explanation": "The optimum temperature of enzymes found in thermophilic bacteria is higher than the enzymes in the human body."
+      },
+      {
+        "id": "q43",
+        "text": "Which of the following properties of enzymes makes it possible that single enzyme molecule can act on many substrates is added to the reaction, which of the following might be the reason?",
+        "options": ["Saturation of the enzyme", "Inactivation of the enzyme", "Inhibition of enzyme substrate complex formation", "Loss of substrate specificity by the enzyme"],
+        "correctOptionIndex": 0,
+        "explanation": "Saturation of the enzyme makes it possible for a single enzyme molecule to act on many substrates."
+      },
+      {
+        "id": "q44",
+        "text": "Which part of human alimentary canals contains digestive enzymes that function at acidic PH?",
+        "options": ["Stomach", "Mouth", "esophagus", "Small intestine"],
+        "correctOptionIndex": 0,
+        "explanation": "The stomach contains digestive enzymes that function at acidic pH."
+      },
+      {
+        "id": "q45",
+        "text": "Which of the following is made up of globular protein?",
+        "options": ["Enzyme", "Keratin", "Collagen", "glycogen"],
+        "correctOptionIndex": 0,
+        "explanation": "Enzymes are made up of globular proteins."
+      },
+      {
+        "id": "q46",
+        "text": "Which of the following industries can reduce more CO2 emission by shifting to the use of enzymes in manufacturing process?",
+        "options": ["Bread making", "cheese making", "Leather making", "Manufacturing cosmetics"],
+        "correctOptionIndex": 2,
+        "explanation": "The leather making industry can reduce more CO2 emissions by shifting to the use of enzymes in the manufacturing process."
+      },
+      {
+        "id": "q47",
+        "text": "In which are of enzyme application is invertase injection to sucrose paste in order to produce liquid chocolate?",
+        "options": ["detergent making industry", "pulp and paper industry", "Pharmaceutical industry", "Food processing industry"],
+        "correctOptionIndex": 3,
+        "explanation": "Invertase injection to sucrose paste is applied in the food processing industry to produce liquid chocolate."
+      },
+      {
+        "id": "q48",
+        "text": "Which one of the following functions best at higher optimum PH than all the rest?",
+        "options": ["Pepsin", "Salivary amylase", "trypsin", "enzyme in the stomach"],
+        "correctOptionIndex": 1,
+        "explanation": "Salivary amylase functions best at a higher optimum pH than the other enzymes listed."
+      },
+      {
+        "id": "q49",
+        "text": "Which class of enzymes joins to molecules together by formation of new bond?",
+        "options": ["Ligase", "isomerase", "lyase", "hydrolase"],
+        "correctOptionIndex": 0,
+        "explanation": "Ligases join molecules together by forming new bonds."
+      },
+      {
+        "id": "q50",
+        "text": "In an enzyme that contains non protein organic molecules, in addition to protein component, what is the protein component called?",
+        "options": ["Apo enzyme", "Coenzyme", "holoenzyme", "Cofactor"],
+        "correctOptionIndex": 0,
+        "explanation": "The protein component is called an apoenzyme."
+      },
+      {
+        "id": "q51",
+        "text": "Which of the following should be done in order to remove an enzyme inhibition caused by enzyme inhibitors?",
+        "options": ["Remove affected enzyme molecules", "Add more substrate to the system", "Remove the end product of the reaction", "Add more inhibitors to the system"],
+        "correctOptionIndex": 1,
+        "explanation": "Adding more substrate to the system can remove enzyme inhibition caused by enzyme inhibitors."
+      },
+      {
+        "id": "q52",
+        "text": "Deficiency of which of the following human diet is likely to result in deficiency of some coenzymes like FAD?",
+        "options": ["Essential amino acids", "Vitamins", "Carbohydrates", "Saturated fatty acids"],
+        "correctOptionIndex": 1,
+        "explanation": "Deficiency of vitamins is likely to result in deficiency of some coenzymes like FAD."
+      },
+      {
+        "id": "q53",
+        "text": "What causes tomato fruit to ripen much more slowly when kept in a refrigerator than if left on table at room temperature?",
+        "options": ["Low temperature slows the normal action of ripening enzymes", "enzymes produced by bacteria normally inhibits ripening", "Humidify accelerates enzyme activity and ripening process", "Normal temperature arrests the action of ripening enzymes"],
+        "correctOptionIndex": 0,
+        "explanation": "Low temperature slows the normal action of ripening enzymes, causing the tomato fruit to ripen more slowly."
+      },
+      {
+        "id": "q54",
+        "text": "What is immediate compound that is formed during an enzyme catalyzed reaction?",
+        "options": ["Reactant", "substrate", "Product", "enzyme substrate complex"],
+        "correctOptionIndex": 3,
+        "explanation": "The immediate compound formed during an enzyme-catalyzed reaction is the enzyme-substrate complex."
+      },
+      {
+        "id": "q55",
+        "text": "Which of the following substance can be used over and over again in an enzyme catalyzed reaction?",
+        "options": ["Enzyme substrate complex", "Substrate", "Enzyme", "Reaction product"],
+        "correctOptionIndex": 2,
+        "explanation": "Enzymes can be used over and over again in an enzyme-catalyzed reaction."
+      },
+      {
+        "id": "q56",
+        "text": "To produce glucose from starch, which of the following enzymes would one use?",
+        "options": ["Isomerases", "lyases", "Hydrolases", "Ligases"],
+        "correctOptionIndex": 2,
+        "explanation": "Hydrolases are used to produce glucose from starch."
+      },
+      {
+        "id": "q57",
+        "text": "Among the following factors that affect enzymes activity, which one does not cause enzyme denaturation?",
+        "options": ["High PH", "Low PH", "High temperature", "Competitive inhibitors"],
+        "correctOptionIndex": 3,
+        "explanation": "Competitive inhibitors do not cause enzyme denaturation."
+      },
+      {
+        "id": "q58",
+        "text": "Most coenzymes are derivatives of which of the following nutrient?",
+        "options": ["Protein", "Vitamin", "Carbohydrates", "Fats"],
+        "correctOptionIndex": 1,
+        "explanation": "Most coenzymes are derivatives of vitamins."
+      },
+      {
+        "id": "q59",
+        "text": "Which class of enzyme inhibitors has similar shape as that of the normal substrate?",
+        "options": ["Allosteric", "competitive", "denaturing", "irreversible"],
+        "correctOptionIndex": 1,
+        "explanation": "Competitive inhibitors have a similar shape to that of the normal substrate."
+      },
+      {
+        "id": "q60",
+        "text": "Which of the following statements about the enzymes is not correct?",
+        "options": ["Enzymes speed up a chemical reaction", "Enzymes are very specific in their action", "The presence of an enzyme will change the outcome of a reaction", "Enzymes lower the energy of activation for a reaction to occur"],
+        "correctOptionIndex": 2,
+        "explanation": "The presence of an enzyme will not change the outcome of a reaction; it only speeds up the reaction."
+      },
+      {
+        "id": "q61",
+        "text": "How does a heavy metal ion reduce the reaction rate of enzymes?",
+        "options": ["By destroying the 3- dimension shape of enzyme active site", "By raising the temperature above the optimum level for the enzyme", "By dropping the PH well below the optimum level for the enzyme", "By inducing mutation that disrupts the functioning of the enzyme"],
+        "correctOptionIndex": 0,
+        "explanation": "A heavy metal ion reduces the reaction rate of enzymes by destroying the 3-dimensional shape of the enzyme active site."
+      },
+      {
+        "id": "q62",
+        "text": "What happens when enzymes become denatured?",
+        "options": ["They can normally catalyze the reaction", "Their active sites are changed", "The rate of a reaction increases", "Bonds holding amino acids are unaffected"],
+        "correctOptionIndex": 1,
+        "explanation": "When enzymes become denatured, their active sites are changed, and they can no longer catalyze the reaction."
+      },
+      {
+        "id": "q63",
+        "text": "Which type of enzyme catalyzes the joining of two molecules by the formation of new bonds?",
+        "options": ["Decarboxylase", "Dehydrogenase", "Ligase", "oxidoreductase"],
+        "correctOptionIndex": 2,
+        "explanation": "Ligases catalyze the joining of two molecules by the formation of new bonds."
+      },
+      {
+        "id": "q64",
+        "text": "Which of the following can reverse an enzyme inhibition that is caused by allosteric inhibitors?",
+        "options": ["adding more substrate", "depleting thee end product", "adding more end product", "depleting the substrate"],
+        "correctOptionIndex": 1,
+        "explanation": "Depleting the end product can reverse an enzyme inhibition that is caused by allosteric inhibitors."
+      },
+      {
+        "id": "q65",
+        "text": "What is an apoenzyme?",
+        "options": ["A protein molecule", "Am active enzyme", "A non-protein molecule", "A non-protein cofactor"],
+        "correctOptionIndex": 0,
+        "explanation": "An apoenzyme is a protein molecule that requires a cofactor to become an active enzyme."
+      },
+      {
+        "id": "q66",
+        "text": "Which of the fooling is not characteristic of an enzyme?",
+        "options": ["It is globular protein", "It functions as catalyst", "It lower energy of activation", "It is converted to product"],
+        "correctOptionIndex": 3,
+        "explanation": "Enzymes are not converted to product; they catalyze the conversion of substrates to products."
+      },
+      {
+        "id": "q67",
+        "text": "What does an enzyme do to a chemical reaction that allows it to proceed optimally?",
+        "options": ["It lowers the required activation energy", "It increases the amount of the substrate", "it increases the required activation energy", "It modifies both the PH and temperature"],
+        "correctOptionIndex": 0,
+        "explanation": "An enzyme lowers the required activation energy, allowing the chemical reaction to proceed optimally."
+      },
+      {
+        "id": "q68",
+        "text": "Which of the following is incorrect with respect to enzyme’s ability to catalyze a reaction?",
+        "options": ["An enzymes provides a reaction surface and hydrophilic environment for the reaction to take place", "An enzyme binds reactants such that they are positioned correctly and can attain their transition state configuration", "An enzyme allows the reactions to for through a more stable transition state than would normally be the case", "an enzyme can weaken bonds in reactants through her binding process"],
+        "correctOptionIndex": 3,
+        "explanation": "An enzyme does not weaken bonds in reactants through its binding process; it facilitates the reaction by lowering the activation energy."
+      },
+      {
+        "id": "q69",
+        "text": "In metabolic pathway (A→ B→ C→ D), where each step is catalyzed by a separate enzyme, which substrate in the pathway serves as an allosteric regulator?",
+        "options": ["Substance A", "Substance B", "Substance C", "Substance D"],
+        "correctOptionIndex": 3,
+        "explanation": "Substance D serves as an allosteric regulator in the metabolic pathway."
+      },
+      {
+        "id": "q70",
+        "text": "In which industrial enzyme technology is lactase practically applied to produce lactose free milk for use by lactose intolerant individuals?",
+        "options": ["Chocolate manufacturing industry", "Human hormone manufacturing industry", "Dairy product manufacturing industry", "Cereal food manufacturing industry"],
+        "correctOptionIndex": 2,
+        "explanation": "Lactase is practically applied in the dairy product manufacturing industry to produce lactose-free milk for use by lactose-intolerant individuals."
+      },
+      {
+        "id": "q71",
+        "text": "Which kind of enzyme inhibition binds to enzymes only weakly and the bond that holds them breaks easily releasing the inhibitors to allow the enzyme to become active again?",
+        "options": ["Irreversuble3 inhibitors", "reversible inhibitors", "Inhibitors that bind strongly to enzymes", "Inhibitors that permanently alters enzyme structure"],
+        "correctOptionIndex": 1,
+        "explanation": "Reversible inhibitors bind to enzymes only weakly and the bond that holds them breaks easily, releasing the inhibitors to allow the enzyme to become active again."
+      },
+      {
+        "id": "q72",
+        "text": "Choose the one in which the human digestive enzyme is incorrectly matched with the substrate that is normally catalyzes?",
+        "options": ["Lipase- fat", "Pepsin – protein", "Trypsin – starch", "Pancreatic amylase – starch"],
+        "correctOptionIndex": 2,
+        "explanation": "Trypsin does not catalyze the breakdown of starch; it catalyzes the breakdown of proteins."
+      },
+      {
+        "id": "q73",
+        "text": "Significant change in PH that can affect an enzyme molecule include",
+        "options": ["Building strong ionic bonds leading to stabilization of enzymes", "altering the changes on some substances making I difficult to bind to enzyme", "Changing the color and palatability of food item", "Increasing the boiling temperature of the substance"],
+        "correctOptionIndex": 1,
+        "explanation": "Significant changes in pH can alter the charges on some substances, making it difficult for them to bind to the enzyme."
+      },
+      {
+        "id": "q74",
+        "text": "What is the shape of enzyme molecule?",
+        "options": ["Linear", "pleated", "branched", "globular"],
+        "correctOptionIndex": 3,
+        "explanation": "The shape of an enzyme molecule is globular."
+      },
+      {
+        "id": "q75",
+        "text": "Which of the following condition is least likely to denature an enzyme?",
+        "options": ["A low temperature", "An extreme PH", "heavy metal ions", "A high temperature"],
+        "correctOptionIndex": 0,
+        "explanation": "A low temperature is least likely to denature an enzyme."
+      },
+      {
+        "id": "q76",
+        "text": "Which model of enzyme actions requires that the shape of the substrate molecule is complementary to that of the active site?",
+        "options": ["The induced fit model", "The lock and key model", "The activation energy model", "The enzyme function model"],
+        "correctOptionIndex": 1,
+        "explanation": "The lock and key model requires that the shape of the substrate molecule is complementary to that of the active site."
+      },
+      {
+        "id": "q77",
+        "text": "The industrial use of enzymes is helpful for the environment as it contributes to reduction of CO2 emission. In which of the following is there more mass of CO2 emission saved per ton of products by using enzyme technology rather than traditional method?",
+        "options": ["Cheese making", "Manufacture of cosmetics", "Paper making", "Bread making"],
+        "correctOptionIndex": 2,
+        "explanation": "There is more mass of CO2 emission saved per ton of products in paper making by using enzyme technology rather than traditional methods."
+      },
+      {
+        "id": "q78",
+        "text": "Which of the following is not correct about the effect of temperature on enzymes?",
+        "options": ["Raising the temperature increases the kinetic energy of the molecule", "Most enzymes are insensitive to temperature at low PH", "A ten degree centigrade increase in temperature may increase the activity of most enzymes by 50% to 100%", "Most enzymes are denatured at 40 degree centigrade"],
+        "correctOptionIndex": 3,
+        "explanation": "Most enzymes are not denatured at 40 degrees centigrade; they are typically denatured at higher temperatures."
+      },
+      {
+        "id": "q79",
+        "text": "Which of the following can reverse or reduce an allosteric enzyme inhibition?",
+        "options": ["Adding more substrate", "Adding more end product", "Depleting the end product", "Deleting the substrate"],
+        "correctOptionIndex": 2,
+        "explanation": "Depleting the end product can reverse or reduce an allosteric enzyme inhibition."
+      },
+      {
+        "id": "q80",
+        "text": "Which of the following factors affects enzymes activity without denaturing the enzyme molecule?",
+        "options": ["Low temperature", "High temperature", "High PH", "low PH"],
+        "correctOptionIndex": 0,
+        "explanation": "Low temperature affects enzyme activity without denaturing the enzyme molecule."
+      },
+      {
+        "id": "q81",
+        "text": "In human body, which conditions are generally considerd optimum for most enzymes?",
+        "options": ["37 degree centigrade and PH 1.0", "37 degree centigrade and PH 7.0", "5 degree centigrade and PH 9.0", "90 degree centigrade and PH 7.0"],
+        "correctOptionIndex": 1,
+        "explanation": "In the human body, the conditions generally considered optimum for most enzymes are 37 degrees centigrade and pH 7.0."
+      },
+      {
+        "id": "q82",
+        "text": "Which of the following statements best describes an induced fit model?",
+        "options": ["The substrate binds to an active site and alters the shape active site", "The substrate adopts the correct binding conformation before entering an active site", "An active site alters shape such that it is ready to accept a substrate", "An active site alters the shape of the substrate such that it can adopt the necessary active conformation for binding"],
+        "correctOptionIndex": 0,
+        "explanation": "The induced fit model describes the substrate binding to an active site and altering the shape of the active site."
+      },
+      {
+        "id": "q83",
+        "text": "If conditions were remain constant, which one of the following changes would explain a reduced rate of activity in an enzyme controlled reaction? Increase in",
+        "options": ["Enzyme concentration", "substrate concentration", "Concentration of end product", "Temperature toward the optimum"],
+        "correctOptionIndex": 2,
+        "explanation": "An increase in the concentration of the end product would explain a reduced rate of activity in an enzyme-controlled reaction due to end product inhibition."
+      }
+    ]
+  }
+  
