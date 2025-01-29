@@ -5,9 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/theme_provider.dart';
 import '../models/user_model.dart';
-import '../models/premium_level.dart';
 import '../utils/device_id_manager.dart';
-import '../services/device_verification_service.dart';
 import 'stream_selection_screen.dart';
 import 'payment_methods_screen.dart';
 import 'login_screen.dart';
@@ -25,27 +23,21 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   final user = FirebaseAuth.instance.currentUser;
   UserModel? _userModel;
-  bool _isLoading = true;
-  late Stream<DocumentSnapshot> _userStream;
-  Stream<DocumentSnapshot>? _requestStream;
+  bool _isLoading = false;
+  String _premiumLevel = 'zero';
 
   @override
   void initState() {
     super.initState();
-    _loadCachedUsername();
-    _userStream = FirebaseFirestore.instance
-        .collection('users')
-        .doc(user?.uid)
-        .snapshots();
-    _initializeRequestStream();
+    _loadUserProfile();
   }
 
-  Future<void> _loadCachedUsername() async {
+  Future<void> _loadUserProfile() async {
     if (user == null) return;
 
     final prefs = await SharedPreferences.getInstance();
     final cachedUsername = prefs.getString('${user!.uid}_username');
-    
+
     if (cachedUsername != null) {
       setState(() {
         _userModel = UserModel(
@@ -61,28 +53,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Future<void> _initializeRequestStream() async {
-    try {
-      final deviceId = await DeviceIdManager.getDeviceId();
-      if (deviceId != null) {
-        _requestStream = FirebaseFirestore.instance
-            .collection('requests')
-            .doc(deviceId)
-            .snapshots();
-        setState(() {});
-      }
-    } catch (e) {
-      print('Error initializing request stream: $e');
-    }
-  }
-
   Future<void> _loadUserData() async {
     try {
       final doc = await FirebaseFirestore.instance
           .collection('users')
           .doc(user?.uid)
           .get();
-      
+
       if (doc.exists && mounted) {
         final username = doc.get('username') as String;
         // Cache the username
@@ -152,7 +129,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<DocumentSnapshot>(
-      stream: _userStream,
+      stream: FirebaseFirestore.instance
+          .collection('users')
+          .doc(user?.uid)
+          .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData && snapshot.data!.exists) {
           _userModel =
@@ -185,29 +165,254 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildProfileHeader() {
-    return Column(
-      children: [
-        CircleAvatar(
-          radius: 50,
-          backgroundColor: Colors.grey[300],
-          child: Icon(
-            Icons.person,
-            size: 50,
-            color: Colors.grey[600],
-          ),
-        ),
-        const SizedBox(height: 16),
-        if (_isLoading)
-          const CircularProgressIndicator()
-        else
-          Text(
-            _userModel?.username ?? 'User',
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-      ],
+    return FutureBuilder<String?>(
+      future: DeviceIdManager.getDeviceId(),
+      builder: (context, deviceIdSnapshot) {
+        if (!deviceIdSnapshot.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        return StreamBuilder<DocumentSnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('approved_devices')
+              .doc(deviceIdSnapshot.data)
+              .snapshots(),
+          builder: (context, snapshot) {
+            final premiumLevel = snapshot.hasData && snapshot.data!.exists
+                ? (snapshot.data!.get('premium_level') as String? ?? 'zero')
+                : 'zero';
+
+            // Define premium level gradients and effects
+            final Map<String, List<Color>> premiumGradients = {
+              'zero': [Colors.grey[300]!, Colors.grey[400]!],
+              'basic': [Colors.blue[300]!, Colors.purple[300]!],
+              'pro': [Colors.purple[400]!, Colors.pink[300]!],
+              'elite': [
+                const Color(0xFFFFD700),
+                const Color(0xFFFFA500),
+              ],
+            };
+
+            final Map<String, Widget> premiumBadges = {
+              'zero': const SizedBox.shrink(),
+              'basic': Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                decoration: BoxDecoration(
+                  color: Colors.blue[400],
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Text(
+                  'BASIC',
+                  style: TextStyle(color: Colors.white, fontSize: 10),
+                ),
+              ),
+              'pro': Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.purple[400]!, Colors.pink[300]!],
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Text(
+                  'PRO',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              'elite': Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.orange.withOpacity(0.3),
+                      spreadRadius: 1,
+                      blurRadius: 4,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.star, size: 12, color: Colors.white),
+                    SizedBox(width: 2),
+                    Text(
+                      'ELITE',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            };
+
+            return Column(
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: premiumGradients[premiumLevel]!,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 2,
+                            blurRadius: 8,
+                            offset: const Offset(0, 3),
+                          ),
+                          if (premiumLevel == 'elite')
+                            BoxShadow(
+                              color: Colors.orange.withOpacity(0.3),
+                              spreadRadius: 4,
+                              blurRadius: 12,
+                              offset: const Offset(0, 4),
+                            ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: CircleAvatar(
+                          radius: 50,
+                          backgroundColor: Colors.white,
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Icon(
+                                Icons.person_outline_rounded,
+                                size: 54,
+                                color: Colors.grey[800],
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    color: premiumLevel == 'zero'
+                                        ? Colors.blue
+                                        : Colors.purple,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.school,
+                                    size: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    if (premiumLevel != 'zero')
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: premiumBadges[premiumLevel]!,
+                      ),
+                    if (premiumLevel == 'zero')
+                      Positioned(
+                        top: -5,
+                        right: -5,
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.workspace_premium,
+                            color: Colors.grey,
+                          ),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: const Text('Upgrade Your Device'),
+                                content: const Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Unlock premium features:'),
+                                    SizedBox(height: 8),
+                                    Text('• Advanced study analytics'),
+                                    Text('• Unlimited study plans'),
+                                    Text('• Priority support'),
+                                    Text('• Ad-free experience'),
+                                  ],
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(context),
+                                    child: const Text('Maybe Later'),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      // TODO: Implement device upgrade process
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('Upgrade Now'),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                if (premiumLevel == 'zero')
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.lock, size: 14, color: Colors.grey[600]),
+                        const SizedBox(width: 4),
+                        Text(
+                          'Upgrade to unlock all features',
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                const SizedBox(height: 16),
+                if (_isLoading)
+                  const CircularProgressIndicator()
+                else
+                  Text(
+                    _userModel?.username ?? 'User',
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+              ],
+            );
+          },
+        );
+      },
     );
   }
 
@@ -239,7 +444,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: valueColor ?? Theme.of(context).textTheme.bodyLarge?.color,
+                color:
+                    valueColor ?? Theme.of(context).textTheme.bodyLarge?.color,
               ),
               textAlign: TextAlign.center,
             ),
@@ -251,7 +457,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildStats() {
     return StreamBuilder<DocumentSnapshot>(
-      stream: _userStream,
+      stream: FirebaseFirestore.instance
+          .collection('users')
+          .doc(user?.uid)
+          .snapshots(),
       builder: (context, userSnapshot) {
         if (userSnapshot.hasError) {
           return const Center(child: Text('Something went wrong'));
@@ -265,13 +474,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               return const Center(child: CircularProgressIndicator());
             }
 
-            final data = userSnapshot.data?.data() as Map<String, dynamic>? ?? {};
+            final data =
+                userSnapshot.data?.data() as Map<String, dynamic>? ?? {};
             final coins = coinSnapshot.data ?? 0;
-            
+
             // Get referral data from Firestore
-            final referralCount = (data['referral_count'] as num?)?.toInt() ?? 0;
-            final referralEarnings = (data['referral_earnings'] as num?)?.toInt() ?? 0;
-            
+            final referralCount =
+                (data['referral_count'] as num?)?.toInt() ?? 0;
+            final referralEarnings =
+                (data['referral_earnings'] as num?)?.toInt() ?? 0;
+
             // These are placeholder values that we'll implement later
             const ranking = 0;
             const activation = false;
@@ -306,7 +518,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4.0, vertical: 8.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -336,7 +549,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 child: _buildStatItem(
                                   'Activation',
                                   activation ? 'ON' : 'OFF',
-                                  valueColor: activation ? Colors.green[700] : Colors.red[700],
+                                  valueColor: activation
+                                      ? Colors.green[700]
+                                      : Colors.red[700],
                                 ),
                               ),
                               const SizedBox(width: 12),
@@ -381,10 +596,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         String premiumText = 'NONE';
                                         Color? premiumColor = Colors.grey[700];
 
-                                        if (snapshot.hasData && snapshot.data!.exists) {
-                                          final premiumLevel = snapshot.data!.get('premium_level') as String? ?? 'none';
-                                          premiumText = premiumLevel.toUpperCase();
-                                          
+                                        if (snapshot.hasData &&
+                                            snapshot.data!.exists) {
+                                          final premiumLevel = snapshot.data!
+                                                      .get('premium_level')
+                                                  as String? ??
+                                              'none';
+                                          premiumText =
+                                              premiumLevel.toUpperCase();
+
                                           switch (premiumLevel.toLowerCase()) {
                                             case 'basic':
                                               premiumColor = Colors.green[700];
@@ -527,7 +747,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
-                          String rejectionReason = doc.get('rejection_reason') ?? 'No reason provided';
+                          String rejectionReason =
+                              doc.get('rejection_reason') ??
+                                  'No reason provided';
                           return AlertDialog(
                             title: const Text('Payment Request Rejected'),
                             content: Text(
