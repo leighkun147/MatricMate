@@ -50,19 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDQnMU6GPkouWNdPliNlG9vyfs_mJ4zXWg',
-    appId: '1:1024134753464:android:f4cc3c32933c67f504184d',
-    messagingSenderId: '1024134753464',
-    projectId: 'matric-mate-proje-54e07',
-    storageBucket: 'matric-mate-proje-54e07.firebasestorage.app',
+    apiKey: 'AIzaSyDdYG24HfLzQXKLHQzv2Z4GI549MMpFCcA',
+    appId: '1:931945099974:android:2360b3a0eea62f34585dc7',
+    messagingSenderId: '931945099974',
+    projectId: 'matric-pageproje',
+    storageBucket: 'matric-pageproje.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAJivpUS0zoyXn5_EYvDsLz-Qiz2DjC4lw',
-    appId: '1:1024134753464:ios:3eeeac1cdb07e9d104184d',
-    messagingSenderId: '1024134753464',
-    projectId: 'matric-mate-proje-54e07',
-    storageBucket: 'matric-mate-proje-54e07.firebasestorage.app',
+    apiKey: 'AIzaSyAGFJjBrQ3_c9QIo5-i-w0NX_lZENiq3CA',
+    appId: '1:931945099974:ios:a75893b632f8d652585dc7',
+    messagingSenderId: '931945099974',
+    projectId: 'matric-pageproje',
+    storageBucket: 'matric-pageproje.firebasestorage.app',
     iosBundleId: 'com.example.ethioExam',
   );
+
 }
