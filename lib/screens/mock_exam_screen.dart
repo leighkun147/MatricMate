@@ -5,6 +5,9 @@ import '../models/exam.dart';
 import '../models/question.dart';
 import '../widgets/constants_section.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../services/coin_service.dart';
+import '../utils/device_id_manager.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MockExamScreen extends StatefulWidget {
   final Exam exam;
@@ -482,6 +485,11 @@ class _MockExamScreenState extends State<MockExamScreen> {
               ? (Colors.orange.shade400, Icons.trending_up, 'Fair. Keep practicing!')
               : (Colors.red.shade400, Icons.refresh, 'Need more practice. Don\'t give up!');
 
+    // Check conditions and award coins if applicable
+    if (score >= 50) {
+      _checkAndAwardCoins(score);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Exam Results'),
@@ -675,6 +683,68 @@ class _MockExamScreenState extends State<MockExamScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _checkAndAwardCoins(double score) async {
+    try {
+      final deviceId = await DeviceIdManager.getDeviceId();
+      final deviceDoc = await FirebaseFirestore.instance
+          .collection('approved_devices')
+          .doc(deviceId)
+          .get();
+      
+      if (deviceDoc.exists) {
+        final premiumLevel = deviceDoc.get('premium_level') as String;
+        
+        if (premiumLevel.toLowerCase() != 'zero') {
+          // Check if user has already received coins for this exam
+          final prefs = await SharedPreferences.getInstance();
+          final rewardedExams = prefs.getStringList('rewarded_exams') ?? [];
+          
+          if (rewardedExams.contains(widget.exam.id)) {
+            // User has already received coins for this exam
+            return;
+          }
+
+          // Calculate coins (score * 3)
+          final coinsToAward = (score * 3).round();
+          
+          // Add coins
+          await CoinService.addCoins(coinsToAward);
+          
+          // Record the transaction
+          await CoinService.recordTransaction(
+            amount: coinsToAward,
+            type: 'earned',
+            description: 'Mock exam score reward',
+          );
+
+          // Record that this exam has been rewarded
+          rewardedExams.add(widget.exam.id);
+          await prefs.setStringList('rewarded_exams', rewardedExams);
+          
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.stars, color: Colors.amber[700]),
+                    const SizedBox(width: 8),
+                    Text('+ $coinsToAward coins earned!'),
+                  ],
+                ),
+                duration: const Duration(seconds: 2),
+                behavior: SnackBarBehavior.floating,
+                backgroundColor: Colors.green[700],
+              ),
+            );
+          }
+        }
+      }
+    } catch (e) {
+      print('Error awarding coins: $e');
+    }
   }
 }
 

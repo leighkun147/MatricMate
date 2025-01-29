@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'dart:async';
+import 'dart:math' as math;
 import 'discord_screen.dart';
 import 'download_contents_screen.dart';
 import 'study_plan_screen.dart';
@@ -181,124 +182,298 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget _buildPerformanceCard() {
     return Card(
       elevation: 4,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: ExpansionTile(
+        initiallyExpanded: true,
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              'Performance Overview',
-              style: Theme.of(context).textTheme.titleLarge,
+            Icon(
+              Icons.analytics_outlined,
+              color: Theme.of(context).colorScheme.primary,
+              size: 20,
             ),
-            const SizedBox(height: 16),
-            FutureBuilder<List<double>>(
-              future: Future.wait(
-                _subjects.map((subject) {
-                  // Get the subject definition to get total chapters
-                  Subject? subjectDef;
-                  if (subject == 'English') {
-                    subjectDef = getEnglishSubject();
-                  } else if (subject == 'Aptitude') {
-                    subjectDef = getAptitudeSubject();
-                  } else {
-                    subjectDef = [...naturalScienceSubjects, ...socialScienceSubjects]
-                        .firstWhere((s) => s.name == subject);
-                  }
-                  
-                  return ChapterCompletionManager.getSubjectCompletionPercentage(
-                    subject,
-                    [9, 10, 11, 12],
-                    subjectDef.totalChapters,
-                  );
-                }),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                'Performance Overview',
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+                overflow: TextOverflow.ellipsis,
               ),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-
-                final percentages = snapshot.data!;
-                final averagePercentage = percentages.isEmpty 
-                    ? 0.0 
-                    : percentages.reduce((a, b) => a + b) / percentages.length;
-
-                return Column(
-                  children: [
-                    SizedBox(
-                      height: 200,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          PieChart(
-                            PieChartData(
-                              sectionsSpace: 0,
-                              centerSpaceRadius: 60,
-                              sections: [
-                                PieChartSectionData(
-                                  value: averagePercentage,
-                                  color: _getColorForPercentage(averagePercentage),
-                                  radius: 50,
-                                  showTitle: false,
-                                ),
-                                if (averagePercentage < 100)
-                                  PieChartSectionData(
-                                    value: 100 - averagePercentage,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .primary
-                                        .withOpacity(0.1),
-                                    radius: 50,
-                                    showTitle: false,
-                                  ),
-                              ],
-                            ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                '${averagePercentage.toStringAsFixed(1)}%',
-                                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: _getColorForPercentage(averagePercentage),
-                                ),
-                              ),
-                              Text(
-                                'Complete',
-                                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: _getColorForPercentage(averagePercentage).withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        _getMessageForPercentage(averagePercentage),
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: _getColorForPercentage(averagePercentage),
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                );
-              },
             ),
           ],
         ),
+        children: [
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Performance Metrics Selector
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surfaceVariant,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.tune,
+                          size: 20,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: DropdownButton<String>(
+                            value: 'overall',
+                            isExpanded: true,
+                            underline: const SizedBox(),
+                            items: [
+                              DropdownMenuItem(
+                                value: 'overall',
+                                child: Text('Overall Progress'),
+                              ),
+                              DropdownMenuItem(
+                                value: 'bySubject',
+                                child: Text('Progress by Subject'),
+                              ),
+                              DropdownMenuItem(
+                                value: 'examScores',
+                                child: Text('Exam Scores'),
+                              ),
+                              DropdownMenuItem(
+                                value: 'weeklyActivity',
+                                child: Text('Weekly Activity'),
+                              ),
+                            ],
+                            onChanged: (value) {
+                              // Handle metric change
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  FutureBuilder<List<double>>(
+                    future: Future.wait(
+                      _subjects.map((subject) {
+                        Subject? subjectDef;
+                        if (subject == 'English') {
+                          subjectDef = getEnglishSubject();
+                        } else if (subject == 'Aptitude') {
+                          subjectDef = getAptitudeSubject();
+                        } else {
+                          subjectDef = [...naturalScienceSubjects, ...socialScienceSubjects]
+                              .firstWhere((s) => s.name == subject);
+                        }
+                        
+                        return ChapterCompletionManager.getSubjectCompletionPercentage(
+                          subject,
+                          [9, 10, 11, 12],
+                          subjectDef.totalChapters,
+                        );
+                      }),
+                    ),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+
+                      final percentages = snapshot.data!;
+                      final averagePercentage = percentages.isEmpty 
+                          ? 0.0 
+                          : percentages.reduce((a, b) => a + b) / percentages.length;
+
+                      return LayoutBuilder(
+                        builder: (context, constraints) {
+                          return Column(
+                            children: [
+                              ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  maxHeight: constraints.maxWidth * 0.6,
+                                  maxWidth: constraints.maxWidth,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 3,
+                                      child: AspectRatio(
+                                        aspectRatio: 1,
+                                        child: Stack(
+                                          alignment: Alignment.center,
+                                          children: [
+                                            PieChart(
+                                              PieChartData(
+                                                sectionsSpace: 0,
+                                                centerSpaceRadius: constraints.maxWidth * 0.15,
+                                                sections: [
+                                                  PieChartSectionData(
+                                                    value: averagePercentage,
+                                                    color: _getColorForPercentage(averagePercentage),
+                                                    radius: constraints.maxWidth * 0.12,
+                                                    showTitle: false,
+                                                  ),
+                                                  if (averagePercentage < 100)
+                                                    PieChartSectionData(
+                                                      value: 100 - averagePercentage,
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .primary
+                                                          .withOpacity(0.1),
+                                                      radius: constraints.maxWidth * 0.12,
+                                                      showTitle: false,
+                                                    ),
+                                                ],
+                                              ),
+                                            ),
+                                            Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                FittedBox(
+                                                  fit: BoxFit.scaleDown,
+                                                  child: Text(
+                                                    '${averagePercentage.toStringAsFixed(1)}%',
+                                                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                                      fontWeight: FontWeight.bold,
+                                                      color: _getColorForPercentage(averagePercentage),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Complete',
+                                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 16),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          _buildStatCard(
+                                            'Strongest Subject',
+                                            _subjects[percentages.indexOf(percentages.reduce((a, b) => math.max(a, b)))],
+                                            Icons.emoji_events,
+                                            Colors.amber,
+                                          ),
+                                          const SizedBox(height: 8),
+                                          _buildStatCard(
+                                            'Needs Attention',
+                                            _subjects[percentages.indexOf(percentages.reduce((a, b) => math.min(a, b)))],
+                                            Icons.warning_outlined,
+                                            Colors.orange,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 24),
+                              Container(
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      _getColorForPercentage(averagePercentage).withOpacity(0.1),
+                                      _getColorForPercentage(averagePercentage).withOpacity(0.2),
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      _getIconForPercentage(averagePercentage),
+                                      color: _getColorForPercentage(averagePercentage),
+                                      size: 32,
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      _getMessageForPercentage(averagePercentage),
+                                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                        color: _getColorForPercentage(averagePercentage),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
+  }
+
+  Widget _buildStatCard(String label, String value, IconData icon, Color color) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: color, size: 20),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                  ),
+                ),
+                Text(
+                  value,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  IconData _getIconForPercentage(double percentage) {
+    if (percentage >= 90) return Icons.emoji_events;
+    if (percentage >= 75) return Icons.star;
+    if (percentage >= 60) return Icons.thumb_up;
+    if (percentage >= 40) return Icons.trending_up;
+    return Icons.warning_outlined;
   }
 
   Color _getColorForPercentage(double percentage) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user_model.dart';
 import 'login_screen.dart';
 import '../main.dart';
@@ -90,6 +91,10 @@ class _SignupScreenState extends State<SignupScreen> {
           .collection('users')
           .doc(userCredential.user!.uid)
           .set(userModel.toMap());
+
+      // Cache username
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('${userCredential.user!.uid}_username', username);
 
       // Increment the number of users count
       await FirebaseFirestore.instance.runTransaction((transaction) async {

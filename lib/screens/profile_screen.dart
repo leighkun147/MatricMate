@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/theme_provider.dart';
 import '../models/user_model.dart';
 import '../models/premium_level.dart';
@@ -31,12 +32,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
+    _loadCachedUsername();
     _userStream = FirebaseFirestore.instance
         .collection('users')
         .doc(user?.uid)
         .snapshots();
     _initializeRequestStream();
-    _loadUserData();
+  }
+
+  Future<void> _loadCachedUsername() async {
+    if (user == null) return;
+
+    final prefs = await SharedPreferences.getInstance();
+    final cachedUsername = prefs.getString('${user!.uid}_username');
+    
+    if (cachedUsername != null) {
+      setState(() {
+        _userModel = UserModel(
+          uid: user!.uid,
+          username: cachedUsername,
+          phoneNumber: '',
+          email: user!.email ?? '',
+        );
+        _isLoading = false;
+      });
+    } else {
+      _loadUserData();
+    }
   }
 
   Future<void> _initializeRequestStream() async {
@@ -60,7 +82,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
           .collection('users')
           .doc(user?.uid)
           .get();
+      
       if (doc.exists && mounted) {
+        final username = doc.get('username') as String;
+        // Cache the username
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('${user!.uid}_username', username);
+
         setState(() {
           _userModel = UserModel.fromMap(doc.data()!);
           _isLoading = false;
@@ -75,6 +103,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _signOut() async {
     try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove('${user!.uid}_username'); // Clear cached username
       await FirebaseAuth.instance.signOut();
       if (mounted) {
         Navigator.of(context).pushReplacement(
@@ -247,121 +277,144 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const activation = false;
 
             return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 4.0, bottom: 8.0),
-                    child: Text(
-                      'Statistics',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Theme(
+                data: Theme.of(context).copyWith(
+                  dividerColor: Colors.transparent,
+                ),
+                child: ExpansionTile(
+                  title: const Text(
+                    'Statistics',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: _buildStatItem(
-                          'Coins',
-                          coins,
-                          valueColor: Colors.amber[700],
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: _buildStatItem(
-                          'Ranking',
-                          '#$ranking',
-                          valueColor: Colors.blue[700],
-                        ),
-                      ),
-                    ],
+                  iconColor: Colors.blue,
+                  collapsedIconColor: Colors.blue,
+                  trailing: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.blue.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: const Icon(
+                      Icons.arrow_drop_down,
+                      size: 30,
+                      color: Colors.blue,
+                    ),
                   ),
-                  const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: _buildStatItem(
-                          'Activation',
-                          activation ? 'ON' : 'OFF',
-                          valueColor: activation ? Colors.green[700] : Colors.red[700],
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: _buildStatItem(
-                          'Referrals',
-                          referralCount,
-                          valueColor: Colors.purple[700],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: _buildStatItem(
-                          'Total Earnings',
-                          '$referralEarnings ETB',
-                          valueColor: Colors.green[700],
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: FutureBuilder<String>(
-                          future: DeviceIdManager.getDeviceId(),
-                          builder: (context, deviceIdSnapshot) {
-                            if (!deviceIdSnapshot.hasData) {
-                              return _buildStatItem(
-                                'Premium',
-                                'LOADING',
-                                valueColor: Colors.grey[700],
-                              );
-                            }
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: _buildStatItem(
+                                  'Coins',
+                                  coins,
+                                  valueColor: Colors.amber[700],
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: _buildStatItem(
+                                  'Ranking',
+                                  '#$ranking',
+                                  valueColor: Colors.blue[700],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 12),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: _buildStatItem(
+                                  'Activation',
+                                  activation ? 'ON' : 'OFF',
+                                  valueColor: activation ? Colors.green[700] : Colors.red[700],
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: _buildStatItem(
+                                  'Referrals',
+                                  referralCount,
+                                  valueColor: Colors.purple[700],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 12),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: _buildStatItem(
+                                  'Total Earnings',
+                                  '$referralEarnings ETB',
+                                  valueColor: Colors.green[700],
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: FutureBuilder<String>(
+                                  future: DeviceIdManager.getDeviceId(),
+                                  builder: (context, deviceIdSnapshot) {
+                                    if (!deviceIdSnapshot.hasData) {
+                                      return _buildStatItem(
+                                        'Premium',
+                                        'LOADING',
+                                        valueColor: Colors.grey[700],
+                                      );
+                                    }
 
-                            return StreamBuilder<DocumentSnapshot>(
-                              stream: FirebaseFirestore.instance
-                                  .collection('approved_devices')
-                                  .doc(deviceIdSnapshot.data)
-                                  .snapshots(),
-                              builder: (context, snapshot) {
-                                String premiumText = 'NONE';
-                                Color? premiumColor = Colors.grey[700];
+                                    return StreamBuilder<DocumentSnapshot>(
+                                      stream: FirebaseFirestore.instance
+                                          .collection('approved_devices')
+                                          .doc(deviceIdSnapshot.data)
+                                          .snapshots(),
+                                      builder: (context, snapshot) {
+                                        String premiumText = 'NONE';
+                                        Color? premiumColor = Colors.grey[700];
 
-                                if (snapshot.hasData && snapshot.data!.exists) {
-                                  final premiumLevel = snapshot.data!.get('premium_level') as String? ?? 'none';
-                                  premiumText = premiumLevel.toUpperCase();
-                                  
-                                  switch (premiumLevel.toLowerCase()) {
-                                    case 'basic':
-                                      premiumColor = Colors.green[700];
-                                      break;
-                                    case 'pro':
-                                      premiumColor = Colors.blue[700];
-                                      break;
-                                    case 'elite':
-                                      premiumColor = Colors.purple[700];
-                                      break;
-                                  }
-                                }
+                                        if (snapshot.hasData && snapshot.data!.exists) {
+                                          final premiumLevel = snapshot.data!.get('premium_level') as String? ?? 'none';
+                                          premiumText = premiumLevel.toUpperCase();
+                                          
+                                          switch (premiumLevel.toLowerCase()) {
+                                            case 'basic':
+                                              premiumColor = Colors.green[700];
+                                              break;
+                                            case 'pro':
+                                              premiumColor = Colors.blue[700];
+                                              break;
+                                            case 'elite':
+                                              premiumColor = Colors.purple[700];
+                                              break;
+                                          }
+                                        }
 
-                                return _buildStatItem(
-                                  'Premium',
-                                  premiumText,
-                                  valueColor: premiumColor,
-                                );
-                              },
-                            );
-                          },
-                        ),
+                                        return _buildStatItem(
+                                          'Premium',
+                                          premiumText,
+                                          valueColor: premiumColor,
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
             );
           },
