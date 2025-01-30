@@ -12,6 +12,7 @@ import 'login_screen.dart';
 import '../services/coin_service.dart';
 import 'theme_selection_screen.dart';
 import 'exam_history_screen.dart';
+import '../services/user_cache_service.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -181,6 +182,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             final premiumLevel = snapshot.hasData && snapshot.data!.exists
                 ? (snapshot.data!.get('premium_level') as String? ?? 'zero')
                 : 'zero';
+
+            // Cache the premium level whenever it changes
+            UserCacheService.updatePremiumLevel(premiumLevel);
 
             // Define premium level gradients and effects
             final Map<String, List<Color>> premiumGradients = {
@@ -604,6 +608,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               'none';
                                           premiumText =
                                               premiumLevel.toUpperCase();
+
+                                          // Cache the premium level whenever it changes
+                                          UserCacheService.updatePremiumLevel(
+                                              premiumLevel);
 
                                           switch (premiumLevel.toLowerCase()) {
                                             case 'basic':

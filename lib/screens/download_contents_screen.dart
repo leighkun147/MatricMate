@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/premium_level.dart';
 import '../services/device_verification_service.dart';
+import '../services/user_cache_service.dart';
 import 'payment_methods_screen.dart';
 
 class DownloadContentsScreen extends StatefulWidget {
@@ -13,17 +14,61 @@ class DownloadContentsScreen extends StatefulWidget {
 class _DownloadContentsScreenState extends State<DownloadContentsScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final DeviceVerificationService _deviceVerification = DeviceVerificationService();
+  String _currentPremiumLevel = 'none';
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    _loadPremiumLevel();
+  }
+
+  Future<void> _loadPremiumLevel() async {
+    final premiumLevel = await UserCacheService.getCachedPremiumLevel();
+    setState(() {
+      _currentPremiumLevel = premiumLevel;
+      _isLoading = false;
+    });
   }
 
   @override
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  bool _shouldShowFeature(PremiumLevel featureLevel) {
+    // Convert levels to numeric values for comparison
+    final levelValues = {
+      PremiumLevel.basic: 1,
+      PremiumLevel.pro: 2,
+      PremiumLevel.elite: 3,
+    };
+
+    // If user has no premium level, show all features
+    if (_currentPremiumLevel.toLowerCase() == 'none') {
+      return true;
+    }
+
+    // Convert string level to enum
+    PremiumLevel currentLevel;
+    switch (_currentPremiumLevel.toLowerCase()) {
+      case 'basic':
+        currentLevel = PremiumLevel.basic;
+        break;
+      case 'pro':
+        currentLevel = PremiumLevel.pro;
+        break;
+      case 'elite':
+        currentLevel = PremiumLevel.elite;
+        break;
+      default:
+        return true; // If level is not recognized, show all features
+    }
+
+    // Show the feature if it's higher than current level
+    return levelValues[featureLevel]! > levelValues[currentLevel]!;
   }
 
   Future<void> _handleDownload(PremiumFeature feature) async {
@@ -69,6 +114,40 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen> with Si
   }
 
   Widget _buildFeatureCard(PremiumFeature feature) {
+    if (!_shouldShowFeature(feature.level)) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.check_circle_outline,
+                size: 64,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'You already have ${feature.title} access!',
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Check back later for more content.',
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     return Card(
       elevation: 4,
       margin: const EdgeInsets.all(16),
@@ -127,6 +206,14 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen> with Si
 
   @override
   Widget build(BuildContext context) {
+    if (_isLoading) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Download Contents'),
