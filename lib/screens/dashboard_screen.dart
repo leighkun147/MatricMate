@@ -22,7 +22,6 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> with TickerProviderStateMixin {
-  final DateTime examDate = DateTime(2024, 6, 1); // Example exam date
   late DateTime currentTime;
   late Timer timer;
   List<String> _subjects = [];
@@ -94,7 +93,7 @@ class _DashboardScreenState extends State<DashboardScreen> with TickerProviderSt
             ),
           ),
           const SizedBox(height: 20),
-          _buildCountdownTimer(),
+          _buildImageCarousel(),
           const SizedBox(height: 20),
           _buildPerformanceCard(),
           const SizedBox(height: 20),
@@ -104,78 +103,131 @@ class _DashboardScreenState extends State<DashboardScreen> with TickerProviderSt
     );
   }
 
-  Widget _buildCountdownTimer() {
-    final difference = examDate.difference(currentTime);
-    final days = difference.inDays;
-    final hours = difference.inHours % 24;
-    final minutes = difference.inMinutes % 60;
-    final seconds = difference.inSeconds % 60;
+  Widget _buildImageCarousel() {
+    final List<Map<String, String>> carouselItems = [
+      {
+        'image': 'assets/images/IMG-20231230-WA0001.jpg',
+        'title': 'Welcome to MatricMate',
+        'description': 'Your ultimate companion for exam preparation'
+      },
+      {
+        'image': 'assets/images/IMG-20231230-WA0002.jpg',
+        'title': 'Study Planning',
+        'description': 'Create and manage your study schedule effectively'
+      },
+      {
+        'image': 'assets/images/IMG-20240317-WA0006.jpg',
+        'title': 'Practice Questions',
+        'description': 'Access a wide range of practice materials'
+      },
+      {
+        'image': 'assets/images/IMG-20240317-WA0007.jpg',
+        'title': 'Track Progress',
+        'description': 'Monitor your performance and improvements'
+      },
+      {
+        'image': 'assets/images/IMG-20240317-WA0009.jpg',
+        'title': 'Join Olympiads',
+        'description': 'Participate in academic competitions'
+      },
+      {
+        'image': 'assets/images/IMG-20240317-WA0010.jpg',
+        'title': 'Study Resources',
+        'description': 'Access comprehensive study materials'
+      },
+      {
+        'image': 'assets/images/IMG-20240317-WA0011.jpg',
+        'title': 'Performance Analytics',
+        'description': 'Get detailed insights into your progress'
+      },
+      {
+        'image': 'assets/images/IMG-20240317-WA0012.jpg',
+        'title': 'Community Support',
+        'description': 'Connect with fellow students and educators'
+      },
+      {
+        'image': 'assets/images/IMG-20240317-WA0013.jpg',
+        'title': 'Exam Preparation',
+        'description': 'Get ready for your national exams'
+      },
+      {
+        'image': 'assets/images/IMG-20240317-WA0014.jpg',
+        'title': 'About Us',
+        'description': 'Learn more about MatricMate and our mission'
+      },
+    ];
 
-    return Card(
-      elevation: 4,
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Theme.of(context).colorScheme.primary.withOpacity(0.7),
-              Theme.of(context).colorScheme.primary,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          children: [
-            Text(
-              'Time Until National Exam',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.onPrimary,
+    return Container(
+      height: 200,
+      margin: const EdgeInsets.symmetric(vertical: 16),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: carouselItems.length,
+        itemBuilder: (context, index) {
+          final item = carouselItems[index];
+          return Container(
+            width: MediaQuery.of(context).size.width * 0.8,
+            margin: const EdgeInsets.symmetric(horizontal: 8),
+            child: Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      item['image']!,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.transparent,
+                          Colors.black.withOpacity(0.7),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 16,
+                    left: 16,
+                    right: 16,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          item['title']!,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          item['description']!,
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.9),
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildTimeUnit('$days', 'Days'),
-                _buildTimeUnit('$hours', 'Hours'),
-                _buildTimeUnit('$minutes', 'Minutes'),
-                _buildTimeUnit('$seconds', 'Seconds'),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTimeUnit(String value, String unit) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        children: [
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
-          ),
-          Text(
-            unit,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onPrimary.withOpacity(0.7),
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

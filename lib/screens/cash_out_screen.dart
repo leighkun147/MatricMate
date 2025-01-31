@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../services/device_verification_service.dart';
+import '../models/premium_level.dart';
+import '../utils/device_id_manager.dart';
 
 class CashOutScreen extends StatefulWidget {
   const CashOutScreen({super.key});
@@ -13,11 +16,48 @@ class _CashOutScreenState extends State<CashOutScreen> {
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
   final _phoneController = TextEditingController();
+  final _deviceVerificationService = DeviceVerificationService();
 
   @override
   void dispose() {
     _phoneController.dispose();
     super.dispose();
+  }
+
+  Future<Map<String, dynamic>> _calculateRequiredAmount() async {
+    final deviceId = await DeviceIdManager.getDeviceId();
+    final currentLevel = await _deviceVerificationService.getDevicePremiumLevel();
+
+    int premiumUpgradeCost = 0;
+    if (currentLevel == null) {
+      // Device not registered, needs 600 for registration
+      premiumUpgradeCost = 600;
+    } else {
+      // Device exists, check current premium level
+      switch (currentLevel) {
+        case PremiumLevel.basic:
+          premiumUpgradeCost = 400;
+          break;
+        case PremiumLevel.pro:
+          premiumUpgradeCost = 200;
+          break;
+        case PremiumLevel.elite:
+          premiumUpgradeCost = 0;
+          break;
+      }
+    }
+
+    // Calculate how much of the 600 ETB will be used for premium upgrade
+    int deductionFromBase = premiumUpgradeCost > 600 ? 600 : premiumUpgradeCost;
+    int remainingForCashOut = 600 - deductionFromBase;
+
+    return {
+      'deviceId': deviceId,
+      'premiumUpgradeCost': premiumUpgradeCost,
+      'deductionFromBase': deductionFromBase,
+      'remainingForCashOut': remainingForCashOut,
+      'currentLevel': currentLevel,
+    };
   }
 
   Future<void> _handleCashOutRequest() async {
@@ -39,6 +79,9 @@ class _CashOutScreenState extends State<CashOutScreen> {
     });
 
     try {
+      // Get required amount calculations
+      final requirements = await _calculateRequiredAmount();
+      
       // Get user's referral earnings
       final userDoc = await FirebaseFirestore.instance
           .collection('users')
@@ -48,14 +91,16 @@ class _CashOutScreenState extends State<CashOutScreen> {
       final referralEarnings =
           (userDoc.data()?['referral_earnings'] as num?)?.toInt() ?? 0;
 
-      if (referralEarnings < 800) {
+      if (referralEarnings < 600) {
         if (!mounted) return;
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
             title: const Text('Insufficient Balance'),
-            content: const Text(
-              'You need a minimum referral earnings of 800 ETB to make a cash-out request. '
+            content: Text(
+              'You need at least 600 ETB for cash-out. '
+              'From this amount, ${requirements['deductionFromBase']} ETB will be used for premium upgrade '
+              'and ${requirements['remainingForCashOut']} ETB will be sent to your Telebirr account. '
               'Keep referring more users to increase your earnings!',
             ),
             actions: [
@@ -69,24 +114,54 @@ class _CashOutScreenState extends State<CashOutScreen> {
         return;
       }
 
-      // Create cash-out request document
-      await FirebaseFirestore.instance
+      // Start a batch write
+      final batch = FirebaseFirestore.instance.batch();
+
+      // Update or create device document if premium upgrade is needed
+      if (requirements['premiumUpgradeCost'] > 0) {
+        final deviceRef = FirebaseFirestore.instance
+            .collection('approved_devices')
+            .doc(requirements['deviceId']);
+        
+        batch.set(deviceRef, {
+          'premium_level': PremiumLevel.elite.name,
+          'last_updated': FieldValue.serverTimestamp(),
+        }, SetOptions(merge: true));
+      }
+
+      // Update user's referral earnings
+      final userRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(currentUser.uid);
+      batch.update(userRef, {
+        'referral_earnings': referralEarnings - 600,
+      });
+
+      // Create cash-out request with remaining amount
+      final cashOutRef = FirebaseFirestore.instance
           .collection('cash_out_request')
-          .doc(currentUser.uid)
-          .set({
+          .doc(currentUser.uid);
+      batch.set(cashOutRef, {
         'user_name': currentUser.uid,
-        'amount': referralEarnings,
+        'amount': requirements['remainingForCashOut'],
         'phone_number': _phoneController.text,
         'timestamp': FieldValue.serverTimestamp(),
         'status': 'pending',
+        'premium_upgrade_amount': requirements['deductionFromBase'],
       });
+
+      // Commit the batch
+      await batch.commit();
 
       if (!mounted) return;
 
-      // Show success message
+      // Show success message with breakdown
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Cash-out request submitted successfully!'),
+        SnackBar(
+          content: Text(
+            'Cash-out request submitted! ${requirements['deductionFromBase']} ETB used for premium upgrade, '
+            '${requirements['remainingForCashOut']} ETB will be sent to your Telebirr account.',
+          ),
           backgroundColor: Colors.green,
         ),
       );
