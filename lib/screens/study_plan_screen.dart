@@ -59,9 +59,15 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
       dayTimeSlots[day] = [];
     }
     
-    // Initialize analytics maps
+    // Initialize analytics maps with 0 for all subjects
     subjectHours = {};
     subjectDistribution = {};
+    
+    // Set initial value of 0 for all subjects
+    for (final subject in [...naturalScienceSubjects, ...socialScienceSubjects]) {
+      subjectHours[subject.name] = 0;
+      subjectDistribution[subject.name] = 0.0;
+    }
     
     _initializeStudyPlan();
   }
@@ -69,11 +75,16 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
   void _updateAnalytics() {
     if (!mounted) return;
 
-    final Map<String, int> newSubjectHours = {};
+    final Map<String, int> newSubjectMinutes = {};
     var totalMinutes = 0;
 
     try {
-      // Calculate hours per subject
+      // Reset all subject minutes to 0 first
+      for (final subject in [...naturalScienceSubjects, ...socialScienceSubjects]) {
+        newSubjectMinutes[subject.name] = 0;
+      }
+
+      // Calculate total minutes per subject across all days
       for (final day in weekDays) {
         final slots = studyPlan.schedule[day]?.timeSlots ?? [];
         for (final slot in slots) {
@@ -83,9 +94,17 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
               final end = _parseTimeString(slot.endTime);
               final minutes = end.difference(start).inMinutes;
               
-              newSubjectHours[slot.subjectName] = 
-                  (newSubjectHours[slot.subjectName] ?? 0) + minutes;
-              totalMinutes += minutes;
+              print('Subject: ${slot.subjectName}');
+              print('Time slot: ${slot.startTime} - ${slot.endTime}');
+              print('Minutes calculated: $minutes');
+              
+              if (minutes > 0) {  // Only add positive durations
+                newSubjectMinutes[slot.subjectName] = 
+                    (newSubjectMinutes[slot.subjectName] ?? 0) + minutes;
+                totalMinutes += minutes;
+              } else {
+                print('Warning: Invalid time duration for ${slot.subjectName}: $minutes minutes');
+              }
             } catch (e) {
               print('Error calculating time for slot: ${e.toString()}');
             }
@@ -93,21 +112,33 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
         }
       }
 
+      print('Final minutes per subject:');
+      newSubjectMinutes.forEach((subject, mins) => print('$subject: $mins minutes'));
+
       if (mounted) {
         setState(() {
-          subjectHours = Map<String, int>.from(newSubjectHours.map((subject, minutes) => 
-              MapEntry(subject, (minutes / 60).round())));
-              
-          if (totalMinutes > 0) {
-            subjectDistribution = Map<String, double>.from(newSubjectHours.map((subject, minutes) =>
-                MapEntry(subject, (minutes / totalMinutes) * 100)));
-          } else {
-            subjectDistribution = {};
-          }
+          // Convert total minutes to hours and remaining minutes
+          subjectHours = Map<String, int>.from(newSubjectMinutes.map((subject, totalMinutes) {
+            final hours = totalMinutes ~/ 60;
+            print('Converting $subject: $totalMinutes minutes = $hours hours');
+            return MapEntry(subject, hours);
+          }));
+          
+          // Store remaining minutes for display
+          subjectDistribution = Map<String, double>.from(newSubjectMinutes.map((subject, totalMinutes) {
+            final remainingMinutes = totalMinutes % 60;
+            print('Remaining minutes for $subject: $remainingMinutes');
+            return MapEntry(subject, remainingMinutes.toDouble());
+          }));
         });
       }
     } catch (e) {
       print('Error updating analytics: ${e.toString()}');
+      // Set default values to 0 in case of error
+      setState(() {
+        subjectHours = {};
+        subjectDistribution = {};
+      });
     }
   }
 
@@ -117,6 +148,14 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
     setState(() {
       _isLoading = true;
       _error = null;
+      
+      // Reset analytics maps with 0 for all subjects
+      subjectHours = {};
+      subjectDistribution = {};
+      for (final subject in [...naturalScienceSubjects, ...socialScienceSubjects]) {
+        subjectHours[subject.name] = 0;
+        subjectDistribution[subject.name] = 0.0;
+      }
     });
 
     try {
@@ -143,11 +182,17 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
         }
       }
 
+      // Update analytics after loading study plan
       _updateAnalytics();
     } catch (e) {
       if (mounted) {
         setState(() {
           _error = 'Error loading study plan: ${e.toString()}';
+          // Reset to zero values on error
+          for (final subject in [...naturalScienceSubjects, ...socialScienceSubjects]) {
+            subjectHours[subject.name] = 0;
+            subjectDistribution[subject.name] = 0.0;
+          }
         });
       }
     } finally {
@@ -592,6 +637,14 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
 
   Widget _buildAnalytics() {
     try {
+      // Initialize maps with 0 for all subjects
+      final Map<String, int> hours = {};
+      final Map<String, double> distribution = {};
+      for (final subject in [...naturalScienceSubjects, ...socialScienceSubjects]) {
+        hours[subject.name] = 0;
+        distribution[subject.name] = 0.0;
+      }
+
       if (subjectHours.isEmpty) {
         return const Card(
           child: Padding(
@@ -604,6 +657,12 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
         );
       }
 
+      // Calculate total study time
+      final totalHours = subjectHours.values.fold<int>(0, (sum, hours) => sum + (hours < 0 ? 0 : hours));
+      final totalMinutes = subjectDistribution.values.fold<double>(0, (sum, minutes) => sum + (minutes < 0 ? 0 : minutes));
+      final adjustedTotalHours = totalHours + (totalMinutes ~/ 60);
+      final adjustedTotalMinutes = (totalMinutes % 60).round();
+
       return Card(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -611,41 +670,39 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Study Distribution',
+                'Weekly Study Distribution',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 16),
-              ...subjectHours.entries.map((entry) {
-                final percentage = subjectDistribution[entry.key] ?? 0.0;
+              ...hours.entries.map((entry) {
+                final minutes = (distribution[entry.key] ?? 0).round();
+                final subjectHours = entry.value < 0 ? 0 : entry.value;
+                
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${entry.key} (${entry.value}h)',
+                        '${entry.key} (${subjectHours}h ${minutes > 0 ? '${minutes}m' : ''})',
                         style: const TextStyle(fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(height: 4),
-                      LinearProgressIndicator(
-                        value: percentage / 100,
-                        backgroundColor: Colors.grey[200],
-                        color: _getSubjectColor(entry.key),
-                      ),
-                      Text(
-                        '${percentage.toStringAsFixed(1)}%',
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 12,
-                        ),
-                      ),
                     ],
                   ),
                 );
               }).toList(),
+              const Divider(),
+              Text(
+                'Total weekly study time: ${adjustedTotalHours}h${adjustedTotalMinutes > 0 ? ' ${adjustedTotalMinutes}m' : ''}',
+                style: TextStyle(
+                  color: Colors.grey[800],
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ],
           ),
         ),
@@ -954,7 +1011,7 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
               borderRadius: const BorderRadius.only(
@@ -965,47 +1022,59 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      _getDayIcon(day),
-                      color: Colors.white,
-                      size: 24,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      day,
-                      style: const TextStyle(
+                // Day info - left side
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    children: [
+                      Icon(
+                        _getDayIcon(day),
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                        size: 24,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 8),
+                      Text(
+                        day,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.access_time, color: Colors.white),
-                      onPressed: _showManageTimeSlotsDialog,
-                      tooltip: 'Manage Time Slots',
-                    ),
-                    const SizedBox(width: 8),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        selectedDayIndex = weekDays.indexOf(day);
-                        _showAddActivityDialog();
-                      },
-                      icon: const Icon(Icons.add, size: 20),
-                      label: const Text('Add Activity'),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Theme.of(context).primaryColor,
-                        elevation: 0,
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                // Actions - right side
+                Expanded(
+                  flex: 3,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.access_time, color: Colors.white),
+                        onPressed: _showManageTimeSlotsDialog,
+                        tooltip: 'Manage Time Slots',
+                        constraints: const BoxConstraints(),
+                        padding: const EdgeInsets.all(8),
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 4),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          selectedDayIndex = weekDays.indexOf(day);
+                          _showAddActivityDialog();
+                        },
+                        icon: const Icon(Icons.add, size: 16),
+                        label: const Text('Add Activity'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Theme.of(context).primaryColor,
+                          elevation: 0,
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                          textStyle: const TextStyle(fontSize: 13),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

@@ -1,8 +1,33 @@
 import 'package:flutter/material.dart';
 import '../utils/pattern_painters.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class OlympiadScreen extends StatelessWidget {
   const OlympiadScreen({super.key});
+
+  Stream<List<DocumentSnapshot>> _getOlympiadEvents() {
+    return FirebaseFirestore.instance
+        .collection('Olympiad')
+        .snapshots()
+        .map((snapshot) => snapshot.docs);
+  }
+
+  Widget _buildEventCards(BuildContext context, List<DocumentSnapshot> events) {
+    return Column(
+      children: events.map((event) {
+        final data = event.data() as Map<String, dynamic>;
+        return _buildEventCard(
+          context: context,
+          title: event.id,
+          date: data['date'] ?? 'Date TBA',
+          time: data['time'] ?? '9:00 AM - 5:00 PM',
+          venue: data['venue'] ?? 'Venue TBA',
+          subjects: List<String>.from(data['subjects'] ?? []),
+          registrationDeadline: data['Registration_deadline'] ?? 'Deadline TBA',
+        );
+      }).toList(),
+    );
+  }
 
   Widget _buildEventCard({
     required BuildContext context,
@@ -255,13 +280,11 @@ class OlympiadScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Pattern overlay
                   CustomPaint(
                     painter: DiagonalPatternPainter(
                       color: Colors.white.withOpacity(0.1),
                     ),
                   ),
-                  // Shine effect
                   Positioned(
                     top: -100,
                     right: -100,
@@ -296,34 +319,29 @@ class OlympiadScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                _buildEventCard(
-                  context: context,
-                  title: 'National Science Olympiad 2025',
-                  date: 'March 15, 2025',
-                  time: '9:00 AM - 5:00 PM',
-                  venue: 'Addis Ababa Science Academy',
-                  subjects: [
-                    'Physics',
-                    'Chemistry',
-                    'Biology',
-                    'Mathematics',
-                  ],
-                  registrationDeadline: 'February 28, 2025',
-                ),
-                const SizedBox(height: 16),
-                _buildEventCard(
-                  context: context,
-                  title: 'Social Science Challenge',
-                  date: 'April 5, 2025',
-                  time: '10:00 AM - 4:00 PM',
-                  venue: 'Ethiopian National Museum',
-                  subjects: [
-                    'History',
-                    'Geography',
-                    'Civics',
-                    'Economics',
-                  ],
-                  registrationDeadline: 'March 20, 2025',
+                StreamBuilder<List<DocumentSnapshot>>(
+                  stream: _getOlympiadEvents(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Error: ${snapshot.error}'),
+                      );
+                    }
+
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+
+                    if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                      return const Center(
+                        child: Text('No events found'),
+                      );
+                    }
+
+                    return _buildEventCards(context, snapshot.data!);
+                  },
                 ),
                 const SizedBox(height: 32),
               ],
@@ -333,7 +351,6 @@ class OlympiadScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // TODO: Implement notification settings
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Notification settings coming soon!'),
