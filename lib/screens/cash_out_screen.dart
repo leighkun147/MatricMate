@@ -35,6 +35,9 @@ class _CashOutScreenState extends State<CashOutScreen> {
     } else {
       // Device exists, check current premium level
       switch (currentLevel) {
+        case PremiumLevel.zero:
+          premiumUpgradeCost = 600;
+          break;
         case PremiumLevel.basic:
           premiumUpgradeCost = 400;
           break;

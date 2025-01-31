@@ -48,6 +48,10 @@ dependencies:
   fluttertoast: ^8.2.4
   device_info_plus: ^9.1.1
   uuid: ^4.2.2
+  firebase_storage: ^12.4.1
+  path_provider: ^2.1.5
+  dio: ^5.8.0+1
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:

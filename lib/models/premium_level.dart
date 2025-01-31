@@ -1,14 +1,17 @@
 enum PremiumLevel {
+  zero,
   basic,
   pro,
   elite;
 
   bool canAccess(PremiumLevel requiredLevel) {
     switch (this) {
+      case PremiumLevel.zero:
+        return requiredLevel == PremiumLevel.zero;
       case PremiumLevel.basic:
-        return requiredLevel == PremiumLevel.basic;
+        return requiredLevel == PremiumLevel.zero || requiredLevel == PremiumLevel.basic;
       case PremiumLevel.pro:
-        return requiredLevel == PremiumLevel.basic || requiredLevel == PremiumLevel.pro;
+        return requiredLevel == PremiumLevel.zero || requiredLevel == PremiumLevel.basic || requiredLevel == PremiumLevel.pro;
       case PremiumLevel.elite:
         return true; // Elite can access all levels
     }
@@ -32,6 +35,18 @@ class PremiumFeature {
 }
 
 final List<PremiumFeature> premiumFeatures = [
+  PremiumFeature(
+    title: 'Zero',
+    description: 'Start exploring MatricMate',
+    features: [
+      'Limited access to study materials',
+      'Basic practice questions',
+      'Simple progress tracking',
+      'Community access',
+    ],
+    price: 0,
+    level: PremiumLevel.zero,
+  ),
   PremiumFeature(
     title: 'Basic',
     description: 'Start your journey with essential features',
