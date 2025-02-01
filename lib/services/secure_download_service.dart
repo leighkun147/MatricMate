@@ -59,17 +59,19 @@ class SecureDownloadService {
       final appDir = await getApplicationDocumentsDirectory();
       print('App documents directory: ${appDir.path}');
       
-      // Create the base questions directory
-      final questionsDir = Directory(path.join(
+      // Create the target directory
+      final targetDir = path.join(
         appDir.path,
         'assets',
         'questions',
-        'model_exams', // Fixed collection name for model exams
-      ));
-      print('Creating questions directory: ${questionsDir.path}');
-      if (!await questionsDir.exists()) {
-        await questionsDir.create(recursive: true);
-        print('Created questions directory');
+        'model_exams',  // Always use model_exams for now
+      );
+      
+      // Create the directory if it doesn't exist
+      final dir = Directory(targetDir);
+      if (!await dir.exists()) {
+        await dir.create(recursive: true);
+        print('Created directory: $targetDir');
       }
 
       // Get the full file path
@@ -140,7 +142,7 @@ class SecureDownloadService {
       appDir.path,
       'assets',
       'questions',
-      'model_exams', // Fixed collection name for model exams
+      'model_exams',  // Always use model_exams for now
       filename,
     );
   }

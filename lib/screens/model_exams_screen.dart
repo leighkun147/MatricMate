@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import '../models/exam.dart';
 import '../models/question.dart';
@@ -7,6 +8,8 @@ import 'mock_exam_screen.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import '../models/academic_year_exam.dart';
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
 
 class ModelExamsScreen extends StatefulWidget {
   const ModelExamsScreen({super.key});
@@ -82,6 +85,15 @@ class _SubjectModelExamList extends StatelessWidget {
     int examIndex = 1;
     bool hasMoreExams = true;
 
+    // Get the app's document directory for downloaded files
+    final appDir = await getApplicationDocumentsDirectory();
+    final downloadedExamsDir = Directory(path.join(
+      appDir.path,
+      'assets',
+      'questions',
+      'model_exams',
+    ));
+
     while (hasMoreExams) {
       try {
         final List<String> possiblePaths = [
@@ -89,22 +101,43 @@ class _SubjectModelExamList extends StatelessWidget {
           'assets/questions/model_exams/${subject.toLowerCase()}$examIndex.json',
         ];
 
+        // Add paths for downloaded files
+        if (await downloadedExamsDir.exists()) {
+          possiblePaths.addAll([
+            path.join(downloadedExamsDir.path, '$subject$examIndex.json'),
+            path.join(downloadedExamsDir.path, '${subject.toLowerCase()}$examIndex.json'),
+          ]);
+        }
+
         String? jsonString;
         String? successPath;
         
         for (final path in possiblePaths) {
           try {
             print('Trying to load: $path');
-            jsonString = await rootBundle.loadString(path);
-            successPath = path;
-            print('Successfully loaded file: $path');
-            break;
+            if (path.startsWith('assets/')) {
+              // Load from assets bundle
+              jsonString = await rootBundle.loadString(path);
+            } else {
+              // Load from file system
+              final file = File(path);
+              if (await file.exists()) {
+                jsonString = await file.readAsString();
+              }
+            }
+            if (jsonString != null) {
+              successPath = path;
+              print('Successfully loaded file: $path');
+              break;
+            }
           } catch (e) {
+            print('Failed to load $path: $e');
             continue;
           }
         }
 
         if (jsonString == null) {
+          print('No more exams found for $subject at index $examIndex');
           hasMoreExams = false;
           break;
         }
@@ -117,6 +150,7 @@ class _SubjectModelExamList extends StatelessWidget {
             year: examIndex,  // Using index instead of year for model exams
           );
           exams.add(exam);
+          print('Added exam from: $successPath');
           examIndex++;
         } catch (e) {
           print('Error parsing JSON for model exam $examIndex: $e');

@@ -9,6 +9,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
 import 'payment_methods_screen.dart';
+import 'downloaded_files_screen.dart';
 
 class DownloadContentsScreen extends StatefulWidget {
   const DownloadContentsScreen({super.key});
@@ -638,6 +639,18 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
         title: const Text('Download Contents'),
         centerTitle: true,
         actions: [
+          IconButton(
+            icon: const Icon(Icons.folder),
+            tooltip: 'View Downloaded Files',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DownloadedFilesScreen(),
+                ),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.delete_outline),
             tooltip: 'Delete All Downloads',
