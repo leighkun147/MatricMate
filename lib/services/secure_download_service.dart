@@ -2,14 +2,26 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
-import 'dart:convert'; // Add this for JSON validation
+import 'dart:convert';
 
 class SecureDownloadService {
   static final Dio _dio = Dio();
+  
+  // Define valid collections
+  static const List<String> validCollections = [
+    'model_exams',
+    'academic_year',
+    'subject_chapters_questions'
+  ];
 
   /// Checks if a file is already downloaded
   static Future<bool> isFileDownloaded(String collection, String filename) async {
     try {
+      // Validate collection
+      if (!validCollections.contains(collection)) {
+        throw Exception('Invalid collection: $collection. Must be one of: $validCollections');
+      }
+      
       // Ensure lowercase filename
       filename = filename.toLowerCase();
       final filePath = await _getFilePath(collection, filename);
@@ -44,6 +56,11 @@ class SecureDownloadService {
     Function(int received, int total)? onProgress,
   }) async {
     try {
+      // Validate collection
+      if (!validCollections.contains(collection)) {
+        throw Exception('Invalid collection: $collection. Must be one of: $validCollections');
+      }
+      
       // Ensure lowercase filename
       filename = filename.toLowerCase();
       print('\nStarting download process for: $filename');
@@ -64,7 +81,7 @@ class SecureDownloadService {
         appDir.path,
         'assets',
         'questions',
-        'model_exams',  // Always use model_exams for now
+        collection,  // Use the provided collection
       );
       
       // Create the directory if it doesn't exist
@@ -142,7 +159,7 @@ class SecureDownloadService {
       appDir.path,
       'assets',
       'questions',
-      'model_exams',  // Always use model_exams for now
+      collection,  // Use the provided collection
       filename,
     );
   }

@@ -8,7 +8,10 @@ import '../screens/practice_mode_screen.dart';
 import '../screens/mock_exam_screen.dart';
 import '../utils/chapter_completion_manager.dart';
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as path;
 
 class SubjectChaptersScreen extends StatefulWidget {
   final Subject subject;
@@ -358,8 +361,58 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
 
   Future<ChapterQuestions> _loadQuestionsFromJson(String chapterTitle) async {
     try {
-      final String jsonString = await rootBundle.loadString(
-          'assets/questions/subject_chapters_questions/$chapterTitle.json');
+      // List of possible file locations to check
+      final List<String> possiblePaths = [
+        'assets/questions/subject_chapters_questions/$chapterTitle.json',
+        'assets/questions/subject_chapters_questions/${chapterTitle.toLowerCase()}.json',
+      ];
+
+      // Add paths from the application documents directory
+      final appDir = await getApplicationDocumentsDirectory();
+      final documentsDir = Directory(path.join(
+        appDir.path,
+        'assets',
+        'questions',
+        'subject_chapters_questions',
+      ));
+
+      if (await documentsDir.exists()) {
+        possiblePaths.addAll([
+          path.join(documentsDir.path, '$chapterTitle.json'),
+          path.join(documentsDir.path, '${chapterTitle.toLowerCase()}.json'),
+        ]);
+      }
+
+      String? jsonString;
+      String? successPath;
+
+      // Try each possible path until we find a valid file
+      for (final filePath in possiblePaths) {
+        try {
+          print('Trying to load chapter questions from: $filePath');
+          if (filePath.startsWith('assets/')) {
+            jsonString = await rootBundle.loadString(filePath);
+          } else {
+            final file = File(filePath);
+            if (await file.exists()) {
+              jsonString = await file.readAsString();
+            }
+          }
+          if (jsonString != null) {
+            successPath = filePath;
+            print('Successfully loaded chapter questions from: $filePath');
+            break;
+          }
+        } catch (e) {
+          print('Failed to load from $filePath: $e');
+          continue;
+        }
+      }
+
+      if (jsonString == null) {
+        throw Exception('No valid file found for chapter: $chapterTitle');
+      }
+
       final Map<String, dynamic> jsonData = json.decode(jsonString);
       return ChapterQuestions.fromJson(jsonData);
     } catch (e) {

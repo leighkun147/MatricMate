@@ -16,12 +16,14 @@ class FileDetails {
   final int size;
   final DateTime lastModified;
   final Map<String, dynamic>? content;
+  final String collection;
 
   FileDetails({
     required this.name,
     required this.size,
     required this.lastModified,
     this.content,
+    required this.collection,
   });
 }
 
@@ -40,70 +42,57 @@ class _DownloadedFilesScreenState extends State<DownloadedFilesScreen> {
       setState(() => _isLoading = true);
       
       final appDir = await getApplicationDocumentsDirectory();
-      final modelExamsDir = Directory(path.join(
-        appDir.path,
-        'assets',
-        'questions',
-        'model_exams',
-      ));
-
-      print('Looking for files in: ${modelExamsDir.path}');
-
-      if (!await modelExamsDir.exists()) {
-        print('Directory does not exist: ${modelExamsDir.path}');
-        setState(() {
-          _files = [];
-          _isLoading = false;
-        });
-        return;
-      }
-
-      final files = await modelExamsDir.list().toList();
-      print('Found ${files.length} files in directory');
-      
-      // Print all file paths found
-      for (var f in files) {
-        print('Found file: ${f.path} (${f.runtimeType})');
-      }
-      
+      final collections = ['model_exams', 'academic_year', 'subject_chapters_questions'];
       final fileDetails = <FileDetails>[];
 
-      for (var entity in files) {
-        print('Checking entity: ${entity.path}');
-        if (entity is File) {
-          print('Processing file: ${entity.path}');
-          try {
-            final stats = await entity.stat();
-            print('File stats - size: ${stats.size}, modified: ${stats.modified}');
-            
-            Map<String, dynamic>? content;
-            try {
-              final fileContent = await entity.readAsString();
-              print('File content length: ${fileContent.length}');
-              content = json.decode(fileContent) as Map<String, dynamic>;
-              print('Successfully parsed JSON from: ${entity.path}');
-              print('JSON content: $content');
-            } catch (e) {
-              print('Error reading/parsing JSON from ${entity.path}: $e');
-              continue; // Skip this file if we can't read it properly
-            }
+      // Load files from each collection
+      for (final collection in collections) {
+        final collectionDir = Directory(path.join(
+          appDir.path,
+          'assets',
+          'questions',
+          collection,
+        ));
 
-            fileDetails.add(FileDetails(
-              name: path.basename(entity.path),
-              size: stats.size,
-              lastModified: stats.modified,
-              content: content,
-            ));
-            print('Added file to list: ${path.basename(entity.path)}');
-          } catch (e) {
-            print('Error processing file ${entity.path}: $e');
+        print('Checking collection directory: ${collectionDir.path}');
+
+        if (!await collectionDir.exists()) {
+          print('Directory does not exist: ${collectionDir.path}');
+          continue;
+        }
+
+        final files = await collectionDir.list().toList();
+        print('Found ${files.length} files in $collection');
+
+        for (var entity in files) {
+          if (entity is File) {
+            print('Processing file: ${entity.path}');
+            try {
+              final stats = await entity.stat();
+              Map<String, dynamic>? content;
+              
+              try {
+                final fileContent = await entity.readAsString();
+                content = json.decode(fileContent) as Map<String, dynamic>;
+                print('Successfully parsed JSON from: ${entity.path}');
+
+                fileDetails.add(FileDetails(
+                  name: path.basename(entity.path),
+                  size: stats.size,
+                  lastModified: stats.modified,
+                  content: content,
+                  collection: collection, // Add collection information
+                ));
+                print('Added file to list: ${path.basename(entity.path)} from $collection');
+              } catch (e) {
+                print('Error reading/parsing JSON from ${entity.path}: $e');
+              }
+            } catch (e) {
+              print('Error processing file ${entity.path}: $e');
+            }
           }
-        } else {
-          print('Skipping non-file entity: ${entity.path}');
         }
       }
-
-      print('Processed ${fileDetails.length} valid files');
 
       // Sort files by last modified date, most recent first
       fileDetails.sort((a, b) => b.lastModified.compareTo(a.lastModified));
@@ -115,7 +104,7 @@ class _DownloadedFilesScreenState extends State<DownloadedFilesScreen> {
       
       print('Final files list length: ${_files.length}');
       for (var file in _files) {
-        print('Loaded file: ${file.name}, size: ${file.size}, has content: ${file.content != null}');
+        print('Loaded file: ${file.name} from ${file.collection}, size: ${file.size}, has content: ${file.content != null}');
       }
     } catch (e, stackTrace) {
       print('Error loading files: $e');
@@ -136,6 +125,32 @@ class _DownloadedFilesScreenState extends State<DownloadedFilesScreen> {
   String _formatDate(DateTime date) {
     return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')} '
            '${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
+  }
+
+  Color _getCollectionColor(String collection) {
+    switch (collection) {
+      case 'academic_year':
+        return Colors.blue;
+      case 'model_exams':
+        return Colors.purple;
+      case 'subject_chapters_questions':
+        return Colors.orange;
+      default:
+        return Colors.grey;
+    }
+  }
+
+  IconData _getCollectionIcon(String collection) {
+    switch (collection) {
+      case 'academic_year':
+        return Icons.school;
+      case 'model_exams':
+        return Icons.assignment;
+      case 'subject_chapters_questions':
+        return Icons.book;
+      default:
+        return Icons.file_present;
+    }
   }
 
   @override
@@ -184,7 +199,10 @@ class _DownloadedFilesScreenState extends State<DownloadedFilesScreen> {
                       elevation: 2,
                       margin: const EdgeInsets.only(bottom: 12),
                       child: ExpansionTile(
-                        leading: const Icon(Icons.description),
+                        leading: Icon(
+                          _getCollectionIcon(file.collection),
+                          color: _getCollectionColor(file.collection),
+                        ),
                         title: Text(
                           file.name,
                           style: const TextStyle(
@@ -193,7 +211,8 @@ class _DownloadedFilesScreenState extends State<DownloadedFilesScreen> {
                         ),
                         subtitle: Text(
                           'Size: ${_formatFileSize(file.size)}\n'
-                          'Last Modified: ${_formatDate(file.lastModified)}',
+                          'Last Modified: ${_formatDate(file.lastModified)}\n'
+                          'Collection: ${file.collection}',
                           style: const TextStyle(fontSize: 12),
                         ),
                         trailing: Row(
@@ -227,7 +246,7 @@ class _DownloadedFilesScreenState extends State<DownloadedFilesScreen> {
                                       appDir.path,
                                       'assets',
                                       'questions',
-                                      'model_exams',
+                                      file.collection,
                                       file.name,
                                     );
                                     await File(filePath).delete();

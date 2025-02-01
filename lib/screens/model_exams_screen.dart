@@ -82,12 +82,24 @@ class _SubjectModelExamList extends StatelessWidget {
 
   Future<List<AcademicYearExam>> _loadModelExams() async {
     List<AcademicYearExam> exams = [];
+    exams.addAll(await _loadFromModelExams());
+    exams.addAll(await _loadFromAcademicYear());
+    exams.addAll(await _loadFromSubjectChapters());
+    
+    // Sort all exams by last modified date
+    exams.sort((a, b) => b.year.compareTo(a.year));
+    print('Found ${exams.length} total exams for $subject across all collections');
+    return exams;
+  }
+
+  Future<List<AcademicYearExam>> _loadFromModelExams() async {
+    List<AcademicYearExam> exams = [];
     int examIndex = 1;
     bool hasMoreExams = true;
 
     // Get the app's document directory for downloaded files
     final appDir = await getApplicationDocumentsDirectory();
-    final downloadedExamsDir = Directory(path.join(
+    final modelExamsDir = Directory(path.join(
       appDir.path,
       'assets',
       'questions',
@@ -101,11 +113,10 @@ class _SubjectModelExamList extends StatelessWidget {
           'assets/questions/model_exams/${subject.toLowerCase()}$examIndex.json',
         ];
 
-        // Add paths for downloaded files
-        if (await downloadedExamsDir.exists()) {
+        if (await modelExamsDir.exists()) {
           possiblePaths.addAll([
-            path.join(downloadedExamsDir.path, '$subject$examIndex.json'),
-            path.join(downloadedExamsDir.path, '${subject.toLowerCase()}$examIndex.json'),
+            path.join(modelExamsDir.path, '$subject$examIndex.json'),
+            path.join(modelExamsDir.path, '${subject.toLowerCase()}$examIndex.json'),
           ]);
         }
 
@@ -114,12 +125,10 @@ class _SubjectModelExamList extends StatelessWidget {
         
         for (final path in possiblePaths) {
           try {
-            print('Trying to load: $path');
+            print('Trying to load model exam: $path');
             if (path.startsWith('assets/')) {
-              // Load from assets bundle
               jsonString = await rootBundle.loadString(path);
             } else {
-              // Load from file system
               final file = File(path);
               if (await file.exists()) {
                 jsonString = await file.readAsString();
@@ -127,17 +136,16 @@ class _SubjectModelExamList extends StatelessWidget {
             }
             if (jsonString != null) {
               successPath = path;
-              print('Successfully loaded file: $path');
+              print('Successfully loaded model exam: $path');
               break;
             }
           } catch (e) {
-            print('Failed to load $path: $e');
+            print('Failed to load model exam $path: $e');
             continue;
           }
         }
 
         if (jsonString == null) {
-          print('No more exams found for $subject at index $examIndex');
           hasMoreExams = false;
           break;
         }
@@ -147,24 +155,192 @@ class _SubjectModelExamList extends StatelessWidget {
           final exam = AcademicYearExam.fromJson(
             jsonData,
             subject: subject,
-            year: examIndex,  // Using index instead of year for model exams
+            year: examIndex,
           );
           exams.add(exam);
-          print('Added exam from: $successPath');
+          print('Added model exam from: $successPath');
           examIndex++;
         } catch (e) {
-          print('Error parsing JSON for model exam $examIndex: $e');
+          print('Error parsing model exam JSON: $e');
           hasMoreExams = false;
           break;
         }
       } catch (e) {
-        print('Error loading model exam $examIndex: $e');
+        print('Error loading model exam: $e');
         hasMoreExams = false;
         break;
       }
     }
     
     print('Found ${exams.length} model exams for $subject');
+    return exams;
+  }
+
+  Future<List<AcademicYearExam>> _loadFromAcademicYear() async {
+    List<AcademicYearExam> exams = [];
+    int examIndex = 1;
+    bool hasMoreExams = true;
+
+    // Get the app's document directory for downloaded files
+    final appDir = await getApplicationDocumentsDirectory();
+    final academicYearDir = Directory(path.join(
+      appDir.path,
+      'assets',
+      'questions',
+      'academic_year',
+    ));
+
+    while (hasMoreExams) {
+      try {
+        final List<String> possiblePaths = [
+          'assets/questions/academic_year/$subject$examIndex.json',
+          'assets/questions/academic_year/${subject.toLowerCase()}$examIndex.json',
+        ];
+
+        if (await academicYearDir.exists()) {
+          possiblePaths.addAll([
+            path.join(academicYearDir.path, '$subject$examIndex.json'),
+            path.join(academicYearDir.path, '${subject.toLowerCase()}$examIndex.json'),
+          ]);
+        }
+
+        String? jsonString;
+        String? successPath;
+        
+        for (final path in possiblePaths) {
+          try {
+            print('Trying to load academic year exam: $path');
+            if (path.startsWith('assets/')) {
+              jsonString = await rootBundle.loadString(path);
+            } else {
+              final file = File(path);
+              if (await file.exists()) {
+                jsonString = await file.readAsString();
+              }
+            }
+            if (jsonString != null) {
+              successPath = path;
+              print('Successfully loaded academic year exam: $path');
+              break;
+            }
+          } catch (e) {
+            print('Failed to load academic year exam $path: $e');
+            continue;
+          }
+        }
+
+        if (jsonString == null) {
+          hasMoreExams = false;
+          break;
+        }
+        
+        try {
+          final Map<String, dynamic> jsonData = json.decode(jsonString);
+          final exam = AcademicYearExam.fromJson(
+            jsonData,
+            subject: subject,
+            year: examIndex,
+          );
+          exams.add(exam);
+          print('Added academic year exam from: $successPath');
+          examIndex++;
+        } catch (e) {
+          print('Error parsing academic year exam JSON: $e');
+          hasMoreExams = false;
+          break;
+        }
+      } catch (e) {
+        print('Error loading academic year exam: $e');
+        hasMoreExams = false;
+        break;
+      }
+    }
+    
+    print('Found ${exams.length} academic year exams for $subject');
+    return exams;
+  }
+
+  Future<List<AcademicYearExam>> _loadFromSubjectChapters() async {
+    List<AcademicYearExam> exams = [];
+    int examIndex = 1;
+    bool hasMoreExams = true;
+
+    // Get the app's document directory for downloaded files
+    final appDir = await getApplicationDocumentsDirectory();
+    final chaptersDir = Directory(path.join(
+      appDir.path,
+      'assets',
+      'questions',
+      'subject_chapters_questions',
+    ));
+
+    while (hasMoreExams) {
+      try {
+        final List<String> possiblePaths = [
+          'assets/questions/subject_chapters_questions/$subject$examIndex.json',
+          'assets/questions/subject_chapters_questions/${subject.toLowerCase()}$examIndex.json',
+        ];
+
+        if (await chaptersDir.exists()) {
+          possiblePaths.addAll([
+            path.join(chaptersDir.path, '$subject$examIndex.json'),
+            path.join(chaptersDir.path, '${subject.toLowerCase()}$examIndex.json'),
+          ]);
+        }
+
+        String? jsonString;
+        String? successPath;
+        
+        for (final path in possiblePaths) {
+          try {
+            print('Trying to load chapter exam: $path');
+            if (path.startsWith('assets/')) {
+              jsonString = await rootBundle.loadString(path);
+            } else {
+              final file = File(path);
+              if (await file.exists()) {
+                jsonString = await file.readAsString();
+              }
+            }
+            if (jsonString != null) {
+              successPath = path;
+              print('Successfully loaded chapter exam: $path');
+              break;
+            }
+          } catch (e) {
+            print('Failed to load chapter exam $path: $e');
+            continue;
+          }
+        }
+
+        if (jsonString == null) {
+          hasMoreExams = false;
+          break;
+        }
+        
+        try {
+          final Map<String, dynamic> jsonData = json.decode(jsonString);
+          final exam = AcademicYearExam.fromJson(
+            jsonData,
+            subject: subject,
+            year: examIndex,
+          );
+          exams.add(exam);
+          print('Added chapter exam from: $successPath');
+          examIndex++;
+        } catch (e) {
+          print('Error parsing chapter exam JSON: $e');
+          hasMoreExams = false;
+          break;
+        }
+      } catch (e) {
+        print('Error loading chapter exam: $e');
+        hasMoreExams = false;
+        break;
+      }
+    }
+    
+    print('Found ${exams.length} chapter exams for $subject');
     return exams;
   }
 
@@ -201,7 +377,7 @@ class _SubjectModelExamList extends StatelessWidget {
               id: examData.title ?? '${subject}_model_${index + 1}',
               title: examData.title ?? '$subject Model Exam ${index + 1}',
               subject: subject,
-              year: index + 1,  // Using index for model exams
+              year: index + 1,
               questions: examData.questions,
               duration: Duration(minutes: examData.duration),
               constants: examData.constants,

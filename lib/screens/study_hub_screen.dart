@@ -5,8 +5,11 @@ import '../utils/stream_utils.dart';
 import 'practice_mode_screen.dart';
 import 'mock_exam_screen.dart';
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/services.dart' show rootBundle;
 import '../models/academic_year_exam.dart';
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
 
 class StudyHubScreen extends StatefulWidget {
   const StudyHubScreen({super.key});
@@ -80,10 +83,18 @@ class _SubjectExamList extends StatelessWidget {
   Future<List<AcademicYearExam>> _loadAcademicYearExams() async {
     List<AcademicYearExam> exams = [];
     final currentYear = DateTime.now().year;
-    // Start from 1990 to include older exam files
     final startYear = 1990;
     
     print('Attempting to load exams for subject: $subject from $startYear to $currentYear');
+    
+    // Get the app's document directory for downloaded files
+    final appDir = await getApplicationDocumentsDirectory();
+    final academicYearDir = Directory(path.join(
+      appDir.path,
+      'assets',
+      'questions',
+      'academic_year',
+    ));
     
     for (int year = startYear; year <= currentYear; year++) {
       try {
@@ -92,17 +103,33 @@ class _SubjectExamList extends StatelessWidget {
           'assets/questions/academic_year/${subject.toLowerCase()}$year.json',
         ];
 
+        if (await academicYearDir.exists()) {
+          possiblePaths.addAll([
+            path.join(academicYearDir.path, '$subject$year.json'),
+            path.join(academicYearDir.path, '${subject.toLowerCase()}$year.json'),
+          ]);
+        }
+
         String? jsonString;
         String? successPath;
         
         for (final path in possiblePaths) {
           try {
             print('Trying to load: $path');
-            jsonString = await rootBundle.loadString(path);
-            successPath = path;
-            print('Successfully loaded file: $path');
-            print('File contents: $jsonString'); 
-            break;
+            if (path.startsWith('assets/')) {
+              jsonString = await rootBundle.loadString(path);
+            } else {
+              final file = File(path);
+              if (await file.exists()) {
+                jsonString = await file.readAsString();
+              }
+            }
+            if (jsonString != null) {
+              successPath = path;
+              print('Successfully loaded file: $path');
+              print('File contents: $jsonString'); 
+              break;
+            }
           } catch (e) {
             continue;
           }
