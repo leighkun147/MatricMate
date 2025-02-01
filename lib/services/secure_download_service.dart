@@ -81,7 +81,7 @@ class SecureDownloadService {
         appDir.path,
         'assets',
         'questions',
-        collection,  // Use the provided collection
+        collection,
       );
       
       // Create the directory if it doesn't exist
@@ -94,6 +94,13 @@ class SecureDownloadService {
       // Get the full file path
       final filePath = await _getFilePath(collection, filename);
       print('Target file path: $filePath');
+
+      // Delete existing file if it exists
+      final existingFile = File(filePath);
+      if (await existingFile.exists()) {
+        await existingFile.delete();
+        print('Deleted existing file: $filePath');
+      }
 
       // Check if path is valid
       if (await FileSystemEntity.isDirectory(filePath)) {
@@ -159,8 +166,67 @@ class SecureDownloadService {
       appDir.path,
       'assets',
       'questions',
-      collection,  // Use the provided collection
+      collection,
       filename,
     );
+  }
+
+  /// Gets the size of a downloaded file in bytes
+  static Future<int> getFileSize(String collection, String filename) async {
+    try {
+      final filePath = await _getFilePath(collection, filename);
+      final file = File(filePath);
+      if (await file.exists()) {
+        return await file.length();
+      }
+      return 0;
+    } catch (e) {
+      print('Error getting file size: $e');
+      return 0;
+    }
+  }
+
+  /// Checks if a file is already downloaded and matches the expected size
+  static Future<(bool, bool)> isFileDownloadedAndValid(
+    String collection,
+    String filename,
+    int expectedSize,
+  ) async {
+    try {
+      // Validate collection
+      if (!validCollections.contains(collection)) {
+        throw Exception('Invalid collection: $collection. Must be one of: $validCollections');
+      }
+      
+      // Ensure lowercase filename
+      filename = filename.toLowerCase();
+      final filePath = await _getFilePath(collection, filename);
+      final file = File(filePath);
+      final exists = await file.exists();
+      print('Checking file existence: $filePath');
+      print('File exists: $exists');
+      
+      if (exists) {
+        // Verify file is readable and contains valid JSON
+        try {
+          final content = await file.readAsString();
+          json.decode(content); // Validate JSON
+          print('File is valid JSON');
+          
+          // Check file size
+          final actualSize = await file.length();
+          final sizeMatches = expectedSize > 0 && actualSize == expectedSize;
+          
+          return (true, sizeMatches);
+        } catch (e) {
+          print('File exists but is not valid JSON: $e');
+          return (false, false);
+        }
+      }
+      return (false, false);
+    } catch (e) {
+      print('Error checking file existence: $e');
+      return (false, false);
+    }
   }
 }

@@ -7,8 +7,13 @@ class DownloadItem {
   final String downloadUrl;
   final PremiumLevel reqLevel;
   final String collection;
+  final int fileSize; // Size of the file in bytes
+  final String? stream; // Either 'natural_science' or 'social_science'
   bool isDownloading;
   double progress;
+  bool isDownloaded;  // Added property
+  bool needsUpdate; // Indicates if local file exists but needs update
+  bool justCompleted; // Temporary state to show completion before removal
 
   DownloadItem({
     required this.documentId,
@@ -16,8 +21,13 @@ class DownloadItem {
     required this.downloadUrl,
     required this.reqLevel,
     required this.collection,
+    required this.fileSize,
+    this.stream,
     this.isDownloading = false,
     this.progress = 0,
+    this.isDownloaded = false,
+    this.needsUpdate = false,
+    this.justCompleted = false,
   });
 
   // Get the actual filename for saving (always lowercase documentId.json)
@@ -69,12 +79,20 @@ class DownloadItem {
         reqLevel = PremiumLevel.zero;
     }
 
+    // Get file size
+    final int fileSize = (data['file_size'] as num?)?.toInt() ?? 0;
+
+    // Get stream type
+    final String? stream = data['stream'] as String?;
+
     return DownloadItem(
       documentId: actualDocumentId,
       displayName: displayName,
       downloadUrl: downloadUrl,
       reqLevel: reqLevel,
       collection: collection,
+      fileSize: fileSize,
+      stream: stream,
     );
   }
 

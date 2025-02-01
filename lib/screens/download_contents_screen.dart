@@ -5,6 +5,7 @@ import '../models/download_item.dart';
 import '../services/device_verification_service.dart';
 import '../services/secure_download_service.dart';
 import '../services/user_cache_service.dart';
+import '../utils/stream_utils.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
@@ -109,20 +110,40 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
       // Clear existing items
       _downloadItems.forEach((key, _) => _downloadItems[key]?.clear());
 
+      // Get user's stream
+      final userStream = await StreamUtils.selectedStream;
+      if (userStream == null) {
+        // If no stream is selected, don't show any items
+        return;
+      }
+
+      // Convert enum to string format used in Firestore
+      final streamValue = userStream == StreamType.naturalScience 
+          ? 'natural_science' 
+          : 'social_science';
+
       // Load items from each collection
       for (String collection in _downloadItems.keys) {
-        final snapshot = await _firestore.collection(collection).get();
+        // Query Firestore with stream filter
+        final snapshot = await _firestore.collection(collection)
+            .where('stream', isEqualTo: streamValue)
+            .get();
+
         final items = snapshot.docs
             .map((doc) => DownloadItem.fromFirestore(doc, collection))
             .toList();
             
-        // Check if each file is already downloaded
+        // Check each item's status and only add if it needs downloading or updating
         for (var item in items) {
-          final isDownloaded = await SecureDownloadService.isFileDownloaded(
+          final (isDownloaded, sizeMatches) = await SecureDownloadService.isFileDownloadedAndValid(
             item.collection,
             item.filename,
+            item.fileSize,
           );
-          if (!isDownloaded) {
+          
+          // Only add the item if it's not downloaded or needs an update
+          if (!isDownloaded || !sizeMatches) {
+            item.needsUpdate = isDownloaded && !sizeMatches;
             _downloadItems[collection]?.add(item);
           }
         }
@@ -181,18 +202,30 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
 
       if (success && mounted) {
         setState(() {
-          _downloadItems[item.collection]?.remove(item);
+          item.isDownloaded = true;
+          item.needsUpdate = false;
+          item.justCompleted = true; // Set temporary completion state
         });
-        _showSuccessMessage('${item.filename} downloaded successfully');
+        _showSuccessMessage('Downloaded successfully');
+        
+        // Wait for a short duration to show completion state
+        await Future.delayed(const Duration(milliseconds: 800));
+        
+        if (mounted) {
+          setState(() {
+            // Remove the item from the list
+            _downloadItems[item.collection]?.remove(item);
+          });
+        }
       } else if (mounted) {
-        _showErrorMessage('Failed to download ${item.filename}');
+        _showErrorMessage('Download failed');
       }
     } catch (e) {
       if (mounted) {
-        _showErrorMessage('Error downloading ${item.filename}: $e');
+        _showErrorMessage('Download failed');
       }
     } finally {
-      if (mounted) {
+      if (mounted && !item.justCompleted) {
         setState(() {
           item.isDownloading = false;
           item.progress = 0;
@@ -310,7 +343,7 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
               size: 32,
             ),
             title: Text(
-              item.displayName, // Use displayName for UI
+              item.displayName, 
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Column(
@@ -324,18 +357,38 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                if (item.needsUpdate) ...[
+                  const SizedBox(height: 4),
+                  const Text(
+                    'Update Available',
+                    style: TextStyle(
+                      color: Colors.orange,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
               ],
             ),
             trailing: item.isDownloading
                 ? const SizedBox(width: 32, height: 32)
                 : IconButton(
                     icon: Icon(
-                      canDownload ? Icons.download : Icons.lock_outline,
-                      color: canDownload ? Colors.blue : Colors.grey,
+                      canDownload 
+                          ? (item.justCompleted 
+                              ? Icons.check_circle
+                              : (item.needsUpdate ? Icons.update : Icons.download))
+                          : Icons.lock_outline,
+                      color: canDownload 
+                          ? (item.justCompleted
+                              ? Colors.green
+                              : (item.needsUpdate ? Colors.orange : Colors.blue))
+                          : Colors.grey,
                     ),
-                    onPressed: canDownload
-                        ? () => _handleDownload(item)
-                        : () => _showUpgradeDialog(item.reqLevel),
+                    onPressed: item.justCompleted 
+                        ? null 
+                        : (canDownload
+                            ? () => _handleDownload(item)
+                            : () => _showUpgradeDialog(item.reqLevel)),
                   ),
           ),
           if (item.isDownloading) ...[
