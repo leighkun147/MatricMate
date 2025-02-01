@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import '../utils/pattern_painters.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'your_olympiad_screen.dart';
 
-class OlympiadScreen extends StatelessWidget {
+class OlympiadScreen extends StatefulWidget {
   const OlympiadScreen({super.key});
+
+  @override
+  State<OlympiadScreen> createState() => _OlympiadScreenState();
+}
+
+class _OlympiadScreenState extends State<OlympiadScreen> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
 
   Stream<List<DocumentSnapshot>> _getOlympiadEvents() {
     return FirebaseFirestore.instance
@@ -16,17 +24,70 @@ class OlympiadScreen extends StatelessWidget {
     return Column(
       children: events.map((event) {
         final data = event.data() as Map<String, dynamic>;
+        
+        // Debug prints
+        print('Raw date from Firestore: ${data['date']}');
+        print('Date type: ${data['date']?.runtimeType}');
+        
+        // Debug prints for all fields
+        print('Document ID: ${event.id}');
+        print('All fields in document:');
+        data.forEach((key, value) {
+          print('Field: $key = $value (${value?.runtimeType})');
+        });
+        
+        // Find the date field (handling spaces in field name)
+        String formattedDate = 'Date TBA';
+        final dateField = data.entries
+            .firstWhere(
+              (entry) => entry.key.trim() == 'date',
+              orElse: () => MapEntry('', null),
+            )
+            .value;
+        
+        if (dateField != null) {
+          try {
+            if (dateField is Timestamp) {
+              final date = dateField.toDate();
+              formattedDate = "${date.day} ${_getMonth(date.month)}, ${date.year}";
+              print('Converted timestamp date: $formattedDate');
+            } else if (dateField is String) {
+              // Try to parse the string date
+              final date = DateTime.parse(dateField);
+              formattedDate = "${date.day} ${_getMonth(date.month)}, ${date.year}";
+              print('Converted string date: $formattedDate');
+            } else {
+              print('Unknown date format: $dateField');
+            }
+          } catch (e) {
+            print('Error formatting date: $e');
+            formattedDate = dateField.toString();
+          }
+        }
+
+        // Get registration status
+        final registrationStatus = (data['registration_status'] as String?)?.toLowerCase() ?? 'closed';
+
         return _buildEventCard(
           context: context,
           title: event.id,
-          date: data['date'] ?? 'Date TBA',
+          date: formattedDate,
           time: data['time'] ?? '9:00 AM - 5:00 PM',
           venue: data['venue'] ?? 'Venue TBA',
           subjects: List<String>.from(data['subjects'] ?? []),
           registrationDeadline: data['Registration_deadline'] ?? 'Deadline TBA',
+          registrationStatus: registrationStatus,
         );
       }).toList(),
     );
+  }
+
+  String _getMonth(int month) {
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    return months[month - 1];
   }
 
   Widget _buildEventCard({
@@ -37,6 +98,7 @@ class OlympiadScreen extends StatelessWidget {
     required String venue,
     required List<String> subjects,
     required String registrationDeadline,
+    required String registrationStatus,
   }) {
     return Card(
       elevation: 8,
@@ -186,22 +248,37 @@ class OlympiadScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
-                      onPressed: () {
-                        // TODO: Implement registration
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Registration will open soon!'),
-                          ),
-                        );
-                      },
+                      onPressed: registrationStatus == 'open' 
+                          ? () {
+                              // TODO: Implement registration
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Registration process will start soon!'),
+                                  duration: Duration(seconds: 2),
+                                ),
+                              );
+                            }
+                          : null, // Button will be disabled if registration is closed
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.all(16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
+                        // Change button color based on status
+                        backgroundColor: registrationStatus == 'open' 
+                            ? Theme.of(context).colorScheme.primary
+                            : Colors.grey,
                       ),
-                      icon: const Icon(Icons.app_registration),
-                      label: const Text('Register Now'),
+                      icon: Icon(
+                        registrationStatus == 'open' 
+                            ? Icons.app_registration
+                            : Icons.lock_outline,
+                      ),
+                      label: Text(
+                        registrationStatus == 'open' 
+                            ? (title == 'Natural Science' ? 'Register Now' : 'Coming Soon')
+                            : 'Registration Closed',
+                      ),
                     ),
                   ),
                 ],
@@ -256,6 +333,18 @@ class OlympiadScreen extends StatelessWidget {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
@@ -305,60 +394,73 @@ class OlympiadScreen extends StatelessWidget {
                 ],
               ),
             ),
+            bottom: TabBar(
+              controller: _tabController,
+              tabs: const [
+                Tab(text: 'Available Events'),
+                Tab(text: 'Your Olympiad'),
+              ],
+              indicatorColor: Colors.white,
+              labelColor: Colors.white,
+              unselectedLabelColor: Colors.white70,
+            ),
           ),
-          SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          SliverFillRemaining(
+            child: TabBarView(
+              controller: _tabController,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Text(
-                    'Upcoming Events',
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
+                // Available Events Tab
+                CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Text(
+                              'Upcoming Events',
+                              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          StreamBuilder<List<DocumentSnapshot>>(
+                            stream: _getOlympiadEvents(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasError) {
+                                return Center(
+                                  child: Text('Error: ${snapshot.error}'),
+                                );
+                              }
+
+                              if (snapshot.connectionState == ConnectionState.waiting) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+
+                              if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                                return const Center(
+                                  child: Text('No events found'),
+                                );
+                              }
+
+                              return _buildEventCards(context, snapshot.data!);
+                            },
+                          ),
+                          const SizedBox(height: 32),
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-                StreamBuilder<List<DocumentSnapshot>>(
-                  stream: _getOlympiadEvents(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) {
-                      return Center(
-                        child: Text('Error: ${snapshot.error}'),
-                      );
-                    }
-
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-
-                    if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                      return const Center(
-                        child: Text('No events found'),
-                      );
-                    }
-
-                    return _buildEventCards(context, snapshot.data!);
-                  },
-                ),
-                const SizedBox(height: 32),
+                // Your Olympiad Tab
+                const YourOlympiadScreen(),
               ],
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Notification settings coming soon!'),
-            ),
-          );
-        },
-        icon: const Icon(Icons.notifications_active),
-        label: const Text('Get Notified'),
       ),
     );
   }
