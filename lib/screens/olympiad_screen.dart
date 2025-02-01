@@ -264,20 +264,29 @@ class _OlympiadScreenState extends State<OlympiadScreen> with SingleTickerProvid
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        // Change button color based on status
-                        backgroundColor: registrationStatus == 'open' 
+                        backgroundColor: registrationStatus == 'open'
                             ? Theme.of(context).colorScheme.primary
-                            : Colors.grey,
+                            : Colors.grey.shade300,
+                        foregroundColor: registrationStatus == 'open'
+                            ? Theme.of(context).colorScheme.onPrimary
+                            : Colors.grey.shade700,
+                        disabledBackgroundColor: Colors.grey.shade300,
+                        disabledForegroundColor: Colors.grey.shade700,
                       ),
                       icon: Icon(
-                        registrationStatus == 'open' 
+                        registrationStatus == 'open'
                             ? Icons.app_registration
                             : Icons.lock_outline,
+                        size: 24,
                       ),
                       label: Text(
-                        registrationStatus == 'open' 
-                            ? (title == 'Natural Science' ? 'Register Now' : 'Coming Soon')
+                        registrationStatus == 'open'
+                            ? (title.contains('Natural Science') ? 'Register Now' : 'Coming Soon')
                             : 'Registration Closed',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -349,11 +358,12 @@ class _OlympiadScreenState extends State<OlympiadScreen> with SingleTickerProvid
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar.large(
-            expandedHeight: 200,
+          SliverAppBar(
+            expandedHeight: 180,
             pinned: true,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             flexibleSpace: FlexibleSpaceBar(
-              title: const Text('MatricMate Olympiad'),
+              collapseMode: CollapseMode.pin,
               background: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -391,18 +401,53 @@ class _OlympiadScreenState extends State<OlympiadScreen> with SingleTickerProvid
                       ),
                     ),
                   ),
+                  // Title Section
+                  Positioned(
+                    left: 16,
+                    bottom: 70,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'MatricMate',
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: Colors.white.withOpacity(0.7),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Olympiad',
+                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-            bottom: TabBar(
-              controller: _tabController,
-              tabs: const [
-                Tab(text: 'Available Events'),
-                Tab(text: 'Your Olympiad'),
-              ],
-              indicatorColor: Colors.white,
-              labelColor: Colors.white,
-              unselectedLabelColor: Colors.white70,
+            bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(48),
+              child: Container(
+                color: Theme.of(context).colorScheme.primary,
+                child: TabBar(
+                  controller: _tabController,
+                  tabs: const [
+                    Tab(text: 'Available Events'),
+                    Tab(text: 'Your Olympiad'),
+                  ],
+                  indicatorColor: Colors.white,
+                  indicatorWeight: 3,
+                  labelColor: Colors.white,
+                  unselectedLabelColor: Colors.white70,
+                  labelStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
           ),
           SliverFillRemaining(
