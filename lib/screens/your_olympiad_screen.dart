@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import '../utils/stream_utils.dart';
 import 'package:dio/dio.dart';
+import 'downloaded_exams_screen.dart';
+import 'olympiad_exams_screen.dart';
 
 class YourOlympiadScreen extends StatefulWidget {
   const YourOlympiadScreen({super.key});
@@ -66,7 +68,7 @@ class _YourOlympiadScreenState extends State<YourOlympiadScreen> {
   // Get the directory for storing olympiad exams
   Future<Directory> _getExamDirectory() async {
     final appDir = await getApplicationDocumentsDirectory();
-    final examDir = Directory('${appDir.path}/olympiad_exams');
+    final examDir = Directory('${appDir.path}/assets/questions/olympiad_exams');
     if (!await examDir.exists()) {
       await examDir.create(recursive: true);
     }
@@ -283,7 +285,31 @@ class _YourOlympiadScreenState extends State<YourOlympiadScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 8.0),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton.icon(
+                    onPressed: _downloadedExams.isNotEmpty
+                        ? () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const OlympiadExamsScreen(),
+                              ),
+                            );
+                          }
+                        : null,
+                    icon: const Icon(Icons.edit_note),
+                    label: const Text('Take Exam'),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(16),
+                      backgroundColor: Colors.green,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton.icon(
@@ -320,121 +346,4 @@ class _YourOlympiadScreenState extends State<YourOlympiadScreen> {
   }
 }
 
-class DownloadedExamsScreen extends StatefulWidget {
-  final Directory examDir;
 
-  const DownloadedExamsScreen({
-    super.key,
-    required this.examDir,
-  });
-
-  @override
-  State<DownloadedExamsScreen> createState() => _DownloadedExamsScreenState();
-}
-
-class _DownloadedExamsScreenState extends State<DownloadedExamsScreen> {
-  List<FileSystemEntity> _files = [];
-  String _currentStream = 'natural_science';
-
-  @override
-  void initState() {
-    super.initState();
-    _loadFiles();
-  }
-
-  Future<void> _loadFiles() async {
-    final streamDir = Directory('${widget.examDir.path}/$_currentStream');
-    if (await streamDir.exists()) {
-      final files = await streamDir.list().toList();
-      setState(() => _files = files);
-    } else {
-      setState(() => _files = []);
-    }
-  }
-
-  Future<void> _deleteFile(FileSystemEntity file) async {
-    try {
-      await file.delete();
-      await _loadFiles();
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('File deleted successfully')),
-      );
-    } catch (e) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error deleting file: $e')),
-      );
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Downloaded Exams'),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(48),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: SegmentedButton<String>(
-                    segments: const [
-                      ButtonSegment(
-                        value: 'natural_science',
-                        label: Text('Natural Science'),
-                      ),
-                      ButtonSegment(
-                        value: 'social_science',
-                        label: Text('Social Science'),
-                      ),
-                    ],
-                    selected: {_currentStream},
-                    onSelectionChanged: (Set<String> newSelection) {
-                      setState(() {
-                        _currentStream = newSelection.first;
-                        _loadFiles();
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-      body: _files.isEmpty
-          ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.folder_open, size: 48, color: Colors.grey),
-                  const SizedBox(height: 16),
-                  Text(
-                    'No downloaded exams for ${_currentStream.replaceAll('_', ' ').toUpperCase()}',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-            )
-          : ListView.builder(
-              itemCount: _files.length,
-              itemBuilder: (context, index) {
-                final file = _files[index];
-                return ListTile(
-                  leading: const Icon(Icons.description),
-                  title: Text(file.path.split('/').last),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete),
-                    onPressed: () => _deleteFile(file),
-                  ),
-                );
-              },
-            ),
-    );
-  }
-}
