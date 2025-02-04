@@ -39,6 +39,7 @@ class Question {
   final List<String> options;
   final int correctOptionIndex;
   final String explanation;
+  bool isMarkedForReview;
 
   Question({
     required this.id,
@@ -46,6 +47,7 @@ class Question {
     required this.options,
     required this.correctOptionIndex,
     required this.explanation,
+    this.isMarkedForReview = false,
   });
 
   factory Question.fromJson(Map<String, dynamic> json) {

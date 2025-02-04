@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 import '../models/olympiad_exam.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ExamTakingScreen extends StatefulWidget {
@@ -23,6 +24,7 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
   bool _isLoading = true;
   int _currentQuestionIndex = 0;
   List<int?> _userAnswers = [];
+  List<Question> _questions = [];
   Timer? _timer;
   int _remainingSeconds = 0;
   bool _showConstants = false;
@@ -53,6 +55,10 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
         _exam = OlympiadExam.fromFile(jsonString);
         _userAnswers = List.filled(_exam.numberOfQuestions, null);
         _remainingSeconds = _exam.duration * 60;
+        _questions = _exam.questions;
+        for (var question in _questions) {
+          question.isMarkedForReview = false;
+        };
         _isLoading = false;
       });
       _startTimer();
@@ -219,6 +225,12 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
                           value: _userAnswers.where((a) => a != null).length,
                         ),
                         _buildProgressStat(
+                          icon: Icons.flag,
+                          color: Colors.orange[700]!,
+                          label: 'Marked',
+                          value: _questions.where((q) => q.isMarkedForReview).length,
+                        ),
+                        _buildProgressStat(
                           icon: Icons.remove_circle,
                           color: Colors.grey[700]!,
                           label: 'Unanswered',
@@ -257,17 +269,21 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
                           border: Border.all(
                             color: isCurrentQuestion
                                 ? Colors.blue
-                                : (isAnswered
-                                    ? Colors.green[700]!
-                                    : Colors.grey[300]!),
+                                : (_questions[index].isMarkedForReview
+                                    ? Colors.orange
+                                    : (isAnswered
+                                        ? Colors.green[700]!
+                                        : Colors.grey[300]!)),
                             width: isCurrentQuestion ? 2 : 1,
                           ),
                           borderRadius: BorderRadius.circular(8),
                           color: isCurrentQuestion
                               ? Colors.blue.withOpacity(0.1)
-                              : (isAnswered
-                                  ? Colors.green[50]
-                                  : Colors.white),
+                              : (_questions[index].isMarkedForReview
+                                  ? Colors.orange.withOpacity(0.1)
+                                  : (isAnswered
+                                      ? Colors.green[50]
+                                      : Colors.white)),
                         ),
                         child: Center(
                           child: Text(
@@ -772,10 +788,16 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
           children: [
             Column(
               children: [
-                LinearProgressIndicator(
-                  value: (_currentQuestionIndex + 1) / _exam.numberOfQuestions,
-                  backgroundColor: Colors.grey[200],
-                  color: Colors.green,
+                Container(
+                  height: 4,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(2),
+                    child: LinearProgressIndicator(
+                      value: (_currentQuestionIndex + 1) / _exam.numberOfQuestions,
+                      backgroundColor: Colors.grey[100],
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                    ),
+                  ),
                 ),
                 Expanded(
                   child: PageView.builder(
@@ -787,7 +809,7 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
                       });
                     },
                     itemBuilder: (context, index) {
-                      final question = _exam.questions[index];
+                      final question = _questions[index];
                       return SingleChildScrollView(
                         padding: const EdgeInsets.all(16),
                         child: Column(
@@ -802,87 +824,182 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
                                 ),
                                 IconButton(
                                   icon: Icon(
-                                    Icons.flag,
-                                    color: _userAnswers[index] == null
-                                        ? Colors.grey
-                                        : Colors.orange,
+                                    question.isMarkedForReview ? Icons.flag : Icons.flag_outlined,
+                                    color: question.isMarkedForReview ? Colors.orange : Colors.grey,
                                   ),
                                   onPressed: () {
-                                    // TODO: Implement mark for review
+                                    setState(() {
+                                      question.isMarkedForReview = !question.isMarkedForReview;
+                                    });
                                   },
                                   tooltip: 'Mark for Review',
                                 ),
                               ],
                             ),
                             const SizedBox(height: 16),
-                            Text(
-                              question.text,
-                              style: const TextStyle(fontSize: 18),
+                            Container(
+                              padding: const EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.1),
+                                    spreadRadius: 2,
+                                    blurRadius: 8,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    question.text,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                      height: 1.5,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 24),
+                                  ...question.options.asMap().entries.map((entry) {
+                                    final isSelected = _userAnswers[index] == entry.key;
+                                    return Container(
+                                      margin: const EdgeInsets.only(bottom: 12),
+                                      width: double.infinity,
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: InkWell(
+                                          onTap: () {
+                                            setState(() {
+                                              _userAnswers[index] = entry.key;
+                                            });
+                                          },
+                                          borderRadius: BorderRadius.circular(12),
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                              vertical: 16,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: isSelected
+                                                  ? Colors.blue.withOpacity(0.1)
+                                                  : Colors.grey[50],
+                                              borderRadius: BorderRadius.circular(12),
+                                              border: Border.all(
+                                                color: isSelected
+                                                    ? Colors.blue
+                                                    : Colors.grey[300]!,
+                                                width: isSelected ? 2 : 1,
+                                              ),
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  width: 24,
+                                                  height: 24,
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                      color: isSelected
+                                                          ? Colors.blue
+                                                          : Colors.grey[400]!,
+                                                      width: 2,
+                                                    ),
+                                                    color: isSelected
+                                                        ? Colors.blue
+                                                        : Colors.transparent,
+                                                  ),
+                                                  child: isSelected
+                                                      ? const Icon(
+                                                          Icons.check,
+                                                          size: 16,
+                                                          color: Colors.white,
+                                                        )
+                                                      : null,
+                                                ),
+                                                const SizedBox(width: 12),
+                                                Expanded(
+                                                  child: Text(
+                                                    entry.value,
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      color: isSelected
+                                                          ? Colors.blue[700]
+                                                          : Colors.black87,
+                                                      fontWeight: isSelected
+                                                          ? FontWeight.w600
+                                                          : FontWeight.normal,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }),
+                                ],
+                              ),
                             ),
-                            const SizedBox(height: 24),
-                            ...question.options.asMap().entries.map((entry) {
-                              final isSelected = _userAnswers[index] == entry.key;
-                              return Container(
-                                margin: const EdgeInsets.only(bottom: 12),
-                                width: double.infinity,
-                                child: OutlinedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _userAnswers[index] = entry.key;
-                                    });
-                                  },
-                                  style: OutlinedButton.styleFrom(
-                                    padding: const EdgeInsets.all(16),
-                                    side: BorderSide(
-                                      color: isSelected ? Colors.green : Colors.grey,
-                                      width: isSelected ? 2 : 1,
-                                    ),
-                                    backgroundColor:
-                                        isSelected ? Colors.green.withOpacity(0.1) : null,
-                                  ),
-                                  child: Text(
-                                    entry.value,
-                                    style: TextStyle(
-                                      color: isSelected ? Colors.green : Colors.black,
-                                      fontWeight: isSelected ? FontWeight.bold : null,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }),
                           ],
                         ),
                       );
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        spreadRadius: 0,
+                        blurRadius: 10,
+                        offset: const Offset(0, -2),
+                      ),
+                    ],
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       if (_currentQuestionIndex > 0)
-                        ElevatedButton.icon(
+                        TextButton.icon(
                           onPressed: () {
                             _pageController.previousPage(
                               duration: const Duration(milliseconds: 300),
                               curve: Curves.easeInOut,
                             );
                           },
-                          icon: const Icon(Icons.arrow_back),
+                          icon: const Icon(Icons.arrow_back_ios, size: 18),
                           label: const Text('Previous'),
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.blue[700],
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          ),
                         )
                       else
                         const SizedBox(width: 100),
-                      Text(
-                        '${_currentQuestionIndex + 1}/${_exam.numberOfQuestions}',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: Colors.blue[50],
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          '${_currentQuestionIndex + 1}/${_exam.numberOfQuestions}',
+                          style: TextStyle(
+                            color: Colors.blue[700],
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                       if (_currentQuestionIndex < _exam.numberOfQuestions - 1)
-                        ElevatedButton.icon(
+                        TextButton.icon(
                           onPressed: () {
                             _pageController.nextPage(
                               duration: const Duration(milliseconds: 300),
@@ -890,7 +1007,11 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
                             );
                           },
                           label: const Text('Next'),
-                          icon: const Icon(Icons.arrow_forward),
+                          icon: const Icon(Icons.arrow_forward_ios, size: 18),
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.blue[700],
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          ),
                         )
                       else
                         ElevatedButton.icon(
@@ -898,7 +1019,16 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: const Text('Submit Exam?'),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                title: Row(
+                                  children: const [
+                                    Icon(Icons.warning_rounded, color: Colors.orange),
+                                    SizedBox(width: 8),
+                                    Text('Submit Exam?'),
+                                  ],
+                                ),
                                 content: Text(
                                   'You have answered ${_userAnswers.where((a) => a != null).length} '
                                   'out of ${_exam.numberOfQuestions} questions.\n\n'
@@ -907,7 +1037,10 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
                                 actions: [
                                   TextButton(
                                     onPressed: () => Navigator.pop(context),
-                                    child: const Text('Cancel'),
+                                    child: Text(
+                                      'Cancel',
+                                      style: TextStyle(color: Colors.grey[600]),
+                                    ),
                                   ),
                                   ElevatedButton(
                                     onPressed: () {
@@ -915,7 +1048,11 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
                                       _submitExam();
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.green,
+                                      backgroundColor: Colors.blue,
+                                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
                                     ),
                                     child: const Text('Submit'),
                                   ),
@@ -923,11 +1060,15 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
                               ),
                             );
                           },
-                          label: const Text('Submit'),
-                          icon: const Icon(Icons.check),
+                          icon: const Icon(Icons.check_circle_outline),
+                          label: const Text('Submit Exam'),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.green,
+                            backgroundColor: Colors.blue,
                             foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                           ),
                         ),
                     ],
@@ -936,51 +1077,117 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
               ],
             ),
             if (_showConstants)
-              Container(
-                color: Colors.white,
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Positioned(
+                right: 16,
+                top: 16,
+                child: Card(
+                  elevation: 8,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width * 0.8,
+                      maxHeight: MediaQuery.of(context).size.height * 0.6,
+                    ),
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Text(
-                            'Constants',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.functions,
+                                    color: Colors.blue,
+                                    size: 24,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  const Text(
+                                    'Constants Reference',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.close),
+                                onPressed: () => setState(() => _showConstants = false),
+                                color: Colors.grey[600],
+                              ),
+                            ],
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.close),
-                            onPressed: () => setState(() => _showConstants = false),
+                          const Divider(),
+                          if (_exam.constants.isEmpty)
+                            const Padding(
+                              padding: EdgeInsets.all(16),
+                              child: Text(
+                                'No constants available for this exam.',
+                                style: TextStyle(fontStyle: FontStyle.italic),
+                              ),
+                            )
+                          else
+                            ..._exam.constants.entries.map((entry) => Container(
+                              margin: const EdgeInsets.symmetric(vertical: 8),
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.grey[50],
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.grey[300]!),
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    flex: 2,
+                                    child: Text(
+                                      entry.key,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'monospace',
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                                    child: const Text(
+                                      '=',
+                                      style: TextStyle(color: Colors.blue),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 3,
+                                    child: Text(
+                                      entry.value.toString(),
+                                      style: const TextStyle(
+                                        fontFamily: 'monospace',
+                                        color: Colors.blue,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )).toList(),
+                          const SizedBox(height: 8),
+                          const Divider(),
+                          Text(
+                            'These constants can be used in your calculations.',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey[600],
+                              fontStyle: FontStyle.italic,
+                            ),
                           ),
                         ],
                       ),
-                      const Divider(),
-                      ..._exam.constants.entries.map((entry) => Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  flex: 2,
-                                  child: Text(
-                                    entry.key,
-                                    style: const TextStyle(fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                                const Text(' = '),
-                                Expanded(
-                                  flex: 3,
-                                  child: Text(entry.value.toString()),
-                                ),
-                              ],
-                            ),
-                          )),
-                    ],
+                    ),
                   ),
                 ),
               ),
