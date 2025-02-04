@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
+import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 import '../utils/stream_utils.dart';
 import 'exam_taking_screen.dart';
+import '../models/exam_result.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OlympiadExamsScreen extends StatefulWidget {
   const OlympiadExamsScreen({super.key});
@@ -15,6 +18,7 @@ class _OlympiadExamsScreenState extends State<OlympiadExamsScreen> {
   List<FileSystemEntity> _exams = [];
   String _currentStream = 'natural_science';
   bool _isLoading = true;
+  Map<String, ExamResult> _examResults = {};
 
   @override
   void initState() {
@@ -31,9 +35,29 @@ class _OlympiadExamsScreenState extends State<OlympiadExamsScreen> {
     return examDir;
   }
 
+  Future<void> _loadExamResults() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final results = prefs.getStringList('olympiad_exam_results') ?? [];
+      setState(() {
+        _examResults = {
+          for (var result in results)
+            jsonDecode(result)['examId'] as String:
+                ExamResult.fromJson(jsonDecode(result))
+        };
+      });
+    } catch (e) {
+      print('Error loading exam results: $e');
+      setState(() {
+        _examResults = {};
+      });
+    }
+  }
+
   Future<void> _loadExams() async {
     setState(() => _isLoading = true);
     try {
+      await _loadExamResults();
       final examDir = await _getExamDirectory();
       final selectedStream = await StreamUtils.selectedStream;
       
@@ -73,7 +97,41 @@ class _OlympiadExamsScreenState extends State<OlympiadExamsScreen> {
   }
 
   Future<void> _startExam(FileSystemEntity examFile) async {
-    Navigator.push(
+    final examId = examFile.path.split('/').last;
+
+    // Check if exam has already been taken
+    if (_examResults.containsKey(examId)) {
+      if (!mounted) return;
+      
+      // Show exam result if already taken
+      final result = _examResults[examId]!;
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Exam Already Completed'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Score: ${result.scorePercentage.toStringAsFixed(1)}%'),
+              const SizedBox(height: 8),
+              Text('Correct Answers: ${result.correctAnswers} out of ${result.totalQuestions}'),
+              const SizedBox(height: 8),
+              Text('Completed on: ${result.takenAt.toString().split('.')[0]}'),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Close'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+
+    final result = await Navigator.push<ExamResult>(
       context,
       MaterialPageRoute(
         builder: (context) => ExamTakingScreen(
@@ -81,6 +139,36 @@ class _OlympiadExamsScreenState extends State<OlympiadExamsScreen> {
         ),
       ),
     );
+
+    if (result != null && mounted) {
+      try {
+        // Save exam result
+        final prefs = await SharedPreferences.getInstance();
+        final results = prefs.getStringList('olympiad_exam_results') ?? [];
+        results.add(jsonEncode(result.toJson()));
+        await prefs.setStringList('olympiad_exam_results', results);
+        
+        setState(() {
+          _examResults[examId] = result;
+        });
+
+        // Show success message
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Exam completed with score: ${result.scorePercentage.toStringAsFixed(1)}%'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      } catch (e) {
+        print('Error saving exam result: $e');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Error saving exam result'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 
   @override
@@ -123,11 +211,18 @@ class _OlympiadExamsScreenState extends State<OlympiadExamsScreen> {
                       final exam = _exams[index];
                       final examName = exam.path.split('/').last;
                       
+                      final examResult = _examResults[examName];
+                      final bool examTaken = examResult != null;
+
                       return Card(
                         margin: const EdgeInsets.only(bottom: 16),
                         child: ListTile(
-                          leading: const CircleAvatar(
-                            child: Icon(Icons.quiz),
+                          leading: CircleAvatar(
+                            backgroundColor: examTaken ? Colors.blue : Colors.grey[300],
+                            child: Icon(
+                              examTaken ? Icons.check : Icons.quiz,
+                              color: Colors.white,
+                            ),
                           ),
                           title: Text(
                             examName,
@@ -136,14 +231,32 @@ class _OlympiadExamsScreenState extends State<OlympiadExamsScreen> {
                           subtitle: Text(
                             'Stream: ${_currentStream.replaceAll('_', ' ').toUpperCase()}',
                           ),
-                          trailing: ElevatedButton(
-                            onPressed: () => _startExam(exam),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
-                              foregroundColor: Colors.white,
-                            ),
-                            child: const Text('Start'),
-                          ),
+                          trailing: examTaken
+                              ? Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 6,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: const Text(
+                                    'Completed',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )
+                              : ElevatedButton(
+                                  onPressed: () => _startExam(exam),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.green,
+                                    foregroundColor: Colors.white,
+                                  ),
+                                  child: const Text('Start'),
+                                ),
                         ),
                       );
                     },

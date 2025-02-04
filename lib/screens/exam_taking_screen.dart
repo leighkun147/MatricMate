@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
 import '../models/olympiad_exam.dart';
-
+import '../models/exam_result.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ExamTakingScreen extends StatefulWidget {
@@ -126,32 +126,8 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
 
   Future<void> _saveExamHistory() async {
     try {
-      final prefs = await SharedPreferences.getInstance();
-      
-      // Calculate score
-      final correctAnswers = _calculateScore();
-      final scorePercentage = (correctAnswers / _exam.numberOfQuestions) * 100;
-
-      // Create exam history entry
-      final examHistory = {
-        'title': _exam.title,
-        'total_questions': _exam.numberOfQuestions,
-        'correct_answers': correctAnswers,
-        'score_percentage': scorePercentage,
-        'taken_at': DateTime.now().toIso8601String(),
-      };
-
-      // Get existing histories
-      List<String> histories = prefs.getStringList('exam_histories') ?? [];
-      
-      // Add new history
-      histories.add(jsonEncode(examHistory));
-      
-      // Save back to storage
-      await prefs.setStringList('exam_histories', histories);
-
       if (mounted) {
-        _showResultDialog(correctAnswers);
+        _showResultDialog(_calculateScore());
       }
     } catch (e) {
       print('Error saving exam history: $e');
@@ -374,6 +350,20 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
       performanceColor = Colors.red;
     }
 
+    // Create exam result
+    final examResult = ExamResult(
+      examId: widget.examFile.path.split('/').last,
+      title: _exam.title,
+      totalQuestions: _exam.numberOfQuestions,
+      correctAnswers: score,
+      scorePercentage: percentage,
+      takenAt: DateTime.now(),
+      userAnswers: Map.fromIterables(
+        List.generate(_userAnswers.length, (i) => i.toString()),
+        _userAnswers.map((a) => (a ?? -1).toString()).toList(),
+      ),
+    );
+
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -419,8 +409,8 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(); // Close dialog
+              Navigator.of(context).pop(examResult); // Return to previous screen with result
             },
             child: const Text('Exit'),
           ),
