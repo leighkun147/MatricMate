@@ -26,29 +26,26 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   }
 
   Future<void> _loadLeaderboard() async {
-    await Future.delayed(const Duration(seconds: 1));
-    setState(() {
-      _entries = _getDummyData();
-      _isLoading = false;
-    });
-  }
-
-  List<Map<String, dynamic>> _getDummyData() {
-    return List.generate(
-      20,
-      (index) => {
-        'name': 'Student ${index + 1}',
-        'rank': index + 1,
-        'points': 5000 - (index * 200),
-        'level': 20 - index,
-      },
-    );
+    try {
+      // TODO: Implement actual leaderboard data loading from Firebase
+      setState(() {
+        _entries = [];
+        _isLoading = false;
+      });
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error loading leaderboard: $e')),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -73,19 +70,60 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                 const SliverFillRemaining(
                   child: Center(child: CircularProgressIndicator()),
                 )
+              else if (_entries.isEmpty)
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: SingleChildScrollView(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const SizedBox(height: 40),
+                          Icon(
+                            Icons.emoji_events_outlined,
+                            size: 100,
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                          ),
+                          const SizedBox(height: 24),
+                          Text(
+                            'No Rankings Available',
+                            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.onBackground,
+                                ),
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            'Take exams and compete with other students to see your name on the leaderboard!',
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                  color: Theme.of(context).colorScheme.onBackground.withOpacity(0.7),
+                                ),
+                          ),
+                          const SizedBox(height: 32),
+
+                          const SizedBox(height: 40),
+                        ],
+                      ),
+                    ).animate().fadeIn(duration: 600.ms).scale(),
+                  ),
+                )
               else
                 SliverList(
                   delegate: SliverChildListDelegate([
                     _buildTopThree(),
-                    Divider(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onBackground
-                          .withOpacity(0.2),
-                      height: 32,
-                      thickness: 2,
-                    ),
-                    ..._entries.skip(3).map(_buildRankListItem),
+                    if (_entries.length > 3) ...[  // Only show divider if there are more entries
+                      Divider(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground
+                            .withOpacity(0.2),
+                        height: 32,
+                        thickness: 2,
+                      ),
+                      ..._entries.skip(3).map(_buildRankListItem),
+                    ],
                   ]),
                 ),
             ],
@@ -145,170 +183,167 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
         onTap: _handleOlympiadAccess,
         child: Container(
           width: double.infinity,
-          margin: const EdgeInsets.all(16),
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Card(
             elevation: 8,
-            shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+            shadowColor: Theme.of(context).colorScheme.primary.withOpacity(0.3),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(16),
             ),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(16),
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Theme.of(context).colorScheme.primary.withOpacity(0.8),
-                    Theme.of(context).colorScheme.secondary.withOpacity(0.9),
+                    Theme.of(context).colorScheme.primary,
+                    Theme.of(context).colorScheme.secondary,
                   ],
                 ),
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(24),
-                child: Stack(
-                  children: [
-                    // Background pattern
-                    Positioned.fill(
-                      child: CustomPaint(
-                        painter: DiagonalPatternPainter(
-                          color: Colors.white.withOpacity(0.1),
-                        ),
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: CustomPaint(
+                      painter: DiagonalPatternPainter(
+                        color: Colors.white.withOpacity(0.1),
                       ),
                     ),
-                    // Content
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Icon(
+                                Icons.emoji_events_outlined,
+                                color: Colors.white,
+                                size: 24,
+                              ).animate()
+                                .shimmer(duration: 2000.ms),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'MatricMate Olympiad',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Academic Excellence',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
+                                          color: Colors.white.withOpacity(0.9),
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.15),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.timer_outlined,
+                                    color: Colors.white,
+                                    size: 14,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    'Soon',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.copyWith(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.15),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Container(
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Icon(
-                                  Icons.emoji_events_outlined,
-                                  color: Colors.white,
-                                  size: 32,
-                                ),
+                              _buildOlympiadStat(
+                                icon: Icons.people_outline,
+                                value: '1K+',
+                                label: 'Students',
                               ),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'MatricMate Olympiad',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge
-                                          ?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      'Join the Academic Challenge',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium
-                                          ?.copyWith(
-                                            color:
-                                                Colors.white.withOpacity(0.9),
-                                          ),
-                                    ),
-                                  ],
-                                ),
+                              _buildOlympiadStat(
+                                icon: Icons.military_tech_outlined,
+                                value: '50+',
+                                label: 'Prizes',
                               ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                  vertical: 6,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      Icons.timer_outlined,
-                                      color: Colors.white,
-                                      size: 16,
-                                    ),
-                                    const SizedBox(width: 4),
-                                    Text(
-                                      'Coming Soon',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall
-                                          ?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                    ),
-                                  ],
-                                ),
+                              _buildOlympiadStat(
+                                icon: Icons.school_outlined,
+                                value: '10+',
+                                label: 'Subjects',
                               ),
                             ],
                           ),
-                          const SizedBox(height: 20),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 12,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                _buildOlympiadStat(
-                                  icon: Icons.people_outline,
-                                  value: '1000+',
-                                  label: 'Participants',
-                                ),
-                                _buildOlympiadStat(
-                                  icon: Icons.military_tech_outlined,
-                                  value: '50+',
-                                  label: 'Prizes',
-                                ),
-                                _buildOlympiadStat(
-                                  icon: Icons.school_outlined,
-                                  value: '10+',
-                                  label: 'Subjects',
-                                ),
-                              ],
-                            ),
-                          ),
+                        ),
                         ],
                       ),
                     ),
-                    // Shine effect
+                    // Shine effects
                     Positioned(
-                      top: -50,
-                      right: -50,
+                      top: -80,
+                      right: -80,
                       child: Container(
-                        width: 100,
-                        height: 100,
+                        width: 160,
+                        height: 160,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: RadialGradient(
                             colors: [
-                              Colors.white.withOpacity(0.2),
+                              Colors.white.withOpacity(0.3),
                               Colors.white.withOpacity(0),
                             ],
                           ),
                         ),
-                      ),
+                      ).animate(onPlay: (controller) => controller.repeat())
+                        .fadeIn(duration: 2000.ms)
+                        .fadeOut(duration: 2000.ms),
                     ),
                   ],
                 ),
@@ -349,6 +384,38 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   }
 
   Widget _buildTopThree() {
+    if (_entries.isEmpty) {
+      return Container(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.emoji_events_outlined,
+              size: 80,
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'No Rankings Yet',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Be the first to take an exam and claim the top spot!',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground.withOpacity(0.7),
+                  ),
+            ),
+          ],
+        ),
+      ).animate().fadeIn().scale();
+    }
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Row(

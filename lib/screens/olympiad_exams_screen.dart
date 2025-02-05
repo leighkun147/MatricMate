@@ -96,39 +96,61 @@ class _OlympiadExamsScreenState extends State<OlympiadExamsScreen> {
     }
   }
 
+  Future<String> _getExamHash(File examFile) async {
+    try {
+      final content = await examFile.readAsString();
+      final examJson = jsonDecode(content);
+      // Create a unique identifier using questions and answers
+      final questions = examJson['questions'] as List;
+      final examHash = questions.map((q) => 
+        '${q['question']}-${(q['options'] as List).join()}-${q['correctOptionIndex']}'
+      ).join('|');
+      return examHash;
+    } catch (e) {
+      print('Error calculating exam hash: $e');
+      // If we can't calculate hash, use filename as fallback
+      return examFile.path.split('/').last;
+    }
+  }
+
   Future<void> _startExam(FileSystemEntity examFile) async {
     final examId = examFile.path.split('/').last;
+    final examHash = await _getExamHash(examFile as File);
 
     // Check if exam has already been taken
     if (_examResults.containsKey(examId)) {
-      if (!mounted) return;
-      
-      // Show exam result if already taken
       final result = _examResults[examId]!;
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Exam Already Completed'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Score: ${result.scorePercentage.toStringAsFixed(1)}%'),
-              const SizedBox(height: 8),
-              Text('Correct Answers: ${result.correctAnswers} out of ${result.totalQuestions}'),
-              const SizedBox(height: 8),
-              Text('Completed on: ${result.takenAt.toString().split('.')[0]}'),
+      
+      // Compare exam content hash
+      if (result.examHash == examHash) {
+        if (!mounted) return;
+        
+        // Show exam result if it's the same exam
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Exam Already Completed'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Score: ${result.scorePercentage.toStringAsFixed(1)}%'),
+                const SizedBox(height: 8),
+                Text('Correct Answers: ${result.correctAnswers} out of ${result.totalQuestions}'),
+                const SizedBox(height: 8),
+                Text('Completed on: ${result.takenAt.toString().split('.')[0]}'),
+              ],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Close'),
+              ),
             ],
           ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Close'),
-            ),
-          ],
-        ),
-      );
-      return;
+        );
+        return;
+      }
     }
 
     final result = await Navigator.push<ExamResult>(
@@ -142,14 +164,26 @@ class _OlympiadExamsScreenState extends State<OlympiadExamsScreen> {
 
     if (result != null && mounted) {
       try {
+        // Add exam hash to result
+        final resultWithHash = ExamResult(
+          examId: result.examId,
+          examHash: examHash, // Add hash to identify unique exams
+          title: result.title,
+          totalQuestions: result.totalQuestions,
+          correctAnswers: result.correctAnswers,
+          scorePercentage: result.scorePercentage,
+          takenAt: result.takenAt,
+          userAnswers: result.userAnswers,
+        );
+
         // Save exam result
         final prefs = await SharedPreferences.getInstance();
         final results = prefs.getStringList('olympiad_exam_results') ?? [];
-        results.add(jsonEncode(result.toJson()));
+        results.add(jsonEncode(resultWithHash.toJson()));
         await prefs.setStringList('olympiad_exam_results', results);
         
         setState(() {
-          _examResults[examId] = result;
+          _examResults[examId] = resultWithHash;
         });
 
         // Show success message

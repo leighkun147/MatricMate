@@ -19,7 +19,7 @@ class OlympiadExam {
     return OlympiadExam(
       title: json['title'] as String,
       duration: json['duration'] as int,
-      constants: json['constants'] as Map<String, dynamic>,
+      constants: (json['constants'] as Map<String, dynamic>?) ?? {},
       numberOfQuestions: json['numberOfQuestions'] as int,
       questions: (json['questions'] as List)
           .map((q) => Question.fromJson(q as Map<String, dynamic>))

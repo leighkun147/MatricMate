@@ -353,6 +353,7 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
     // Create exam result
     final examResult = ExamResult(
       examId: widget.examFile.path.split('/').last,
+      examHash: widget.examFile.path.split('/').last, // Using filename as hash since we don't need content check here
       title: _exam.title,
       totalQuestions: _exam.numberOfQuestions,
       correctAnswers: score,
@@ -766,11 +767,12 @@ class _ExamTakingScreenState extends State<ExamTakingScreen> {
               onPressed: _showQuestionOverview,
               tooltip: 'Question Overview',
             ),
-            IconButton(
-              icon: Icon(_showConstants ? Icons.close : Icons.info_outline),
-              onPressed: () => setState(() => _showConstants = !_showConstants),
-              tooltip: 'Show/Hide Constants',
-            ),
+            if (_exam.constants.isNotEmpty)
+              IconButton(
+                icon: Icon(_showConstants ? Icons.close : Icons.info_outline),
+                onPressed: () => setState(() => _showConstants = !_showConstants),
+                tooltip: 'Show/Hide Constants',
+              ),
             const SizedBox(width: 8),
           ],
         ),
