@@ -27,6 +27,7 @@ class _DashboardScreenState extends State<DashboardScreen> with TickerProviderSt
   List<String> _subjects = [];
   bool _isLoading = true;
   late TabController _tabController;
+  int _unseenNotifications = 0;
 
   @override
   void initState() {
@@ -39,6 +40,36 @@ class _DashboardScreenState extends State<DashboardScreen> with TickerProviderSt
     });
     _loadSubjects();
     _tabController = TabController(length: 2, vsync: this);
+    _fetchUnseenNotifications();
+  }
+
+  Future<void> _fetchUnseenNotifications() async {
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('Notifications')
+        .where('seen', isEqualTo: false)
+        .get();
+
+    setState(() {
+      _unseenNotifications = querySnapshot.docs.length;
+    });
+  }
+
+  Future<void> _markNotificationsAsSeen() async {
+    final batch = FirebaseFirestore.instance.batch();
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('Notifications')
+        .where('seen', isEqualTo: false)
+        .get();
+
+    for (var doc in querySnapshot.docs) {
+      batch.update(doc.reference, {'seen': true});
+    }
+
+    await batch.commit();
+
+    setState(() {
+      _unseenNotifications = 0;
+    });
   }
 
   Future<void> _loadSubjects() async {
@@ -80,25 +111,76 @@ class _DashboardScreenState extends State<DashboardScreen> with TickerProviderSt
       return const Center(child: CircularProgressIndicator());
     }
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Dashboard',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dashboard'),
+        actions: [
+          Stack(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.notifications),
+                onPressed: () async {
+                  await _markNotificationsAsSeen();
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Notifications'),
+                        content: const Text('You have checked all notifications.'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: const Text('Close'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+              if (_unseenNotifications > 0)
+                Positioned(
+                  right: 11,
+                  top: 11,
+                  child: Container(
+                    padding: const EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    constraints: const BoxConstraints(
+                      minWidth: 14,
+                      minHeight: 14,
+                    ),
+                    child: Text(
+                      '$_unseenNotifications',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+            ],
           ),
-          const SizedBox(height: 20),
-          _buildImageCarousel(),
-          const SizedBox(height: 20),
-          _buildPerformanceCard(),
-          const SizedBox(height: 20),
-          _buildFeatureCards(),
         ],
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 20),
+            _buildImageCarousel(),
+            const SizedBox(height: 20),
+            _buildPerformanceCard(),
+            const SizedBox(height: 20),
+            _buildFeatureCards(),
+          ],
+        ),
       ),
     );
   }

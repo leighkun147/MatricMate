@@ -108,6 +108,7 @@ flutter:
 
   assets:
     - assets/animations/
+    - assets/images/
     - assets/icons/
     - assets/questions/subject_chapters_questions/
     - assets/questions/academic_year/
