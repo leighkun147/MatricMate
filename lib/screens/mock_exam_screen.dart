@@ -706,8 +706,8 @@ class _MockExamScreenState extends State<MockExamScreen> {
             return;
           }
 
-          // Calculate coins (score * 3)
-          final coinsToAward = (score * 3).round();
+          // Calculate coins (score * 1)
+          final coinsToAward = (score * 1).round();
           
           // Add coins
           await CoinService.addCoins(coinsToAward);

@@ -140,27 +140,68 @@ class _ProfileScreenState extends State<ProfileScreen> {
               UserModel.fromMap(snapshot.data!.data() as Map<String, dynamic>);
         }
 
-        return SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                _buildProfileHeader(),
-                const SizedBox(height: 24),
-                _buildStats(),
-                const SizedBox(height: 24),
-                _buildExamHistoryCard(),
-                const SizedBox(height: 24),
-                _buildPaymentMethodsCard(),
-                const SizedBox(height: 24),
-                _buildSettings(context),
-                const Divider(height: 32),
-                _buildLogoutButton(),
-                const SizedBox(height: 16),
+        return Scaffold(
+            endDrawer: _buildStatisticsDrawer(),
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              actions: [
+                Builder(
+                  builder: (context) => Container(
+                    margin: const EdgeInsets.only(right: 8.0),
+                    child: Material(
+                      color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(12),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(12),
+                        onTap: () {
+                          Scaffold.of(context).openEndDrawer();
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.analytics_outlined,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Statistics',
+                                style: TextStyle(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
-          ),
-        );
+            body: SafeArea(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    _buildProfileHeader(),
+                    const SizedBox(height: 24),
+                    _buildExamHistoryCard(),
+                    const SizedBox(height: 24),
+                    _buildPaymentMethodsCard(),
+                    const SizedBox(height: 24),
+                    _buildSettings(context),
+                    const Divider(height: 32),
+                    _buildLogoutButton(),
+                    const SizedBox(height: 16),
+                  ],
+                ),
+              ),
+            ));
       },
     );
   }
@@ -459,7 +500,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildStats() {
+  Widget _buildStatisticsDrawer() {
     return StreamBuilder<DocumentSnapshot>(
       stream: FirebaseFirestore.instance
           .collection('users')
@@ -492,153 +533,159 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const ranking = 0;
             const activation = false;
 
-            return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Theme(
-                data: Theme.of(context).copyWith(
-                  dividerColor: Colors.transparent,
-                ),
-                child: ExpansionTile(
-                  title: const Text(
-                    'Statistics',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  iconColor: Colors.blue,
-                  collapsedIconColor: Colors.blue,
-                  trailing: Container(
-                    padding: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: const Icon(
-                      Icons.arrow_drop_down,
-                      size: 30,
-                      color: Colors.blue,
-                    ),
-                  ),
+            return Drawer(
+              child: SafeArea(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 4.0, vertical: 8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withOpacity(0.1),
+                      child: Row(
                         children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: _buildStatItem(
-                                  'Coins',
-                                  coins,
-                                  valueColor: Colors.amber[700],
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: _buildStatItem(
-                                  'Ranking',
-                                  '#$ranking',
-                                  valueColor: Colors.blue[700],
-                                ),
-                              ),
-                            ],
+                          Icon(
+                            Icons.analytics_outlined,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
-                          const SizedBox(height: 12),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: _buildStatItem(
-                                  'Activation',
-                                  activation ? 'ON' : 'OFF',
-                                  valueColor: activation
-                                      ? Colors.green[700]
-                                      : Colors.red[700],
+                          const SizedBox(width: 16),
+                          Text(
+                            'Statistics',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                  fontWeight: FontWeight.bold,
                                 ),
-                              ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: _buildStatItem(
-                                  'Referrals',
-                                  referralCount,
-                                  valueColor: Colors.purple[700],
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 12),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: _buildStatItem(
-                                  'Total Earnings',
-                                  '$referralEarnings ETB',
-                                  valueColor: Colors.green[700],
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: FutureBuilder<String>(
-                                  future: DeviceIdManager.getDeviceId(),
-                                  builder: (context, deviceIdSnapshot) {
-                                    if (!deviceIdSnapshot.hasData) {
-                                      return _buildStatItem(
-                                        'Premium',
-                                        'LOADING',
-                                        valueColor: Colors.grey[700],
-                                      );
-                                    }
-
-                                    return StreamBuilder<DocumentSnapshot>(
-                                      stream: FirebaseFirestore.instance
-                                          .collection('approved_devices')
-                                          .doc(deviceIdSnapshot.data)
-                                          .snapshots(),
-                                      builder: (context, snapshot) {
-                                        String premiumText = 'NONE';
-                                        Color? premiumColor = Colors.grey[700];
-
-                                        if (snapshot.hasData &&
-                                            snapshot.data!.exists) {
-                                          final premiumLevel = snapshot.data!
-                                                      .get('premium_level')
-                                                  as String? ??
-                                              'none';
-                                          premiumText =
-                                              premiumLevel.toUpperCase();
-
-                                          // Cache the premium level whenever it changes
-                                          UserCacheService.updatePremiumLevel(
-                                              premiumLevel);
-
-                                          switch (premiumLevel.toLowerCase()) {
-                                            case 'basic':
-                                              premiumColor = Colors.green[700];
-                                              break;
-                                            case 'pro':
-                                              premiumColor = Colors.blue[700];
-                                              break;
-                                            case 'elite':
-                                              premiumColor = Colors.purple[700];
-                                              break;
-                                          }
-                                        }
-
-                                        return _buildStatItem(
-                                          'Premium',
-                                          premiumText,
-                                          valueColor: premiumColor,
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
                           ),
                         ],
+                      ),
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: _buildStatItem(
+                                    'Coins',
+                                    coins,
+                                    valueColor: Colors.amber[700],
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: _buildStatItem(
+                                    'Ranking',
+                                    '#$ranking',
+                                    valueColor: Colors.blue[700],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: _buildStatItem(
+                                    'Activation',
+                                    activation ? 'ON' : 'OFF',
+                                    valueColor: activation
+                                        ? Colors.green[700]
+                                        : Colors.red[700],
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: _buildStatItem(
+                                    'Referrals',
+                                    referralCount,
+                                    valueColor: Colors.purple[700],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: _buildStatItem(
+                                    'Total Earnings',
+                                    '$referralEarnings ETB',
+                                    valueColor: Colors.green[700],
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Expanded(
+                                  child: FutureBuilder<String>(
+                                    future: DeviceIdManager.getDeviceId(),
+                                    builder: (context, deviceIdSnapshot) {
+                                      if (!deviceIdSnapshot.hasData) {
+                                        return _buildStatItem(
+                                          'Premium',
+                                          'LOADING',
+                                          valueColor: Colors.grey[700],
+                                        );
+                                      }
+
+                                      return StreamBuilder<DocumentSnapshot>(
+                                        stream: FirebaseFirestore.instance
+                                            .collection('approved_devices')
+                                            .doc(deviceIdSnapshot.data)
+                                            .snapshots(),
+                                        builder: (context, snapshot) {
+                                          String premiumText = 'NONE';
+                                          Color? premiumColor =
+                                              Colors.grey[700];
+
+                                          if (snapshot.hasData &&
+                                              snapshot.data!.exists) {
+                                            final premiumLevel = snapshot.data!
+                                                        .get('premium_level')
+                                                    as String? ??
+                                                'none';
+                                            premiumText =
+                                                premiumLevel.toUpperCase();
+
+                                            // Cache the premium level whenever it changes
+                                            UserCacheService.updatePremiumLevel(
+                                                premiumLevel);
+
+                                            switch (
+                                                premiumLevel.toLowerCase()) {
+                                              case 'basic':
+                                                premiumColor =
+                                                    Colors.green[700];
+                                                break;
+                                              case 'pro':
+                                                premiumColor = Colors.blue[700];
+                                                break;
+                                              case 'elite':
+                                                premiumColor =
+                                                    Colors.purple[700];
+                                                break;
+                                            }
+                                          }
+
+                                          return _buildStatItem(
+                                            'Premium',
+                                            premiumText,
+                                            valueColor: premiumColor,
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
