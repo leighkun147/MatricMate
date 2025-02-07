@@ -1,3 +1,5 @@
+import '../services/premium_price_service.dart';
+
 enum PremiumLevel {
   zero,
   basic,
@@ -9,9 +11,12 @@ enum PremiumLevel {
       case PremiumLevel.zero:
         return requiredLevel == PremiumLevel.zero;
       case PremiumLevel.basic:
-        return requiredLevel == PremiumLevel.zero || requiredLevel == PremiumLevel.basic;
+        return requiredLevel == PremiumLevel.zero ||
+            requiredLevel == PremiumLevel.basic;
       case PremiumLevel.pro:
-        return requiredLevel == PremiumLevel.zero || requiredLevel == PremiumLevel.basic || requiredLevel == PremiumLevel.pro;
+        return requiredLevel == PremiumLevel.zero ||
+            requiredLevel == PremiumLevel.basic ||
+            requiredLevel == PremiumLevel.pro;
       case PremiumLevel.elite:
         return true; // Elite can access all levels
     }
@@ -34,56 +39,58 @@ class PremiumFeature {
   });
 }
 
-final List<PremiumFeature> premiumFeatures = [
-  PremiumFeature(
-    title: 'Zero',
-    description: 'Start exploring MatricMate',
-    features: [
-      'Limited access to study materials',
-      'Basic practice questions',
-      'Simple progress tracking',
-      'Community access',
-    ],
-    price: 0,
-    level: PremiumLevel.zero,
-  ),
-  PremiumFeature(
-    title: 'Basic',
-    description: 'Start your journey with essential features',
-    features: [
-      'Access to basic study materials',
-      'Practice questions for core subjects',
-      'Progress tracking',
-      'Limited mock exams',
-    ],
-    price: 199.99,
-    level: PremiumLevel.basic,
-  ),
-  PremiumFeature(
-    title: 'Pro',
-    description: 'Enhanced learning experience with advanced features',
-    features: [
-      'All Basic features',
-      'Advanced study materials',
-      'Detailed performance analytics',
-      'Unlimited mock exams',
-      'Priority support',
-    ],
-    price: 399.99,
-    level: PremiumLevel.pro,
-  ),
-  PremiumFeature(
-    title: 'Elite',
-    description: 'Ultimate preparation package for top performers',
-    features: [
-      'All Pro features',
-      'Exclusive study materials',
-      'One-on-one tutoring sessions',
-      'Custom study plans',
-      'Guaranteed score improvement',
-      'VIP support',
-    ],
-    price: 599.99,
-    level: PremiumLevel.elite,
-  ),
-];
+Future<List<PremiumFeature>> getPremiumFeatures() async {
+  return [
+    PremiumFeature(
+      title: 'Zero',
+      description: 'Start exploring MatricMate',
+      features: [
+        'Limited access to study materials',
+        'Basic practice questions',
+        'Simple progress tracking',
+        'Community access',
+      ],
+      price: 0,
+      level: PremiumLevel.zero,
+    ),
+    PremiumFeature(
+      title: 'Basic',
+      description: 'Start your journey with essential features',
+      features: [
+        'Access to basic study materials',
+        'Practice questions for core subjects',
+        'Progress tracking',
+        'Limited mock exams',
+      ],
+      price: await PremiumPriceService().getPriceForLevel('basic'),
+      level: PremiumLevel.basic,
+    ),
+    PremiumFeature(
+      title: 'Pro',
+      description: 'Enhanced learning experience with advanced features',
+      features: [
+        'All Basic features',
+        'Advanced study materials',
+        'Detailed performance analytics',
+        'Unlimited mock exams',
+        'Priority support',
+      ],
+      price: await PremiumPriceService().getPriceForLevel('pro'),
+      level: PremiumLevel.pro,
+    ),
+    PremiumFeature(
+      title: 'Elite',
+      description: 'Ultimate preparation package for top performers',
+      features: [
+        'All Pro features',
+        'Exclusive study materials',
+        'One-on-one tutoring sessions',
+        'Custom study plans',
+        'Guaranteed score improvement',
+        'VIP support',
+      ],
+      price: await PremiumPriceService().getPriceForLevel('elite'),
+      level: PremiumLevel.elite,
+    ),
+  ];
+}
