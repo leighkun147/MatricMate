@@ -239,23 +239,24 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
   }
 
   void _showUpgradeDialog(PremiumLevel requiredLevel) {
+    final theme = Theme.of(context);
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
           'Upgrade to ${requiredLevel.name.toUpperCase()}',
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: Colors.orange,
+            color: theme.colorScheme.secondary,
           ),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
+            Icon(
               Icons.lock_outline,
               size: 48,
-              color: Colors.orange,
+              color: theme.colorScheme.secondary,
             ),
             const SizedBox(height: 16),
             Text(
@@ -264,17 +265,20 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
               style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               'Upgrade your account to access premium content!',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: theme.colorScheme.onSurfaceVariant),
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Later'),
+            child: Text(
+              'Later',
+              style: TextStyle(color: theme.colorScheme.secondary),
+            ),
           ),
           ElevatedButton.icon(
             onPressed: () {
@@ -286,11 +290,14 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
                 ),
               );
             },
-            icon: const Icon(Icons.star),
-            label: const Text('Upgrade Now'),
+            icon: Icon(Icons.star, color: theme.colorScheme.onSecondary),
+            label: Text(
+              'Upgrade Now',
+              style: TextStyle(color: theme.colorScheme.onSecondary),
+            ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange,
-              foregroundColor: Colors.white,
+              backgroundColor: theme.colorScheme.secondary,
+              foregroundColor: theme.colorScheme.onSecondary,
             ),
           ),
         ],
@@ -331,13 +338,20 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
   }
 
   Widget _buildDownloadCard(DownloadItem item) {
+    final theme = Theme.of(context);
     final bool canDownload = item.reqLevel.index <= _currentPremiumLevel.index;
-    final cardColor = canDownload ? null : Colors.grey.shade100;
 
     return Card(
-      elevation: 4,
+      elevation: 0,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      color: cardColor,
+      color: canDownload ? theme.cardColor : theme.colorScheme.surface.withOpacity(0.7),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(
+          color: theme.dividerColor.withOpacity(0.5),
+          width: 1,
+        ),
+      ),
       child: Column(
         children: [
           ListTile(
@@ -357,16 +371,16 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
                 Text(
                   'Required Level: ${item.reqLevel.name.toUpperCase()}',
                   style: TextStyle(
-                    color: canDownload ? Colors.green : Colors.red,
+                    color: canDownload ? theme.colorScheme.primary : theme.colorScheme.error,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 if (item.needsUpdate) ...[
                   const SizedBox(height: 4),
-                  const Text(
+                  Text(
                     'Update Available',
                     style: TextStyle(
-                      color: Colors.orange,
+                      color: theme.colorScheme.secondary,
                       fontStyle: FontStyle.italic,
                     ),
                   ),
@@ -407,9 +421,9 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
                 children: [
                   LinearProgressIndicator(
                     value: item.progress,
-                    backgroundColor: Colors.grey.shade200,
+                    backgroundColor: theme.colorScheme.surfaceVariant,
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      _getCollectionColor(item.collection),
+                      theme.colorScheme.primary,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -431,15 +445,16 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
   }
 
   Color _getCollectionColor(String collection) {
+    final theme = Theme.of(context);
     switch (collection) {
       case 'academic_year':
-        return Colors.blue;
+        return theme.colorScheme.primary;
       case 'model_exams':
-        return Colors.purple;
+        return theme.colorScheme.secondary;
       case 'subject_chapters_questions':
-        return Colors.orange;
+        return theme.colorScheme.tertiary;
       default:
-        return Colors.grey;
+        return theme.colorScheme.surfaceVariant;
     }
   }
 
@@ -465,10 +480,14 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             decoration: BoxDecoration(
               color: _getCollectionColor(collection).withOpacity(0.1),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: _getCollectionColor(collection).withOpacity(0.2),
+                width: 1,
+              ),
             ),
             child: Row(
               children: [
@@ -547,26 +566,51 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.check_circle_outline,
-              size: 64,
-              color: Colors.green.shade300,
-            ),
-            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Colors.green.shade50,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.check_circle_outline,
+                size: 64,
+                color: Colors.green.shade400,
+              ),
+            ).animate().scale(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOut,
+                ),
+            const SizedBox(height: 24),
             const Text(
               'All content downloaded!',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
+                letterSpacing: -0.5,
               ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Check back later for new content',
-              style: TextStyle(
-                color: Colors.grey.shade600,
+            ).animate().fadeIn(
+                  duration: const Duration(milliseconds: 400),
+                  delay: const Duration(milliseconds: 200),
+                ),
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(20),
               ),
-            ),
+              child: Text(
+                'Check back later for new content',
+                style: TextStyle(
+                  color: Colors.grey.shade600,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ).animate().fadeIn(
+                  duration: const Duration(milliseconds: 400),
+                  delay: const Duration(milliseconds: 400),
+                ),
           ],
         ),
       );
@@ -660,7 +704,7 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
                 ),
               ],
             ),
-            backgroundColor: Colors.green,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             duration: const Duration(seconds: 2),
           ),
         );
@@ -679,7 +723,7 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
                 ),
               ],
             ),
-            backgroundColor: Colors.red,
+            backgroundColor: Theme.of(context).colorScheme.error,
             duration: const Duration(seconds: 3),
           ),
         );
@@ -696,69 +740,117 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Download Contents'),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.folder),
-            tooltip: 'View Downloaded Files',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const DownloadedFilesScreen(),
-                ),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.delete_outline),
-            tooltip: 'Delete All Downloads',
-            onPressed: _showDeleteConfirmationDialog,
-          ),
-        ],
-        elevation: 0,
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: const [
-            Tab(text: 'Zero'),
-            Tab(text: 'Basic'),
-            Tab(text: 'Pro'),
-            Tab(text: 'Elite'),
-          ],
-          labelStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-          unselectedLabelStyle: const TextStyle(
-            fontWeight: FontWeight.normal,
-            fontSize: 14,
-          ),
-          indicatorWeight: 3,
-          indicatorSize: TabBarIndicatorSize.label,
-        ),
-      ),
-      body: _isLoading
-          ? const Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(),
-                  SizedBox(height: 16),
-                  Text('Loading content...'),
-                ],
-              ),
-            )
-          : TabBarView(
-              controller: _tabController,
-              children: [
-                _buildTabContent(PremiumLevel.zero),
-                _buildTabContent(PremiumLevel.basic),
-                _buildTabContent(PremiumLevel.pro),
-                _buildTabContent(PremiumLevel.elite),
-              ],
+        appBar: AppBar(
+          title: const Text('Download Contents'),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.folder),
+              tooltip: 'View Downloaded Files',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DownloadedFilesScreen(),
+                  ),
+                );
+              },
             ),
-    );
+            IconButton(
+              icon: const Icon(Icons.delete_outline),
+              tooltip: 'Delete All Downloads',
+              onPressed: _showDeleteConfirmationDialog,
+            ),
+          ],
+          elevation: 0,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(65),
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: TabBar(
+                controller: _tabController,
+                tabs: [
+                  const Tab(text: 'Zero'),
+                  const Tab(text: 'Basic'),
+                  const Tab(text: 'Pro'),
+                  const Tab(text: 'Elite'),
+                ],
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                unselectedLabelStyle: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14,
+                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                ),
+                indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                labelColor: Theme.of(context).colorScheme.primary,
+                unselectedLabelColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                indicatorSize: TabBarIndicatorSize.tab,
+                padding: const EdgeInsets.all(4),
+              ),
+            ),
+          ),
+        ),
+        body: Container(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          child: _isLoading
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.05),
+                              blurRadius: 20,
+                              offset: const Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        child: const CircularProgressIndicator(),
+                      ),
+                      const SizedBox(height: 24),
+                      Text(
+                        'Loading content...',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                        ),
+                      ),
+                    ],
+                  ).animate().fadeIn(),
+                )
+              : TabBarView(
+                  controller: _tabController,
+                  children: [
+                    _buildTabContent(PremiumLevel.zero),
+                    _buildTabContent(PremiumLevel.basic),
+                    _buildTabContent(PremiumLevel.pro),
+                    _buildTabContent(PremiumLevel.elite),
+                  ],
+                ),
+        ));
   }
 }
