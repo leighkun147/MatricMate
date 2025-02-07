@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import '../models/premium_level.dart';
 import '../utils/device_id_manager.dart';
+import '../services/premium_price_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'profile_screen.dart';
 
 class FormSubmissionScreen extends StatefulWidget {
   const FormSubmissionScreen({super.key});
@@ -189,68 +190,226 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
               },
             ),
             const SizedBox(height: 16),
-            DropdownButtonFormField<String>(
-              value: _selectedPremiumLevel,
-              decoration: const InputDecoration(
-                labelText: 'Premium Level',
-                border: OutlineInputBorder(),
+            Text(
+              'Choose Your Premium Level',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Unlock more features and enhance your learning experience',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                  ),
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              height: 300,
+              child: FutureBuilder<List<PremiumFeature>>(
+                future: getPremiumFeatures(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  }
+
+                  if (!snapshot.hasData) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  final features = snapshot.data!;
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: features.length,
+                    itemBuilder: (context, index) {
+                      final feature = features[index];
+                      final isSelected = _selectedPremiumLevel == feature.level.name.toLowerCase();
+
+                      return GestureDetector(
+                        onTap: () async {
+                          final value = feature.level.name.toLowerCase();
+                          final deviceId = await DeviceIdManager.getDeviceId();
+                          if (deviceId == null) return;
+                          
+                          try {
+                            final approvedDeviceDoc = await _firestore
+                                .collection('approved_devices')
+                                .doc(deviceId)
+                                .get();
+                            
+                            String currentLevel = 'zero';
+                            if (approvedDeviceDoc.exists) {
+                              currentLevel = approvedDeviceDoc.data()?['premium_level'] ?? 'zero';
+                            }
+
+                            if (_getPremiumLevelRank(value) <= _getPremiumLevelRank(currentLevel)) {
+                              _showErrorDialog(
+                                'You cannot request ${value.toUpperCase()} level as you already have '
+                                '${currentLevel.toUpperCase()} level access, which includes all '
+                                'features of lower levels.'
+                              );
+                              return;
+                            }
+
+                            setState(() {
+                              _selectedPremiumLevel = value;
+                            });
+                          } catch (e) {
+                            print('Error checking premium level: $e');
+                          }
+                        },
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          margin: const EdgeInsets.symmetric(horizontal: 6),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: isSelected
+                                  ? [
+                                      Theme.of(context).colorScheme.primary,
+                                      Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                                    ]
+                                  : [
+                                      Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
+                                      Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+                                    ],
+                            ),
+                            border: Border.all(
+                              color: isSelected
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Theme.of(context).colorScheme.outline.withOpacity(0.3),
+                              width: 2,
+                            ),
+                            boxShadow: isSelected
+                                ? [
+                                    BoxShadow(
+                                      color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                                      blurRadius: 12,
+                                      offset: const Offset(0, 6),
+                                    )
+                                  ]
+                                : null,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  color: isSelected
+                                      ? Theme.of(context).colorScheme.primary.withOpacity(0.7)
+                                      : Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(22)),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      feature.title.toUpperCase(),
+                                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color: isSelected
+                                                ? Theme.of(context).colorScheme.onPrimary
+                                                : Theme.of(context).colorScheme.onSurface,
+                                          ),
+                                    ),
+                                    if (feature.price > 0) ...[  
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        '${feature.price.toStringAsFixed(2)} ETB',
+                                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                              fontWeight: FontWeight.bold,
+                                              color: isSelected
+                                                  ? Theme.of(context).colorScheme.onPrimary
+                                                  : Theme.of(context).colorScheme.primary,
+                                            ),
+                                      ),
+                                    ],
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      feature.description,
+                                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                            color: isSelected
+                                                ? Theme.of(context).colorScheme.onPrimary.withOpacity(0.9)
+                                                : Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                                          ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: ListView.builder(
+                                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                                  itemCount: feature.features.length,
+                                  itemBuilder: (context, featureIndex) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(vertical: 2),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.check_circle_outline,
+                                            size: 16,
+                                            color: isSelected
+                                                ? Theme.of(context).colorScheme.onPrimary
+                                                : Theme.of(context).colorScheme.primary,
+                                          ),
+                                          const SizedBox(width: 12),
+                                          Expanded(
+                                            child: Text(
+                                              feature.features[featureIndex],
+                                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                                    color: isSelected
+                                                        ? Theme.of(context).colorScheme.onPrimary
+                                                        : Theme.of(context).colorScheme.onSurface,
+                                                  ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              if (isSelected)
+                                Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+                                    borderRadius: const BorderRadius.vertical(bottom: Radius.circular(22)),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.star,
+                                        color: Theme.of(context).colorScheme.onPrimary,
+                                        size: 20,
+                                      ),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        'Selected Plan',
+                                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                              color: Theme.of(context).colorScheme.onPrimary,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
-              items: [
-                DropdownMenuItem(
-                  value: 'basic',
-                  child: Text('Basic (200 ETB)'),
-                ),
-                DropdownMenuItem(
-                  value: 'pro',
-                  child: Text('Pro (400 ETB)'),
-                ),
-                DropdownMenuItem(
-                  value: 'elite',
-                  child: Text('Elite (600 ETB)'),
-                ),
-              ],
-              onChanged: (String? value) async {
-                if (value == null) return;
-                
-                // Get the device ID and check current level
-                final deviceId = await DeviceIdManager.getDeviceId();
-                if (deviceId == null) return;
-                
-                try {
-                  final approvedDeviceDoc = await _firestore
-                      .collection('approved_devices')
-                      .doc(deviceId)
-                      .get();
-                  
-                  String currentLevel = 'zero';
-                  if (approvedDeviceDoc.exists) {
-                    currentLevel = approvedDeviceDoc.data()?['premium_level'] ?? 'zero';
-                  }
-
-                  // Check if requesting same level or trying to downgrade
-                  if (_getPremiumLevelRank(value) <= _getPremiumLevelRank(currentLevel)) {
-                    _showErrorDialog(
-                      'You cannot request ${value.toUpperCase()} level as you already have '
-                      '${currentLevel.toUpperCase()} level access, which includes all '
-                      'features of lower levels.'
-                    );
-                    return;
-                  }
-
-                  // If validation passes, update the selected level
-                  setState(() {
-                    _selectedPremiumLevel = value;
-                  });
-                } catch (e) {
-                  print('Error checking premium level: $e');
-                }
-              },
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please select a premium level';
-                }
-                return null;
-              },
             ),
             const SizedBox(height: 16),
             DropdownButtonFormField<String>(
@@ -297,22 +456,26 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
               },
             ),
             const SizedBox(height: 16),
-            if (_isPhoneBasedPayment())
+            if (_isPhoneBasedPayment()) ...[              
               TextFormField(
                 controller: _phoneNumberController,
                 decoration: const InputDecoration(
                   labelText: 'Sender\'s Phone Number',
                   border: OutlineInputBorder(),
+                  prefixText: '+251',
                 ),
                 keyboardType: TextInputType.phone,
                 validator: (value) {
-                  if (_isPhoneBasedPayment() && (value == null || value.isEmpty)) {
-                    return 'Please enter sender\'s phone number';
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter phone number';
+                  }
+                  if (!RegExp(r'^9[0-9]{8}$').hasMatch(value)) {
+                    return 'Please enter valid phone number';
                   }
                   return null;
                 },
-              )
-            else
+              ),
+            ] else ...[              
               TextFormField(
                 controller: _transactionIdController,
                 decoration: const InputDecoration(
@@ -320,12 +483,13 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
-                  if (!_isPhoneBasedPayment() && (value == null || value.isEmpty)) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter transaction ID';
                   }
                   return null;
                 },
               ),
+            ],
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () async {
