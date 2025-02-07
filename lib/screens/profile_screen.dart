@@ -405,7 +405,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ),
                                   ElevatedButton(
                                     onPressed: () {
-                                      // TODO: Implement device upgrade process
+                                      // TODO: go to payment_methods_screen
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const PaymentMethodsScreen(),
+                                        ),
+                                      );
                                       Navigator.pop(context);
                                     },
                                     child: const Text('Upgrade Now'),
@@ -444,13 +451,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 const SizedBox(height: 16),
                 if (_isLoading)
-                  const CircularProgressIndicator()
+                  const LinearProgressIndicator()
                 else
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: 'hi, ',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '${_userModel?.username ?? 'User'} ',
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const TextSpan(
+                          text: '👋',
+                          style: TextStyle(
+                            fontSize: 24,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 4),
                   Text(
-                    _userModel?.username ?? 'User',
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                    'Welcome back!',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[600],
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
               ],
@@ -648,7 +686,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             final premiumLevel = snapshot.data!
                                                         .get('premium_level')
                                                     as String? ??
-                                                'none';
+                                                'ZERO';
                                             premiumText =
                                                 premiumLevel.toUpperCase();
 

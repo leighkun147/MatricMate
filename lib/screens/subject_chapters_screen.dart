@@ -12,6 +12,7 @@ import 'dart:io';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
+import './chapter_videos_screen.dart';
 
 class SubjectChaptersScreen extends StatefulWidget {
   final Subject subject;
@@ -39,15 +40,17 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
   }
 
   Future<void> _loadCompletionStatus() async {
-    final updatedChapters = Map<int, List<Chapter>>.from(widget.subject.chapters);
-    
+    final updatedChapters =
+        Map<int, List<Chapter>>.from(widget.subject.chapters);
+
     for (var grade in grades) {
       if (widget.subject.chapters.containsKey(grade)) {
-        final statusMap = await ChapterCompletionManager.getCompletionStatusForSubject(
+        final statusMap =
+            await ChapterCompletionManager.getCompletionStatusForSubject(
           widget.subject.name,
           grade,
         );
-        
+
         updatedChapters[grade] = widget.subject.chapters[grade]!.map((chapter) {
           return Chapter(
             title: chapter.title,
@@ -57,7 +60,7 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
         }).toList();
       }
     }
-    
+
     if (mounted) {
       setState(() {
         _chaptersWithCompletionStatus = updatedChapters;
@@ -65,19 +68,21 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
     }
   }
 
-  Future<void> _updateChapterCompletion(Chapter chapter, bool isCompleted) async {
+  Future<void> _updateChapterCompletion(
+      Chapter chapter, bool isCompleted) async {
     await ChapterCompletionManager.setChapterCompletion(
       widget.subject.name,
       chapter.title,
       chapter.grade,
       isCompleted,
     );
-    
+
     if (mounted) {
       setState(() {
         final gradeChapters = _chaptersWithCompletionStatus[chapter.grade]!;
-        final chapterIndex = gradeChapters.indexWhere((c) => c.title == chapter.title);
-        
+        final chapterIndex =
+            gradeChapters.indexWhere((c) => c.title == chapter.title);
+
         gradeChapters[chapterIndex] = Chapter(
           title: chapter.title,
           grade: chapter.grade,
@@ -85,7 +90,7 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
         );
       });
     }
-    
+
     if (isCompleted) {
       _showCompletionDialog();
     }
@@ -243,113 +248,199 @@ class _SubjectChaptersScreenState extends State<SubjectChaptersScreen>
                   ),
                 ),
                 const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  FutureBuilder<ChapterQuestions>(
-                                future: _loadQuestionsFromJson(chapter.title),
-                                builder: (context, snapshot) {
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return const Center(
-                                        child: CircularProgressIndicator());
-                                  }
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[100],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          // Practice Mode Button
+                          Expanded(
+                            flex: 4,
+                            child: SizedBox(
+                              height: 45,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: ElevatedButton.icon(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            FutureBuilder<ChapterQuestions>(
+                                          future: _loadQuestionsFromJson(
+                                              chapter.title),
+                                          builder: (context, snapshot) {
+                                            if (snapshot.connectionState ==
+                                                ConnectionState.waiting) {
+                                              return const Center(
+                                                  child:
+                                                      CircularProgressIndicator());
+                                            }
 
-                                  if (snapshot.hasError) {
-                                    return Center(
-                                        child: Text(
-                                            'Error loading questions: ${snapshot.error}'));
-                                  }
+                                            if (snapshot.hasError) {
+                                              return Center(
+                                                  child: Text(
+                                                      'Error loading questions: ${snapshot.error}'));
+                                            }
 
-                                  final chapterData = snapshot.data!;
+                                            final chapterData = snapshot.data!;
 
-                                  return PracticeModeScreen(
-                                    exam: Exam(
-                                      id: 'practice_${chapter.title}',
-                                      title: '${chapter.title} Practice',
-                                      subject: widget.subject.name,
-                                      year: DateTime.now().year,
-                                      questions: chapterData.questions,
-                                      duration: Duration(
-                                          minutes: chapterData.duration),
-                                      constants: chapterData.constants,
+                                            return PracticeModeScreen(
+                                              exam: Exam(
+                                                id: 'practice_${chapter.title}',
+                                                title:
+                                                    '${chapter.title} Practice',
+                                                subject: widget.subject.name,
+                                                year: DateTime.now().year,
+                                                questions: chapterData.questions,
+                                                duration: Duration(
+                                                    minutes:
+                                                        chapterData.duration),
+                                                constants: chapterData.constants,
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  icon: const Icon(Icons.quiz, size: 24, color: Colors.white),
+                                  label: const Text(
+                                    'Practice',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        Theme.of(context).colorScheme.primary,
+                                    foregroundColor:
+                                        Theme.of(context).colorScheme.onPrimary,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 0),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          // Video Lessons Button
+                          Expanded(
+                            flex: 2,  // Smaller flex for icon-only button
+                            child: SizedBox(
+                              height: 45,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ChapterVideosScreen(
+                                        subject: widget.subject.name,
+                                        chapter: chapter.title,
+                                      ),
                                     ),
                                   );
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Theme.of(context).colorScheme.primary,
+                                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                                  padding: EdgeInsets.zero,
+                                  minimumSize: const Size(45, 45),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                child: const Icon(
+                                  Icons.play_circle_fill,
+                                  size: 28,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
-                          );
-                        },
-                        icon: const Icon(Icons.school),
-                        label: const Text('Practice Mode'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              Theme.of(context).colorScheme.primary,
-                          foregroundColor:
-                              Theme.of(context).colorScheme.onPrimary,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  FutureBuilder<ChapterQuestions>(
-                                future: _loadQuestionsFromJson(chapter.title),
-                                builder: (context, snapshot) {
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return const Center(
-                                        child: CircularProgressIndicator());
-                                  }
+                          ),
+                          const SizedBox(width: 4),
+                          // Mock Exam Button
+                          Expanded(
+                            flex: 4,
+                            child: SizedBox(
+                              height: 45,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: ElevatedButton.icon(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            FutureBuilder<ChapterQuestions>(
+                                          future: _loadQuestionsFromJson(
+                                              chapter.title),
+                                          builder: (context, snapshot) {
+                                            if (snapshot.connectionState ==
+                                                ConnectionState.waiting) {
+                                              return const Center(
+                                                  child:
+                                                      CircularProgressIndicator());
+                                            }
 
-                                  if (snapshot.hasError) {
-                                    return Center(
-                                        child: Text(
-                                            'Error loading questions: ${snapshot.error}'));
-                                  }
+                                            if (snapshot.hasError) {
+                                              return Center(
+                                                  child: Text(
+                                                      'Error loading questions: ${snapshot.error}'));
+                                            }
 
-                                  final chapterData = snapshot.data!;
+                                            final chapterData = snapshot.data!;
 
-                                  return MockExamScreen(
-                                    exam: Exam(
-                                      id: 'mock_${chapter.title}',
-                                      title: '${chapter.title} Mock Exam',
-                                      subject: widget.subject.name,
-                                      year: DateTime.now().year,
-                                      questions: chapterData.questions,
-                                      duration: Duration(
-                                          minutes: chapterData.duration),
-                                      constants: chapterData.constants,
+                                            return MockExamScreen(
+                                              exam: Exam(
+                                                id: 'mock_${chapter.title}',
+                                                title:
+                                                    '${chapter.title} Mock Exam',
+                                                subject: widget.subject.name,
+                                                year: DateTime.now().year,
+                                                questions: chapterData.questions,
+                                                duration: Duration(
+                                                    minutes:
+                                                        chapterData.duration),
+                                                constants: chapterData.constants,
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  icon: const Icon(Icons.timer, size: 24, color: Colors.white),
+                                  label: const Text(
+                                    'Mock',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        Theme.of(context).colorScheme.secondary,
+                                    foregroundColor:
+                                        Theme.of(context).colorScheme.onSecondary,
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 0),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                  );
-                                },
+                                  ),
+                                ),
                               ),
                             ),
-                          );
-                        },
-                        icon: const Icon(Icons.timer),
-                        label: const Text('Mock Exam'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              Theme.of(context).colorScheme.secondary,
-                          foregroundColor:
-                              Theme.of(context).colorScheme.onSecondary,
-                        ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

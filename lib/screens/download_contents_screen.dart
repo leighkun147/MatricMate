@@ -22,12 +22,13 @@ class DownloadContentsScreen extends StatefulWidget {
 class _DownloadContentsScreenState extends State<DownloadContentsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final DeviceVerificationService _deviceVerification = DeviceVerificationService();
+  final DeviceVerificationService _deviceVerification =
+      DeviceVerificationService();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   PremiumLevel _currentPremiumLevel = PremiumLevel.zero;
   bool _isLoading = true;
   String? _errorMessage;
-  
+
   // Map to store download items grouped by collection
   final Map<String, List<DownloadItem>> _downloadItems = {
     'academic_year': [],
@@ -64,7 +65,7 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
 
       // Load premium level
       await _loadPremiumLevel();
-      
+
       // Load download items
       await _loadDownloadItems();
     } catch (e) {
@@ -118,29 +119,31 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
       }
 
       // Convert enum to string format used in Firestore
-      final streamValue = userStream == StreamType.naturalScience 
-          ? 'natural_science' 
+      final streamValue = userStream == StreamType.naturalScience
+          ? 'natural_science'
           : 'social_science';
 
       // Load items from each collection
       for (String collection in _downloadItems.keys) {
         // Query Firestore with stream filter
-        final snapshot = await _firestore.collection(collection)
+        final snapshot = await _firestore
+            .collection(collection)
             .where('stream', isEqualTo: streamValue)
             .get();
 
         final items = snapshot.docs
             .map((doc) => DownloadItem.fromFirestore(doc, collection))
             .toList();
-            
+
         // Check each item's status and only add if it needs downloading or updating
         for (var item in items) {
-          final (isDownloaded, sizeMatches) = await SecureDownloadService.isFileDownloadedAndValid(
+          final (isDownloaded, sizeMatches) =
+              await SecureDownloadService.isFileDownloadedAndValid(
             item.collection,
             item.filename,
             item.fileSize,
           );
-          
+
           // Only add the item if it's not downloaded or needs an update
           if (!isDownloaded || !sizeMatches) {
             item.needsUpdate = isDownloaded && !sizeMatches;
@@ -157,9 +160,10 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
 
   Future<void> _handleDownload(DownloadItem item) async {
     try {
-      final canAccess = await _deviceVerification.canAccessPremiumLevel(item.reqLevel);
+      final canAccess =
+          await _deviceVerification.canAccessPremiumLevel(item.reqLevel);
 
-      if (!canAccess) {
+      if (!canAccess && item.reqLevel != PremiumLevel.zero) {
         if (!mounted) return;
         _showUpgradeDialog(item.reqLevel);
         return;
@@ -207,10 +211,10 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
           item.justCompleted = true; // Set temporary completion state
         });
         _showSuccessMessage('Downloaded successfully');
-        
+
         // Wait for a short duration to show completion state
         await Future.delayed(const Duration(milliseconds: 800));
-        
+
         if (mounted) {
           setState(() {
             // Remove the item from the list
@@ -343,7 +347,7 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
               size: 32,
             ),
             title: Text(
-              item.displayName, 
+              item.displayName,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Column(
@@ -373,19 +377,23 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
                 ? const SizedBox(width: 32, height: 32)
                 : IconButton(
                     icon: Icon(
-                      canDownload 
-                          ? (item.justCompleted 
+                      canDownload
+                          ? (item.justCompleted
                               ? Icons.check_circle
-                              : (item.needsUpdate ? Icons.update : Icons.download))
+                              : (item.needsUpdate
+                                  ? Icons.update
+                                  : Icons.download))
                           : Icons.lock_outline,
-                      color: canDownload 
+                      color: canDownload
                           ? (item.justCompleted
                               ? Colors.green
-                              : (item.needsUpdate ? Colors.orange : Colors.blue))
+                              : (item.needsUpdate
+                                  ? Colors.orange
+                                  : Colors.blue))
                           : Colors.grey,
                     ),
-                    onPressed: item.justCompleted 
-                        ? null 
+                    onPressed: item.justCompleted
+                        ? null
                         : (canDownload
                             ? () => _handleDownload(item)
                             : () => _showUpgradeDialog(item.reqLevel)),
@@ -533,7 +541,7 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
     }
 
     final hasItems = _downloadItems.values.any((items) => items.isNotEmpty);
-    
+
     if (!hasItems) {
       return Center(
         child: Column(
@@ -622,7 +630,7 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
 
       final appDir = await getApplicationDocumentsDirectory();
       final questionsDir = Directory('${appDir.path}/assets/questions');
-      
+
       if (await questionsDir.exists()) {
         // Delete all files in each collection directory
         for (String collection in _downloadItems.keys) {
@@ -632,7 +640,7 @@ class _DownloadContentsScreenState extends State<DownloadContentsScreen>
             print('Deleted directory: ${collectionDir.path}');
           }
         }
-        
+
         // Recreate the base directories
         await questionsDir.create(recursive: true);
       }
