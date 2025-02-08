@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 import '../models/premium_level.dart';
 import '../utils/device_id_manager.dart';
 import '../services/premium_price_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 class FormSubmissionScreen extends StatefulWidget {
   const FormSubmissionScreen({super.key});
@@ -16,6 +19,9 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
   final _formKey = GlobalKey<FormState>();
   String? _selectedPaymentMethod;
   String? _selectedPremiumLevel;
+  bool _useReceiptPhoto = false;
+  File? _receiptFile;
+  String? _receiptFileName;
   final TextEditingController _referrerController = TextEditingController();
   final TextEditingController _transactionIdController = TextEditingController();
   final TextEditingController _senderNameController = TextEditingController();
@@ -90,14 +96,25 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
       }
 
       // Prepare the data
+      // Upload receipt first if using photo
+      String? receiptUrl;
+      if (_useReceiptPhoto && _receiptFile != null) {
+        receiptUrl = await _uploadReceipt();
+        if (receiptUrl == null) {
+          throw Exception('Failed to upload receipt image');
+        }
+      }
+
       Map<String, dynamic> requestData = {
         'usersUID': currentUser.uid,
         'Referrer\'s_username': _referrerController.text.isEmpty ? null : _referrerController.text,
         'payment_method': _selectedPaymentMethod,
         'premium_level': _selectedPremiumLevel,
-        'sender\'s_name': _senderNameController.text,
-        'transaction_id': _isPhoneBasedPayment() ? null : _transactionIdController.text,
-        'sender\'s_phone_number': _isPhoneBasedPayment() ? _phoneNumberController.text : null,
+        // Set all transaction details to null if using receipt
+        'sender\'s_name': _useReceiptPhoto ? null : _senderNameController.text,
+        'transaction_id': _useReceiptPhoto ? null : (_isPhoneBasedPayment() ? null : _transactionIdController.text),
+        'sender\'s_phone_number': _useReceiptPhoto ? null : (_isPhoneBasedPayment() ? _phoneNumberController.text : null),
+        'receipt_url': _useReceiptPhoto ? receiptUrl : null,
        'device_id': deviceId,
         'status': 'pending',
         'current_level': currentLevel,
@@ -140,6 +157,81 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
         return 3;
       default:
         return 0; // for 'zero' or unknown levels
+    }
+  }
+
+  Future<void> _pickReceiptImage() async {
+    try {
+      final ImagePicker picker = ImagePicker();
+      
+      // Show a dialog to choose between camera and gallery
+      final source = await showDialog<ImageSource>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Choose Image Source'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.camera_alt),
+                  title: const Text('Take Photo'),
+                  onTap: () => Navigator.pop(context, ImageSource.camera),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.photo_library),
+                  title: const Text('Choose from Gallery'),
+                  onTap: () => Navigator.pop(context, ImageSource.gallery),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+
+      if (source != null) {
+        final XFile? image = await picker.pickImage(
+          source: source,
+          imageQuality: 70, // Compress image to reduce size
+          maxWidth: 1024,   // Limit max dimensions
+          maxHeight: 1024,
+        );
+
+        if (image != null) {
+          setState(() {
+            _receiptFile = File(image.path);
+            _receiptFileName = image.name;
+          });
+        }
+      }
+    } catch (e) {
+      print('Error picking receipt: $e');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Failed to pick receipt image. Please try again.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<String?> _uploadReceipt() async {
+    if (_receiptFile == null) return null;
+
+    try {
+      final fileName = '${DateTime.now().millisecondsSinceEpoch}_${_receiptFileName}';
+      final ref = FirebaseStorage.instance.ref().child('receipts/$fileName');
+      
+      final uploadTask = await ref.putFile(_receiptFile!);
+      if (uploadTask.state == TaskState.success) {
+        return await ref.getDownloadURL();
+      }
+      return null;
+    } catch (e) {
+      print('Error uploading receipt: $e');
+      throw Exception('Failed to upload receipt image');
     }
   }
 
@@ -437,11 +529,70 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
               },
             ),
             const SizedBox(height: 24),
-            const Text(
-              'Transaction Details',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Transaction Details',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                Row(
+                  children: [
+                    const Text('Upload Receipt'),
+                    const SizedBox(width: 8),
+                    Switch(
+                      value: _useReceiptPhoto,
+                      onChanged: (value) {
+                        setState(() {
+                          _useReceiptPhoto = value;
+                          if (!value) {
+                            // Clear receipt data when switching to manual entry
+                            _receiptFile = null;
+                            _receiptFileName = null;
+                          } else {
+                            // Clear transaction details when switching to receipt
+                            _senderNameController.clear();
+                            _phoneNumberController.clear();
+                            _transactionIdController.clear();
+                          }
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
             const SizedBox(height: 16),
+            if (_useReceiptPhoto) ...[              
+              Center(
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    children: [
+                      if (_receiptFile != null) ...[                        
+                        Text(
+                          'Selected: ${_receiptFileName}',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        const SizedBox(height: 8),
+                      ],
+                      ElevatedButton.icon(
+                        onPressed: _pickReceiptImage,
+                        icon: const Icon(Icons.add_a_photo),
+                        label: Text(_receiptFile == null ? 'Take/Choose Receipt Photo' : 'Change Receipt Photo'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ] else ...[
             TextFormField(
               controller: _senderNameController,
               decoration: const InputDecoration(
@@ -449,7 +600,7 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                 border: OutlineInputBorder(),
               ),
               validator: (value) {
-                if (value == null || value.isEmpty) {
+                if (!_useReceiptPhoto && (value == null || value.isEmpty)) {
                   return 'Please enter sender\'s name';
                 }
                 return null;
@@ -466,11 +617,13 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                 ),
                 keyboardType: TextInputType.phone,
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter phone number';
-                  }
-                  if (!RegExp(r'^9[0-9]{8}$').hasMatch(value)) {
-                    return 'Please enter valid phone number';
+                  if (!_useReceiptPhoto) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter phone number';
+                    }
+                    if (!RegExp(r'^9[0-9]{8}$').hasMatch(value)) {
+                      return 'Please enter valid phone number';
+                    }
                   }
                   return null;
                 },
@@ -483,16 +636,30 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  if (!_useReceiptPhoto && (value == null || value.isEmpty)) {
                     return 'Please enter transaction ID';
                   }
                   return null;
                 },
               ),
             ],
+            ],
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () async {
+                // Validate based on selected method
+                if (_useReceiptPhoto) {
+                  if (_receiptFile == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please select a receipt photo'),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                    return;
+                  }
+                }
+                
                 if (_formKey.currentState!.validate()) {
                   try {
                     String? deviceId = await DeviceIdManager.getDeviceId();
