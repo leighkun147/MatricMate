@@ -182,54 +182,72 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: <Widget>[
                   Hero(
                     tag: 'logo',
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(24),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Theme.of(context).primaryColor.withOpacity(0.2),
-                            blurRadius: 20,
-                            offset: const Offset(0, 10),
-                          ),
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      height: 120,
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                          Theme.of(context).colorScheme.secondary.withOpacity(0.1),
                         ],
                       ),
-                      child: Image.asset(
-                        'assets/images/logo.png',
-                        height: 120,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                        width: 2,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 24),
-                  ShaderMask(
-                    shaderCallback: (bounds) => LinearGradient(
-                      colors: [
-                        Theme.of(context).colorScheme.primary,
-                        Theme.of(context).colorScheme.secondary,
+                    child: Column(
+                      children: [
+                        ShaderMask(
+                          shaderCallback: (bounds) => LinearGradient(
+                            colors: [
+                              Theme.of(context).colorScheme.primary,
+                              Theme.of(context).colorScheme.secondary,
+                            ],
+                          ).createShader(bounds),
+                          child: const Text(
+                            'Welcome!',
+                            style: TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: const Text(
+                            'your ultimate companion for Grade 12 exam preparation',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ),
                       ],
-                    ).createShader(bounds),
-                    child: const Text(
-                      'Welcome to MatricMate!',
-                      style: TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  const Text(
-                    'Your ultimate companion for Grade 12 exam preparation',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
                     ),
                   ),
                   const SizedBox(height: 40),
                   Container(
                     decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
@@ -243,9 +261,34 @@ class _SignupScreenState extends State<SignupScreen> {
                       controller: _usernameController,
                       decoration: InputDecoration(
                         labelText: 'Username',
-                        prefixIcon: const Icon(Icons.person),
+                        labelStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.person_outline_rounded,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.05),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 2,
+                          ),
                         ),
                       ),
                       validator: (value) {
@@ -260,115 +303,269 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  TextFormField(
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      prefixIcon: const Icon(Icons.email),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
-                      }
-                      if (!value.contains('@')) {
-                        return 'Please enter a valid email';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    controller: _phoneController,
-                    keyboardType: TextInputType.phone,
-                    maxLength: 9,
-                    decoration: InputDecoration(
-                      labelText: 'Phone Number',
-                      prefixIcon: const Icon(Icons.phone),
-                      prefixText: '+251 ',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your phone number';
-                      }
-                      if (value.length != 9) {
-                        return 'Phone number must be 9 digits';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    controller: _passwordController,
-                    obscureText: !_isPasswordVisible,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: const Icon(Icons.lock),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _isPasswordVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off,
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Theme.of(context).shadowColor.withOpacity(0.1),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _isPasswordVisible = !_isPasswordVisible;
-                          });
-                        },
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                      ],
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
-                      }
-                      if (value.length < 6) {
-                        return 'Password must be at least 6 characters';
-                      }
-                      return null;
-                    },
+                    child: TextFormField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        labelStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.email_outlined,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.05),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        if (!value.contains('@')) {
+                          return 'Please enter a valid email';
+                        }
+                        return null;
+                      },
+                    ),
                   ),
                   const SizedBox(height: 20),
-                  TextFormField(
-                    controller: _confirmPasswordController,
-                    obscureText: !_isConfirmPasswordVisible,
-                    decoration: InputDecoration(
-                      labelText: 'Confirm Password',
-                      prefixIcon: const Icon(Icons.lock),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _isConfirmPasswordVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off,
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Theme.of(context).shadowColor.withOpacity(0.1),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _isConfirmPasswordVisible =
-                                !_isConfirmPasswordVisible;
-                          });
-                        },
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                      ],
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please confirm your password';
-                      }
-                      if (value != _passwordController.text) {
-                        return 'Passwords do not match';
-                      }
-                      return null;
-                    },
+                    child: TextFormField(
+                      controller: _phoneController,
+                      keyboardType: TextInputType.phone,
+                      maxLength: 9,
+                      decoration: InputDecoration(
+                        labelText: 'Phone Number',
+                        labelStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.phone_outlined,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        prefixText: '+251 ',
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.05),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your phone number';
+                        }
+                        if (value.length != 9) {
+                          return 'Phone number must be 9 digits';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Theme.of(context).shadowColor.withOpacity(0.1),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: TextFormField(
+                      controller: _passwordController,
+                      obscureText: !_isPasswordVisible,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        labelStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.lock_outline_rounded,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility_rounded
+                                : Icons.visibility_off_rounded,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                        ),
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.05),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        if (value.length < 6) {
+                          return 'Password must be at least 6 characters';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Theme.of(context).shadowColor.withOpacity(0.1),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: TextFormField(
+                      controller: _confirmPasswordController,
+                      obscureText: !_isConfirmPasswordVisible,
+                      decoration: InputDecoration(
+                        labelText: 'Confirm Password',
+                        labelStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.lock_outline_rounded,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isConfirmPasswordVisible
+                                ? Icons.visibility_rounded
+                                : Icons.visibility_off_rounded,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isConfirmPasswordVisible =
+                                  !_isConfirmPasswordVisible;
+                            });
+                          },
+                        ),
+                        filled: true,
+                        fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.05),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please confirm your password';
+                        }
+                        if (value != _passwordController.text) {
+                          return 'Passwords do not match';
+                        }
+                        return null;
+                      },
+                    ),
                   ),
                   const SizedBox(height: 30),
                   Container(
