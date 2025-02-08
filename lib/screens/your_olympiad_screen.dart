@@ -7,6 +7,7 @@ import '../utils/stream_utils.dart';
 import 'package:dio/dio.dart';
 import 'downloaded_exams_screen.dart';
 import 'olympiad_exams_screen.dart';
+import 'package:lottie/lottie.dart';
 
 class YourOlympiadScreen extends StatefulWidget {
   const YourOlympiadScreen({super.key});
@@ -175,9 +176,12 @@ class _YourOlympiadScreenState extends State<YourOlympiadScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Column(
+      body: AbsorbPointer(
+        absorbing: true,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Column(
             children: [
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -340,7 +344,69 @@ class _YourOlympiadScreenState extends State<YourOlympiadScreen> {
                 child: CircularProgressIndicator(),
               ),
             ),
-        ],
+          // Under Construction Animation Overlay
+          Positioned(
+            top: kToolbarHeight, // Start below app bar
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Container(
+              color: Colors.white.withOpacity(0.9),
+              child: Stack(
+                children: [
+                  Center(
+                    child: Lottie.asset(
+                      'assets/animations/under_construction.json',
+                      width: 300,
+                      height: 300,
+                      repeat: true,
+                      animate: true,
+                    ),
+                  ),
+                  Positioned(
+                    top: MediaQuery.of(context).size.height * 0.6,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.white.withOpacity(0.9),
+                            Colors.white,
+                          ],
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Under Construction',
+                            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Coming Soon',
+                            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  color: Colors.black54,
+                                ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  ],
+                ),
+              ),
+          ),
+          ],
+        ),
       ),
     );
   }
