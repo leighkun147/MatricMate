@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import '../models/premium_level.dart';
 import '../utils/device_id_manager.dart';
-import '../services/premium_price_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -23,7 +22,8 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
   File? _receiptFile;
   String? _receiptFileName;
   final TextEditingController _referrerController = TextEditingController();
-  final TextEditingController _transactionIdController = TextEditingController();
+  final TextEditingController _transactionIdController =
+      TextEditingController();
   final TextEditingController _senderNameController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
 
@@ -47,7 +47,7 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
           .where('username', isEqualTo: referrerUsername.trim())
           .limit(1)
           .get();
-      
+
       print('Query result docs length: ${result.docs.length}');
       return result.docs.isNotEmpty;
     } catch (e) {
@@ -66,12 +66,14 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
       // Validate referrer if provided
       if (_referrerController.text.isNotEmpty) {
         print('Referrer username provided: ${_referrerController.text}');
-        final bool referrerExists = await _validateReferrer(_referrerController.text);
+        final bool referrerExists =
+            await _validateReferrer(_referrerController.text);
         if (!referrerExists) {
           if (!mounted) return;
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('The referrer username was not found. Please check and try again.'),
+              content: Text(
+                  'The referrer username was not found. Please check and try again.'),
               backgroundColor: Colors.red,
             ),
           );
@@ -82,11 +84,9 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
       // Check if device is approved and get its premium level
       String currentLevel = 'zero';
       try {
-        final approvedDeviceDoc = await _firestore
-            .collection('approved_devices')
-            .doc(deviceId)
-            .get();
-        
+        final approvedDeviceDoc =
+            await _firestore.collection('approved_devices').doc(deviceId).get();
+
         if (approvedDeviceDoc.exists) {
           currentLevel = approvedDeviceDoc.data()?['premium_level'] ?? 'zero';
         }
@@ -107,25 +107,27 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
 
       Map<String, dynamic> requestData = {
         'usersUID': currentUser.uid,
-        'Referrer\'s_username': _referrerController.text.isEmpty ? null : _referrerController.text,
+        'Referrer\'s_username':
+            _referrerController.text.isEmpty ? null : _referrerController.text,
         'payment_method': _selectedPaymentMethod,
         'premium_level': _selectedPremiumLevel,
         // Set all transaction details to null if using receipt
         'sender\'s_name': _useReceiptPhoto ? null : _senderNameController.text,
-        'transaction_id': _useReceiptPhoto ? null : (_isPhoneBasedPayment() ? null : _transactionIdController.text),
-        'sender\'s_phone_number': _useReceiptPhoto ? null : (_isPhoneBasedPayment() ? _phoneNumberController.text : null),
+        'transaction_id': _useReceiptPhoto
+            ? null
+            : (_isPhoneBasedPayment() ? null : _transactionIdController.text),
+        'sender\'s_phone_number': _useReceiptPhoto
+            ? null
+            : (_isPhoneBasedPayment() ? _phoneNumberController.text : null),
         'receipt_url': _useReceiptPhoto ? receiptUrl : null,
-       'device_id': deviceId,
+        'device_id': deviceId,
         'status': 'pending',
         'current_level': currentLevel,
         'timestamp': FieldValue.serverTimestamp(),
       };
 
       // Submit to Firestore using the deviceId as the document ID
-      await _firestore
-          .collection('requests')
-          .doc(deviceId)
-          .set(requestData);
+      await _firestore.collection('requests').doc(deviceId).set(requestData);
 
       return;
     } catch (e) {
@@ -144,7 +146,8 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
   }
 
   bool _isPhoneBasedPayment() {
-    return _selectedPaymentMethod == 'Telebirr' || _selectedPaymentMethod == 'E-Birr';
+    return _selectedPaymentMethod == 'Telebirr' ||
+        _selectedPaymentMethod == 'E-Birr';
   }
 
   int _getPremiumLevelRank(String level) {
@@ -163,7 +166,7 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
   Future<void> _pickReceiptImage() async {
     try {
       final ImagePicker picker = ImagePicker();
-      
+
       // Show a dialog to choose between camera and gallery
       final source = await showDialog<ImageSource>(
         context: context,
@@ -193,7 +196,7 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
         final XFile? image = await picker.pickImage(
           source: source,
           imageQuality: 70, // Compress image to reduce size
-          maxWidth: 1024,   // Limit max dimensions
+          maxWidth: 1024, // Limit max dimensions
           maxHeight: 1024,
         );
 
@@ -221,9 +224,10 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
     if (_receiptFile == null) return null;
 
     try {
-      final fileName = '${DateTime.now().millisecondsSinceEpoch}_${_receiptFileName}';
+      final fileName =
+          '${DateTime.now().millisecondsSinceEpoch}_${_receiptFileName}';
       final ref = FirebaseStorage.instance.ref().child('receipts/$fileName');
-      
+
       final uploadTask = await ref.putFile(_receiptFile!);
       if (uploadTask.state == TaskState.success) {
         return await ref.getDownloadURL();
@@ -271,7 +275,8 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
               decoration: const InputDecoration(
                 labelText: 'Referrer\'s Username (Optional)',
                 border: OutlineInputBorder(),
-                helperText: 'Enter the username of the person who referred you (if any)',
+                helperText:
+                    'Enter the username of the person who referred you (if any)',
               ),
               validator: (value) {
                 if (value != null && value.isNotEmpty) {
@@ -293,7 +298,10 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
             Text(
               'Unlock more features and enhance your learning experience',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurface
+                        .withOpacity(0.7),
                   ),
             ),
             const SizedBox(height: 16),
@@ -316,31 +324,34 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                     itemCount: features.length,
                     itemBuilder: (context, index) {
                       final feature = features[index];
-                      final isSelected = _selectedPremiumLevel == feature.level.name.toLowerCase();
+                      final isSelected = _selectedPremiumLevel ==
+                          feature.level.name.toLowerCase();
 
                       return GestureDetector(
                         onTap: () async {
                           final value = feature.level.name.toLowerCase();
                           final deviceId = await DeviceIdManager.getDeviceId();
                           if (deviceId == null) return;
-                          
+
                           try {
                             final approvedDeviceDoc = await _firestore
                                 .collection('approved_devices')
                                 .doc(deviceId)
                                 .get();
-                            
+
                             String currentLevel = 'zero';
                             if (approvedDeviceDoc.exists) {
-                              currentLevel = approvedDeviceDoc.data()?['premium_level'] ?? 'zero';
+                              currentLevel =
+                                  approvedDeviceDoc.data()?['premium_level'] ??
+                                      'zero';
                             }
 
-                            if (_getPremiumLevelRank(value) <= _getPremiumLevelRank(currentLevel)) {
+                            if (_getPremiumLevelRank(value) <=
+                                _getPremiumLevelRank(currentLevel)) {
                               _showErrorDialog(
-                                'You cannot request ${value.toUpperCase()} level as you already have '
-                                '${currentLevel.toUpperCase()} level access, which includes all '
-                                'features of lower levels.'
-                              );
+                                  'You cannot request ${value.toUpperCase()} level as you already have '
+                                  '${currentLevel.toUpperCase()} level access, which includes all '
+                                  'features of lower levels.');
                               return;
                             }
 
@@ -363,23 +374,38 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                               colors: isSelected
                                   ? [
                                       Theme.of(context).colorScheme.primary,
-                                      Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                                      Theme.of(context)
+                                          .colorScheme
+                                          .primary
+                                          .withOpacity(0.8),
                                     ]
                                   : [
-                                      Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
-                                      Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
+                                      Theme.of(context)
+                                          .colorScheme
+                                          .surfaceVariant
+                                          .withOpacity(0.5),
+                                      Theme.of(context)
+                                          .colorScheme
+                                          .surfaceVariant
+                                          .withOpacity(0.3),
                                     ],
                             ),
                             border: Border.all(
                               color: isSelected
                                   ? Theme.of(context).colorScheme.primary
-                                  : Theme.of(context).colorScheme.outline.withOpacity(0.3),
+                                  : Theme.of(context)
+                                      .colorScheme
+                                      .outline
+                                      .withOpacity(0.3),
                               width: 2,
                             ),
                             boxShadow: isSelected
                                 ? [
                                     BoxShadow(
-                                      color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary
+                                          .withOpacity(0.3),
                                       blurRadius: 12,
                                       offset: const Offset(0, 6),
                                     )
@@ -394,40 +420,70 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                                 padding: const EdgeInsets.all(16),
                                 decoration: BoxDecoration(
                                   color: isSelected
-                                      ? Theme.of(context).colorScheme.primary.withOpacity(0.7)
-                                      : Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
-                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(22)),
+                                      ? Theme.of(context)
+                                          .colorScheme
+                                          .primary
+                                          .withOpacity(0.7)
+                                      : Theme.of(context)
+                                          .colorScheme
+                                          .surfaceVariant
+                                          .withOpacity(0.3),
+                                  borderRadius: const BorderRadius.vertical(
+                                      top: Radius.circular(22)),
                                 ),
                                 child: Column(
                                   children: [
                                     Text(
                                       feature.title.toUpperCase(),
-                                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium
+                                          ?.copyWith(
                                             fontWeight: FontWeight.bold,
                                             color: isSelected
-                                                ? Theme.of(context).colorScheme.onPrimary
-                                                : Theme.of(context).colorScheme.onSurface,
+                                                ? Theme.of(context)
+                                                    .colorScheme
+                                                    .onPrimary
+                                                : Theme.of(context)
+                                                    .colorScheme
+                                                    .onSurface,
                                           ),
                                     ),
-                                    if (feature.price > 0) ...[  
+                                    if (feature.price > 0) ...[
                                       const SizedBox(height: 4),
                                       Text(
                                         '${feature.price.toStringAsFixed(2)} ETB',
-                                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium
+                                            ?.copyWith(
                                               fontWeight: FontWeight.bold,
                                               color: isSelected
-                                                  ? Theme.of(context).colorScheme.onPrimary
-                                                  : Theme.of(context).colorScheme.primary,
+                                                  ? Theme.of(context)
+                                                      .colorScheme
+                                                      .onPrimary
+                                                  : Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
                                             ),
                                       ),
                                     ],
                                     const SizedBox(height: 8),
                                     Text(
                                       feature.description,
-                                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.copyWith(
                                             color: isSelected
-                                                ? Theme.of(context).colorScheme.onPrimary.withOpacity(0.9)
-                                                : Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                                                ? Theme.of(context)
+                                                    .colorScheme
+                                                    .onPrimary
+                                                    .withOpacity(0.9)
+                                                : Theme.of(context)
+                                                    .colorScheme
+                                                    .onSurface
+                                                    .withOpacity(0.7),
                                           ),
                                       textAlign: TextAlign.center,
                                     ),
@@ -436,28 +492,41 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                               ),
                               Expanded(
                                 child: ListView.builder(
-                                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 8, horizontal: 16),
                                   itemCount: feature.features.length,
                                   itemBuilder: (context, featureIndex) {
                                     return Padding(
-                                      padding: const EdgeInsets.symmetric(vertical: 2),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 2),
                                       child: Row(
                                         children: [
                                           Icon(
                                             Icons.check_circle_outline,
                                             size: 16,
                                             color: isSelected
-                                                ? Theme.of(context).colorScheme.onPrimary
-                                                : Theme.of(context).colorScheme.primary,
+                                                ? Theme.of(context)
+                                                    .colorScheme
+                                                    .onPrimary
+                                                : Theme.of(context)
+                                                    .colorScheme
+                                                    .primary,
                                           ),
                                           const SizedBox(width: 12),
                                           Expanded(
                                             child: Text(
                                               feature.features[featureIndex],
-                                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium
+                                                  ?.copyWith(
                                                     color: isSelected
-                                                        ? Theme.of(context).colorScheme.onPrimary
-                                                        : Theme.of(context).colorScheme.onSurface,
+                                                        ? Theme.of(context)
+                                                            .colorScheme
+                                                            .onPrimary
+                                                        : Theme.of(context)
+                                                            .colorScheme
+                                                            .onSurface,
                                                   ),
                                             ),
                                           ),
@@ -470,24 +539,36 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                               if (isSelected)
                                 Container(
                                   width: double.infinity,
-                                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 8, horizontal: 16),
                                   decoration: BoxDecoration(
-                                    color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
-                                    borderRadius: const BorderRadius.vertical(bottom: Radius.circular(22)),
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .primary
+                                        .withOpacity(0.7),
+                                    borderRadius: const BorderRadius.vertical(
+                                        bottom: Radius.circular(22)),
                                   ),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
                                         Icons.star,
-                                        color: Theme.of(context).colorScheme.onPrimary,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary,
                                         size: 20,
                                       ),
                                       const SizedBox(width: 8),
                                       Text(
                                         'Selected Plan',
-                                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                              color: Theme.of(context).colorScheme.onPrimary,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium
+                                            ?.copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onPrimary,
                                               fontWeight: FontWeight.bold,
                                             ),
                                       ),
@@ -563,20 +644,23 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
               ],
             ),
             const SizedBox(height: 16),
-            if (_useReceiptPhoto) ...[              
+            if (_useReceiptPhoto) ...[
               Center(
                 child: Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .outline
+                          .withOpacity(0.3),
                     ),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Column(
                     children: [
-                      if (_receiptFile != null) ...[                        
+                      if (_receiptFile != null) ...[
                         Text(
                           'Selected: ${_receiptFileName}',
                           style: Theme.of(context).textTheme.bodyMedium,
@@ -586,63 +670,65 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                       ElevatedButton.icon(
                         onPressed: _pickReceiptImage,
                         icon: const Icon(Icons.add_a_photo),
-                        label: Text(_receiptFile == null ? 'Take/Choose Receipt Photo' : 'Change Receipt Photo'),
+                        label: Text(_receiptFile == null
+                            ? 'Take/Choose Receipt Photo'
+                            : 'Change Receipt Photo'),
                       ),
                     ],
                   ),
                 ),
               ),
             ] else ...[
-            TextFormField(
-              controller: _senderNameController,
-              decoration: const InputDecoration(
-                labelText: 'Sender\'s Name',
-                border: OutlineInputBorder(),
-              ),
-              validator: (value) {
-                if (!_useReceiptPhoto && (value == null || value.isEmpty)) {
-                  return 'Please enter sender\'s name';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 16),
-            if (_isPhoneBasedPayment()) ...[              
               TextFormField(
-                controller: _phoneNumberController,
+                controller: _senderNameController,
                 decoration: const InputDecoration(
-                  labelText: 'Sender\'s Phone Number',
-                  border: OutlineInputBorder(),
-                  prefixText: '+251',
-                ),
-                keyboardType: TextInputType.phone,
-                validator: (value) {
-                  if (!_useReceiptPhoto) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter phone number';
-                    }
-                    if (!RegExp(r'^9[0-9]{8}$').hasMatch(value)) {
-                      return 'Please enter valid phone number';
-                    }
-                  }
-                  return null;
-                },
-              ),
-            ] else ...[              
-              TextFormField(
-                controller: _transactionIdController,
-                decoration: const InputDecoration(
-                  labelText: 'Transaction ID',
+                  labelText: 'Sender\'s Name',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (!_useReceiptPhoto && (value == null || value.isEmpty)) {
-                    return 'Please enter transaction ID';
+                    return 'Please enter sender\'s name';
                   }
                   return null;
                 },
               ),
-            ],
+              const SizedBox(height: 16),
+              if (_isPhoneBasedPayment()) ...[
+                TextFormField(
+                  controller: _phoneNumberController,
+                  decoration: const InputDecoration(
+                    labelText: 'Sender\'s Phone Number',
+                    border: OutlineInputBorder(),
+                    prefixText: '+251',
+                  ),
+                  keyboardType: TextInputType.phone,
+                  validator: (value) {
+                    if (!_useReceiptPhoto) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter phone number';
+                      }
+                      if (!RegExp(r'^9[0-9]{8}$').hasMatch(value)) {
+                        return 'Please enter valid phone number';
+                      }
+                    }
+                    return null;
+                  },
+                ),
+              ] else ...[
+                TextFormField(
+                  controller: _transactionIdController,
+                  decoration: const InputDecoration(
+                    labelText: 'Transaction ID',
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (!_useReceiptPhoto && (value == null || value.isEmpty)) {
+                      return 'Please enter transaction ID';
+                    }
+                    return null;
+                  },
+                ),
+              ],
             ],
             const SizedBox(height: 24),
             ElevatedButton(
@@ -659,7 +745,7 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                     return;
                   }
                 }
-                
+
                 if (_formKey.currentState!.validate()) {
                   try {
                     String? deviceId = await DeviceIdManager.getDeviceId();
@@ -672,39 +758,177 @@ class _FormSubmissionScreenState extends State<FormSubmissionScreen> {
                         .collection('approved_devices')
                         .doc(deviceId)
                         .get();
-                    
+
                     String currentLevel = 'zero';
                     if (approvedDeviceDoc.exists) {
-                      currentLevel = approvedDeviceDoc.data()?['premium_level'] ?? 'zero';
+                      currentLevel =
+                          approvedDeviceDoc.data()?['premium_level'] ?? 'zero';
                     }
 
                     // Check if premium level is selected
                     if (_selectedPremiumLevel == null) {
                       _showErrorDialog(
-                        'Please select a premium level before submitting.'
-                      );
+                          'Please select a premium level before submitting.');
                       return;
                     }
 
                     // Prevent submission if requesting same or lower level
-                    if (_getPremiumLevelRank(_selectedPremiumLevel!) <= _getPremiumLevelRank(currentLevel)) {
+                    if (_getPremiumLevelRank(_selectedPremiumLevel!) <=
+                        _getPremiumLevelRank(currentLevel)) {
                       _showErrorDialog(
-                        'You cannot request ${_selectedPremiumLevel!.toUpperCase()} level as you already have '
-                        '${currentLevel.toUpperCase()} level access, which includes all '
-                        'features of lower levels.'
-                      );
+                          'You cannot request ${_selectedPremiumLevel!.toUpperCase()} level as you already have '
+                          '${currentLevel.toUpperCase()} level access, which includes all '
+                          'features of lower levels.');
                       return;
                     }
 
                     await _submitFormToFirestore(deviceId);
                     if (mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Form submitted successfully!'),
-                          backgroundColor: Colors.green,
-                        ),
+                      await showGeneralDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        barrierColor: Colors.black.withOpacity(0.8),
+                        transitionDuration: const Duration(milliseconds: 800),
+                        transitionBuilder: (context, animation, secondaryAnimation, child) {
+                          return ScaleTransition(
+                            scale: Tween<double>(
+                              begin: 0.5,
+                              end: 1.0,
+                            ).animate(CurvedAnimation(
+                              parent: animation,
+                              curve: Curves.elasticOut,
+                            )),
+                            child: FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            ),
+                          );
+                        },
+                        pageBuilder: (context, animation, secondaryAnimation) {
+                          // Auto-navigate after showing animation
+                          Future.delayed(const Duration(milliseconds: 3000), () {
+                            Navigator.of(context).pop(); // Pop the dialog
+                            Navigator.of(context).pop(); // Navigate back to previous screen
+                          });
+                          return Center(
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 20),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(24),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.green.withOpacity(0.2),
+                                    blurRadius: 20,
+                                    spreadRadius: 10,
+                                  )
+                                ],
+                              ),
+                              child: Stack(
+                                clipBehavior: Clip.none,
+                                alignment: Alignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(32, 60, 32, 32),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        ShaderMask(
+                                          shaderCallback: (bounds) => LinearGradient(
+                                            colors: [Colors.green.shade700, Colors.teal.shade500],
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                          ).createShader(bounds),
+                                          child: Text(
+                                            'Thank You! 🎉',
+                                            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 16),
+                                        Text(
+                                          'Your premium upgrade request is under review',
+                                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                                color: Colors.grey.shade800,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        const SizedBox(height: 12),
+                                        Text(
+                                          'We will carefully review your submission and notify you of the results within 24 hours.',
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                                color: Colors.grey.shade600,
+                                              ),
+                                        ),
+                                        const SizedBox(height: 24),
+                                        TweenAnimationBuilder(
+                                          tween: Tween<double>(begin: 0, end: 1),
+                                          duration: const Duration(milliseconds: 1500),
+                                          builder: (context, double value, child) {
+                                            return Column(
+                                              children: [
+                                                LinearProgressIndicator(
+                                                  value: value,
+                                                  backgroundColor: Colors.grey.shade200,
+                                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                                    Colors.green.shade500,
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 8),
+                                                Text(
+                                                  'Processing...',
+                                                  style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Positioned(
+                                    top: -45,
+                                    child: Container(
+                                      padding: const EdgeInsets.all(16),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        shape: BoxShape.circle,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.green.withOpacity(0.2),
+                                            blurRadius: 12,
+                                            spreadRadius: 4,
+                                          )
+                                        ],
+                                      ),
+                                      child: Container(
+                                        padding: const EdgeInsets.all(16),
+                                        decoration: BoxDecoration(
+                                          color: Colors.green.shade50,
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: Colors.green.shade100,
+                                            width: 2,
+                                          ),
+                                        ),
+                                        child: Icon(
+                                          Icons.check_circle_rounded,
+                                          color: Colors.green.shade600,
+                                          size: 50,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       );
-                      Navigator.pop(context);
                     }
                   } catch (e) {
                     if (mounted) {

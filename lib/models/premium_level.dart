@@ -42,18 +42,6 @@ class PremiumFeature {
 Future<List<PremiumFeature>> getPremiumFeatures() async {
   return [
     PremiumFeature(
-      title: 'Zero',
-      description: 'Start exploring MatricMate',
-      features: [
-        'Limited access to study materials',
-        'Basic practice questions',
-        'Simple progress tracking',
-        'Community access',
-      ],
-      price: 0,
-      level: PremiumLevel.zero,
-    ),
-    PremiumFeature(
       title: 'Basic',
       description: 'Start your journey with essential features',
       features: [
