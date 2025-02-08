@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/subject.dart';
 import '../models/study_plan.dart';
+import 'package:lottie/lottie.dart';
+
 
 class StudyPlanScreen extends StatefulWidget {
   const StudyPlanScreen({super.key});
@@ -657,14 +659,9 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
         );
       }
 
-      // Calculate total study time
-      final totalHours = subjectHours.values.fold<int>(0, (sum, hours) => sum + (hours < 0 ? 0 : hours));
-      final totalMinutes = subjectDistribution.values.fold<double>(0, (sum, minutes) => sum + (minutes < 0 ? 0 : minutes));
-      final adjustedTotalHours = totalHours + (totalMinutes ~/ 60);
-      final adjustedTotalMinutes = (totalMinutes % 60).round();
-
       return Card(
-        child: Padding(
+        child: Container(
+          height: 300,
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -676,31 +673,50 @@ class _StudyPlanScreenState extends State<StudyPlanScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 16),
-              ...hours.entries.map((entry) {
-                final minutes = (distribution[entry.key] ?? 0).round();
-                final subjectHours = entry.value < 0 ? 0 : entry.value;
-                
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Stack(
                     children: [
-                      Text(
-                        '${entry.key} (${subjectHours}h ${minutes > 0 ? '${minutes}m' : ''})',
-                        style: const TextStyle(fontWeight: FontWeight.w500),
+                      Center(
+                        child: Lottie.asset(
+                          'assets/animations/under_construction.json',
+                          width: 200,
+                          height: 200,
+                          repeat: true,
+                          animate: true,
+                        ),
                       ),
-                      const SizedBox(height: 4),
+                      Positioned(
+                        bottom: 16,
+                        left: 0,
+                        right: 0,
+                        child: Column(
+                          children: [
+                            Text(
+                              'Under Construction',
+                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: Colors.black87,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'Coming Soon',
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Colors.black54,
+                                  ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
-                );
-              }).toList(),
-              const Divider(),
-              Text(
-                'Total weekly study time: ${adjustedTotalHours}h${adjustedTotalMinutes > 0 ? ' ${adjustedTotalMinutes}m' : ''}',
-                style: TextStyle(
-                  color: Colors.grey[800],
-                  fontWeight: FontWeight.w500,
                 ),
               ),
             ],
